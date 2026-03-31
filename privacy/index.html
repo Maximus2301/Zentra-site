@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Zentra</title>
+  <style>
+    :root {
+      --brand:    #6C63FF;
+      --brand-dk: #4B44CC;
+      --bg:       #0D0D1F;
+      --surface:  #14142B;
+      --card:     #1C1C3A;
+      --text:     #E8E8F0;
+      --muted:    #9090B0;
+      --border:   #2A2A4A;
+      --gold:     #FFD700;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                   'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-ring {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--brand), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: -0.3px;
+    }
+
+    .brand-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    /* ── Content wrapper ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── Page title ── */
+    .page-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    /* ── Intro card ── */
+    .intro-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--brand);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 40px;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--brand);
+      margin: 18px 0 8px;
+    }
+
+    p {
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    /* ── Data table ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 20px;
+      font-size: 14px;
+    }
+
+    .data-table th {
+      background: var(--card);
+      color: var(--muted);
+      font-weight: 600;
+      text-align: left;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .data-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .data-table tr:nth-child(even) td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    /* ── Pill badges ── */
+    .pill {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .pill-green  { background: rgba(0,200,100,0.15); color: #00C864; }
+    .pill-blue   { background: rgba(108,99,255,0.18); color: #9B95FF; }
+    .pill-yellow { background: rgba(255,215,0,0.15); color: #FFD700; }
+    .pill-red    { background: rgba(255,80,80,0.15); color: #FF6B6B; }
+
+    /* ── Highlight box ── */
+    .highlight {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 14.5px;
+    }
+
+    .highlight strong {
+      color: var(--gold);
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact-card a {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      .page-title { font-size: 26px; }
+      h2 { font-size: 18px; }
+      .data-table { font-size: 13px; }
+      .data-table th, .data-table td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <div class="logo-ring">Z</div>
+  <div>
+    <div class="brand-name">Zentra</div>
+    <div class="brand-sub">Smart Finance Tracker</div>
+  </div>
+</header>
+
+<!-- ── Main content ── -->
+<main>
+
+  <h1 class="page-title">Privacy Policy</h1>
+  <p class="meta">
+    Effective date: <strong>1 April 2026</strong> &nbsp;·&nbsp;
+    Last updated: <strong>1 April 2026</strong> &nbsp;·&nbsp;
+    App version: <strong>1.0.2</strong>
+  </p>
+
+  <div class="intro-card">
+    Zentra ("we", "our", or "us") is a personal finance tracker that reads bank
+    SMS messages on your device to help you understand your spending — without
+    any manual entry. This policy explains exactly what data we collect, how we
+    use it, and what we never do with it. We believe privacy should be simple
+    and honest, so we have written this in plain English.
+  </div>
+
+  <!-- 1. Information we collect -->
+  <section>
+    <h2>1. Information We Collect</h2>
+
+    <h3>1.1 SMS Messages (on-device only)</h3>
+    <p>
+      Zentra requests the <strong>READ_SMS</strong> permission to scan your
+      device inbox for bank and payment messages. This is the core function of
+      the app.
+    </p>
+    <div class="highlight">
+      <strong>Your SMS data never leaves your device.</strong> All parsing
+      happens locally. We do not upload, transmit, or store your SMS content on
+      any server. The raw SMS text is saved only in an encrypted local database
+      on your phone.
+    </div>
+    <ul>
+      <li>Only financial SMS (from recognised bank/payment senders) are parsed.</li>
+      <li>Non-financial messages are ignored and never stored.</li>
+      <li>You can delete any transaction at any time from within the app.</li>
+    </ul>
+
+    <h3>1.2 Account Information</h3>
+    <p>
+      When you sign in with Google, we receive your <strong>name, email
+      address, and profile photo URL</strong> from Google Sign-In. This is used
+      solely to identify your account and personalise the greeting in the app.
+    </p>
+
+    <h3>1.3 Financial Summaries (stored locally)</h3>
+    <p>
+      Parsed transactions — including amounts, merchant names, categories, dates,
+      and account last-4 digits — are stored in a local SQLite database on your
+      device. This data is never uploaded to our servers unless you explicitly
+      use the Backup feature (see §1.5).
+    </p>
+
+    <h3>1.4 Usage & Analytics</h3>
+    <p>
+      We use <strong>Firebase Analytics</strong> to collect anonymous,
+      aggregated usage events (e.g. which screens are visited, feature usage
+      frequency). This data contains no SMS content, transaction amounts, or
+      personally identifiable information. You can opt out via your device's
+      standard "Opt out of Ads Personalisation" setting.
+    </p>
+
+    <h3>1.5 Backup Data (optional)</h3>
+    <p>
+      If you use the Backup &amp; Restore feature, an encrypted export of your
+      local transaction database is saved to your personal <strong>Google
+      Drive</strong> account. This is your own Drive storage; Zentra does not
+      have access to any other files in your Drive.
+    </p>
+
+    <h3>1.6 Issue Reports (optional)</h3>
+    <p>
+      When you tap "Report Issue" on a misclassified transaction, the following
+      is sent to our <strong>Firebase Firestore</strong> database: the issue
+      type, the transaction amount and category, the original SMS text, and an
+      optional note from you. This is used exclusively to improve SMS parsing
+      accuracy. You can choose not to report issues; the feature is always
+      opt-in.
+    </p>
+
+    <h3>1.7 AI Advisor (Gemini)</h3>
+    <p>
+      The Zentra Advisor feature uses <strong>Google Gemini</strong> (via
+      Firebase AI) to answer your finance questions. The AI receives summarised
+      context — your monthly income/expense totals and top spending categories
+      (no raw SMS, no account numbers). Chat history is stored only on your
+      device and is not retained by Google beyond the duration of the API call.
+    </p>
+
+    <h3>1.8 Subscription & Payment</h3>
+    <p>
+      Zentra Pro subscriptions are processed by <strong>Razorpay</strong>. We
+      do not store your card or UPI credentials. Razorpay provides us only with
+      a payment confirmation and order ID. Razorpay's own privacy policy applies
+      to payment processing.
+    </p>
+
+    <h3>1.9 Advertising (optional)</h3>
+    <p>
+      Free users may see ads served by <strong>Google AdMob</strong>. AdMob may
+      use your device's advertising ID to show relevant finance-related ads.
+      You can reset or opt out of personalised ads in your Android settings
+      (<em>Settings → Privacy → Ads</em>). Zentra Pro subscribers have ads
+      turned off by default; all users can control ad types from
+      <em>Menu → Ad Preferences</em>.
+    </p>
+
+    <h3>1.10 Content Feeds</h3>
+    <p>
+      The Finance Gyan and Videos tabs fetch articles and videos from public
+      RSS feeds and the <strong>YouTube Data API v3</strong>. No personal data
+      is sent to these services beyond a standard HTTPS request.
+    </p>
+  </section>
+
+  <!-- 2. Data summary table -->
+  <section>
+    <h2>2. Data at a Glance</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data type</th>
+          <th>Where stored</th>
+          <th>Sent to servers</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SMS content</td>
+          <td>Device only</td>
+          <td><span class="pill pill-green">Never</span></td>
+          <td>Transaction parsing</td>
+        </tr>
+        <tr>
+          <td>Parsed transactions</td>
+          <td>Device only</td>
+          <td><span class="pill pill-green">Never</span></td>
+          <td>Finance dashboard</td>
+        </tr>
+        <tr>
+          <td>Google account (name, email)</td>
+          <td>Device + Firebase Auth</td>
+          <td><span class="pill pill-blue">Auth only</span></td>
+          <td>Sign-in &amp; personalisation</td>
+        </tr>
+        <tr>
+          <td>Usage events</td>
+          <td>Firebase Analytics</td>
+          <td><span class="pill pill-yellow">Anonymous</span></td>
+          <td>App improvement</td>
+        </tr>
+        <tr>
+          <td>Issue reports</td>
+          <td>Firebase Firestore</td>
+          <td><span class="pill pill-yellow">Opt-in only</span></td>
+          <td>SMS parsing accuracy</td>
+        </tr>
+        <tr>
+          <td>AI chat context</td>
+          <td>Device (history) + Gemini API call</td>
+          <td><span class="pill pill-blue">Per request</span></td>
+          <td>AI Advisor responses</td>
+        </tr>
+        <tr>
+          <td>Payment records</td>
+          <td>Razorpay + local subscription table</td>
+          <td><span class="pill pill-blue">Razorpay only</span></td>
+          <td>Subscription management</td>
+        </tr>
+        <tr>
+          <td>Advertising ID</td>
+          <td>AdMob (opt-out available)</td>
+          <td><span class="pill pill-yellow">Free users only</span></td>
+          <td>Relevant ads</td>
+        </tr>
+        <tr>
+          <td>Backup export</td>
+          <td>Your Google Drive</td>
+          <td><span class="pill pill-yellow">User-initiated</span></td>
+          <td>Backup &amp; restore</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 3. How we use your data -->
+  <section>
+    <h2>3. How We Use Your Data</h2>
+    <ul>
+      <li>To parse bank SMS and display your transactions, spending summaries, and trends.</li>
+      <li>To authenticate you securely via Google Sign-In.</li>
+      <li>To provide the AI Advisor with enough context to give personalised finance tips.</li>
+      <li>To process and verify your Zentra Pro subscription.</li>
+      <li>To improve SMS parsing rules based on voluntarily submitted issue reports.</li>
+      <li>To measure anonymous feature usage and fix bugs (Firebase Analytics).</li>
+      <li>To show finance-related ads to free users (AdMob), subject to your preferences.</li>
+    </ul>
+    <p>We do <strong>not</strong> sell, rent, or share your personal data with any third party for marketing purposes.</p>
+  </section>
+
+  <!-- 4. Data we never collect -->
+  <section>
+    <h2>4. What We Never Do</h2>
+    <div class="highlight">
+      <ul style="margin:0; padding-left:18px;">
+        <li>We never upload your SMS messages to our servers.</li>
+        <li>We never share your transaction data with advertisers or data brokers.</li>
+        <li>We never store your card number, UPI PIN, or any payment credentials.</li>
+        <li>We never read SMS from non-financial senders.</li>
+        <li>We never access your contacts, camera, microphone, or location.</li>
+        <li>We never sell your data — to anyone, for any reason.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5. Third-party services -->
+  <section>
+    <h2>5. Third-Party Services</h2>
+    <p>Zentra uses the following third-party services, each governed by their own privacy policies:</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Provider</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Firebase Auth</td>
+          <td>Google LLC</td>
+          <td>Secure sign-in</td>
+        </tr>
+        <tr>
+          <td>Firebase Analytics</td>
+          <td>Google LLC</td>
+          <td>Anonymous usage analytics</td>
+        </tr>
+        <tr>
+          <td>Firebase Firestore</td>
+          <td>Google LLC</td>
+          <td>Issue reports, subscription state, SMS rules</td>
+        </tr>
+        <tr>
+          <td>Firebase Remote Config</td>
+          <td>Google LLC</td>
+          <td>SMS parsing rule updates (no personal data)</td>
+        </tr>
+        <tr>
+          <td>Firebase App Check</td>
+          <td>Google LLC</td>
+          <td>API abuse prevention</td>
+        </tr>
+        <tr>
+          <td>Google Gemini (Firebase AI)</td>
+          <td>Google LLC</td>
+          <td>AI Advisor responses</td>
+        </tr>
+        <tr>
+          <td>Google Sign-In</td>
+          <td>Google LLC</td>
+          <td>Account authentication</td>
+        </tr>
+        <tr>
+          <td>Google AdMob</td>
+          <td>Google LLC</td>
+          <td>Ads for free users (opt-out available)</td>
+        </tr>
+        <tr>
+          <td>YouTube Data API v3</td>
+          <td>Google LLC</td>
+          <td>Finance video feed</td>
+        </tr>
+        <tr>
+          <td>Razorpay</td>
+          <td>Razorpay Software Pvt. Ltd.</td>
+          <td>Subscription payment processing</td>
+        </tr>
+        <tr>
+          <td>Google Drive API</td>
+          <td>Google LLC</td>
+          <td>Optional encrypted backup</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Google's privacy policy:
+      <a href="https://policies.google.com/privacy" style="color:var(--brand);" target="_blank">
+        policies.google.com/privacy
+      </a><br>
+      Razorpay's privacy policy:
+      <a href="https://razorpay.com/privacy/" style="color:var(--brand);" target="_blank">
+        razorpay.com/privacy
+      </a>
+    </p>
+  </section>
+
+  <!-- 6. Data retention -->
+  <section>
+    <h2>6. Data Retention</h2>
+    <ul>
+      <li><strong>Local data</strong> (transactions, SMS, preferences) — retained until you delete the app or clear app data.</li>
+      <li><strong>Firebase Auth</strong> — retained until you log out and request account deletion (see §8).</li>
+      <li><strong>Issue reports</strong> — retained in Firestore for up to 12 months, then auto-deleted.</li>
+      <li><strong>Analytics events</strong> — retained by Firebase Analytics for 14 months (Google default), then auto-deleted.</li>
+      <li><strong>Backup files</strong> — stored in your Google Drive; delete them directly from Drive at any time.</li>
+    </ul>
+  </section>
+
+  <!-- 7. Children's privacy -->
+  <section>
+    <h2>7. Children's Privacy</h2>
+    <p>
+      Zentra is not directed at children under the age of 13. We do not
+      knowingly collect personal information from children. If you believe a
+      child has provided us with personal data, please contact us and we will
+      delete it promptly.
+    </p>
+  </section>
+
+  <!-- 8. Your rights -->
+  <section>
+    <h2>8. Your Rights &amp; Choices</h2>
+    <ul>
+      <li>
+        <strong>Access &amp; export</strong> — Use the Export feature in the app
+        to download all your transaction data as an Excel file at any time.
+      </li>
+      <li>
+        <strong>Delete transactions</strong> — Swipe to delete any transaction
+        inside the app. Deleted transactions cannot be re-imported from the same
+        SMS (protected by a unique constraint).
+      </li>
+      <li>
+        <strong>Revoke SMS permission</strong> — Go to
+        <em>Android Settings → Apps → Zentra → Permissions</em> to revoke SMS
+        access at any time. The app continues to work with existing data.
+      </li>
+      <li>
+        <strong>Ad preferences</strong> — Open <em>Menu → Ad Preferences</em>
+        in the app to control which ad types appear and how often.
+      </li>
+      <li>
+        <strong>Opt out of personalised ads</strong> — Go to
+        <em>Android Settings → Privacy → Ads → Opt out of Ads Personalisation</em>.
+      </li>
+      <li>
+        <strong>Delete your account</strong> — Email us at
+        <a href="mailto:privacy@zentraai.in" style="color:var(--brand);">
+          privacy@zentraai.in
+        </a>
+        to request full account and data deletion. We will action this within 7
+        business days.
+      </li>
+    </ul>
+  </section>
+
+  <!-- 9. Security -->
+  <section>
+    <h2>9. Security</h2>
+    <p>
+      We take the security of your data seriously:
+    </p>
+    <ul>
+      <li>Local data is stored in a private app directory, inaccessible to other apps.</li>
+      <li>All communication with Firebase and Razorpay uses TLS encryption.</li>
+      <li>Firebase App Check prevents unauthorised API access.</li>
+      <li>Biometric app lock is available for an extra layer of on-device protection.</li>
+      <li>Backup exports are encrypted before being saved to Google Drive.</li>
+    </ul>
+    <p>
+      No method of electronic storage or transmission is 100% secure. If you
+      discover a security vulnerability, please contact us at
+      <a href="mailto:security@zentraai.in" style="color:var(--brand);">
+        security@zentraai.in
+      </a>.
+    </p>
+  </section>
+
+  <!-- 10. Changes -->
+  <section>
+    <h2>10. Changes to This Policy</h2>
+    <p>
+      We may update this policy as the app evolves. When we make material
+      changes, we will update the "Last updated" date at the top of this page
+      and, where appropriate, notify you via an in-app message. Continued use
+      of Zentra after changes are posted constitutes acceptance of the updated
+      policy.
+    </p>
+  </section>
+
+  <!-- 11. Contact -->
+  <section>
+    <h2>11. Contact Us</h2>
+    <p>For any privacy-related questions, requests, or concerns:</p>
+    <div class="contact-card">
+      <div><strong>App:</strong> Zentra — Smart Finance Tracker</div>
+      <div><strong>Developer:</strong> Zentra AI</div>
+      <div>
+        <strong>Email:</strong>
+        <a href="mailto:privacy@zentraai.in">privacy@zentraai.in</a>
+      </div>
+      <div>
+        <strong>Website:</strong>
+        <a href="https://zentraai.in" target="_blank">zentraai.in</a>
+      </div>
+      <div>
+        <strong>Privacy policy URL:</strong>
+        <a href="https://zentraai.in/privacy" target="_blank">
+          zentraai.in/privacy
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── Footer ── -->
+<footer>
+  &copy; 2026 Zentra AI &nbsp;·&nbsp;
+  <a href="https://zentraai.in/privacy" style="color:var(--brand);">Privacy Policy</a>
+  &nbsp;·&nbsp;
+  <a href="mailto:privacy@zentraai.in" style="color:var(--brand);">Contact</a>
+</footer>
+
+</body>
+</html>
