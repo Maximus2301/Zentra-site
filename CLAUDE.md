@@ -1,14 +1,14 @@
-# Zentra Website — CLAUDE.md
+# Zantra Website — CLAUDE.md
 
 ## Project Overview
-Static website for the **Zentra** brand, hosted on **GitHub Pages** at `https://zentraai.in`.
+Static website for the **Zantra** brand, hosted on **GitHub Pages** at `https://zantraai.in`.
 This is a pure HTML/CSS single-page site — no build step, no framework, no JS dependencies.
 
 ## File Structure
 ```
-zentra-site/
+zantra-site/
 ├── index.html        # Main landing page
-├── CNAME             # GitHub Pages custom domain (zentraai.in)
+├── CNAME             # GitHub Pages custom domain (zantraai.in)
 ├── CLAUDE.md         # This file
 └── privacy/
     └── index.html    # Privacy policy page
@@ -24,18 +24,18 @@ zentra-site/
 - **Logo**: Inline SVG — stylized Z with purple→teal gradient, 10px border-radius rect
 
 ## Brand Architecture
-Zentra is a **multi-product brand**. The site reflects this:
-- **Zentra Finance** — Live (personal finance tracker, Android)
-- **Zentra Health** — Coming Soon (medical records — see MedVault project)
-- **Zentra —** — Future (TBD)
+Zantra is a **multi-product brand**. The site reflects this:
+- **Zantra Finance** — Live (personal finance tracker, Android)
+- **Zantra Health** — Coming Soon (medical records — see MedVault project)
+- **Zantra —** — Future (TBD)
 
 Do NOT collapse the brand to a single product. Always maintain the multi-product vision in copy and structure.
 
 ## Key Links
-- **Domain**: `zentraai.in` (purchased on Namecheap)
-- **App package**: `in.zentra.app`
-- **Play Store**: `https://play.google.com/store/apps/details?id=in.zentra.app`
-- **Contact email**: `hello@zentraai.in`
+- **Domain**: `zantraai.in` (purchased on Namecheap)
+- **App package**: `in.zantra.app`
+- **Play Store**: `https://play.google.com/store/apps/details?id=in.zantra.app`
+- **Contact email**: `hello@zantraai.in`
 
 ## Hosting — GitHub Pages
 - Repo pushed to GitHub, `main` branch, root `/`
@@ -54,5 +54,5 @@ Do NOT collapse the brand to a single product. Always maintain the multi-product
 ## TODO
 - [ ] Replace Play Store URL with live listing link
 - [ ] Add real app screenshots inside phone mockup (or swap mockup for actual screenshot)
-- [ ] Update `hello@zentraai.in` once email is configured
-- [ ] Add Zentra Health entry once MedVault is ready for public beta
+- [ ] Update `hello@zantraai.in` once email is configured
+- [ ] Add Zantra Health entry once MedVault is ready for public beta
