@@ -1,14 +1,14 @@
 # Zantra Website — CLAUDE.md
 
 ## Project Overview
-Static website for the **Zantra** brand, hosted on **GitHub Pages** at `https://zantraai.in`.
+Static website for the **Zantra** brand, hosted on **GitHub Pages** at `https://zentraai.in`.
 This is a pure HTML/CSS single-page site — no build step, no framework, no JS dependencies.
 
 ## File Structure
 ```
 zantra-site/
 ├── index.html        # Main landing page
-├── CNAME             # GitHub Pages custom domain (zantraai.in)
+├── CNAME             # GitHub Pages custom domain (zentraai.in)
 ├── CLAUDE.md         # This file
 └── privacy/
     └── index.html    # Privacy policy page
@@ -32,10 +32,10 @@ Zantra is a **multi-product brand**. The site reflects this:
 Do NOT collapse the brand to a single product. Always maintain the multi-product vision in copy and structure.
 
 ## Key Links
-- **Domain**: `zantraai.in` (purchased on Namecheap)
-- **App package**: `in.zantra.app`
-- **Play Store**: `https://play.google.com/store/apps/details?id=in.zantra.app`
-- **Contact email**: `hello@zantraai.in`
+- **Domain**: `zentraai.in` (purchased on Namecheap)
+- **App package**: `in.zentra.app`
+- **Play Store**: `https://play.google.com/store/apps/details?id=in.zentra.app`
+- **Contact email**: `hello@zentraai.in`
 
 ## Hosting — GitHub Pages
 - Repo pushed to GitHub, `main` branch, root `/`
@@ -54,5 +54,5 @@ Do NOT collapse the brand to a single product. Always maintain the multi-product
 ## TODO
 - [ ] Replace Play Store URL with live listing link
 - [ ] Add real app screenshots inside phone mockup (or swap mockup for actual screenshot)
-- [ ] Update `hello@zantraai.in` once email is configured
+- [ ] Update `hello@zentraai.in` once email is configured
 - [ ] Add Zantra Health entry once MedVault is ready for public beta
