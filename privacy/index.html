@@ -4,25 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — Zentra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --brand:    #6C63FF;
-      --brand-dk: #4B44CC;
-      --bg:       #0D0D1F;
-      --surface:  #14142B;
-      --card:     #1C1C3A;
-      --text:     #E8E8F0;
-      --muted:    #9090B0;
-      --border:   #2A2A4A;
-      --gold:     #FFD700;
+      --bg:       #0D0D0F;
+      --bg-deep:  #0A0A0C;
+      --surface:  #131315;
+      --card:     #1A1A1D;
+      --card-2:   #202024;
+      --text:     #F0F0EC;
+      --muted:    #8A8A90;
+      --border:   #2A2A2E;
+      --brand:    #C9A22A;
+      --brand-hi: #E2C05E;
+      --brand-dk: #9A7515;
+      --teal:     #6ECFDB;
+      --teal-hi:  #A8E8F4;
+      --danger:   #EF5350;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-                   'Helvetica Neue', Arial, sans-serif;
-      background: var(--bg);
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(201,162,42,0.16) 0%, transparent 28%),
+        radial-gradient(circle at 85% 10%, rgba(110,207,219,0.08) 0%, transparent 24%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
       color: var(--text);
       line-height: 1.75;
       font-size: 16px;
@@ -42,27 +52,42 @@
       width: 44px;
       height: 44px;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--brand), var(--gold));
+      background: #0D0D1F;
+      border: 1.2px solid rgba(201,162,42,0.32);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
-      font-weight: 900;
-      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      background-image:
+        linear-gradient(#0D0D1F, #0D0D1F),
+        linear-gradient(90deg, #8B6914 0%, #B48A1E 20%, #D4AF37 42%, #F1D77A 50%, #D4AF37 58%, #B48A1E 80%, #8B6914 100%);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      color: var(--brand-hi);
       flex-shrink: 0;
+      box-shadow: inset 0 1px 0 rgba(241,215,122,0.06);
     }
 
     .brand-name {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--gold);
-      letter-spacing: -0.3px;
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--brand-hi);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      line-height: 1;
     }
 
     .brand-sub {
-      font-size: 13px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       color: var(--muted);
-      margin-top: 1px;
+      margin-top: 4px;
     }
 
     /* ── Content wrapper ── */
@@ -91,7 +116,7 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-left: 4px solid var(--brand);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 18px 22px;
       margin-bottom: 40px;
       font-size: 15px;
@@ -115,7 +140,7 @@
     h3 {
       font-size: 16px;
       font-weight: 700;
-      color: var(--brand);
+      color: var(--brand-hi);
       margin: 18px 0 8px;
     }
 
@@ -143,7 +168,7 @@
     }
 
     .data-table th {
-      background: var(--card);
+      background: var(--card-2);
       color: var(--muted);
       font-weight: 600;
       text-align: left;
@@ -174,10 +199,10 @@
       letter-spacing: 0.3px;
     }
 
-    .pill-green  { background: rgba(0,200,100,0.15); color: #00C864; }
-    .pill-blue   { background: rgba(108,99,255,0.18); color: #9B95FF; }
-    .pill-yellow { background: rgba(255,215,0,0.15); color: #FFD700; }
-    .pill-red    { background: rgba(255,80,80,0.15); color: #FF6B6B; }
+    .pill-green  { background: rgba(102,187,106,0.16); color: #8EE08F; }
+    .pill-blue   { background: rgba(110,207,219,0.16); color: var(--teal-hi); }
+    .pill-yellow { background: rgba(201,162,42,0.16); color: var(--brand-hi); }
+    .pill-red    { background: rgba(239,83,80,0.15); color: #FF9090; }
 
     /* ── Highlight box ── */
     .highlight {
@@ -190,7 +215,7 @@
     }
 
     .highlight strong {
-      color: var(--gold);
+      color: var(--brand-hi);
     }
 
     /* ── Contact card ── */
@@ -205,7 +230,7 @@
     }
 
     .contact-card a {
-      color: var(--brand);
+      color: var(--brand-hi);
       text-decoration: none;
       font-weight: 500;
     }
@@ -236,7 +261,7 @@
   <div class="logo-ring">Z</div>
   <div>
     <div class="brand-name">Zentra</div>
-    <div class="brand-sub">Smart Finance Tracker</div>
+    <div class="brand-sub">Finance Tracker</div>
   </div>
 </header>
 
