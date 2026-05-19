@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zantra OS — AI-Native Engineering Execution System</title>
+  <meta name="description" content="Zantra OS connects requirements, tests, planning, and lessons learned into one AI-powered system. Built for automotive, embedded, medical, and regulated engineering teams." />
+  <meta property="og:title" content="Zantra OS — AI-Native Engineering Execution" />
+  <meta property="og:description" content="The operating system where engineering teams execute structured work — with full context, traceability, and institutional memory." />
+  <meta property="og:url" content="https://zentraai.in/pms" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #0D0D0F;
+      --bg-deep:      #0A0A0C;
+      --surface:      #131315;
+      --surface-2:    #1A1A1D;
+      --surface-3:    #202024;
+      --border:       #2A2A2E;
+      --border-soft:  #222225;
+      --primary:      #C9A22A;
+      --primary-light:#E2C05E;
+      --primary-deep: #9A7515;
+      --teal:         #6ECFDB;
+      --teal-light:   #A8E8F4;
+      --gold-bright:  #F1D77A;
+      --danger:       #EF5350;
+      --text:         #F0F0EC;
+      --muted:        #8A8A90;
+      --radius:       18px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(201,162,42,0.14) 0%, transparent 28%),
+        radial-gradient(circle at 85% 12%, rgba(110,207,219,0.07) 0%, transparent 24%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10,10,12,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: #0D0D1F;
+      border: 1.2px solid rgba(201,162,42,0.30);
+      box-shadow: inset 0 1px 0 rgba(241,215,122,0.08);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .logo-mark span {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(90deg, #8B6914 0%, #B48A1E 20%, #D4AF37 42%, #F1D77A 50%, #D4AF37 58%, #B48A1E 80%, #8B6914 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo-copy { display: flex; flex-direction: column; gap: 2px; }
+
+    .logo-name {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      line-height: 1;
+    }
+
+    .logo-sub {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--primary-light); }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--primary) 45%, var(--primary-deep) 100%);
+      color: #1A1200;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.24);
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover { opacity: 0.94; transform: translateY(-1px); box-shadow: 0 22px 50px rgba(0,0,0,0.32); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border: 1.5px solid rgba(201,162,42,0.45);
+      color: var(--primary-light);
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 12px;
+      text-decoration: none;
+      background: rgba(201,162,42,0.05);
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .btn-secondary:hover { color: var(--text); border-color: rgba(226,192,94,0.75); background: rgba(201,162,42,0.12); }
+
+    .btn-teal {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border: 1.5px solid rgba(110,207,219,0.35);
+      color: var(--teal-light);
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 12px;
+      text-decoration: none;
+      background: rgba(110,207,219,0.06);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-teal:hover { background: rgba(110,207,219,0.12); border-color: var(--teal); }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 96px;
+      max-width: 940px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border: 1px solid rgba(110,207,219,0.22);
+      background: rgba(110,207,219,0.07);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--teal-light);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .hero-badge span {
+      width: 6px; height: 6px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(110,207,219,0.7);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 70px);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.06em;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--primary) 46%, var(--teal) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 64px;
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 28px 40px;
+      background: linear-gradient(180deg, rgba(26,26,29,0.96) 0%, rgba(19,19,21,1) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-num {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: var(--primary-light);
+    }
+
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+    .stat-divider { width: 1px; height: 36px; background: var(--border); }
+
+    /* ── GLOW ── */
+    .glow-divider {
+      width: 100%;
+      max-width: 600px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary-light), var(--teal), transparent);
+      opacity: 0.5;
+      margin: 0 auto 80px;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 80px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ── PROBLEM ── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--border-soft);
+    }
+
+    .problem-item {
+      padding: 36px 32px;
+      background: linear-gradient(180deg, rgba(26,26,29,0.96) 0%, rgba(19,19,21,1) 100%);
+    }
+
+    .problem-num {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      color: var(--danger);
+      opacity: 0.75;
+      margin-bottom: 12px;
+    }
+
+    .problem-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+
+    .problem-item p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    /* ── WHAT IS IT ── */
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 80px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .what-desc { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 24px; }
+
+    .what-points { display: flex; flex-direction: column; gap: 14px; }
+
+    .what-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .what-point strong { color: var(--text); }
+
+    .check-icon { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+
+    /* pipeline */
+    .pipeline { display: flex; flex-direction: column; gap: 4px; }
+
+    .pipe-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: linear-gradient(180deg, rgba(32,32,36,0.94) 0%, rgba(19,19,21,0.96) 100%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .pipe-step:hover { border-color: rgba(201,162,42,0.35); }
+
+    .pipe-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+    .pipe-label { font-size: 13px; font-weight: 600; color: var(--text); flex: 1; }
+
+    .pipe-module { font-size: 11px; color: var(--primary-light); font-weight: 600; letter-spacing: 0.04em; }
+
+    .pipe-arrow { text-align: center; color: var(--muted); font-size: 12px; padding: 2px 0; }
+
+    /* ── MODULES ── */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 56px;
+    }
+
+    .module-card {
+      padding: 28px 22px;
+      background: linear-gradient(180deg, rgba(32,32,36,0.94) 0%, rgba(19,19,21,0.96) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .module-card:hover {
+      border-color: rgba(201,162,42,0.34);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.22);
+    }
+
+    .module-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(201,162,42,0.14);
+    }
+
+    .module-name { font-size: 15px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+
+    .module-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      margin-bottom: 12px;
+    }
+
+    .module-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── STATUS BANNER ── */
+    .status-banner {
+      background: rgba(110,207,219,0.05);
+      border: 1px solid rgba(110,207,219,0.18);
+      border-radius: var(--radius);
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .status-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(110,207,219,0.6);
+      animation: pulse 2s infinite;
+    }
+
+    .status-banner p { font-size: 14px; color: var(--muted); }
+    .status-banner strong { color: var(--text); }
+
+    /* ── INDUSTRIES ── */
+    .industries-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 40px;
+    }
+
+    .industry-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      background: linear-gradient(180deg, rgba(26,26,29,0.96) 0%, rgba(19,19,21,1) 100%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .industry-chip .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── DIFFERENTIATORS ── */
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    .diff-card {
+      padding: 32px 28px;
+      background: linear-gradient(180deg, rgba(32,32,36,0.94) 0%, rgba(19,19,21,0.96) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .diff-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-deep), var(--gold-bright), var(--teal));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .diff-card:hover::before { opacity: 1; }
+
+    .diff-num {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      color: rgba(201,162,42,0.18);
+      margin-bottom: 16px;
+    }
+
+    .diff-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+    .diff-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    /* ── COMPARISON TABLE ── */
+    .comp-table-wrap { margin-top: 56px; overflow-x: auto; }
+
+    .comp-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .comp-table th, .comp-table td {
+      padding: 16px 20px;
+      font-size: 14px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comp-table th {
+      background: linear-gradient(180deg, rgba(26,26,29,0.96) 0%, rgba(19,19,21,1) 100%);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .comp-table th:first-child, .comp-table td:first-child {
+      text-align: left;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .comp-table th.hl, .comp-table td.hl {
+      background: rgba(201,162,42,0.06);
+      border-left: 1px solid rgba(201,162,42,0.22);
+      border-right: 1px solid rgba(201,162,42,0.22);
+      font-weight: 700;
+      color: var(--primary-light);
+    }
+
+    .comp-table th.hl { border-top: 2px solid var(--primary); }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table td:not(:first-child):not(.hl) { color: var(--muted); }
+
+    .chk { color: var(--teal); font-size: 16px; }
+    .crs { color: var(--danger); font-size: 16px; opacity: 0.7; }
+    .prt { color: var(--primary-light); font-size: 16px; }
+
+    /* ── MARKET ── */
+    .market-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .market-card {
+      padding: 36px 28px;
+      background: linear-gradient(180deg, rgba(26,26,29,0.96) 0%, rgba(19,19,21,1) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .market-card.hl {
+      border-color: rgba(110,207,219,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .market-card.hl::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--primary));
+    }
+
+    .market-size {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      margin-bottom: 6px;
+    }
+
+    .market-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .market-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── PRICING ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    .price-card {
+      padding: 36px 28px;
+      background: linear-gradient(180deg, rgba(26,26,29,0.96) 0%, rgba(19,19,21,1) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .price-card.featured {
+      border-color: rgba(201,162,42,0.5);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 50px rgba(0,0,0,0.22);
+    }
+
+    .price-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-deep), var(--gold-bright), var(--teal));
+    }
+
+    .price-tier {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .price-amount {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      margin-bottom: 4px;
+      color: var(--primary-light);
+    }
+
+    .price-period { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+
+    .price-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(201,162,42,0.14);
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      margin-bottom: 16px;
+    }
+
+    .price-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .price-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .price-features li strong { color: var(--text); }
+
+    /* ── INVESTOR ── */
+    .investor-section { padding: 100px 24px; max-width: 900px; margin: 0 auto; }
+
+    .investor-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+      padding: 56px;
+      background: linear-gradient(180deg, rgba(32,32,28,0.96) 0%, rgba(19,19,21,1) 100%);
+      border: 1px solid rgba(201,162,42,0.35);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .investor-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-deep), var(--gold-bright), var(--teal));
+    }
+
+    .investor-box h2 {
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      margin-bottom: 12px;
+    }
+
+    .investor-box p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+
+    .investor-contact-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .investor-contact-list a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--teal-light);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .investor-contact-list a:hover { text-decoration: underline; }
+
+    .investor-actions { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      background: rgba(10,10,12,0.72);
+      backdrop-filter: blur(10px);
+    }
+
+    .footer-left { display: flex; align-items: center; gap: 24px; }
+
+    .footer-links { display: flex; gap: 24px; }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--primary-light); }
+
+    .footer-copy { font-size: 13px; color: var(--muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .what-grid { grid-template-columns: 1fr; gap: 40px; }
+      .modules-grid { grid-template-columns: repeat(2, 1fr); }
+      .diff-grid { grid-template-columns: 1fr; }
+      .market-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .investor-box { grid-template-columns: 1fr; padding: 36px 28px; }
+      .investor-actions { flex-direction: row; flex-wrap: wrap; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+      .hero-stats { gap: 28px; padding: 20px 24px; }
+      .stat-divider { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .modules-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">
+      <div class="logo-mark"><span>Z</span></div>
+      <div class="logo-copy">
+        <span class="logo-name">Zantra</span>
+        <span class="logo-sub">OS</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#problem">Problem</a></li>
+      <li><a href="#modules">Modules</a></li>
+      <li><a href="#differentiators">Why Zantra</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#invest">Invest</a></li>
+    </ul>
+    <a href="mailto:hello@zentraai.in?subject=Zantra OS — Demo Request" class="btn-primary">
+      Request Demo
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">
+      <span></span>
+      In Active Development · MVP Ready
+    </div>
+    <h1>
+      The AI-native OS for<br>
+      <span class="gradient">engineering execution</span>
+    </h1>
+    <p>
+      Zantra OS connects requirements, testing, planning, and lessons learned
+      into one AI-powered system — with full traceability, project-scoped memory,
+      and approval governance. Built for teams where context loss is expensive.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:hello@zentraai.in?subject=Zantra OS — Demo Request" class="btn-primary">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.8"/></svg>
+        Request a Demo
+      </a>
+      <a href="#invest" class="btn-teal">Investor Enquiry</a>
+      <a href="#modules" class="btn-secondary">Explore Modules</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Integrated Modules</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">$1.8B</div>
+        <div class="stat-label">Addressable Market (Safety-critical ALM)</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">75+</div>
+        <div class="stat-label">Development Sessions</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">10×</div>
+        <div class="stat-label">Lower Cost than DOORS / Polarion</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="glow-divider"></div>
+
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">Engineering teams are drowning in disconnected tools</h2>
+    <p class="section-sub">
+      In regulated industries — automotive, medical, aerospace — the cost of context loss, missed traceability, and repeated mistakes is not a productivity issue. It's a compliance and safety risk.
+    </p>
+
+    <div class="problem-grid">
+      <div class="problem-item">
+        <div class="problem-num">30–40%</div>
+        <h3>Time lost searching for context</h3>
+        <p>Engineers spend nearly half their time reconstructing context that already exists — in docs, tickets, emails, and tribal knowledge no tool captures.</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">$0</div>
+        <h3>Value extracted from past failures</h3>
+        <p>Post-mortems and lessons learned sit in folders nobody reads. The same defects surface programme after programme because past knowledge is never operationalized.</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">Weeks</div>
+        <h3>To deploy incumbent ALM tools</h3>
+        <p>IBM DOORS, Siemens Polarion, and PTC Codebeamer require months of integration, enterprise IT, and six-figure licences — pricing out the teams that need them most.</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">Zero</div>
+        <h3>Traceability in AI copilots</h3>
+        <p>GitHub Copilot, Cursor, and ChatGPT generate output without project memory, requirement linkage, approval governance, or ASPICE awareness. Helpful for individuals; dangerous at programme scale.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS IT -->
+  <div class="what-grid" id="overview">
+    <div>
+      <div class="section-label">What is Zantra OS</div>
+      <h2 class="section-title" style="font-size:clamp(26px,3.5vw,38px);">Not a copilot. Not a records database. An execution system.</h2>
+      <p class="what-desc">
+        Zantra OS is the operating system where engineering teams execute structured work. It stores full project context, runs AI workflows with approval gates, tracks every decision, and learns from operational experience — preventing the same mistakes from surfacing twice.
+      </p>
+      <div class="what-points">
+        <div class="what-point">
+          <svg class="check-icon" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#6ECFDB" stroke-width="1.5"/><path d="M5.5 9l2.5 2.5 4-4.5" stroke="#6ECFDB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Requirements pipeline</strong> — from stakeholder needs to software requirements, with AI generation and 11-rule validation</span>
+        </div>
+        <div class="what-point">
+          <svg class="check-icon" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#6ECFDB" stroke-width="1.5"/><path d="M5.5 9l2.5 2.5 4-4.5" stroke="#6ECFDB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Test traceability</strong> — every test case linked to the requirement it validates, with coverage metrics</span>
+        </div>
+        <div class="what-point">
+          <svg class="check-icon" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#6ECFDB" stroke-width="1.5"/><path d="M5.5 9l2.5 2.5 4-4.5" stroke="#6ECFDB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Lessons learned loop</strong> — past defects and root causes automatically surface when generating new requirements</span>
+        </div>
+        <div class="what-point">
+          <svg class="check-icon" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#6ECFDB" stroke-width="1.5"/><path d="M5.5 9l2.5 2.5 4-4.5" stroke="#6ECFDB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Per-project semantic memory</strong> — AI retrieves only your project's knowledge, not a shared noise pool</span>
+        </div>
+        <div class="what-point">
+          <svg class="check-icon" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#6ECFDB" stroke-width="1.5"/><path d="M5.5 9l2.5 2.5 4-4.5" stroke="#6ECFDB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Approval-gated workflows</strong> — AI proposes, humans approve, the system records and learns</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipeline">
+      <div class="pipe-step"><div class="pipe-dot" style="background:#C9A22A;"></div><div class="pipe-label">Feature Brief</div><div class="pipe-module">Workflow Engine</div></div>
+      <div class="pipe-arrow">↓</div>
+      <div class="pipe-step"><div class="pipe-dot" style="background:#E2C05E;"></div><div class="pipe-label">PRD Generation &amp; Approval</div><div class="pipe-module">Workflow Engine</div></div>
+      <div class="pipe-arrow">↓</div>
+      <div class="pipe-step"><div class="pipe-dot" style="background:#6ECFDB;"></div><div class="pipe-label">STK → SYS → SWR Requirements</div><div class="pipe-module">Veridion</div></div>
+      <div class="pipe-arrow">↓</div>
+      <div class="pipe-step"><div class="pipe-dot" style="background:#F1D77A;"></div><div class="pipe-label">Architecture &amp; Code Design</div><div class="pipe-module">Pragma</div></div>
+      <div class="pipe-arrow">↓</div>
+      <div class="pipe-step"><div class="pipe-dot" style="background:#EF5350;"></div><div class="pipe-label">Test Case Generation</div><div class="pipe-module">Criterion</div></div>
+      <div class="pipe-arrow">↓</div>
+      <div class="pipe-step"><div class="pipe-dot" style="background:#C9A22A;"></div><div class="pipe-label">Test Execution &amp; Failure Analysis</div><div class="pipe-module">Axiom</div></div>
+      <div class="pipe-arrow">↓</div>
+      <div class="pipe-step"><div class="pipe-dot" style="background:#6ECFDB;"></div><div class="pipe-label">Lessons Captured &amp; Reused</div><div class="pipe-module">Lekha</div></div>
+    </div>
+  </div>
+
+  <!-- MODULES -->
+  <section id="modules">
+    <div class="section-label">Product Modules</div>
+    <h2 class="section-title">Eight modules. One cognitive loop.</h2>
+    <p class="section-sub">Each module works independently and as part of the execution pipeline. Teams adopt one workflow at a time and expand as they see value.</p>
+
+    <div class="modules-grid">
+      <div class="module-card">
+        <div class="module-icon" style="background:rgba(201,162,42,0.12);">💬</div>
+        <div class="module-name">Aletheia</div>
+        <div class="module-tag">AI Q&amp;A Engine</div>
+        <p>Grounded semantic search and multi-intent reasoning over your project's documents and knowledge. 24 role-based personas. Fast-path (2.5 s) and deep-path (4 s) response modes.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-icon" style="background:rgba(110,207,219,0.12);">📋</div>
+        <div class="module-name">Veridion</div>
+        <div class="module-tag">Requirements</div>
+        <p>AI-generated STK → SYS → SWR requirements pipeline. 11-rule validator with 0–100 scoring. Traceability baselines, versions, and DOCX/JSON export. ASPICE-compliant by design.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-icon" style="background:rgba(241,215,122,0.12);">✅</div>
+        <div class="module-name">Criterion</div>
+        <div class="module-tag">Test Generation</div>
+        <p>Requirement-linked test case generation with coverage metrics. Every test case is traceable to the requirement it validates. Versioning and export included.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-icon" style="background:rgba(239,83,80,0.10);">⚡</div>
+        <div class="module-name">Axiom</div>
+        <div class="module-tag">Test Execution</div>
+        <p>Pytest and CMake integration with AI-powered failure analysis. KPI tracking, release-level rollups, and automatic feedback into the requirements pipeline.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-icon" style="background:rgba(110,207,219,0.12);">🧠</div>
+        <div class="module-name">Lekha</div>
+        <div class="module-tag">Lessons Learned</div>
+        <p>Captures, deduplicates, and operationalizes operational experience. Three-layer dedup (SHA-256 + FAISS semantic + Jaccard). Past failures automatically surface during new requirement generation.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-icon" style="background:rgba(201,162,42,0.12);">🏗️</div>
+        <div class="module-name">Pragma</div>
+        <div class="module-tag">Code Design</div>
+        <p>Architecture-first code generation — brainstorm, plan, approve, then generate. Figma → LVGL HMI code. SWR → pseudocode scaffolding. Prevents ASPICE violations before a line is written.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-icon" style="background:rgba(241,215,122,0.10);">📅</div>
+        <div class="module-name">Kronos</div>
+        <div class="module-tag">Project Management</div>
+        <p>Agile kanban with ASPICE milestone mapping (SYS.1–SYS.6, SWE.1–SWE.6). Sprint planning, backlog management, and ClickUp / Redmine sync.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-icon" style="background:rgba(239,83,80,0.10);">⚙️</div>
+        <div class="module-name">Workflow Engine</div>
+        <div class="module-tag">Execution Orchestration</div>
+        <p>Multi-step AI execution with approval gates, retry logic, and audit history. PostgreSQL-backed job queue for durable long-running operations. Webhook integration with GitHub and Redmine.</p>
+      </div>
+    </div>
+
+    <div class="status-banner">
+      <div class="status-dot"></div>
+      <p><strong>All eight modules are implemented and functional.</strong> The full execution loop — Feature Brief → PRD → Requirements → Architecture → Tests → Lessons — is running end-to-end. This is not a mockup or demo environment.</p>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section id="industries">
+    <div class="section-label">Who It's For</div>
+    <h2 class="section-title">Built for regulated engineering teams</h2>
+    <p class="section-sub">Any team where traceability is mandatory, mistakes are expensive, and context loss slows every programme.</p>
+
+    <div class="industries-strip">
+      <div class="industry-chip"><div class="dot" style="background:#C9A22A;"></div> Automotive &amp; EV Software (ASPICE L2/L3)</div>
+      <div class="industry-chip"><div class="dot" style="background:#6ECFDB;"></div> Embedded &amp; IoT OEMs (IEC 61508, IEC 62443)</div>
+      <div class="industry-chip"><div class="dot" style="background:#F1D77A;"></div> Medical Device Makers (IEC 62304, FDA)</div>
+      <div class="industry-chip"><div class="dot" style="background:#EF5350;"></div> Aerospace &amp; Defence (DO-178C)</div>
+      <div class="industry-chip"><div class="dot" style="background:#E2C05E;"></div> Engineering Services Firms (Tier-1 Suppliers)</div>
+    </div>
+
+    <div style="margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div style="padding:24px;background:linear-gradient(180deg,rgba(26,26,29,0.96) 0%,rgba(19,19,21,1) 100%);border:1px solid var(--border);border-radius:14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;">Product Managers &amp; System Leads</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6;">Define feature intent, review briefs, and approve PRDs — with AI support at every step.</div>
+      </div>
+      <div style="padding:24px;background:linear-gradient(180deg,rgba(26,26,29,0.96) 0%,rgba(19,19,21,1) 100%);border:1px solid var(--border);border-radius:14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;">Requirements Engineers</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6;">Generate and validate structured requirements with automatic traceability across all levels.</div>
+      </div>
+      <div style="padding:24px;background:linear-gradient(180deg,rgba(26,26,29,0.96) 0%,rgba(19,19,21,1) 100%);border:1px solid var(--border);border-radius:14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;">QA &amp; Validation Teams</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6;">Link test cases to requirements, track coverage, and eliminate gaps before audit time.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENTIATORS -->
+  <section id="differentiators">
+    <div class="section-label">Why Zantra OS</div>
+    <h2 class="section-title">The only player in the top-right quadrant</h2>
+    <p class="section-sub">Incumbents (DOORS, Polarion) have deep ALM but no real AI. Copilots have AI but no ALM, no memory, no traceability. Zantra OS is the only system that delivers both.</p>
+
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-num">01</div>
+        <h3>ASPICE is the reasoning engine, not a checkbox</h3>
+        <p>Every requirement output is structurally ASPICE-compliant by design. The pipeline itself encodes SWE.1 through SWE.5 alignment at every step — not a post-processing filter.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">02</div>
+        <h3>The feedback loop no competitor closes</h3>
+        <p>Lekha captures lessons from past failures and automatically surfaces them when generating new requirements. The system learns from operational history — not just documents.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">03</div>
+        <h3>Multi-modal ingestion: Vision + Figma + OCR + RAG</h3>
+        <p>Ingest HMI wireframes from Figma, OCR image-only PDFs, analyse screenshots, and store everything in searchable per-project semantic memory. Competitors ingest text only.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">04</div>
+        <h3>Deploy in a day, not a quarter</h3>
+        <p>Single Linux container. No Kubernetes cluster, no Oracle DB, no $500K implementation project. A 20-engineer Tier-2 supplier can be running the full stack before lunch.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">05</div>
+        <h3>Architecture-first code generation</h3>
+        <p>Brainstorm → Plan → Approve → Generate. Pragma enforces SWE.2 design alignment before SWE.5 code generation — preventing compliance violations before a line is written.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">06</div>
+        <h3>Project-scoped memory, not a shared noise pool</h3>
+        <p>Each project has its own FAISS vector store. BCU queries only retrieve BCU context. Enterprise-grade data isolation without enterprise infrastructure complexity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section>
+    <div class="section-label">Competitive Landscape</div>
+    <h2 class="section-title">Head-to-head comparison</h2>
+
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:30%;">Capability</th>
+            <th>IBM DOORS</th>
+            <th>GitHub Copilot</th>
+            <th>Siemens Polarion</th>
+            <th class="hl">Zantra OS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Requirements traceability (STK→SYS→SWR)</td><td><span class="chk">✓</span></td><td><span class="crs">✗</span></td><td><span class="chk">✓</span></td><td class="hl"><span class="chk">✓</span></td></tr>
+          <tr><td>AI-generated requirements</td><td><span class="crs">✗</span></td><td><span class="prt">~</span></td><td><span class="prt">~</span></td><td class="hl"><span class="chk">✓</span></td></tr>
+          <tr><td>Requirement-to-test linkage</td><td><span class="chk">✓</span></td><td><span class="crs">✗</span></td><td><span class="chk">✓</span></td><td class="hl"><span class="chk">✓</span></td></tr>
+          <tr><td>Lessons learned operationalized</td><td><span class="crs">✗</span></td><td><span class="crs">✗</span></td><td><span class="crs">✗</span></td><td class="hl"><span class="chk">✓</span></td></tr>
+          <tr><td>Multi-modal ingestion (Figma, OCR, vision)</td><td><span class="crs">✗</span></td><td><span class="crs">✗</span></td><td><span class="crs">✗</span></td><td class="hl"><span class="chk">✓</span></td></tr>
+          <tr><td>Per-project semantic memory (FAISS)</td><td><span class="crs">✗</span></td><td><span class="crs">✗</span></td><td><span class="crs">✗</span></td><td class="hl"><span class="chk">✓</span></td></tr>
+          <tr><td>Approval-gated AI workflows</td><td><span class="crs">✗</span></td><td><span class="crs">✗</span></td><td><span class="crs">✗</span></td><td class="hl"><span class="chk">✓</span></td></tr>
+          <tr><td>Architecture-first code generation</td><td><span class="crs">✗</span></td><td><span class="prt">~</span></td><td><span class="crs">✗</span></td><td class="hl"><span class="chk">✓</span></td></tr>
+          <tr><td>Deploys in under a day</td><td><span class="crs">✗</span></td><td><span class="chk">✓</span></td><td><span class="crs">✗</span></td><td class="hl"><span class="chk">✓</span></td></tr>
+          <tr><td>Entry price (per month)</td><td>$10K+</td><td>$19/seat</td><td>$3K+</td><td class="hl">$299</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- MARKET -->
+  <section id="market">
+    <div class="section-label">Market Opportunity</div>
+    <h2 class="section-title">A $1.8B market being disrupted by AI</h2>
+    <p class="section-sub">Gartner forecasts 60% of software engineering orgs will use AI-assisted requirements and code generation by 2027 — up from under 10% in 2024. Incumbent tools are not ready.</p>
+
+    <div class="market-grid">
+      <div class="market-card">
+        <div class="market-label">Total ALM Market</div>
+        <div class="market-size" style="color:var(--muted);">$4.6B</div>
+        <p>Global application lifecycle management tools market (2024). Growing at 9% CAGR driven by AI adoption and regulatory pressure.</p>
+      </div>
+      <div class="market-card hl">
+        <div class="market-label">Serviceable Addressable</div>
+        <div class="market-size" style="color:var(--teal-light);">$1.8B</div>
+        <p>Safety-critical and regulated engineering subset — automotive, medical, aerospace, embedded — where ASPICE-grade traceability is mandated, not optional.</p>
+      </div>
+      <div class="market-card">
+        <div class="market-label">3-Year Obtainable</div>
+        <div class="market-size" style="color:var(--primary-light);">$40M</div>
+        <p>Achievable with Tier-1 automotive suppliers, EV startups, and embedded OEMs as initial design partners. Expansion via OEM supply chain mandates.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;padding:28px 32px;background:linear-gradient(180deg,rgba(26,26,29,0.96) 0%,rgba(19,19,21,1) 100%);border:1px solid var(--border);border-radius:var(--radius);">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--primary-light);margin-bottom:16px;">Revenue Streams</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">SaaS Subscription</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">$299–$4,999/month across Startup, Team, and Enterprise tiers. Core recurring revenue engine.</div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Professional Services</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">Requirements migration from DOORS/Polarion, process setup, onboarding. $20–100K per engagement.</div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">OEM Programme Licensing</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">Supply-chain mandates drive adoption across entire supplier ecosystems. $500K+/year per OEM agreement.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Simple, transparent tiers</h2>
+    <p class="section-sub">Start with one team. Expand to the programme. Move to Enterprise when compliance demands it.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Startup</div>
+        <div class="price-amount">$299</div>
+        <div class="price-period">per month · up to 3 users</div>
+        <ul class="price-features">
+          <li><span class="chk">✓</span> <span>Full <strong>Veridion</strong> requirements pipeline</span></li>
+          <li><span class="chk">✓</span> <span><strong>Aletheia</strong> Q&amp;A + project memory</span></li>
+          <li><span class="chk">✓</span> <span><strong>Lekha</strong> lessons learned</span></li>
+          <li><span class="chk">✓</span> <span><strong>Pragma</strong> code design</span></li>
+          <li><span class="chk">✓</span> <span><strong>Kronos</strong> project management</span></li>
+          <li><span class="chk">✓</span> <span>5 projects · 10 GB FAISS memory</span></li>
+        </ul>
+        <a href="mailto:hello@zentraai.in?subject=Zantra OS — Startup Plan" class="btn-secondary" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-pill">Most Popular</div>
+        <div class="price-tier">Team</div>
+        <div class="price-amount">$999</div>
+        <div class="price-period">per month · up to 15 users</div>
+        <ul class="price-features">
+          <li><span class="chk">✓</span> <span>Everything in Startup</span></li>
+          <li><span class="chk">✓</span> <span>Unlimited projects</span></li>
+          <li><span class="chk">✓</span> <span>100 GB FAISS memory</span></li>
+          <li><span class="chk">✓</span> <span>ASPICE export packages</span></li>
+          <li><span class="chk">✓</span> <span>ClickUp / Jira sync</span></li>
+          <li><span class="chk">✓</span> <span>Priority support</span></li>
+        </ul>
+        <a href="mailto:hello@zentraai.in?subject=Zantra OS — Team Plan" class="btn-primary" style="width:100%;justify-content:center;">Request Access</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Enterprise</div>
+        <div class="price-amount">$4,999</div>
+        <div class="price-period">per month · unlimited users</div>
+        <ul class="price-features">
+          <li><span class="chk">✓</span> <span>Everything in Team</span></li>
+          <li><span class="chk">✓</span> <span>On-premise / private cloud</span></li>
+          <li><span class="chk">✓</span> <span>ASPICE Tool Qualification Package</span></li>
+          <li><span class="chk">✓</span> <span>Custom LLM endpoint</span></li>
+          <li><span class="chk">✓</span> <span>99.9% SLA</span></li>
+          <li><span class="chk">✓</span> <span>Dedicated customer success manager</span></li>
+        </ul>
+        <a href="mailto:hello@zentraai.in?subject=Zantra OS — Enterprise" class="btn-secondary" style="width:100%;justify-content:center;">Contact Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTOR -->
+  <div class="investor-section" id="invest">
+    <div class="investor-box">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal-light);margin-bottom:16px;">For Investors</div>
+        <h2>Looking to fund the future of engineering execution?</h2>
+        <p>
+          Zantra OS is in active development with a working multi-module MVP. We are seeking early-stage investment to accelerate go-to-market, onboard design partners in automotive and embedded OEM verticals, and build the team around product, sales, and compliance.
+        </p>
+        <p style="margin-bottom:0;">If you invest in deep-tech B2B SaaS, regulated industry tools, or AI-native developer products — let's talk.</p>
+        <div style="margin-top:24px;" class="investor-contact-list">
+          <a href="mailto:hello@zentraai.in?subject=Zantra OS — Investor Enquiry">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.8"/></svg>
+            hello@zentraai.in — Investor Enquiries
+          </a>
+        </div>
+      </div>
+      <div class="investor-actions">
+        <a href="mailto:hello@zentraai.in?subject=Zantra OS — Investor Enquiry" class="btn-primary">Reach Out to Invest</a>
+        <a href="mailto:hello@zentraai.in?subject=Zantra OS — Product Demo" class="btn-teal">Book a Product Demo</a>
+        <a href="/" class="btn-secondary">← Back to Zantra</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <a href="/" class="logo">
+        <div class="logo-mark" style="width:28px;height:28px;border-radius:8px;"><span style="font-size:15px;">Z</span></div>
+        <div class="logo-copy">
+          <span class="logo-name" style="font-size:14px;">Zantra</span>
+          <span class="logo-sub">OS</span>
+        </div>
+      </a>
+      <div class="footer-links">
+        <a href="/">Zantra Finance</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="mailto:hello@zentraai.in">Contact</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 Zantra. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
