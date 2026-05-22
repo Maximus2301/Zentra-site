@@ -259,21 +259,31 @@ _POST_TEMPLATE = """<!DOCTYPE html>
   <link rel="canonical" href="{post_url}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
     body {{ background: #0D0D0F; color: #F0F0EC; font-family: 'DM Sans', sans-serif;
             font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }}
     a {{ color: #E2C05E; text-decoration: none; }}
     a:hover {{ text-decoration: underline; }}
-    .nav {{ padding: 18px 24px; border-bottom: 1px solid #2A2A2E;
-             display: flex; align-items: center; gap: 12px;
-             background: rgba(10,10,12,0.88); backdrop-filter: blur(20px);
-             position: sticky; top: 0; z-index: 100; }}
-    .nav-logo {{ font-weight: 800; font-size: 18px; letter-spacing: 0.05em;
-                  background: linear-gradient(90deg,#8B6914,#D4AF37,#F1D77A,#D4AF37,#8B6914);
-                  -webkit-background-clip: text; -webkit-text-fill-color: transparent; }}
-    .nav-sep {{ color: #2A2A2E; }}
+    nav {{ padding: 18px 24px; border-bottom: 1px solid #2A2A2E;
+            display: flex; align-items: center; gap: 14px;
+            background: rgba(10,10,12,0.88); backdrop-filter: blur(20px);
+            position: sticky; top: 0; z-index: 100; }}
+    .logo {{ display: flex; align-items: center; gap: 10px; text-decoration: none; }}
+    .logo-mark {{ width: 32px; height: 32px; border-radius: 9px;
+      background: #0D0D1F; border: 1.2px solid rgba(201,162,42,0.30);
+      box-shadow: inset 0 1px 0 rgba(241,215,122,0.08);
+      display: grid; place-items: center; flex-shrink: 0; }}
+    .logo-mark span {{ font-family: 'Cinzel', serif; font-size: 17px; font-weight: 700; line-height: 1;
+      background: linear-gradient(90deg,#8B6914,#B48A1E,#D4AF37,#F1D77A,#D4AF37,#B48A1E,#8B6914);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }}
+    .logo-copy {{ display: flex; flex-direction: column; gap: 2px; }}
+    .logo-name {{ font-family: 'Cinzel', serif; font-size: 16px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: #E2C05E; line-height: 1; }}
+    .logo-sub {{ font-size: 9px; font-weight: 600; letter-spacing: 0.24em;
+      text-transform: uppercase; color: #8A8A90; line-height: 1; }}
+    .nav-sep {{ color: #2A2A2E; font-size: 14px; }}
     .nav-link {{ color: #8A8A90; font-size: 14px; }}
     .container {{ max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }}
     .meta {{ display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
@@ -329,8 +339,14 @@ _POST_TEMPLATE = """<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <a href="{site_url}" class="nav-logo">ZENTRA</a>
+  <nav>
+    <a href="{site_url}" class="logo">
+      <div class="logo-mark"><span>Z</span></div>
+      <div class="logo-copy">
+        <span class="logo-name">HYT</span>
+        <span class="logo-sub">Money</span>
+      </div>
+    </a>
     <span class="nav-sep">/</span>
     <a href="{blog_url}" class="nav-link">Finance Blog</a>
   </nav>
@@ -451,21 +467,32 @@ def rebuild_index(published_log: list[dict]) -> None:
   <title>Finance Blog | HYT MONEY</title>
   <meta name="description" content="Daily finance insights for Indian salaried professionals — explained simply by HYT MONEY." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="alternate" type="application/rss+xml" title="HYT MONEY Blog" href="{BLOG_URL}/feed.xml" />
   <style>
     *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
     body {{ background: #0D0D0F; color: #F0F0EC; font-family: 'DM Sans', sans-serif;
             -webkit-font-smoothing: antialiased; }}
     a {{ text-decoration: none; }}
-    .nav {{ padding: 18px 24px; border-bottom: 1px solid #2A2A2E;
-            display: flex; align-items: center; gap: 12px;
-            background: rgba(10,10,12,0.88); backdrop-filter: blur(20px);
-            position: sticky; top: 0; z-index: 100; }}
-    .nav-logo {{ font-weight: 800; font-size: 18px;
-                  background: linear-gradient(90deg,#8B6914,#D4AF37,#F1D77A,#D4AF37,#8B6914);
-                  -webkit-background-clip: text; -webkit-text-fill-color: transparent; }}
-    .nav-sep {{ color: #2A2A2E; }}
+    nav {{ padding: 18px 24px; border-bottom: 1px solid #2A2A2E;
+           display: flex; align-items: center; gap: 14px;
+           background: rgba(10,10,12,0.88); backdrop-filter: blur(20px);
+           position: sticky; top: 0; z-index: 100; }}
+    .logo {{ display: flex; align-items: center; gap: 10px; text-decoration: none; }}
+    .logo-mark {{ width: 32px; height: 32px; border-radius: 9px;
+      background: #0D0D1F; border: 1.2px solid rgba(201,162,42,0.30);
+      box-shadow: inset 0 1px 0 rgba(241,215,122,0.08);
+      display: grid; place-items: center; flex-shrink: 0; }}
+    .logo-mark span {{ font-family: 'Cinzel', serif; font-size: 17px; font-weight: 700; line-height: 1;
+      background: linear-gradient(90deg,#8B6914,#B48A1E,#D4AF37,#F1D77A,#D4AF37,#B48A1E,#8B6914);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }}
+    .logo-copy {{ display: flex; flex-direction: column; gap: 2px; }}
+    .logo-name {{ font-family: 'Cinzel', serif; font-size: 16px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: #E2C05E; line-height: 1; }}
+    .logo-sub {{ font-size: 9px; font-weight: 600; letter-spacing: 0.24em;
+      text-transform: uppercase; color: #8A8A90; line-height: 1; }}
+    .nav-sep {{ color: #2A2A2E; font-size: 14px; }}
     .nav-link {{ color: #8A8A90; font-size: 14px; }}
     .container {{ max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }}
     .hero {{ margin-bottom: 48px; }}
@@ -488,8 +515,14 @@ def rebuild_index(published_log: list[dict]) -> None:
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <a href="{SITE_URL}" class="nav-logo">ZANTRA</a>
+  <nav>
+    <a href="{SITE_URL}" class="logo">
+      <div class="logo-mark"><span>Z</span></div>
+      <div class="logo-copy">
+        <span class="logo-name">HYT</span>
+        <span class="logo-sub">Money</span>
+      </div>
+    </a>
     <span class="nav-sep">/</span>
     <span class="nav-link">Finance Blog</span>
   </nav>
