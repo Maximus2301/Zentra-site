@@ -60,6 +60,9 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
     } else if (_selectedType == 'income') {
       result =
           result.where((t) => t.type == TransactionType.income).toList();
+    } else if (_selectedType == 'transfer') {
+      result =
+          result.where((t) => t.type == TransactionType.transfer).toList();
     }
 
     if (_selectedCategory != 'All') {
@@ -92,8 +95,25 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
     return ['All', ...cats];
   }
 
-  double get _filteredTotal =>
-      _filtered.fold(0.0, (sum, t) => sum + t.amount);
+  double get _filteredTotal {
+    if (_selectedType == 'transfer') {
+      return _filtered.fold(0.0, (sum, t) => sum + t.amount);
+    }
+    if (_selectedType == 'income' || _selectedType == 'expense') {
+      return _filtered.fold(0.0, (sum, t) => sum + t.amount);
+    }
+    return _filtered.fold(0.0, (sum, t) {
+      if (t.type == TransactionType.income) return sum + t.amount;
+      if (t.type == TransactionType.expense) return sum - t.amount;
+      return sum;
+    });
+  }
+
+  String get _filteredTotalLabel {
+    if (_selectedType == 'transfer') return 'Tracked Value';
+    if (_selectedType == 'all') return 'Net Cash Flow';
+    return 'Total';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +185,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       child: Row(
         children: [
-          for (final type in ['all', 'expense', 'income'])
+          for (final type in ['all', 'expense', 'income', 'transfer'])
             Padding(
               padding: const EdgeInsets.only(right: 8),
               child: ChoiceChip(
@@ -174,7 +194,9 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                       ? 'All'
                       : type == 'expense'
                           ? 'Expenses'
-                          : 'Income',
+                          : type == 'income'
+                              ? 'Income'
+                              : 'Investments',
                 ),
                 selected: _selectedType == type,
                 onSelected: (_) {
@@ -226,7 +248,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
             ),
           ),
           Text(
-            'Total: ₹${_currencyFormat.format(_filteredTotal)}',
+            '$_filteredTotalLabel: ₹${_currencyFormat.format(_filteredTotal)}',
             style: theme.textTheme.bodySmall?.copyWith(
               color: theme.colorScheme.onSurfaceVariant,
               fontWeight: FontWeight.w600,

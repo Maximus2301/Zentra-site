@@ -9,6 +9,7 @@ import '../widgets/summary_card.dart';
 import '../widgets/monthly_bar_chart.dart';
 import '../widgets/category_pie_chart.dart';
 import '../widgets/transaction_tile.dart';
+import 'payment_planner_screen.dart';
 import 'transactions_screen.dart';
 import 'export_screen.dart';
 
@@ -23,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   DateTime _selectedMonth = DateTime(
       DateTime.now().year, DateTime.now().month);
   List<Transaction> _transactions = [];
+  List<Transaction> _trackedAssets = [];
   bool _loading = false;
   bool _syncing = false;
   int _syncProgress = 0;
@@ -37,11 +39,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _loadTransactions() async {
     setState(() => _loading = true);
-    final data = await DbService.getTransactionsByMonth(
-        _selectedMonth.year, _selectedMonth.month);
+    final results = await Future.wait([
+      DbService.getTransactionsByMonth(_selectedMonth.year, _selectedMonth.month),
+      DbService.getLatestAssetRecords(),
+    ]);
+    final data = results[0] as List<Transaction>;
+    final assets = results[1] as List<Transaction>;
     if (mounted) {
       setState(() {
         _transactions = data;
+        _trackedAssets = assets;
         _loading = false;
       });
     }
@@ -95,6 +102,22 @@ class _HomeScreenState extends State<HomeScreen> {
       .where((t) => t.type == TransactionType.expense)
       .fold(0.0, (sum, t) => sum + t.amount);
 
+  double get _trackedAssetsTotal => _trackedAssets
+      .fold(0.0, (sum, asset) => sum + (asset.assetBalance ?? 0.0));
+
+  double get _trackedInvestmentsTotal => _trackedAssets.fold(0.0, (sum, asset) {
+        const investmentAssetTypes = {
+          'epf',
+          'fixedDeposit',
+          'mutualFund',
+          'equity',
+          'nps',
+          'ppf',
+        };
+        if (!investmentAssetTypes.contains(asset.assetType)) return sum;
+        return sum + (asset.assetBalance ?? 0.0);
+      });
+
   Map<String, double> get _categoryTotals {
     final Map<String, double> result = {};
     for (final t in _transactions) {
@@ -129,6 +152,82 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  Future<void> _openPaymentPlanner() async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const PaymentPlannerScreen()),
+    );
+    _loadTransactions();
+  }
+
+  Future<void> _openTransactions() async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => TransactionsScreen(month: _selectedMonth),
+      ),
+    );
+    _loadTransactions();
+  }
+
+  Widget _buildDrawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  'Finance Tracker',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.w800,
+                      ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Navigate core tools',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.home_outlined),
+            title: const Text('Dashboard'),
+            onTap: () => Navigator.pop(context),
+          ),
+          ListTile(
+            leading: const Icon(Icons.event_repeat_outlined),
+            title: const Text('Payment Planner'),
+            onTap: () {
+              Navigator.pop(context);
+              _openPaymentPlanner();
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.receipt_long_outlined),
+            title: const Text('Transactions'),
+            onTap: () {
+              Navigator.pop(context);
+              _openTransactions();
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.file_download_outlined),
+            title: const Text('Export'),
+            onTap: () {
+              Navigator.pop(context);
+              _export();
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -138,6 +237,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final recentTransactions = _transactions.take(5).toList();
 
     return Scaffold(
+      drawer: _buildDrawer(),
       appBar: AppBar(
         title: const Text(
           'Finance Tracker',
@@ -223,7 +323,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               )
-            else if (_transactions.isEmpty)
+            else if (_transactions.isEmpty && _trackedAssets.isEmpty)
               SliverToBoxAdapter(
                 child: _buildEmptyState(),
               )
@@ -262,7 +362,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     horizontal: 12, vertical: 4),
                 sliver: SliverToBoxAdapter(
                   child: SummaryCard(
-                    title: 'Net Balance',
+                    title: 'Net Cash Flow',
                     amount: net.abs(),
                     icon: net >= 0
                         ? Icons.account_balance_wallet
@@ -276,6 +376,61 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
+              if (_trackedAssets.isNotEmpty)
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12, vertical: 4),
+                  sliver: SliverToBoxAdapter(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: SummaryCard(
+                            title: 'Tracked Assets',
+                            amount: _trackedAssetsTotal,
+                            icon: Icons.account_balance,
+                            color: theme.colorScheme.primary,
+                            currencyFormat: _currencyFormat,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: SummaryCard(
+                            title: 'Investments',
+                            amount: _trackedInvestmentsTotal,
+                            icon: Icons.trending_up,
+                            color: theme.colorScheme.secondary,
+                            currencyFormat: _currencyFormat,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              if (_trackedAssets.isNotEmpty)
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12, vertical: 4),
+                  sliver: SliverToBoxAdapter(
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Asset Balances',
+                              style: theme.textTheme.titleSmall?.copyWith(
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            ..._trackedAssets.take(5).map(_buildAssetRow),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               SliverPadding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 12, vertical: 4),
@@ -427,6 +582,41 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: _syncing ? null : _sync,
             icon: const Icon(Icons.sync),
             label: const Text('Sync Now'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAssetRow(Transaction asset) {
+    final balance = asset.assetBalance ?? 0.0;
+    final label = switch (asset.assetType) {
+      'epf' => 'EPF',
+      'fixedDeposit' => 'Fixed Deposit',
+      _ => asset.category,
+    };
+    final title =
+        asset.assetId == null ? label : '$label • ${asset.assetId}';
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Text(
+            '₹${_currencyFormat.format(balance)}',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
           ),
         ],
       ),

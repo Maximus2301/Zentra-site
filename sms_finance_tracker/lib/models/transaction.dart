@@ -1,4 +1,4 @@
-enum TransactionType { expense, income }
+enum TransactionType { expense, income, transfer }
 
 class Transaction {
   final int? id;
@@ -12,6 +12,11 @@ class Transaction {
   final String rawSms;
   final DateTime date;
   final String? accountLast4;
+  final String recordKind;
+  final String? assetType;
+  final String? assetId;
+  final double? assetBalance;
+  final double? investmentDelta;
 
   Transaction({
     this.id,
@@ -25,6 +30,11 @@ class Transaction {
     required this.rawSms,
     required this.date,
     this.accountLast4,
+    this.recordKind = 'cashflow',
+    this.assetType,
+    this.assetId,
+    this.assetBalance,
+    this.investmentDelta,
   });
 
   Map<String, dynamic> toMap() {
@@ -40,17 +50,25 @@ class Transaction {
       'rawSms': rawSms,
       'date': date.millisecondsSinceEpoch,
       'accountLast4': accountLast4,
+      'recordKind': recordKind,
+      'assetType': assetType,
+      'assetId': assetId,
+      'assetBalance': assetBalance,
+      'investmentDelta': investmentDelta,
     };
   }
 
   factory Transaction.fromMap(Map<String, dynamic> map) {
+    final typeValue = map['type'] as String?;
     return Transaction(
       id: map['id'] as int?,
       smsAddress: map['smsAddress'] as String? ?? '',
       amount: (map['amount'] as num?)?.toDouble() ?? 0.0,
-      type: (map['type'] as String?) == 'income'
+      type: typeValue == 'income'
           ? TransactionType.income
-          : TransactionType.expense,
+          : typeValue == 'transfer'
+              ? TransactionType.transfer
+              : TransactionType.expense,
       category: map['category'] as String? ?? 'Others',
       subcategory: map['subcategory'] as String? ?? 'Others',
       merchant: map['merchant'] as String? ?? '',
@@ -58,6 +76,11 @@ class Transaction {
       rawSms: map['rawSms'] as String? ?? '',
       date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int? ?? 0),
       accountLast4: map['accountLast4'] as String?,
+      recordKind: map['recordKind'] as String? ?? 'cashflow',
+      assetType: map['assetType'] as String?,
+      assetId: map['assetId'] as String?,
+      assetBalance: (map['assetBalance'] as num?)?.toDouble(),
+      investmentDelta: (map['investmentDelta'] as num?)?.toDouble(),
     );
   }
 
@@ -73,6 +96,11 @@ class Transaction {
     String? rawSms,
     DateTime? date,
     String? accountLast4,
+    String? recordKind,
+    String? assetType,
+    String? assetId,
+    double? assetBalance,
+    double? investmentDelta,
   }) {
     return Transaction(
       id: id ?? this.id,
@@ -86,6 +114,11 @@ class Transaction {
       rawSms: rawSms ?? this.rawSms,
       date: date ?? this.date,
       accountLast4: accountLast4 ?? this.accountLast4,
+      recordKind: recordKind ?? this.recordKind,
+      assetType: assetType ?? this.assetType,
+      assetId: assetId ?? this.assetId,
+      assetBalance: assetBalance ?? this.assetBalance,
+      investmentDelta: investmentDelta ?? this.investmentDelta,
     );
   }
 }

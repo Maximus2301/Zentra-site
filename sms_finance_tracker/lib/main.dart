@@ -4,16 +4,16 @@ import 'screens/home_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const FinanceTrackerApp());
+  runApp(const HytMoneyApp());
 }
 
-class FinanceTrackerApp extends StatelessWidget {
-  const FinanceTrackerApp({super.key});
+class HytMoneyApp extends StatelessWidget {
+  const HytMoneyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'SMS Finance Tracker',
+      title: 'HYT MONEY',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),

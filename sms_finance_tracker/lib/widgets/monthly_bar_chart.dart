@@ -42,7 +42,7 @@ class _MonthlyBarChartState extends State<MonthlyBarChart> {
       byMonth[monthNum] ??= _MonthData(month: monthNum);
       if (row['type'] == 'income') {
         byMonth[monthNum]!.income = (row['total'] as num).toDouble();
-      } else {
+      } else if (row['type'] == 'expense') {
         byMonth[monthNum]!.expense = (row['total'] as num).toDouble();
       }
     }

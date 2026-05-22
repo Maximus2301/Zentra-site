@@ -46,12 +46,17 @@ class ExcelService {
     final headers = [
       'Date',
       'Type',
+      'Record Kind',
       'Amount (₹)',
       'Category',
       'Subcategory',
       'Merchant',
       'Source',
       'Account',
+      'Asset Type',
+      'Asset ID',
+      'Asset Balance (₹)',
+      'Investment Delta (₹)',
     ];
 
     final headerStyle = CellStyle(
@@ -81,12 +86,17 @@ class ExcelService {
       final rowData = [
         TextCellValue(dateFormat.format(t.date)),
         TextCellValue(t.type.name),
+        TextCellValue(t.recordKind),
         DoubleCellValue(t.amount),
         TextCellValue(t.category),
         TextCellValue(t.subcategory),
         TextCellValue(t.merchant),
         TextCellValue(t.source),
         TextCellValue(t.accountLast4 ?? ''),
+        TextCellValue(t.assetType ?? ''),
+        TextCellValue(t.assetId ?? ''),
+        DoubleCellValue(t.assetBalance ?? 0),
+        DoubleCellValue(t.investmentDelta ?? 0),
       ];
 
       for (int col = 0; col < rowData.length; col++) {
@@ -99,12 +109,17 @@ class ExcelService {
 
     sheet.setColumnWidth(0, 15);
     sheet.setColumnWidth(1, 10);
-    sheet.setColumnWidth(2, 14);
-    sheet.setColumnWidth(3, 18);
+    sheet.setColumnWidth(2, 16);
+    sheet.setColumnWidth(3, 14);
     sheet.setColumnWidth(4, 18);
-    sheet.setColumnWidth(5, 22);
-    sheet.setColumnWidth(6, 16);
-    sheet.setColumnWidth(7, 10);
+    sheet.setColumnWidth(5, 18);
+    sheet.setColumnWidth(6, 22);
+    sheet.setColumnWidth(7, 16);
+    sheet.setColumnWidth(8, 10);
+    sheet.setColumnWidth(9, 14);
+    sheet.setColumnWidth(10, 18);
+    sheet.setColumnWidth(11, 18);
+    sheet.setColumnWidth(12, 18);
   }
 
   static void _buildMonthlySummarySheet(
@@ -138,7 +153,7 @@ class ExcelService {
       monthMap[key] ??= {'income': 0, 'expense': 0};
       if (t.type == TransactionType.income) {
         monthMap[key]!['income'] = (monthMap[key]!['income'] ?? 0) + t.amount;
-      } else {
+      } else if (t.type == TransactionType.expense) {
         monthMap[key]!['expense'] =
             (monthMap[key]!['expense'] ?? 0) + t.amount;
       }

@@ -1,5 +1,6 @@
 import 'package:flutter_sms_inbox/flutter_sms_inbox.dart';
 import 'package:permission_handler/permission_handler.dart';
+import '../models/recurring_payment.dart';
 import '../models/transaction.dart';
 import 'sms_parser.dart';
 import 'db_service.dart';
@@ -53,6 +54,7 @@ class SmsService {
 
     int processed = 0;
     final List<Transaction> parsed = [];
+    final List<RecurringPayment> plannedPayments = [];
 
     for (final msg in filtered) {
       final sender = msg.address ?? '';
@@ -60,7 +62,12 @@ class SmsService {
       final date = msg.dateSent ?? DateTime.now();
 
       final transaction = SmsParser.parse(sender, body, date);
-      if (transaction != null) parsed.add(transaction);
+      if (transaction != null) {
+        parsed.add(transaction);
+      } else {
+        final plannedPayment = SmsParser.parsePlannedPayment(sender, body, date);
+        if (plannedPayment != null) plannedPayments.add(plannedPayment);
+      }
 
       processed++;
       if (processed % 50 == 0) {
@@ -69,6 +76,16 @@ class SmsService {
     }
 
     final inserted = await DbService.insertBatch(parsed);
+
+    final activePlannerKeys = <String>{};
+    for (final plannedPayment in plannedPayments) {
+      if (activePlannerKeys.add(plannedPayment.normalizedKey)) {
+        await DbService.upsertRecurringPayment(plannedPayment);
+      }
+    }
+    if (filtered.length >= 20) {
+      await DbService.deactivateSmsRecurringPaymentsExcept(activePlannerKeys);
+    }
 
     return SyncResult(
       success: true,

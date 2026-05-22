@@ -19,13 +19,28 @@ class TransactionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = transaction;
     final isIncome = t.type == TransactionType.income;
-    final amountColor =
-        isIncome ? AppTheme.incomeColor(context) : AppTheme.expenseColor(context);
+    final isTransfer = t.type == TransactionType.transfer;
+    final amountColor = isIncome
+        ? AppTheme.incomeColor(context)
+        : isTransfer
+            ? Theme.of(context).colorScheme.primary
+            : AppTheme.expenseColor(context);
     final emoji =
         AppTheme.categoryEmojis[t.category] ?? '📦';
     final dateStr = DateFormat('dd MMM').format(t.date);
-    final subtitle =
-        '${t.subcategory} • $dateStr${t.source.isNotEmpty ? ' • ${t.source}' : ''}';
+    final subtitleParts = <String>[
+      t.subcategory,
+      dateStr,
+      if (t.source.isNotEmpty) t.source,
+      if (t.assetBalance != null)
+        'Balance ₹${currencyFormat.format(t.assetBalance)}',
+    ];
+    final subtitle = subtitleParts.join(' • ');
+    final amountPrefix = isIncome
+        ? '+'
+        : isTransfer
+            ? ''
+            : '-';
 
     final tile = ListTile(
       leading: CircleAvatar(
@@ -49,7 +64,7 @@ class TransactionTile extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
       ),
       trailing: Text(
-        '${isIncome ? '+' : '-'}₹${currencyFormat.format(t.amount)}',
+        '$amountPrefix₹${currencyFormat.format(t.amount)}',
         style: TextStyle(
           color: amountColor,
           fontWeight: FontWeight.w700,
