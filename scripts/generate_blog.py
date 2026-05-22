@@ -309,6 +309,50 @@ _POST_TEMPLATE = """<!DOCTYPE html>
                                color: #6ECFDB; font-weight: 700; }}
     .disclaimer {{ font-size: 12px; color: #5A5A60; border-top: 1px solid #2A2A2E;
                     padding-top: 16px; margin-top: 32px; }}
+    /* ── Carousel section ── */
+    .carousel-wrap {{ margin: 36px 0 0; padding-top: 28px; border-top: 1px solid #2A2A2E; }}
+    .carousel-wrap h3 {{ font-size: 15px; font-weight: 700; color: #E2C05E;
+      margin-bottom: 8px; }}
+    .carousel-wrap > p {{ font-size: 13px; color: #5A5A60; margin-bottom: 18px; }}
+    .slide-strip {{ display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px;
+      scrollbar-width: thin; scrollbar-color: rgba(201,162,42,0.25) transparent; }}
+    .slide-strip::-webkit-scrollbar {{ height: 4px; }}
+    .slide-strip::-webkit-scrollbar-thumb {{ background: rgba(201,162,42,0.25); border-radius: 4px; }}
+    .slide-card {{ flex-shrink: 0; position: relative; }}
+    .slide-card img {{ width: 172px; height: 172px; object-fit: cover;
+      border-radius: 10px; border: 1px solid rgba(201,162,42,0.18); display: block; }}
+    .slide-dl {{ position: absolute; top: 6px; right: 6px;
+      background: rgba(13,13,15,0.82); color: #E2C05E; font-size: 11px;
+      font-weight: 700; padding: 3px 8px; border-radius: 6px;
+      text-decoration: none; backdrop-filter: blur(4px);
+      border: 1px solid rgba(201,162,42,0.22); }}
+    .slide-label {{ font-size: 10px; color: #5A5A60; text-align: center; margin-top: 5px; }}
+    .platform-row {{ display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }}
+    .pbtn {{ display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 16px; border-radius: 10px; font-size: 13px; font-weight: 700;
+      text-decoration: none; cursor: pointer; border: none; font-family: inherit;
+      transition: opacity 0.2s; white-space: nowrap; }}
+    .pbtn:hover {{ opacity: 0.82; }}
+    .p-insta {{ background: linear-gradient(135deg,#F58529,#DD2A7B,#515BD4); color: #fff; }}
+    .p-li {{ background: #0A66C2; color: #fff; }}
+    .p-wa {{ background: #25D366; color: #fff; }}
+    .p-tw {{ background: #000; color: #fff; border: 1px solid #2A2A2E; }}
+    .p-copy {{ background: rgba(201,162,42,0.10); color: #E2C05E;
+      border: 1.5px solid rgba(201,162,42,0.25); }}
+    .p-zip {{ background: rgba(110,207,219,0.10); color: #6ECFDB;
+      border: 1.5px solid rgba(110,207,219,0.25); }}
+    /* ── Simple share bar (fallback) ── */
+    .share-bar {{ display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      margin: 32px 0 0; padding-top: 24px; border-top: 1px solid #2A2A2E; }}
+    .share-label {{ font-size: 13px; color: #5A5A60; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; }}
+    .share-btn, .copy-btn {{ display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 18px; border-radius: 10px; font-size: 13px; font-weight: 700;
+      cursor: pointer; border: none; transition: opacity 0.2s; font-family: inherit; }}
+    .share-btn {{ background: linear-gradient(135deg, #F1D77A, #C9A22A); color: #1A1200; }}
+    .copy-btn  {{ background: rgba(201,162,42,0.10); color: #E2C05E;
+      border: 1.5px solid rgba(201,162,42,0.25); }}
+    .share-btn:hover, .copy-btn:hover {{ opacity: 0.85; }}
     .cta-box {{ background: linear-gradient(135deg, #0F0F11, #131315);
                  border: 1px solid rgba(201,162,42,0.22); border-radius: 16px;
                  padding: 28px; margin-top: 40px; text-align: center; }}
@@ -374,38 +418,7 @@ _POST_TEMPLATE = """<!DOCTYPE html>
       advisor before making any financial decisions.
     </p>
 
-    <div class="share-bar">
-      <span class="share-label">Share</span>
-      <button class="share-btn" onclick="shareArticle()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        Share to Instagram / WhatsApp
-      </button>
-      <button class="copy-btn" onclick="copyLink()" id="copyBtn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        Copy link
-      </button>
-    </div>
-    <script>
-      function shareArticle() {{
-        var desc = document.querySelector('meta[name="description"]');
-        if (navigator.share) {{
-          navigator.share({{
-            title: document.title,
-            text: desc ? desc.content : '',
-            url: window.location.href
-          }}).catch(function(){{}});
-        }} else {{ copyLink(); }}
-      }}
-      function copyLink() {{
-        navigator.clipboard.writeText(window.location.href).then(function() {{
-          var btn = document.getElementById('copyBtn');
-          btn.textContent = '✓ Copied!';
-          setTimeout(function() {{
-            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy link';
-          }}, 2000);
-        }});
-      }}
-    </script>
+    {carousel_section}
 
     <div class="cta-box">
       <p>Track your spending, monitor your EMIs, and get AI-powered insights
@@ -417,7 +430,91 @@ _POST_TEMPLATE = """<!DOCTYPE html>
 </html>"""
 
 
-def build_post_html(data: dict, article: dict, pub_date_str: str, post_url: str) -> str:
+def _build_carousel_section(post_url: str, title: str, desc: str, carousel_slug: str) -> str:
+    from urllib.parse import quote
+    base     = f"{BLOG_URL}/carousels/{carousel_slug}/"
+    enc_url  = quote(post_url, safe="")
+    enc_text = quote(f"{title[:100]} {post_url}", safe="")
+    enc_li   = quote(desc[:120], safe="")
+
+    slides = [
+        ("slide-1-hook.jpg",    "Hook"),
+        ("slide-2-point1.jpg",  "Point 1"),
+        ("slide-3-point2.jpg",  "Point 2"),
+        ("slide-4-point3.jpg",  "Point 3"),
+        ("slide-5-cta.jpg",     "CTA"),
+    ]
+    cards = "".join(
+        f'<div class="slide-card">'
+        f'<img src="{base}{fname}" alt="{label}" loading="lazy">'
+        f'<a href="{base}{fname}" download class="slide-dl">↓</a>'
+        f'<div class="slide-label">{label}</div>'
+        f'</div>'
+        for fname, label in slides
+    )
+
+    li_url = f"https://www.linkedin.com/shareArticle?mini=true&url={enc_url}&title={quote(title,safe='')}&summary={enc_li}"
+    wa_url = f"https://wa.me/?text={enc_text}"
+    tw_url = f"https://twitter.com/intent/tweet?text={enc_text}"
+    zip_url = f"{base}carousel.zip"
+
+    return (
+        '<div class="carousel-wrap">'
+          '<h3>&#128247; Share as Carousel</h3>'
+          '<p>Save the slides below and post as a carousel on Instagram, LinkedIn, or WhatsApp — or share the article link directly.</p>'
+          f'<div class="slide-strip">{cards}</div>'
+          '<div class="platform-row">'
+            '<button class="pbtn p-insta" onclick="_wsShare()">&#128247; Instagram</button>'
+            f'<a href="{li_url}" target="_blank" rel="noopener" class="pbtn p-li">LinkedIn</a>'
+            f'<a href="{wa_url}" target="_blank" rel="noopener" class="pbtn p-wa">WhatsApp</a>'
+            f'<a href="{tw_url}" target="_blank" rel="noopener" class="pbtn p-tw">Twitter / X</a>'
+            '<button class="pbtn p-copy" onclick="_cpLink()" id="cpBtn">Copy link</button>'
+            f'<a href="{zip_url}" download class="pbtn p-zip">&#8595; Download all slides</a>'
+          '</div>'
+        '</div>'
+        '<script>'
+          'function _wsShare(){'
+            'var d=document.querySelector(\'meta[name="description"]\');'
+            'if(navigator.share){navigator.share({title:document.title,text:d?d.content:"",url:location.href}).catch(function(){});}'
+            'else{_cpLink();}'
+          '}'
+          'function _cpLink(){'
+            'navigator.clipboard.writeText(location.href).then(function(){'
+              'var b=document.getElementById("cpBtn");'
+              'b.textContent="✓ Copied!";'
+              'setTimeout(function(){b.textContent="Copy link";},2000);'
+            '});'
+          '}'
+        '</script>'
+    )
+
+
+def _build_simple_share() -> str:
+    return (
+        '<div class="share-bar">'
+          '<span class="share-label">Share</span>'
+          '<button class="share-btn" onclick="_wsShare2()">Share to Instagram / WhatsApp</button>'
+          '<button class="copy-btn" onclick="_cpLink2()" id="cpBtn2">Copy link</button>'
+        '</div>'
+        '<script>'
+          'function _wsShare2(){'
+            'var d=document.querySelector(\'meta[name="description"]\');'
+            'if(navigator.share){navigator.share({title:document.title,text:d?d.content:"",url:location.href}).catch(function(){});}'
+            'else{_cpLink2();}'
+          '}'
+          'function _cpLink2(){'
+            'navigator.clipboard.writeText(location.href).then(function(){'
+              'var b=document.getElementById("cpBtn2");'
+              'b.textContent="✓ Copied!";'
+              'setTimeout(function(){b.textContent="Copy link";},2000);'
+            '});'
+          '}'
+        '</script>'
+    )
+
+
+def build_post_html(data: dict, article: dict, pub_date_str: str, post_url: str,
+                    carousel_slug: str | None = None) -> str:
     tags = data.get("tags", [])[:3]
     tag_chips = " ".join(f'<span class="tag">{html_lib.escape(t)}</span>' for t in tags)
     body_html = "\n      ".join(
@@ -426,19 +523,27 @@ def build_post_html(data: dict, article: dict, pub_date_str: str, post_url: str)
     takeaway_items = "\n        ".join(
         f"<li>{html_lib.escape(t)}</li>" for t in data["key_takeaways"]
     )
+    if carousel_slug:
+        carousel_section = _build_carousel_section(
+            post_url, data["seo_title"], data["meta_description"], carousel_slug
+        )
+    else:
+        carousel_section = _build_simple_share()
+
     return _POST_TEMPLATE.format(
-        seo_title      = html_lib.escape(data["seo_title"]),
+        seo_title        = html_lib.escape(data["seo_title"]),
         meta_description = html_lib.escape(data["meta_description"]),
-        post_url       = post_url,
-        site_url       = SITE_URL,
-        blog_url       = BLOG_URL,
-        app_url        = APP_URL,
-        tag_chips      = tag_chips,
-        pub_date       = pub_date_str,
-        source         = html_lib.escape(article["source"]),
-        hook           = html_lib.escape(data["hook"]),
-        body_html      = body_html,
-        takeaway_items = takeaway_items,
+        post_url         = post_url,
+        site_url         = SITE_URL,
+        blog_url         = BLOG_URL,
+        app_url          = APP_URL,
+        tag_chips        = tag_chips,
+        pub_date         = pub_date_str,
+        source           = html_lib.escape(article["source"]),
+        hook             = html_lib.escape(data["hook"]),
+        body_html        = body_html,
+        takeaway_items   = takeaway_items,
+        carousel_section = carousel_section,
     )
 
 
@@ -815,15 +920,18 @@ def main() -> None:
         filename = f"{today}-{slug}.html"
         post_url = f"{BLOG_URL}/{filename}"
 
+        # Generate carousel images first so the post HTML can reference their URLs
+        carousel_slug = f"{today}-{slug}"
+        carousel_ok   = generate_carousels(data, carousel_slug)
+
         post_html = build_post_html(
             data, article,
             pub_date_str=datetime.datetime.utcnow().strftime("%B %d, %Y"),
             post_url=post_url,
+            carousel_slug=carousel_slug if carousel_ok else None,
         )
         (BLOG_DIR / filename).write_text(post_html, encoding="utf-8")
         print(f"[ok]   Written {filename}")
-
-        generate_carousels(data, f"{today}-{slug}")
 
         published_log.append({
             "date":        datetime.datetime.utcnow().isoformat(),
