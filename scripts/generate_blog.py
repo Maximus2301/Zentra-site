@@ -385,7 +385,7 @@ _POST_TEMPLATE = """<!DOCTYPE html>
 <body>
   <nav>
     <a href="{site_url}" class="logo">
-      <div class="logo-mark"><span>Z</span></div>
+      <div class="logo-mark"><span>H</span></div>
       <div class="logo-copy">
         <span class="logo-name">HYT</span>
         <span class="logo-sub">Money</span>
@@ -622,7 +622,7 @@ def rebuild_index(published_log: list[dict]) -> None:
 <body>
   <nav>
     <a href="{SITE_URL}" class="logo">
-      <div class="logo-mark"><span>Z</span></div>
+      <div class="logo-mark"><span>H</span></div>
       <div class="logo-copy">
         <span class="logo-name">HYT</span>
         <span class="logo-sub">Money</span>
