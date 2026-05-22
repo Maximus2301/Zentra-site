@@ -180,7 +180,7 @@ _model = genai.GenerativeModel(
 )
 
 _PROMPT_TEMPLATE = """
-You are a financial education writer for Zentra Finance (zentraai.in), targeting Indian salaried professionals aged 25-40.
+You are a financial education writer for HYT MONEY (zentraai.in), targeting Indian salaried professionals aged 25-40.
 
 Write a 350-400 word educational blog post based on this news event.
 
@@ -246,13 +246,13 @@ _POST_TEMPLATE = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{seo_title} | Zentra Finance Blog</title>
+  <title>{seo_title} | HYT MONEY Blog</title>
   <meta name="description" content="{meta_description}" />
   <meta property="og:title" content="{seo_title}" />
   <meta property="og:description" content="{meta_description}" />
   <meta property="og:url" content="{post_url}" />
   <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="Zentra Finance" />
+  <meta property="og:site_name" content="HYT MONEY" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="{seo_title}" />
   <meta name="twitter:description" content="{meta_description}" />
@@ -342,8 +342,8 @@ _POST_TEMPLATE = """<!DOCTYPE html>
     </p>
     <div class="cta-box">
       <p>Track your spending, monitor your EMIs, and get AI-powered insights
-         on how news events affect <em>your</em> finances — all in Zentra Finance.</p>
-      <a href="{app_url}" class="cta-btn">Get Zentra Finance — Free</a>
+         on how news events affect <em>your</em> finances — all in HYT MONEY.</p>
+      <a href="{app_url}" class="cta-btn">Get HYT MONEY — Free</a>
     </div>
   </main>
 </body>
@@ -397,11 +397,11 @@ def rebuild_index(published_log: list[dict]) -> None:
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Finance Blog | Zentra Finance</title>
-  <meta name="description" content="Daily finance insights for Indian salaried professionals — explained simply by Zentra Finance." />
+  <title>Finance Blog | HYT MONEY</title>
+  <meta name="description" content="Daily finance insights for Indian salaried professionals — explained simply by HYT MONEY." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="alternate" type="application/rss+xml" title="Zentra Finance Blog" href="{BLOG_URL}/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="HYT MONEY Blog" href="{BLOG_URL}/feed.xml" />
   <style>
     *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
     body {{ background: #080810; color: #F0F0FA; font-family: 'DM Sans', sans-serif; }}
@@ -469,13 +469,13 @@ def rebuild_feed(published_log: list[dict]) -> None:
     <guid isPermaLink="true">{entry['url']}</guid>
     <pubDate>{pub_rfc}</pubDate>
     <description><![CDATA[{entry['description']}]]></description>
-    <source url="{BLOG_URL}/feed.xml">Zentra Finance Blog</source>
+    <source url="{BLOG_URL}/feed.xml">HYT MONEY Blog</source>
   </item>"""
 
     feed_xml = f"""<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Zentra Finance Blog</title>
+    <title>HYT MONEY Blog</title>
     <link>{BLOG_URL}</link>
     <atom:link href="{BLOG_URL}/feed.xml" rel="self" type="application/rss+xml" />
     <description>Daily finance insights for Indian salaried professionals.</description>
