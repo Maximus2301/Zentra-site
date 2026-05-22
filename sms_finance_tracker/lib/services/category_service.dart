@@ -125,6 +125,19 @@ class CategoryService {
           category: 'Essential', subcategory: 'Insurance');
     }
 
+    // NACH / ACH / ECS auto-debits (must check before EMI to catch bare ACH D- SMSes)
+    if (_matches(text, [
+      'ach d',
+      'nach',
+      'ecs debit',
+      'auto debit',
+      'auto-debit',
+      'standing instruction',
+    ])) {
+      return const CategoryResult(
+          category: 'Essential', subcategory: 'NACH/Auto-Debit');
+    }
+
     // EMI / Loan
     if (_matches(text, [
       'emi',

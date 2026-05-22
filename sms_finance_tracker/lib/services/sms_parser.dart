@@ -302,11 +302,7 @@ class SmsParser {
 
     final source = _extractSource('$sender $body');
 
-    String? accountLast4;
-    final accountMatch = _accountRegex.firstMatch(body);
-    if (accountMatch != null) {
-      accountLast4 = accountMatch.group(1);
-    }
+    final accountLast4 = _extractAccountLast4(body);
 
     final categoryResult =
         CategoryService.classify(merchant, body, isCredit);
