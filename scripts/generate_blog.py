@@ -309,6 +309,20 @@ _POST_TEMPLATE = """<!DOCTYPE html>
                  padding: 12px 28px; border-radius: 8px; }}
     .back {{ color: #8A8A90; font-size: 14px; display: inline-flex;
               align-items: center; gap: 6px; margin-bottom: 32px; }}
+    .share-bar {{ display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+                   margin: 32px 0 0; padding-top: 24px; border-top: 1px solid #2A2A2E; }}
+    .share-label {{ font-size: 13px; color: #5A5A60; font-weight: 600;
+                     letter-spacing: 0.06em; text-transform: uppercase; }}
+    .share-btn, .copy-btn {{
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 18px; border-radius: 10px; font-size: 13px;
+      font-weight: 700; cursor: pointer; border: none; transition: opacity 0.2s;
+      font-family: inherit;
+    }}
+    .share-btn {{ background: linear-gradient(135deg, #F1D77A, #C9A22A); color: #1A1200; }}
+    .copy-btn  {{ background: rgba(201,162,42,0.10); color: #E2C05E;
+                   border: 1.5px solid rgba(201,162,42,0.25); }}
+    .share-btn:hover, .copy-btn:hover {{ opacity: 0.85; }}
     @media (max-width: 600px) {{
       .container {{ padding: 24px 16px 60px; }}
     }}
@@ -343,6 +357,40 @@ _POST_TEMPLATE = """<!DOCTYPE html>
       investment, tax, or financial advice. Please consult a qualified financial
       advisor before making any financial decisions.
     </p>
+
+    <div class="share-bar">
+      <span class="share-label">Share</span>
+      <button class="share-btn" onclick="shareArticle()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Share to Instagram / WhatsApp
+      </button>
+      <button class="copy-btn" onclick="copyLink()" id="copyBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy link
+      </button>
+    </div>
+    <script>
+      function shareArticle() {{
+        var desc = document.querySelector('meta[name="description"]');
+        if (navigator.share) {{
+          navigator.share({{
+            title: document.title,
+            text: desc ? desc.content : '',
+            url: window.location.href
+          }}).catch(function(){{}});
+        }} else {{ copyLink(); }}
+      }}
+      function copyLink() {{
+        navigator.clipboard.writeText(window.location.href).then(function() {{
+          var btn = document.getElementById('copyBtn');
+          btn.textContent = '✓ Copied!';
+          setTimeout(function() {{
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy link';
+          }}, 2000);
+        }});
+      }}
+    </script>
+
     <div class="cta-box">
       <p>Track your spending, monitor your EMIs, and get AI-powered insights
          on how news events affect <em>your</em> finances — all in HYT MONEY.</p>
