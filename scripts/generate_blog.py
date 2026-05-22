@@ -542,6 +542,218 @@ def rebuild_feed(published_log: list[dict]) -> None:
     (BLOG_DIR / "feed.xml").write_text(feed_xml, encoding="utf-8")
 
 
+# ── Carousel generation ───────────────────────────────────────────────────────
+# Uses content already produced by Gemini (zero extra AI tokens).
+# Playwright renders 5 HTML slides → JPEG 85 quality → carousel.zip.
+# Output goes to blog/carousels/<slug>/ which is gitignored — uploaded
+# as a GitHub Actions artifact so the repo stays lean.
+
+_CAROUSEL_CSS = """
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1080px; height: 1080px; overflow: hidden;
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: #0D0D0F; color: #F0F0EC;
+    -webkit-font-smoothing: antialiased; position: relative;
+  }
+  .glow { position: absolute; border-radius: 50%; pointer-events: none; }
+  .brand {
+    font-size: 20px; font-weight: 800; letter-spacing: 0.20em; text-transform: uppercase;
+    background: linear-gradient(90deg, #8B6914, #D4AF37, #F1D77A, #D4AF37, #8B6914);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .pill {
+    background: rgba(201,162,42,0.12); border: 1px solid rgba(201,162,42,0.28);
+    color: #E2C05E; font-size: 12px; font-weight: 700;
+    padding: 5px 14px; border-radius: 999px; letter-spacing: 0.10em; text-transform: uppercase;
+  }
+  .accent-bar {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 5px;
+    background: linear-gradient(90deg, #8B6914, #D4AF37, #F1D77A, #6ECFDB, transparent);
+  }
+  .rule { height: 1px;
+    background: linear-gradient(90deg, rgba(201,162,42,0.55), rgba(110,207,219,0.3), transparent); }
+"""
+
+_SLIDE1_CSS = """
+  .glow-top { top: -100px; left: 50%; transform: translateX(-50%);
+    width: 720px; height: 460px;
+    background: radial-gradient(circle, rgba(201,162,42,0.22) 0%, transparent 70%); }
+  .header { position: absolute; top: 56px; left: 72px; right: 72px;
+    display: flex; align-items: center; justify-content: space-between; }
+  .qmark { position: absolute; top: 110px; left: 48px; font-size: 220px; line-height: 1;
+    font-family: Georgia, serif; color: rgba(201,162,42,0.07); }
+  .hook { position: absolute; top: 218px; left: 72px; right: 72px;
+    font-size: 50px; font-weight: 800; line-height: 1.18; letter-spacing: -0.025em; }
+  .divider-wrap { position: absolute; bottom: 196px; left: 72px; right: 72px; }
+  .footer { position: absolute; bottom: 54px; left: 72px; right: 72px;
+    display: flex; align-items: flex-end; justify-content: space-between; }
+  .sub { font-size: 17px; font-weight: 500; color: #6A6A70; line-height: 1.4; max-width: 820px; }
+  .n { font-size: 13px; font-weight: 700; color: #4A4A50; letter-spacing: 0.10em; white-space: nowrap; }
+"""
+
+_SLIDE_TW_CSS = """
+  .header { position: absolute; top: 56px; left: 72px; right: 72px;
+    display: flex; align-items: center; justify-content: space-between; }
+  .bg-num { position: absolute; top: 60px; right: 32px; font-size: 340px; font-weight: 800;
+    line-height: 1; color: rgba(201,162,42,0.055); letter-spacing: -0.06em; }
+  .num-label { position: absolute; top: 182px; left: 72px;
+    font-size: 17px; font-weight: 700; color: rgba(201,162,42,0.45);
+    letter-spacing: 0.22em; text-transform: uppercase; }
+  .tw { position: absolute; top: 248px; left: 72px; right: 110px;
+    font-size: 44px; font-weight: 800; line-height: 1.20; letter-spacing: -0.025em; }
+  .divider-wrap { position: absolute; bottom: 178px; left: 72px; right: 72px; }
+  .footer { position: absolute; bottom: 54px; left: 72px; right: 72px;
+    display: flex; align-items: center; justify-content: space-between; }
+  .site { font-size: 15px; font-weight: 600; color: #5A5A60; letter-spacing: 0.04em; }
+  .n { font-size: 13px; font-weight: 700; color: #4A4A50; letter-spacing: 0.10em; }
+"""
+
+_SLIDE_CTA_CSS = """
+  .glow-c { top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 820px; height: 640px;
+    background: radial-gradient(circle, rgba(201,162,42,0.15) 0%, transparent 70%); }
+  .center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    text-align: center; width: 920px; }
+  .big-brand { font-size: 76px; font-weight: 800; letter-spacing: 0.16em;
+    background: linear-gradient(90deg, #8B6914, #D4AF37, #F1D77A, #D4AF37, #8B6914);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 22px; }
+  .tagline { font-size: 30px; font-weight: 600; color: #8A8A90; line-height: 1.4; margin-bottom: 52px; }
+  .divider-c { height: 1px; margin: 0 auto 52px;
+    background: linear-gradient(90deg, transparent, rgba(201,162,42,0.5), rgba(110,207,219,0.3), transparent); }
+  .cta-line { font-size: 22px; font-weight: 700; color: #E2C05E;
+    letter-spacing: 0.04em; margin-bottom: 14px; }
+  .site-line { font-size: 16px; color: #5A5A60; letter-spacing: 0.06em; }
+"""
+
+
+def _e(text: str) -> str:
+    return html_lib.escape(str(text))
+
+
+def _make_slide(extra_css: str, body_inner: str) -> str:
+    return (
+        '<!DOCTYPE html><html><head><meta charset="UTF-8"><style>'
+        + _CAROUSEL_CSS + extra_css
+        + '</style></head><body>'
+        + body_inner
+        + '</body></html>'
+    )
+
+
+def _slide_hook(title: str, hook: str, tag: str) -> str:
+    hook_s = (hook[:137] + "…") if len(hook) > 140 else hook
+    body = (
+        '<div class="glow glow-top"></div>'
+        '<div class="accent-bar"></div>'
+        '<div class="header">'
+          '<div class="brand">HYT MONEY</div>'
+          '<div class="pill">' + _e(tag) + '</div>'
+        '</div>'
+        '<div class="qmark">“</div>'
+        '<div class="hook">' + _e(hook_s) + '</div>'
+        '<div class="divider-wrap"><div class="rule"></div></div>'
+        '<div class="footer">'
+          '<div class="sub">' + _e(title) + '</div>'
+          '<div class="n">1 / 5</div>'
+        '</div>'
+    )
+    return _make_slide(_SLIDE1_CSS, body)
+
+
+def _slide_takeaway(takeaway: str, num_str: str, slide_n: int) -> str:
+    tw_s = (takeaway[:160] + "…") if len(takeaway) > 163 else takeaway
+    body = (
+        '<div class="accent-bar"></div>'
+        '<div class="header">'
+          '<div class="brand">HYT MONEY</div>'
+          '<div class="pill">Key Takeaway</div>'
+        '</div>'
+        '<div class="bg-num">' + num_str + '</div>'
+        '<div class="num-label">' + num_str + ' / Key Point</div>'
+        '<div class="tw">' + _e(tw_s) + '</div>'
+        '<div class="divider-wrap"><div class="rule"></div></div>'
+        '<div class="footer">'
+          '<div class="site">zentraai.in</div>'
+          '<div class="n">' + str(slide_n) + ' / 5</div>'
+        '</div>'
+    )
+    return _make_slide(_SLIDE_TW_CSS, body)
+
+
+def _slide_cta() -> str:
+    body = (
+        '<div class="glow glow-c"></div>'
+        '<div class="accent-bar"></div>'
+        '<div class="center">'
+          '<div class="big-brand">HYT MONEY</div>'
+          '<div class="tagline">Your money, understood.</div>'
+          '<div class="divider-c"></div>'
+          '<div class="cta-line">Free on Android</div>'
+          '<div class="site-line">zentraai.in &nbsp;·&nbsp; Finance &nbsp;·&nbsp; Track &nbsp;·&nbsp; Grow</div>'
+        '</div>'
+    )
+    return _make_slide(_SLIDE_CTA_CSS, body)
+
+
+def generate_carousels(data: dict, slug: str) -> Path | None:
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        print("[warn] playwright not installed — skipping carousels")
+        return None
+
+    import zipfile as _zf
+
+    carousel_dir = BLOG_DIR / "carousels" / slug
+    carousel_dir.mkdir(parents=True, exist_ok=True)
+
+    tags   = data.get("tags", [])
+    tag    = tags[0].title() if tags else "Finance Insight"
+    tws    = data.get("key_takeaways", ["", "", ""])
+    slides = [
+        _slide_hook(data["seo_title"], data["hook"], tag),
+        _slide_takeaway(tws[0] if len(tws) > 0 else "", "01", 2),
+        _slide_takeaway(tws[1] if len(tws) > 1 else "", "02", 3),
+        _slide_takeaway(tws[2] if len(tws) > 2 else "", "03", 4),
+        _slide_cta(),
+    ]
+
+    names = ["slide-1-hook", "slide-2-point1", "slide-3-point2", "slide-4-point3", "slide-5-cta"]
+
+    try:
+        with sync_playwright() as pw:
+            browser = pw.chromium.launch()
+            page = browser.new_page(viewport={"width": 1080, "height": 1080})
+            for name, html in zip(names, slides):
+                page.set_content(html, wait_until="networkidle", timeout=20000)
+                page.screenshot(
+                    path=str(carousel_dir / f"{name}.jpg"),
+                    type="jpeg",
+                    quality=85,
+                    full_page=False,
+                )
+            browser.close()
+    except Exception as exc:
+        print(f"[warn] Playwright render failed: {exc}")
+        return None
+
+    # Bundle into a single ZIP for easy download
+    zip_path = carousel_dir / "carousel.zip"
+    with _zf.ZipFile(zip_path, "w", _zf.ZIP_DEFLATED) as zf:
+        for name in names:
+            img = carousel_dir / f"{name}.jpg"
+            if img.exists():
+                zf.write(img, img.name)
+
+    total_kb = sum((carousel_dir / f"{n}.jpg").stat().st_size for n in names
+                   if (carousel_dir / f"{n}.jpg").exists()) // 1024
+    print(f"[carousel] 5 slides ({total_kb} KB) → {carousel_dir}")
+    return carousel_dir
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main() -> None:
@@ -577,6 +789,8 @@ def main() -> None:
         )
         (BLOG_DIR / filename).write_text(post_html, encoding="utf-8")
         print(f"[ok]   Written {filename}")
+
+        generate_carousels(data, f"{today}-{slug}")
 
         published_log.append({
             "date":        datetime.datetime.utcnow().isoformat(),

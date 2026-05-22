@@ -28,20 +28,36 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: pip install -r scripts/requirements.txt
 
-      - name: Generate blog posts
+      - name: Install Playwright browser
+        run: playwright install chromium --with-deps
+
+      - name: Get date
+        id: date
+        run: echo "date=$(date -u +%Y-%m-%d)" >> $GITHUB_OUTPUT
+
+      - name: Generate blog posts + carousels
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           POSTS_PER_DAY: ${{ github.event.inputs.posts_per_day || '3' }}
         run: python scripts/generate_blog.py
 
-      - name: Commit and push if new posts
+      - name: Commit and push blog posts
         run: |
-          git config user.name  "Zentra Content Bot"
+          git config user.name  "Zantra Content Bot"
           git config user.email "bot@zentraai.in"
           git add blog/
           git diff --cached --quiet && echo "No new posts today." || \
             git commit -m "content: auto-generate finance blog posts $(date -u +%Y-%m-%d)"
           git push
+
+      - name: Upload carousel images as artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: carousels-${{ steps.date.outputs.date }}
+          path: blog/carousels/
+          retention-days: 90
+          if-no-files-found: ignore
