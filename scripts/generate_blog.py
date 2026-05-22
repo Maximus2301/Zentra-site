@@ -262,49 +262,52 @@ _POST_TEMPLATE = """<!DOCTYPE html>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
-    body {{ background: #080810; color: #F0F0FA; font-family: 'DM Sans', sans-serif;
-            font-size: 16px; line-height: 1.7; }}
-    a {{ color: #7B6FF0; text-decoration: none; }}
+    body {{ background: #0D0D0F; color: #F0F0EC; font-family: 'DM Sans', sans-serif;
+            font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }}
+    a {{ color: #E2C05E; text-decoration: none; }}
     a:hover {{ text-decoration: underline; }}
-    .nav {{ padding: 18px 24px; border-bottom: 1px solid #1A1A2E;
-             display: flex; align-items: center; gap: 12px; }}
+    .nav {{ padding: 18px 24px; border-bottom: 1px solid #2A2A2E;
+             display: flex; align-items: center; gap: 12px;
+             background: rgba(10,10,12,0.88); backdrop-filter: blur(20px);
+             position: sticky; top: 0; z-index: 100; }}
     .nav-logo {{ font-weight: 800; font-size: 18px; letter-spacing: 0.05em;
-                  background: linear-gradient(135deg, #7B6FF0, #4ECDC4);
+                  background: linear-gradient(90deg,#8B6914,#D4AF37,#F1D77A,#D4AF37,#8B6914);
                   -webkit-background-clip: text; -webkit-text-fill-color: transparent; }}
-    .nav-sep {{ color: #3A3A5C; }}
-    .nav-link {{ color: #7070A0; font-size: 14px; }}
+    .nav-sep {{ color: #2A2A2E; }}
+    .nav-link {{ color: #8A8A90; font-size: 14px; }}
     .container {{ max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }}
     .meta {{ display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
               margin-bottom: 20px; }}
-    .tag {{ background: #1A1A2E; color: #7B6FF0; font-size: 12px;
+    .tag {{ background: rgba(201,162,42,0.10); color: #E2C05E; font-size: 12px;
              font-weight: 600; padding: 4px 10px; border-radius: 20px;
-             border: 1px solid #2A2A4E; }}
-    .date {{ color: #7070A0; font-size: 13px; }}
-    .source {{ color: #7070A0; font-size: 13px; }}
+             border: 1px solid rgba(201,162,42,0.22); }}
+    .date {{ color: #5A5A60; font-size: 13px; }}
+    .source {{ color: #5A5A60; font-size: 13px; }}
     h1 {{ font-size: clamp(24px, 4vw, 36px); font-weight: 800; line-height: 1.25;
            margin-bottom: 14px; }}
-    .hook {{ font-size: 18px; color: #B0B0D0; font-style: italic;
-              border-left: 3px solid #7B6FF0; padding-left: 16px;
+    .hook {{ font-size: 18px; color: #A0A0A8; font-style: italic;
+              border-left: 3px solid #C9A22A; padding-left: 16px;
               margin-bottom: 32px; line-height: 1.6; }}
-    .body p {{ margin-bottom: 20px; color: #D0D0EA; }}
-    .takeaways {{ background: #10101C; border: 1px solid #1A1A2E;
+    .body p {{ margin-bottom: 20px; color: #C8C8C0; }}
+    .takeaways {{ background: #131315; border: 1px solid #2A2A2E;
                    border-radius: 12px; padding: 24px; margin: 32px 0; }}
-    .takeaways h2 {{ font-size: 16px; font-weight: 700; color: #4ECDC4;
+    .takeaways h2 {{ font-size: 16px; font-weight: 700; color: #6ECFDB;
                       margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }}
     .takeaways ul {{ list-style: none; display: flex; flex-direction: column; gap: 10px; }}
-    .takeaways li {{ padding-left: 24px; position: relative; color: #D0D0EA; font-size: 15px; }}
+    .takeaways li {{ padding-left: 24px; position: relative; color: #C8C8C0; font-size: 15px; }}
     .takeaways li::before {{ content: "→"; position: absolute; left: 0;
-                               color: #4ECDC4; font-weight: 700; }}
-    .disclaimer {{ font-size: 12px; color: #5050A0; border-top: 1px solid #1A1A2E;
+                               color: #6ECFDB; font-weight: 700; }}
+    .disclaimer {{ font-size: 12px; color: #5A5A60; border-top: 1px solid #2A2A2E;
                     padding-top: 16px; margin-top: 32px; }}
-    .cta-box {{ background: linear-gradient(135deg, #0D0D20, #12122A);
-                 border: 1px solid #2A2A5A; border-radius: 16px;
+    .cta-box {{ background: linear-gradient(135deg, #0F0F11, #131315);
+                 border: 1px solid rgba(201,162,42,0.22); border-radius: 16px;
                  padding: 28px; margin-top: 40px; text-align: center; }}
-    .cta-box p {{ color: #B0B0D0; margin-bottom: 16px; font-size: 15px; }}
-    .cta-btn {{ display: inline-block; background: linear-gradient(135deg, #7B6FF0, #4ECDC4);
-                 color: #fff; font-weight: 700; font-size: 15px;
+    .cta-box p {{ color: #A0A0A8; margin-bottom: 16px; font-size: 15px; }}
+    .cta-btn {{ display: inline-block;
+                 background: linear-gradient(135deg, #F1D77A, #C9A22A, #9A7515);
+                 color: #1A1200; font-weight: 700; font-size: 15px;
                  padding: 12px 28px; border-radius: 8px; }}
-    .back {{ color: #7070A0; font-size: 14px; display: inline-flex;
+    .back {{ color: #8A8A90; font-size: 14px; display: inline-flex;
               align-items: center; gap: 6px; margin-bottom: 32px; }}
     @media (max-width: 600px) {{
       .container {{ padding: 24px 16px 60px; }}
@@ -404,37 +407,41 @@ def rebuild_index(published_log: list[dict]) -> None:
   <link rel="alternate" type="application/rss+xml" title="HYT MONEY Blog" href="{BLOG_URL}/feed.xml" />
   <style>
     *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
-    body {{ background: #080810; color: #F0F0FA; font-family: 'DM Sans', sans-serif; }}
+    body {{ background: #0D0D0F; color: #F0F0EC; font-family: 'DM Sans', sans-serif;
+            -webkit-font-smoothing: antialiased; }}
     a {{ text-decoration: none; }}
-    .nav {{ padding: 18px 24px; border-bottom: 1px solid #1A1A2E;
-             display: flex; align-items: center; gap: 12px; }}
+    .nav {{ padding: 18px 24px; border-bottom: 1px solid #2A2A2E;
+            display: flex; align-items: center; gap: 12px;
+            background: rgba(10,10,12,0.88); backdrop-filter: blur(20px);
+            position: sticky; top: 0; z-index: 100; }}
     .nav-logo {{ font-weight: 800; font-size: 18px;
-                  background: linear-gradient(135deg, #7B6FF0, #4ECDC4);
+                  background: linear-gradient(90deg,#8B6914,#D4AF37,#F1D77A,#D4AF37,#8B6914);
                   -webkit-background-clip: text; -webkit-text-fill-color: transparent; }}
-    .nav-sep {{ color: #3A3A5C; }}
-    .nav-link {{ color: #7070A0; font-size: 14px; }}
+    .nav-sep {{ color: #2A2A2E; }}
+    .nav-link {{ color: #8A8A90; font-size: 14px; }}
     .container {{ max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }}
     .hero {{ margin-bottom: 48px; }}
     .hero h1 {{ font-size: clamp(28px, 5vw, 42px); font-weight: 800; margin-bottom: 12px; }}
-    .hero p {{ color: #7070A0; font-size: 16px; }}
-    .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-              gap: 20px; }}
-    .card {{ background: #10101C; border: 1px solid #1A1A2E; border-radius: 12px;
-              padding: 20px; display: flex; flex-direction: column; gap: 10px;
-              transition: border-color 0.2s; color: #F0F0FA; }}
-    .card:hover {{ border-color: #7B6FF0; }}
+    .hero p {{ color: #8A8A90; font-size: 16px; }}
+    .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }}
+    .card {{ background: linear-gradient(180deg,rgba(26,26,29,0.97) 0%,rgba(19,19,21,1) 100%);
+             border: 1px solid #2A2A2E; border-radius: 14px;
+             padding: 20px; display: flex; flex-direction: column; gap: 10px;
+             transition: border-color 0.2s, transform 0.2s; color: #F0F0EC; }}
+    .card:hover {{ border-color: rgba(201,162,42,0.5); transform: translateY(-2px); }}
     .card-meta {{ display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }}
-    .tag {{ background: #1A1A2E; color: #7B6FF0; font-size: 11px;
-             font-weight: 600; padding: 3px 8px; border-radius: 20px; }}
-    .date {{ color: #5050A0; font-size: 12px; }}
-    .card h2 {{ font-size: 15px; font-weight: 700; line-height: 1.4; color: #E0E0F8; }}
-    .card p {{ font-size: 13px; color: #7070A0; line-height: 1.5; flex: 1; }}
-    .empty {{ color: #5050A0; text-align: center; padding: 60px 0; }}
+    .tag {{ background: rgba(201,162,42,0.10); color: #E2C05E; font-size: 11px;
+             font-weight: 600; padding: 3px 8px; border-radius: 20px;
+             border: 1px solid rgba(201,162,42,0.20); }}
+    .date {{ color: #5A5A60; font-size: 12px; }}
+    .card h2 {{ font-size: 15px; font-weight: 700; line-height: 1.4; color: #F0F0EC; }}
+    .card p {{ font-size: 13px; color: #8A8A90; line-height: 1.5; flex: 1; }}
+    .empty {{ color: #5A5A60; text-align: center; padding: 60px 0; }}
   </style>
 </head>
 <body>
   <nav class="nav">
-    <a href="{SITE_URL}" class="nav-logo">ZENTRA</a>
+    <a href="{SITE_URL}" class="nav-logo">ZANTRA</a>
     <span class="nav-sep">/</span>
     <span class="nav-link">Finance Blog</span>
   </nav>
