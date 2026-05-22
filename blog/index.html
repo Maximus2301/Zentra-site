@@ -13,17 +13,29 @@
     body { background: #080810; color: #F0F0FA; font-family: 'DM Sans', sans-serif; }
     a { text-decoration: none; }
     .nav { padding: 18px 24px; border-bottom: 1px solid #1A1A2E;
-           display: flex; align-items: center; gap: 12px; }
+             display: flex; align-items: center; gap: 12px; }
     .nav-logo { font-weight: 800; font-size: 18px;
-                background: linear-gradient(135deg, #7B6FF0, #4ECDC4);
-                -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+                  background: linear-gradient(135deg, #7B6FF0, #4ECDC4);
+                  -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .nav-sep { color: #3A3A5C; }
     .nav-link { color: #7070A0; font-size: 14px; }
     .container { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
     .hero { margin-bottom: 48px; }
     .hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 800; margin-bottom: 12px; }
     .hero p { color: #7070A0; font-size: 16px; }
-    .empty { color: #5050A0; text-align: center; padding: 60px 0; font-size: 15px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+              gap: 20px; }
+    .card { background: #10101C; border: 1px solid #1A1A2E; border-radius: 12px;
+              padding: 20px; display: flex; flex-direction: column; gap: 10px;
+              transition: border-color 0.2s; color: #F0F0FA; }
+    .card:hover { border-color: #7B6FF0; }
+    .card-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .tag { background: #1A1A2E; color: #7B6FF0; font-size: 11px;
+             font-weight: 600; padding: 3px 8px; border-radius: 20px; }
+    .date { color: #5050A0; font-size: 12px; }
+    .card h2 { font-size: 15px; font-weight: 700; line-height: 1.4; color: #E0E0F8; }
+    .card p { font-size: 13px; color: #7070A0; line-height: 1.5; flex: 1; }
+    .empty { color: #5050A0; text-align: center; padding: 60px 0; }
   </style>
 </head>
 <body>
@@ -37,7 +49,24 @@
       <h1>Finance Insights</h1>
       <p>Daily finance news explained simply for Indian salaried professionals.</p>
     </div>
-    <p class="empty">First posts arriving soon — come back tomorrow.</p>
+    <div class="grid">
+      
+    <a href="https://zentraai.in/blog/2026-05-22-gold-price-dip-impact-indian-salaried-professional.html" class="card">
+      <div class="card-meta"><span class="tag">gold investment</span> <span class="tag">financial planning</span><span class="date">2026-05-22</span></div>
+      <h2>Gold Prices Dip: What It Means for Your Finances</h2>
+      <p>Understand why gold prices dipped globally and how this impacts your financial planning as an Indian salaried professional. Learn about smart diversification.</p>
+    </a>
+    <a href="https://zentraai.in/blog/2026-05-22-rbi-inflation-rupee-impact-salaried-professionals.html" class="card">
+      <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Inflation</span><span class="date">2026-05-22</span></div>
+      <h2>RBI Prioritizes Inflation Over Rupee Defense</h2>
+      <p>Understand how RBI&#x27;s latest policy stance on inflation and interest rates impacts your loans, savings, and financial planning as a salaried Indian professional.</p>
+    </a>
+    <a href="https://zentraai.in/blog/2026-05-22-ai-travel-budget-15lakh-salary-indian-professional.html" class="card">
+      <div class="card-meta"><span class="tag">travel budget</span> <span class="tag">financial planning</span><span class="date">2026-05-22</span></div>
+      <h2>AI&#x27;s Travel Budget Tip for ₹15 Lakh Salary Earners</h2>
+      <p>Discover how AI budgets for travel on a ₹15 lakh salary, balancing EMIs and savings. Learn practical steps to plan your own dream trips.</p>
+    </a>
+    </div>
   </main>
 </body>
 </html>
