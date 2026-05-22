@@ -4,7 +4,8 @@ import '../models/recurring_payment.dart';
 import '../models/transaction.dart';
 
 class DbService {
-  static Database? _db;
+  // Single cached Future — all concurrent callers share the same init, no race.
+  static Future<Database>? _dbFuture;
   static const int _dbVersion = 41;
   static const String _createTransactionsTableSql = '''
     CREATE TABLE transactions (
@@ -47,9 +48,9 @@ class DbService {
     )
   ''';
 
-  static Future<Database> get database async {
-    _db ??= await _initDb();
-    return _db!;
+  static Future<Database> get database {
+    _dbFuture ??= _initDb();
+    return _dbFuture!;
   }
 
   static Future<Database> _initDb() async {

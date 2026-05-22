@@ -33,35 +33,38 @@ class _MonthlyBarChartState extends State<MonthlyBarChart> {
 
   Future<void> _loadData() async {
     setState(() => _loading = true);
+    try {
+      final raw = await DbService.getMonthlyTotals(widget.selectedMonth.year);
 
-    final raw = await DbService.getMonthlyTotals(widget.selectedMonth.year);
-
-    final Map<int, _MonthData> byMonth = {};
-    for (final row in raw) {
-      final monthNum = int.tryParse(row['month'] as String? ?? '0') ?? 0;
-      byMonth[monthNum] ??= _MonthData(month: monthNum);
-      if (row['type'] == 'income') {
-        byMonth[monthNum]!.income = (row['total'] as num).toDouble();
-      } else if (row['type'] == 'expense') {
-        byMonth[monthNum]!.expense = (row['total'] as num).toDouble();
+      final Map<int, _MonthData> byMonth = {};
+      for (final row in raw) {
+        final monthNum = int.tryParse(row['month'] as String? ?? '0') ?? 0;
+        byMonth[monthNum] ??= _MonthData(month: monthNum);
+        if (row['type'] == 'income') {
+          byMonth[monthNum]!.income = (row['total'] as num).toDouble();
+        } else if (row['type'] == 'expense') {
+          byMonth[monthNum]!.expense = (row['total'] as num).toDouble();
+        }
       }
-    }
 
-    final List<_MonthData> result = [];
-    final endMonth = widget.selectedMonth.month;
-    for (int i = 5; i >= 0; i--) {
-      int m = endMonth - i;
-      if (m <= 0) m += 12;
-      result.add(byMonth[m] ?? _MonthData(month: m));
-    }
+      final List<_MonthData> result = [];
+      final endMonth = widget.selectedMonth.month;
+      for (int i = 5; i >= 0; i--) {
+        int m = endMonth - i;
+        if (m <= 0) m += 12;
+        result.add(byMonth[m] ?? _MonthData(month: m));
+      }
 
-    if (mounted) {
-      setState(() {
-        _monthData
-          ..clear()
-          ..addAll(result);
-        _loading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _monthData
+            ..clear()
+            ..addAll(result);
+          _loading = false;
+        });
+      }
+    } catch (_) {
+      if (mounted) setState(() => _loading = false);
     }
   }
 

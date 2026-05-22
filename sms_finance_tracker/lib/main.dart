@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'theme/app_theme.dart';
-import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
+import 'services/db_service.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Kick off DB init immediately so it's warming while the splash renders.
+  DbService.database;
   runApp(const HytMoneyApp());
 }
 
@@ -18,7 +21,7 @@ class HytMoneyApp extends StatelessWidget {
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
       themeMode: ThemeMode.system,
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }

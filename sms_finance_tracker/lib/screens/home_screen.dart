@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _loading = false;
   bool _syncing = false;
   int _syncProgress = 0;
+  String? _loadError;
 
   final NumberFormat _currencyFormat = NumberFormat('#,##,##0.00', 'en_IN');
 
@@ -38,19 +39,29 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadTransactions() async {
-    setState(() => _loading = true);
-    final results = await Future.wait([
-      DbService.getTransactionsByMonth(_selectedMonth.year, _selectedMonth.month),
-      DbService.getLatestAssetRecords(),
-    ]);
-    final data = results[0] as List<Transaction>;
-    final assets = results[1] as List<Transaction>;
-    if (mounted) {
-      setState(() {
-        _transactions = data;
-        _trackedAssets = assets;
-        _loading = false;
-      });
+    setState(() {
+      _loading = true;
+      _loadError = null;
+    });
+    try {
+      final results = await Future.wait([
+        DbService.getTransactionsByMonth(_selectedMonth.year, _selectedMonth.month),
+        DbService.getLatestAssetRecords(),
+      ]);
+      if (mounted) {
+        setState(() {
+          _transactions = results[0] as List<Transaction>;
+          _trackedAssets = results[1] as List<Transaction>;
+          _loading = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _loading = false;
+          _loadError = 'Could not load data. Pull down to retry.';
+        });
+      }
     }
   }
 
@@ -181,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  'Finance Tracker',
+                  'HYT MONEY',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         fontWeight: FontWeight.w800,
                       ),
@@ -240,7 +251,7 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: _buildDrawer(),
       appBar: AppBar(
         title: const Text(
-          'Finance Tracker',
+          'HYT MONEY',
           style: TextStyle(fontWeight: FontWeight.w700),
         ),
         actions: [
@@ -320,6 +331,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Padding(
                     padding: EdgeInsets.all(40),
                     child: CircularProgressIndicator(),
+                  ),
+                ),
+              )
+            else if (_loadError != null)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(40),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.error_outline,
+                        size: 56,
+                        color: Theme.of(context).colorScheme.error,
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        _loadError!,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
                 ),
               )
