@@ -53,18 +53,31 @@ class _SplashScreenState extends State<SplashScreen> {
                 color: theme.colorScheme.primary,
                 borderRadius: BorderRadius.circular(22),
               ),
-              child: Icon(
-                Icons.account_balance_wallet_rounded,
-                size: 48,
-                color: theme.colorScheme.onPrimary,
+              child: Center(
+                child: Text(
+                  'H',
+                  style: TextStyle(
+                    fontSize: 54,
+                    fontWeight: FontWeight.w900,
+                    color: theme.colorScheme.onPrimary,
+                    height: 1,
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 28),
             Text(
-              'HYT MONEY',
-              style: theme.textTheme.headlineMedium?.copyWith(
-                fontWeight: FontWeight.w800,
-                letterSpacing: 2.5,
+              'HYT',
+              style: theme.textTheme.headlineLarge?.copyWith(
+                fontWeight: FontWeight.w900,
+                letterSpacing: 5,
+              ),
+            ),
+            Text(
+              'MONEY',
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w600,
+                letterSpacing: 8,
               ),
             ),
             const SizedBox(height: 8),

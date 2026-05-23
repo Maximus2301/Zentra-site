@@ -24,7 +24,10 @@ class _PaymentPlannerScreenState extends State<PaymentPlannerScreen> {
   final NumberFormat _currencyFormat = NumberFormat('#,##,##0.00', 'en_IN');
 
   List<RecurringPayment> _payments = [];
-  List<Transaction> _currentMonthTransactions = [];
+  // Persistent paid IDs for the current calendar month (survives restarts).
+  Set<int> _paidIds = {};
+  // For monthly payments: how many of the last 3 months have a matching expense.
+  Map<int, int> _consecutiveCounts = {};
   bool _loading = true;
 
   @override
@@ -33,33 +36,211 @@ class _PaymentPlannerScreenState extends State<PaymentPlannerScreen> {
     _load();
   }
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // Data loading
+  // ─────────────────────────────────────────────────────────────────────────
+
   Future<void> _load() async {
     setState(() => _loading = true);
     final now = DateTime.now();
+
+    // Fetch current month, prior 2 months (for consecutive check), and DB paid
+    // IDs for the current month — all in parallel.
     final results = await Future.wait([
       DbService.getRecurringPayments(),
       DbService.getTransactionsByDateRange(
         DateTime(now.year, now.month, 1),
         DateTime(now.year, now.month + 1, 1),
       ),
+      DbService.getTransactionsByDateRange(
+        DateTime(now.year, now.month - 2, 1), // 3-month window start
+        DateTime(now.year, now.month, 1),     // exclusive: up to current month
+      ),
+      DbService.getPaidPaymentIds(now.year, now.month),
     ]);
 
     if (!mounted) return;
+
+    final payments = results[0] as List<RecurringPayment>;
+    final currentTxns = results[1] as List<Transaction>;
+    final histTxns = results[2] as List<Transaction>;
+    final dbPaidIds = Set<int>.from(results[3] as Set<int>);
+
+    // Auto-persist any transaction matches not yet in payment_history.
+    // This converts ephemeral match results into durable "paid" records.
+    final toAutoMark = <int, int?>{}; // paymentId → matched txn id
+    for (final p in payments) {
+      if (!p.isActive || p.id == null) continue;
+      if (dbPaidIds.contains(p.id)) continue; // already recorded
+      final matched = _matchInList(p, currentTxns);
+      if (matched != null) {
+        toAutoMark[p.id!] = matched.id;
+      }
+    }
+    if (toAutoMark.isNotEmpty) {
+      await Future.wait(toAutoMark.entries.map((e) => DbService.recordPaymentPaid(
+            paymentId: e.key,
+            year: now.year,
+            month: now.month,
+            isManual: false,
+            matchedTxnId: e.value,
+          )));
+      if (!mounted) return;
+      dbPaidIds.addAll(toAutoMark.keys);
+    }
+
+    // Compute 3-month consecutive match counts for monthly payments.
+    // Non-monthly payments are always considered verified (count = 3).
+    final counts = <int, int>{};
+    final allTxns = [...currentTxns, ...histTxns];
+    for (final p in payments) {
+      if (p.id == null) continue;
+      if (p.frequency != PaymentFrequency.monthly) {
+        counts[p.id!] = 3;
+        continue;
+      }
+      int hits = 0;
+      for (var i = 0; i < 3; i++) {
+        final mo = DateTime(now.year, now.month - i);
+        final moTxns = allTxns
+            .where((t) => t.date.year == mo.year && t.date.month == mo.month)
+            .toList();
+        // Current month: also count DB-persisted paid records (handles manual marks).
+        if (i == 0 && dbPaidIds.contains(p.id)) {
+          hits++;
+        } else if (_matchInList(p, moTxns) != null) {
+          hits++;
+        }
+      }
+      counts[p.id!] = hits;
+    }
+
+    if (!mounted) return;
     setState(() {
-      _payments = results[0] as List<RecurringPayment>;
-      _currentMonthTransactions = results[1] as List<Transaction>;
+      _payments = payments;
+      _paidIds = dbPaidIds;
+      _consecutiveCounts = counts;
       _loading = false;
     });
   }
 
-  double get _monthlyPlannedTotal => _payments
-      .where((payment) => payment.isActive)
-      .fold(0.0, (sum, payment) => sum + payment.amount);
+  // ─────────────────────────────────────────────────────────────────────────
+  // Derived state helpers (all O(1) after _load)
+  // ─────────────────────────────────────────────────────────────────────────
 
-  int get _matchedCount => _payments
-      .where((payment) => payment.isActive)
-      .where((payment) => _findMatchedTransaction(payment) != null)
+  bool _isPaid(RecurringPayment p) =>
+      p.id != null && _paidIds.contains(p.id);
+
+  // Monthly SMS-detected payments need 3 consecutive months of evidence.
+  bool _isVerified(RecurringPayment p) {
+    if (p.frequency != PaymentFrequency.monthly) return true;
+    if (!p.isFromSms) return true; // manually added: trusted by default
+    return (_consecutiveCounts[p.id] ?? 0) >= 3;
+  }
+
+  double get _monthlyPlannedTotal => _payments
+      .where((p) => p.isActive)
+      .fold(0.0, (sum, p) => sum + p.amount);
+
+  int get _activeCount => _payments.where((p) => p.isActive).length;
+
+  int get _paidCount => _payments
+      .where((p) => p.isActive && _isPaid(p))
       .length;
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // Static matching logic — used in _load and consecutive-count calculation.
+  // Tolerances: keyword+amount and category+amount use ≤3%; bare amount ≤3%.
+  // ─────────────────────────────────────────────────────────────────────────
+
+  static Transaction? _matchInList(
+      RecurringPayment payment, List<Transaction> txns) {
+    final nameLower = payment.name.toLowerCase();
+    final keywords = nameLower
+        .split(RegExp(r'\s+'))
+        .where((w) => w.length > 3)
+        .toList();
+
+    for (final t in txns) {
+      if (t.type != TransactionType.expense) continue;
+      final searchText =
+          '${t.merchant.toLowerCase()} ${t.rawSms.toLowerCase()}';
+      final diff = (t.amount - payment.amount).abs();
+      final pct = payment.amount > 0 ? diff / payment.amount : 999.0;
+      final tight = pct <= 0.03;
+      final keywordHit =
+          keywords.isNotEmpty && keywords.any(searchText.contains);
+      final categoryHit = _txnToCategory(t) == payment.category;
+      final nearDue = (t.date.day - payment.dueDayOfMonth).abs() <= 7;
+
+      if (keywordHit && tight) return t;
+      if (categoryHit && tight && nearDue) return t;
+      if (tight && nearDue) return t;
+    }
+    return null;
+  }
+
+  static String _txnToCategory(Transaction t) {
+    if (t.category == 'Essential' && t.subcategory == 'Utilities') {
+      return 'Utilities';
+    }
+    if (t.category == 'Essential' && t.subcategory == 'Insurance') {
+      return 'Insurance';
+    }
+    if (t.category == 'Essential' && t.subcategory == 'EMI/Loan') {
+      return 'EMI/Loan';
+    }
+    if (t.category == 'Lifestyle' && t.subcategory == 'Subscriptions') {
+      return 'Subscription';
+    }
+    return t.subcategory;
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // Month-boundary-aware due-day offset.
+  //
+  // If the due day has passed but is within a 7-day grace window, we show it
+  // as overdue (the payment was missed this month). If it's older than 7 days,
+  // we project forward to the NEXT month's occurrence, treating it as upcoming.
+  // This prevents a bill due on the 3rd from showing "Overdue" on the 25th.
+  // ─────────────────────────────────────────────────────────────────────────
+
+  static int _effectiveDaysUntil(int dueDay) {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final thisMonthDue = DateTime(now.year, now.month, dueDay);
+    final diff = thisMonthDue.difference(today).inDays;
+    if (diff >= -7) return diff; // within grace window: could be overdue or future
+    // Past the grace window → project to next month's occurrence
+    final nextMonthDue = DateTime(now.year, now.month + 1, dueDay);
+    return nextMonthDue.difference(today).inDays;
+  }
+
+  // Returns false when an SMS-derived monthly entry's reminder is too stale to
+  // project forward. Prevents a March CC bill SMS from showing as "Due June 2".
+  // Rule: once the current month's due date is past the grace window, only
+  // project to next month if the SMS was received within the last 60 days
+  // (≈ 2 billing cycles). Manually-added and non-monthly entries always project.
+  static bool _shouldShowFutureEntry(RecurringPayment p) {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final thisMonthDiff =
+        DateTime(now.year, now.month, p.dueDayOfMonth).difference(today).inDays;
+    // Still in the current month's window → no projection, always show.
+    if (thisMonthDiff >= -7) return true;
+    // Past grace and projected to next month.
+    // Manually-added entries and non-monthly entries always project forward.
+    if (!p.isFromSms || p.frequency != PaymentFrequency.monthly) return true;
+    // SMS-derived monthly: suppress if the bill reminder is older than 60 days.
+    final daysSince = now
+        .difference(DateTime.fromMillisecondsSinceEpoch(p.lastSeenAt))
+        .inDays;
+    return daysSince <= 60;
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // CRUD actions
+  // ─────────────────────────────────────────────────────────────────────────
 
   Future<void> _openForm([RecurringPayment? existing]) async {
     final payment = await showModalBottomSheet<RecurringPayment>(
@@ -71,7 +252,6 @@ class _PaymentPlannerScreenState extends State<PaymentPlannerScreen> {
       ),
     );
     if (payment == null) return;
-
     if (existing == null) {
       await DbService.insertRecurringPayment(payment);
     } else {
@@ -80,35 +260,49 @@ class _PaymentPlannerScreenState extends State<PaymentPlannerScreen> {
     _load();
   }
 
-  Future<void> _toggleActive(RecurringPayment payment) async {
-    await DbService.updateRecurringPayment(
-      RecurringPayment(
-        id: payment.id,
-        name: payment.name,
-        normalizedKey: payment.normalizedKey,
-        amount: payment.amount,
-        category: payment.category,
-        dueDayOfMonth: payment.dueDayOfMonth,
-        frequency: payment.frequency,
-        isActive: !payment.isActive,
-        isFromSms: payment.isFromSms,
-        sourceSender: payment.sourceSender,
-        sourceSnippet: payment.sourceSnippet,
-        accountLast4: payment.accountLast4,
-        confidence: payment.confidence,
-        createdAt: payment.createdAt,
-        lastSeenAt: payment.lastSeenAt,
-      ),
-    );
+  Future<void> _toggleActive(RecurringPayment p) async {
+    await DbService.updateRecurringPayment(RecurringPayment(
+      id: p.id,
+      name: p.name,
+      normalizedKey: p.normalizedKey,
+      amount: p.amount,
+      category: p.category,
+      dueDayOfMonth: p.dueDayOfMonth,
+      frequency: p.frequency,
+      isActive: !p.isActive,
+      isFromSms: p.isFromSms,
+      sourceSender: p.sourceSender,
+      sourceSnippet: p.sourceSnippet,
+      accountLast4: p.accountLast4,
+      confidence: p.confidence,
+      createdAt: p.createdAt,
+      lastSeenAt: p.lastSeenAt,
+    ));
     _load();
   }
 
-  Future<void> _delete(RecurringPayment payment) async {
+  Future<void> _togglePaid(RecurringPayment p) async {
+    if (p.id == null) return;
+    final now = DateTime.now();
+    if (_isPaid(p)) {
+      await DbService.removePaymentPaid(p.id!, now.year, now.month);
+    } else {
+      await DbService.recordPaymentPaid(
+        paymentId: p.id!,
+        year: now.year,
+        month: now.month,
+        isManual: true,
+      );
+    }
+    _load();
+  }
+
+  Future<void> _delete(RecurringPayment p) async {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Delete payment?'),
-        content: Text('Remove "${payment.name}" from Payment Planner?'),
+        content: Text('Remove "${p.name}" from Payment Planner?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -121,71 +315,48 @@ class _PaymentPlannerScreenState extends State<PaymentPlannerScreen> {
         ],
       ),
     );
-
-    if (confirmed == true && payment.id != null) {
-      await DbService.deleteRecurringPayment(payment.id!);
+    if (confirmed == true && p.id != null) {
+      await DbService.deleteRecurringPayment(p.id!);
       _load();
     }
   }
 
-  Transaction? _findMatchedTransaction(RecurringPayment payment) {
-    final nameLower = payment.name.toLowerCase();
-    final keywords = nameLower
-        .split(RegExp(r'\s+'))
-        .where((word) => word.length > 3)
-        .toList();
-
-    for (final transaction in _currentMonthTransactions) {
-      if (transaction.type != TransactionType.expense) continue;
-
-      final searchText =
-          '${transaction.merchant.toLowerCase()} ${transaction.rawSms.toLowerCase()}';
-      final amountDiff = (transaction.amount - payment.amount).abs();
-      final amountPct =
-          payment.amount > 0 ? amountDiff / payment.amount : 999.0;
-      final looseAmountMatch = amountPct <= 0.20;
-      final tightAmountMatch = amountPct <= 0.03;
-      final keywordMatch =
-          keywords.isNotEmpty && keywords.any(searchText.contains);
-      final categoryMatch =
-          _mapTransactionToPlannerCategory(transaction) == payment.category;
-      final nearDueDay =
-          (transaction.date.day - payment.dueDayOfMonth).abs() <= 7;
-
-      if (keywordMatch && looseAmountMatch) return transaction;
-      if (categoryMatch && looseAmountMatch && nearDueDay) return transaction;
-      if (tightAmountMatch) return transaction;
-    }
-
-    return null;
-  }
-
-  String _mapTransactionToPlannerCategory(Transaction transaction) {
-    if (transaction.category == 'Essential' &&
-        transaction.subcategory == 'Utilities') {
-      return 'Utilities';
-    }
-    if (transaction.category == 'Essential' &&
-        transaction.subcategory == 'Insurance') {
-      return 'Insurance';
-    }
-    if (transaction.category == 'Essential' &&
-        transaction.subcategory == 'EMI/Loan') {
-      return 'EMI/Loan';
-    }
-    if (transaction.category == 'Lifestyle' &&
-        transaction.subcategory == 'Subscriptions') {
-      return 'Subscription';
-    }
-    return transaction.subcategory;
-  }
+  // ─────────────────────────────────────────────────────────────────────────
+  // Build
+  // ─────────────────────────────────────────────────────────────────────────
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final activePayments = _payments.where((payment) => payment.isActive).toList();
-    final pausedPayments =
-        _payments.where((payment) => !payment.isActive).toList();
+    final active = _payments.where((p) => p.isActive).toList();
+    final paused = _payments.where((p) => !p.isActive).toList();
+
+    // Partition active payments into four sections using pre-computed state.
+    // All effective-days calculations happen once here, not inside tiles.
+    final List<_TileData> overdueItems = [];
+    final List<_TileData> dueSoonItems = [];
+    final List<_TileData> upcomingItems = [];
+    final List<_TileData> paidItems = [];
+
+    for (final p in active) {
+      final isPaid = _isPaid(p);
+      final days = _effectiveDaysUntil(p.dueDayOfMonth);
+      final data = _TileData(payment: p, isPaid: isPaid,
+          isVerified: _isVerified(p), effectiveDaysUntil: days);
+      if (isPaid) {
+        paidItems.add(data);
+      } else if (days < 0) {
+        overdueItems.add(data);
+      } else if (_shouldShowFutureEntry(p)) {
+        if (days <= 5) {
+          dueSoonItems.add(data);
+        } else {
+          upcomingItems.add(data);
+        }
+      }
+      // else: stale SMS-derived entry whose current-month window has closed —
+      // suppressed until a fresh bill reminder arrives or the user adds it manually.
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -212,52 +383,59 @@ class _PaymentPlannerScreenState extends State<PaymentPlannerScreen> {
                 children: [
                   _PlannerSummaryCard(
                     plannedTotal: _monthlyPlannedTotal,
-                    activeCount: activePayments.length,
-                    matchedCount: _matchedCount,
+                    activeCount: _activeCount,
+                    paidCount: _paidCount,
                     currencyFormat: _currencyFormat,
                   ),
                   const SizedBox(height: 16),
                   if (_payments.isEmpty)
                     _EmptyPlannerState(onAdd: () => _openForm())
                   else ...[
-                    if (activePayments.isNotEmpty) ...[
-                      Text(
-                        'Active',
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
+                    if (overdueItems.isNotEmpty)
+                      _buildSection(
+                        context,
+                        title: 'Overdue',
+                        titleColor: const Color(0xFFC62828),
+                        items: overdueItems,
                       ),
+                    if (dueSoonItems.isNotEmpty)
+                      _buildSection(
+                        context,
+                        title: 'Due Soon',
+                        titleColor: const Color(0xFFE65100),
+                        items: dueSoonItems,
+                      ),
+                    if (upcomingItems.isNotEmpty)
+                      _buildSection(context, title: 'Upcoming', items: upcomingItems),
+                    if (paidItems.isNotEmpty)
+                      _buildSection(
+                        context,
+                        title: 'Paid This Month',
+                        titleColor: const Color(0xFF2E7D32),
+                        items: paidItems,
+                      ),
+                    if (paused.isNotEmpty) ...[
                       const SizedBox(height: 8),
-                      ...activePayments.map(
-                        (payment) => _PaymentPlannerTile(
-                          payment: payment,
-                          matchedTransaction: _findMatchedTransaction(payment),
-                          currencyFormat: _currencyFormat,
-                          onEdit: () => _openForm(payment),
-                          onDelete: () => _delete(payment),
-                          onToggleActive: () => _toggleActive(payment),
+                      const Divider(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Text(
+                          'Paused',
+                          style: theme.textTheme.labelLarge?.copyWith(
+                            color: theme.colorScheme.onSurfaceVariant,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ],
-                    if (pausedPayments.isNotEmpty) ...[
-                      const SizedBox(height: 16),
-                      Text(
-                        'Paused',
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      ...pausedPayments.map(
-                        (payment) => _PaymentPlannerTile(
-                          payment: payment,
-                          matchedTransaction: null,
-                          currencyFormat: _currencyFormat,
-                          onEdit: () => _openForm(payment),
-                          onDelete: () => _delete(payment),
-                          onToggleActive: () => _toggleActive(payment),
-                        ),
-                      ),
+                      ...paused.map((p) => _tile(
+                            _TileData(
+                              payment: p,
+                              isPaid: false,
+                              isVerified: _isVerified(p),
+                              effectiveDaysUntil:
+                                  _effectiveDaysUntil(p.dueDayOfMonth),
+                            ),
+                          )),
                     ],
                   ],
                 ],
@@ -265,51 +443,149 @@ class _PaymentPlannerScreenState extends State<PaymentPlannerScreen> {
             ),
     );
   }
+
+  Widget _buildSection(
+    BuildContext context, {
+    required String title,
+    required List<_TileData> items,
+    Color? titleColor,
+  }) {
+    final theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8, top: 4),
+          child: Text(
+            title,
+            style: theme.textTheme.labelLarge?.copyWith(
+              color: titleColor ?? theme.colorScheme.onSurfaceVariant,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.5,
+            ),
+          ),
+        ),
+        ...items.map(_tile),
+      ],
+    );
+  }
+
+  Widget _tile(_TileData data) => _PaymentPlannerTile(
+        data: data,
+        currencyFormat: _currencyFormat,
+        onEdit: () => _openForm(data.payment),
+        onDelete: () => _delete(data.payment),
+        onToggleActive: () => _toggleActive(data.payment),
+        onTogglePaid: () => _togglePaid(data.payment),
+      );
 }
+
+// ───────────────────────────────────────────────────────────────────────────
+// Immutable bundle passed to each tile — computed once in build(), never
+// recomputed inside the tile itself.
+// ───────────────────────────────────────────────────────────────────────────
+
+class _TileData {
+  final RecurringPayment payment;
+  final bool isPaid;
+  final bool isVerified;
+  final int effectiveDaysUntil;
+
+  const _TileData({
+    required this.payment,
+    required this.isPaid,
+    required this.isVerified,
+    required this.effectiveDaysUntil,
+  });
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+// Summary card
+// ───────────────────────────────────────────────────────────────────────────
 
 class _PlannerSummaryCard extends StatelessWidget {
   final double plannedTotal;
   final int activeCount;
-  final int matchedCount;
+  final int paidCount;
   final NumberFormat currencyFormat;
 
   const _PlannerSummaryCard({
     required this.plannedTotal,
     required this.activeCount,
-    required this.matchedCount,
+    required this.paidCount,
     required this.currencyFormat,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final allPaid = activeCount > 0 && paidCount == activeCount;
+    final progress = activeCount > 0 ? paidCount / activeCount : 0.0;
 
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'This Month',
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Bills This Month',
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: allPaid
+                        ? const Color(0xFF2E7D32).withOpacity(0.12)
+                        : theme.colorScheme.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    '$paidCount / $activeCount paid',
+                    style: theme.textTheme.labelMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      color: allPaid
+                          ? const Color(0xFF2E7D32)
+                          : theme.colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 12),
             Text(
-              '₹${currencyFormat.format(plannedTotal)} planned',
-              style: theme.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.w800,
-              ),
+              '₹${currencyFormat.format(plannedTotal)}',
+              style: theme.textTheme.headlineSmall
+                  ?.copyWith(fontWeight: FontWeight.w800),
             ),
-            const SizedBox(height: 8),
             Text(
-              '$activeCount active payments • $matchedCount matched this month',
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurfaceVariant,
-              ),
+              '$activeCount active bill${activeCount == 1 ? '' : 's'} planned',
+              style: theme.textTheme.bodySmall
+                  ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
             ),
+            if (activeCount > 0) ...[
+              const SizedBox(height: 14),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: LinearProgressIndicator(
+                  value: progress,
+                  minHeight: 6,
+                  backgroundColor: theme.colorScheme.surfaceContainerHighest,
+                  valueColor: AlwaysStoppedAnimation(
+                    allPaid
+                        ? const Color(0xFF2E7D32)
+                        : theme.colorScheme.primary,
+                  ),
+                ),
+              ),
+            ],
           ],
         ),
       ),
@@ -317,15 +593,17 @@ class _PlannerSummaryCard extends StatelessWidget {
   }
 }
 
+// ───────────────────────────────────────────────────────────────────────────
+// Empty state
+// ───────────────────────────────────────────────────────────────────────────
+
 class _EmptyPlannerState extends StatelessWidget {
   final VoidCallback onAdd;
-
   const _EmptyPlannerState({required this.onAdd});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 24),
@@ -339,17 +617,15 @@ class _EmptyPlannerState extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               'No planned payments yet',
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+              style:
+                  theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 8),
             Text(
-              'Bill reminders and scheduled debit SMS will appear here after sync. You can also add one manually.',
+              'Bill reminders detected from SMS will appear here after sync. You can also add one manually.',
               textAlign: TextAlign.center,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurfaceVariant,
-              ),
+                  color: theme.colorScheme.onSurfaceVariant),
             ),
             const SizedBox(height: 16),
             FilledButton.icon(
@@ -364,165 +640,220 @@ class _EmptyPlannerState extends StatelessWidget {
   }
 }
 
+// ───────────────────────────────────────────────────────────────────────────
+// Payment tile — receives pre-computed _TileData, never recomputes matching.
+// All actions live in the ⋮ menu; no inline action buttons keep partial-
+// payment scenarios from cluttering the tile face.
+// ───────────────────────────────────────────────────────────────────────────
+
 class _PaymentPlannerTile extends StatelessWidget {
-  final RecurringPayment payment;
-  final Transaction? matchedTransaction;
+  final _TileData data;
   final NumberFormat currencyFormat;
   final VoidCallback onEdit;
   final VoidCallback onDelete;
   final VoidCallback onToggleActive;
+  final VoidCallback onTogglePaid;
 
   const _PaymentPlannerTile({
-    required this.payment,
-    required this.matchedTransaction,
+    required this.data,
     required this.currencyFormat,
     required this.onEdit,
     required this.onDelete,
     required this.onToggleActive,
+    required this.onTogglePaid,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final chips = <Widget>[
-      _InfoChip(label: payment.category),
-      _InfoChip(label: 'Due ${payment.dueDayOfMonth}'),
-      _InfoChip(label: payment.isFromSms ? 'SMS' : 'Manual'),
-      _InfoChip(label: _frequencyLabel(payment.frequency)),
-      if (payment.accountLast4 != null)
-        _InfoChip(label: 'xx${payment.accountLast4}'),
-      if (matchedTransaction != null)
-        const _InfoChip(label: 'Matched this month', positive: true),
-      if (payment.confidence > 0)
-        _InfoChip(label: 'Conf ${(payment.confidence * 100).round()}%'),
+    final p = data.payment;
+
+    // Determine status badge
+    final String statusLabel;
+    final Color statusColor;
+
+    if (!p.isActive) {
+      statusLabel = 'Paused';
+      statusColor = theme.colorScheme.onSurfaceVariant;
+    } else if (data.isPaid) {
+      statusLabel = '✓ Paid';
+      statusColor = const Color(0xFF2E7D32);
+    } else {
+      final d = data.effectiveDaysUntil;
+      if (d < 0) {
+        statusLabel = 'Overdue';
+        statusColor = const Color(0xFFC62828);
+      } else if (d == 0) {
+        statusLabel = 'Due today';
+        statusColor = const Color(0xFFE65100);
+      } else if (d <= 3) {
+        statusLabel = 'Due in ${d}d';
+        statusColor = const Color(0xFFE65100);
+      } else {
+        statusLabel = 'Due ${_ordinal(p.dueDayOfMonth)}';
+        statusColor = theme.colorScheme.onSurfaceVariant;
+      }
+    }
+
+    final IconData icon = switch (p.category) {
+      'Credit Card' => Icons.credit_card_outlined,
+      'Utilities' => Icons.bolt_outlined,
+      'EMI/Loan' => Icons.account_balance_outlined,
+      'Insurance' => Icons.shield_outlined,
+      'Subscription' => Icons.subscriptions_outlined,
+      _ => Icons.receipt_outlined,
+    };
+
+    // Subtitle: category · frequency [· Unverified warning]
+    final subtitleParts = [
+      p.category,
+      _frequencyShort(p.frequency),
     ];
+    if (!data.isVerified) subtitleParts.add('⚠ Unverified');
 
     return Card(
-      margin: const EdgeInsets.only(bottom: 10),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        payment.name,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        '₹${currencyFormat.format(payment.amount)}',
-                        style: theme.textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                    ],
-                  ),
+      margin: const EdgeInsets.only(bottom: 8),
+      elevation: 1,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(16),
+        onTap: onEdit,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+          child: Row(
+            children: [
+              // Category icon container
+              Container(
+                width: 42,
+                height: 42,
+                decoration: BoxDecoration(
+                  color: statusColor.withOpacity(0.10),
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                PopupMenuButton<String>(
-                  onSelected: (value) {
-                    switch (value) {
-                      case 'edit':
-                        onEdit();
-                        break;
-                      case 'toggle':
-                        onToggleActive();
-                        break;
-                      case 'delete':
-                        onDelete();
-                        break;
-                    }
-                  },
-                  itemBuilder: (context) => [
-                    const PopupMenuItem(value: 'edit', child: Text('Edit')),
-                    PopupMenuItem(
-                      value: 'toggle',
-                      child: Text(payment.isActive ? 'Pause' : 'Activate'),
-                    ),
-                    const PopupMenuItem(value: 'delete', child: Text('Delete')),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 12),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: chips,
-            ),
-            if (payment.sourceSnippet.isNotEmpty) ...[
-              const SizedBox(height: 12),
-              Text(
-                payment.sourceSnippet,
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.bodySmall?.copyWith(
-                  color: theme.colorScheme.onSurfaceVariant,
+                child: Icon(
+                  icon,
+                  color: statusColor.withOpacity(data.isPaid ? 0.85 : 0.65),
+                  size: 20,
                 ),
               ),
+              const SizedBox(width: 12),
+              // Name + subtitle
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      p.name,
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        decoration: !p.isActive ? TextDecoration.lineThrough : null,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitleParts.join(' · '),
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: !data.isVerified
+                            ? const Color(0xFFE65100)
+                            : theme.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              // Amount + status badge
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    '₹${currencyFormat.format(p.amount)}',
+                    style: theme.textTheme.titleSmall
+                        ?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                  const SizedBox(height: 4),
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+                    decoration: BoxDecoration(
+                      color: statusColor.withOpacity(0.10),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Text(
+                      statusLabel,
+                      style: theme.textTheme.labelSmall?.copyWith(
+                        color: statusColor,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              // ⋮ menu — all actions live here, no inline buttons
+              PopupMenuButton<String>(
+                icon: Icon(
+                  Icons.more_vert,
+                  color: theme.colorScheme.onSurfaceVariant,
+                  size: 18,
+                ),
+                onSelected: (value) {
+                  switch (value) {
+                    case 'edit':
+                      onEdit();
+                    case 'paid':
+                      onTogglePaid();
+                    case 'toggle':
+                      onToggleActive();
+                    case 'delete':
+                      onDelete();
+                  }
+                },
+                itemBuilder: (context) => [
+                  const PopupMenuItem(value: 'edit', child: Text('Edit')),
+                  PopupMenuItem(
+                    value: 'paid',
+                    child: Text(data.isPaid ? 'Mark as Unpaid' : 'Mark as Paid'),
+                  ),
+                  PopupMenuItem(
+                    value: 'toggle',
+                    child: Text(p.isActive ? 'Pause' : 'Activate'),
+                  ),
+                  const PopupMenuItem(
+                    value: 'delete',
+                    child: Text('Delete'),
+                  ),
+                ],
+              ),
             ],
-          ],
+          ),
         ),
       ),
     );
   }
 
-  static String _frequencyLabel(PaymentFrequency frequency) {
-    switch (frequency) {
-      case PaymentFrequency.weekly:
-        return 'Weekly';
-      case PaymentFrequency.quarterly:
-        return 'Quarterly';
-      case PaymentFrequency.yearly:
-        return 'Yearly';
-      case PaymentFrequency.oneTime:
-        return 'One time';
-      case PaymentFrequency.monthly:
-        return 'Monthly';
-    }
+  static String _ordinal(int day) {
+    if (day >= 11 && day <= 13) return '${day}th';
+    return switch (day % 10) {
+      1 => '${day}st',
+      2 => '${day}nd',
+      3 => '${day}rd',
+      _ => '${day}th',
+    };
   }
+
+  static String _frequencyShort(PaymentFrequency f) => switch (f) {
+        PaymentFrequency.weekly => 'Weekly',
+        PaymentFrequency.quarterly => 'Quarterly',
+        PaymentFrequency.yearly => 'Yearly',
+        PaymentFrequency.oneTime => 'Once',
+        PaymentFrequency.monthly => 'Monthly',
+      };
 }
 
-class _InfoChip extends StatelessWidget {
-  final String label;
-  final bool positive;
-
-  const _InfoChip({required this.label, this.positive = false});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final Color background = positive
-        ? theme.colorScheme.primary.withOpacity(0.12)
-        : theme.colorScheme.surfaceContainerHighest;
-    final Color foreground = positive
-        ? theme.colorScheme.primary
-        : theme.colorScheme.onSurfaceVariant;
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-      decoration: BoxDecoration(
-        color: background,
-        borderRadius: BorderRadius.circular(999),
-      ),
-      child: Text(
-        label,
-        style: theme.textTheme.labelMedium?.copyWith(
-          color: foreground,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-    );
-  }
-}
+// ───────────────────────────────────────────────────────────────────────────
+// Add / Edit form sheet
+// ───────────────────────────────────────────────────────────────────────────
 
 class _PaymentFormSheet extends StatefulWidget {
   final RecurringPayment? existing;
@@ -548,16 +879,14 @@ class _PaymentFormSheetState extends State<_PaymentFormSheet> {
   @override
   void initState() {
     super.initState();
-    final existing = widget.existing;
-    _nameController = TextEditingController(text: existing?.name ?? '');
+    final e = widget.existing;
+    _nameController = TextEditingController(text: e?.name ?? '');
     _amountController = TextEditingController(
-      text: existing == null ? '' : existing.amount.toStringAsFixed(2),
-    );
-    _dueDayController = TextEditingController(
-      text: (existing?.dueDayOfMonth ?? 1).toString(),
-    );
-    _category = existing?.category ?? widget.categoryOptions.first;
-    _frequency = existing?.frequency ?? PaymentFrequency.monthly;
+        text: e == null ? '' : e.amount.toStringAsFixed(2));
+    _dueDayController =
+        TextEditingController(text: (e?.dueDayOfMonth ?? 1).toString());
+    _category = e?.category ?? widget.categoryOptions.first;
+    _frequency = e?.frequency ?? PaymentFrequency.monthly;
   }
 
   @override
@@ -570,43 +899,43 @@ class _PaymentFormSheetState extends State<_PaymentFormSheet> {
 
   void _submit() {
     if (!_formKey.currentState!.validate()) return;
-    final existing = widget.existing;
+    final e = widget.existing;
     final dueDay = int.parse(_dueDayController.text.trim()).clamp(1, 28);
-    final normalizedKey = _normalizedKey(
-      _nameController.text.trim(),
-      _category,
-      existing?.accountLast4,
-    );
+    final raw =
+        '${_category}_${_nameController.text.trim()}_${e?.accountLast4 ?? ''}'
+            .toLowerCase()
+            .replaceAll(RegExp(r'[^a-z0-9]+'), '_')
+            .replaceAll(RegExp(r'^_+|_+$'), '');
     final now = DateTime.now().millisecondsSinceEpoch;
 
     Navigator.pop(
       context,
       RecurringPayment(
-        id: existing?.id,
+        id: e?.id,
         name: _nameController.text.trim(),
-        normalizedKey: normalizedKey,
+        normalizedKey: raw,
         amount: double.parse(_amountController.text.trim()),
         category: _category,
         dueDayOfMonth: dueDay,
         frequency: _frequency,
-        isActive: existing?.isActive ?? true,
-        isFromSms: existing?.isFromSms ?? false,
-        sourceSender: existing?.sourceSender ?? '',
-        sourceSnippet: existing?.sourceSnippet ?? '',
-        accountLast4: existing?.accountLast4,
-        confidence: existing?.confidence ?? 0,
-        createdAt: existing?.createdAt ?? now,
-        lastSeenAt: existing?.lastSeenAt ?? now,
+        isActive: e?.isActive ?? true,
+        isFromSms: e?.isFromSms ?? false,
+        sourceSender: e?.sourceSender ?? '',
+        sourceSnippet: e?.sourceSnippet ?? '',
+        accountLast4: e?.accountLast4,
+        confidence: e?.confidence ?? 0,
+        createdAt: e?.createdAt ?? now,
+        lastSeenAt: e?.lastSeenAt ?? now,
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final viewInsets = MediaQuery.of(context).viewInsets;
+    final insets = MediaQuery.of(context).viewInsets;
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(16, 16, 16, viewInsets.bottom + 16),
+      padding: EdgeInsets.fromLTRB(16, 16, 16, insets.bottom + 16),
       child: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -616,19 +945,18 @@ class _PaymentFormSheetState extends State<_PaymentFormSheet> {
             children: [
               Text(
                 widget.existing == null ? 'Add Payment' : 'Edit Payment',
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.copyWith(fontWeight: FontWeight.w700),
               ),
               const SizedBox(height: 16),
               TextFormField(
                 controller: _nameController,
                 decoration: const InputDecoration(
-                  labelText: 'Name',
-                  border: OutlineInputBorder(),
-                ),
-                validator: (value) =>
-                    (value == null || value.trim().isEmpty) ? 'Enter a name' : null,
+                    labelText: 'Name', border: OutlineInputBorder()),
+                validator: (v) =>
+                    (v == null || v.trim().isEmpty) ? 'Enter a name' : null,
               ),
               const SizedBox(height: 12),
               TextFormField(
@@ -636,15 +964,10 @@ class _PaymentFormSheetState extends State<_PaymentFormSheet> {
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
                 decoration: const InputDecoration(
-                  labelText: 'Amount',
-                  border: OutlineInputBorder(),
-                ),
-                validator: (value) {
-                  final amount = double.tryParse(value?.trim() ?? '');
-                  if (amount == null || amount <= 0) {
-                    return 'Enter a valid amount';
-                  }
-                  return null;
+                    labelText: 'Amount', border: OutlineInputBorder()),
+                validator: (v) {
+                  final a = double.tryParse(v?.trim() ?? '');
+                  return (a == null || a <= 0) ? 'Enter a valid amount' : null;
                 },
               ),
               const SizedBox(height: 12),
@@ -654,19 +977,13 @@ class _PaymentFormSheetState extends State<_PaymentFormSheet> {
                     child: DropdownButtonFormField<String>(
                       value: _category,
                       decoration: const InputDecoration(
-                        labelText: 'Category',
-                        border: OutlineInputBorder(),
-                      ),
+                          labelText: 'Category', border: OutlineInputBorder()),
                       items: widget.categoryOptions
-                          .map(
-                            (category) => DropdownMenuItem(
-                              value: category,
-                              child: Text(category),
-                            ),
-                          )
+                          .map((c) =>
+                              DropdownMenuItem(value: c, child: Text(c)))
                           .toList(),
-                      onChanged: (value) {
-                        if (value != null) setState(() => _category = value);
+                      onChanged: (v) {
+                        if (v != null) setState(() => _category = v);
                       },
                     ),
                   ),
@@ -676,15 +993,11 @@ class _PaymentFormSheetState extends State<_PaymentFormSheet> {
                       controller: _dueDayController,
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
-                        labelText: 'Due day',
-                        border: OutlineInputBorder(),
-                      ),
-                      validator: (value) {
-                        final day = int.tryParse(value?.trim() ?? '');
-                        if (day == null || day < 1 || day > 28) {
-                          return '1-28';
-                        }
-                        return null;
+                          labelText: 'Due day (1–28)',
+                          border: OutlineInputBorder()),
+                      validator: (v) {
+                        final d = int.tryParse(v?.trim() ?? '');
+                        return (d == null || d < 1 || d > 28) ? '1–28' : null;
                       },
                     ),
                   ),
@@ -694,19 +1007,13 @@ class _PaymentFormSheetState extends State<_PaymentFormSheet> {
               DropdownButtonFormField<PaymentFrequency>(
                 value: _frequency,
                 decoration: const InputDecoration(
-                  labelText: 'Frequency',
-                  border: OutlineInputBorder(),
-                ),
+                    labelText: 'Frequency', border: OutlineInputBorder()),
                 items: PaymentFrequency.values
-                    .map(
-                      (frequency) => DropdownMenuItem(
-                        value: frequency,
-                        child: Text(_frequencyText(frequency)),
-                      ),
-                    )
+                    .map((f) => DropdownMenuItem(
+                        value: f, child: Text(_freqLabel(f))))
                     .toList(),
-                onChanged: (value) {
-                  if (value != null) setState(() => _frequency = value);
+                onChanged: (v) {
+                  if (v != null) setState(() => _frequency = v);
                 },
               ),
               const SizedBox(height: 16),
@@ -714,7 +1021,8 @@ class _PaymentFormSheetState extends State<_PaymentFormSheet> {
                 width: double.infinity,
                 child: FilledButton(
                   onPressed: _submit,
-                  child: Text(widget.existing == null ? 'Add Payment' : 'Save'),
+                  child: Text(
+                      widget.existing == null ? 'Add Payment' : 'Save'),
                 ),
               ),
             ],
@@ -724,26 +1032,11 @@ class _PaymentFormSheetState extends State<_PaymentFormSheet> {
     );
   }
 
-  static String _frequencyText(PaymentFrequency frequency) {
-    switch (frequency) {
-      case PaymentFrequency.monthly:
-        return 'Monthly';
-      case PaymentFrequency.quarterly:
-        return 'Quarterly';
-      case PaymentFrequency.yearly:
-        return 'Yearly';
-      case PaymentFrequency.weekly:
-        return 'Weekly';
-      case PaymentFrequency.oneTime:
-        return 'One time';
-    }
-  }
-
-  static String _normalizedKey(
-      String name, String category, String? accountLast4) {
-    final raw = '${category}_${name}_${accountLast4 ?? ''}'.toLowerCase();
-    return raw
-        .replaceAll(RegExp(r'[^a-z0-9]+'), '_')
-        .replaceAll(RegExp(r'^_+|_+$'), '');
-  }
+  static String _freqLabel(PaymentFrequency f) => switch (f) {
+        PaymentFrequency.monthly => 'Monthly',
+        PaymentFrequency.quarterly => 'Quarterly',
+        PaymentFrequency.yearly => 'Yearly',
+        PaymentFrequency.weekly => 'Weekly',
+        PaymentFrequency.oneTime => 'One time',
+      };
 }

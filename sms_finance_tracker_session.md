@@ -13,6 +13,8 @@ Flutter (Android), SQLite (`sqflite`), `flutter_sms_inbox`, `fl_chart`, `permiss
 ---
 
 ## DB Version History
+Current working schema version in this codebase: **41**
+
 | Version | Change |
 |---|---|
 | 1 | `transactions` table |
@@ -38,6 +40,8 @@ Flutter (Android), SQLite (`sqflite`), `flutter_sms_inbox`, `fl_chart`, `permiss
 | 21 | `subscriptions` table (plan, started_at, expires_at, source) |
 | 22 | `manual_balance REAL`, `manual_balance_at INTEGER` on `account_type_overrides` |
 | 23 | `video_articles` table (YouTube video feed cache) |
+| 40 | Asset/investment tracking on `transactions`: `recordKind TEXT NOT NULL DEFAULT 'cashflow'`, `assetType TEXT`, `assetId TEXT`, `assetBalance REAL`, `investmentDelta REAL` |
+| 41 | `recurring_payments` table for SMS-derived payment planner entries: `normalizedKey`, `amount`, `category`, `dueDay`, `frequency`, `isFromSms`, `sourceSender`, `sourceSnippet`, `accountLast4`, `confidence`, `lastSeenAt` |
 
 ---
 
@@ -105,6 +109,34 @@ Reason: UPI merchant VPAs like `olacabs@axisbank` would match bank-handle keywor
 enum TransactionType { expense, income, transfer }
 ```
 - `transfer` = intra-account self-transfer (excluded from income/expense totals AND from `getMonthlyTotals()`)
+
+### DB v40 Asset/Investment Migration
+- New `transactions` columns:
+  - `recordKind`: distinguishes `cashflow`, `assetSnapshot`, and `investmentEvent`
+  - `assetType`: normalized asset bucket such as `epf` or `fixedDeposit`
+  - `assetId`: stable asset identifier (for example EPF account id or FD suffix)
+  - `assetBalance`: latest known balance/value snapshot for that asset
+  - `investmentDelta`: principal movement for investment lifecycle events such as FD liquidation
+- Asset/investment SMS rows are stored as `TransactionType.transfer`, so they stay out of income/expense totals while still remaining queryable.
+- Home/account calculations read the latest persisted asset snapshot per `assetType + assetId` and use those rows for `Tracked Assets` and `Investments`.
+- The dashboard still does **not** compute a single combined net-worth figure. The existing summary card remains `Net Cash Flow`; asset balances are surfaced separately.
+
+### DB v41 Payment Planner Migration
+- Added `recurring_payments` so bill reminders and scheduled-debit SMS can be stored separately from `transactions`.
+- Planner rows are keyed by `normalizedKey` and keep `amount`, `category`, `dueDay`, `frequency`, `accountLast4`, `sourceSender`, `sourceSnippet`, `confidence`, and `lastSeenAt`.
+- SMS-derived planner entries use `isFromSms = 1` and are upserted on sync; stale SMS-derived rows can be deactivated when they stop appearing in recent scans.
+- Reminder SMS no longer become false cashflow expenses. They are either ignored or routed through `SmsParser.parsePlannedPayment()`.
+
+### Payment Planner Checkpoint
+- Live planner parser flow:
+  - `SmsParser.parse()` rejects bill-due and scheduled-debit reminder SMS as cashflow.
+  - `SmsParser.parsePlannedPayment()` extracts planner entries from those SMS bodies.
+  - `SmsService.syncTransactions()` upserts those entries into `recurring_payments`.
+- Live planner UI:
+  - `lib/screens/payment_planner_screen.dart` is now present in the working tree and reachable from the hamburger drawer in `lib/screens/home_screen.dart`.
+  - The screen lists active and paused planned payments, supports manual add/edit/delete/pause, and shows whether an entry was matched to a current-month expense transaction.
+- Current limitation:
+  - Manual paid-status override persistence from older app versions has not been restored in this checkout yet; planner paid detection is currently heuristic and derived from current-month expense matching.
 
 ---
 

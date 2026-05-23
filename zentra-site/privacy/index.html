@@ -3,26 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — Zentra</title>
+  <title>Privacy Policy — HYT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --brand:    #6C63FF;
-      --brand-dk: #4B44CC;
-      --bg:       #0D0D1F;
-      --surface:  #14142B;
-      --card:     #1C1C3A;
-      --text:     #E8E8F0;
-      --muted:    #9090B0;
-      --border:   #2A2A4A;
-      --gold:     #FFD700;
+      --bg:       #0D0D0F;
+      --bg-deep:  #0A0A0C;
+      --surface:  #131315;
+      --card:     #1A1A1D;
+      --card-2:   #202024;
+      --text:     #F0F0EC;
+      --muted:    #8A8A90;
+      --border:   #2A2A2E;
+      --brand:    #C9A22A;
+      --brand-hi: #E2C05E;
+      --brand-dk: #9A7515;
+      --teal:     #6ECFDB;
+      --teal-hi:  #A8E8F4;
+      --danger:   #EF5350;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-                   'Helvetica Neue', Arial, sans-serif;
-      background: var(--bg);
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(201,162,42,0.16) 0%, transparent 28%),
+        radial-gradient(circle at 85% 10%, rgba(110,207,219,0.08) 0%, transparent 24%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
       color: var(--text);
       line-height: 1.75;
       font-size: 16px;
@@ -42,27 +52,42 @@
       width: 44px;
       height: 44px;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--brand), var(--gold));
+      background: #0D0D1F;
+      border: 1.2px solid rgba(201,162,42,0.32);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
-      font-weight: 900;
-      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      background-image:
+        linear-gradient(#0D0D1F, #0D0D1F),
+        linear-gradient(90deg, #8B6914 0%, #B48A1E 20%, #D4AF37 42%, #F1D77A 50%, #D4AF37 58%, #B48A1E 80%, #8B6914 100%);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      color: var(--brand-hi);
       flex-shrink: 0;
+      box-shadow: inset 0 1px 0 rgba(241,215,122,0.06);
     }
 
     .brand-name {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--gold);
-      letter-spacing: -0.3px;
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--brand-hi);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      line-height: 1;
     }
 
     .brand-sub {
-      font-size: 13px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       color: var(--muted);
-      margin-top: 1px;
+      margin-top: 4px;
     }
 
     /* ── Content wrapper ── */
@@ -91,7 +116,7 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-left: 4px solid var(--brand);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 18px 22px;
       margin-bottom: 40px;
       font-size: 15px;
@@ -115,7 +140,7 @@
     h3 {
       font-size: 16px;
       font-weight: 700;
-      color: var(--brand);
+      color: var(--brand-hi);
       margin: 18px 0 8px;
     }
 
@@ -143,7 +168,7 @@
     }
 
     .data-table th {
-      background: var(--card);
+      background: var(--card-2);
       color: var(--muted);
       font-weight: 600;
       text-align: left;
@@ -174,10 +199,10 @@
       letter-spacing: 0.3px;
     }
 
-    .pill-green  { background: rgba(0,200,100,0.15); color: #00C864; }
-    .pill-blue   { background: rgba(108,99,255,0.18); color: #9B95FF; }
-    .pill-yellow { background: rgba(255,215,0,0.15); color: #FFD700; }
-    .pill-red    { background: rgba(255,80,80,0.15); color: #FF6B6B; }
+    .pill-green  { background: rgba(102,187,106,0.16); color: #8EE08F; }
+    .pill-blue   { background: rgba(110,207,219,0.16); color: var(--teal-hi); }
+    .pill-yellow { background: rgba(201,162,42,0.16); color: var(--brand-hi); }
+    .pill-red    { background: rgba(239,83,80,0.15); color: #FF9090; }
 
     /* ── Highlight box ── */
     .highlight {
@@ -190,7 +215,7 @@
     }
 
     .highlight strong {
-      color: var(--gold);
+      color: var(--brand-hi);
     }
 
     /* ── Contact card ── */
@@ -205,7 +230,7 @@
     }
 
     .contact-card a {
-      color: var(--brand);
+      color: var(--brand-hi);
       text-decoration: none;
       font-weight: 500;
     }
@@ -233,10 +258,10 @@
 
 <!-- ── Header ── -->
 <header>
-  <div class="logo-ring">Z</div>
+  <div class="logo-ring">H</div>
   <div>
-    <div class="brand-name">Zentra</div>
-    <div class="brand-sub">Smart Finance Tracker</div>
+    <div class="brand-name">HYT</div>
+    <div class="brand-sub">Finance Tracker</div>
   </div>
 </header>
 
@@ -251,7 +276,7 @@
   </p>
 
   <div class="intro-card">
-    Zentra ("we", "our", or "us") is a personal finance tracker that reads bank
+    Zantra ("we", "our", or "us") is a personal finance tracker that reads bank
     SMS messages on your device to help you understand your spending — without
     any manual entry. This policy explains exactly what data we collect, how we
     use it, and what we never do with it. We believe privacy should be simple
@@ -264,7 +289,7 @@
 
     <h3>1.1 SMS Messages (on-device only)</h3>
     <p>
-      Zentra requests the <strong>READ_SMS</strong> permission to scan your
+      Zantra requests the <strong>READ_SMS</strong> permission to scan your
       device inbox for bank and payment messages. This is the core function of
       the app.
     </p>
@@ -308,7 +333,7 @@
     <p>
       If you use the Backup &amp; Restore feature, an encrypted export of your
       local transaction database is saved to your personal <strong>Google
-      Drive</strong> account. This is your own Drive storage; Zentra does not
+      Drive</strong> account. This is your own Drive storage; Zantra does not
       have access to any other files in your Drive.
     </p>
 
@@ -324,7 +349,7 @@
 
     <h3>1.7 AI Advisor (Gemini)</h3>
     <p>
-      The Zentra Advisor feature uses <strong>Google Gemini</strong> (via
+      The Zantra Advisor feature uses <strong>Google Gemini</strong> (via
       Firebase AI) to answer your finance questions. The AI receives summarised
       context — your monthly income/expense totals and top spending categories
       (no raw SMS, no account numbers). Chat history is stored only on your
@@ -333,7 +358,7 @@
 
     <h3>1.8 Subscription & Payment</h3>
     <p>
-      Zentra Pro subscriptions are processed by <strong>Razorpay</strong>. We
+      Zantra Pro subscriptions are processed by <strong>Razorpay</strong>. We
       do not store your card or UPI credentials. Razorpay provides us only with
       a payment confirmation and order ID. Razorpay's own privacy policy applies
       to payment processing.
@@ -344,7 +369,7 @@
       Free users may see ads served by <strong>Google AdMob</strong>. AdMob may
       use your device's advertising ID to show relevant finance-related ads.
       You can reset or opt out of personalised ads in your Android settings
-      (<em>Settings → Privacy → Ads</em>). Zentra Pro subscribers have ads
+      (<em>Settings → Privacy → Ads</em>). Zantra Pro subscribers have ads
       turned off by default; all users can control ad types from
       <em>Menu → Ad Preferences</em>.
     </p>
@@ -435,7 +460,7 @@
       <li>To parse bank SMS and display your transactions, spending summaries, and trends.</li>
       <li>To authenticate you securely via Google Sign-In.</li>
       <li>To provide the AI Advisor with enough context to give personalised finance tips.</li>
-      <li>To process and verify your Zentra Pro subscription.</li>
+      <li>To process and verify your Zantra Pro subscription.</li>
       <li>To improve SMS parsing rules based on voluntarily submitted issue reports.</li>
       <li>To measure anonymous feature usage and fix bugs (Firebase Analytics).</li>
       <li>To show finance-related ads to free users (AdMob), subject to your preferences.</li>
@@ -461,7 +486,7 @@
   <!-- 5. Third-party services -->
   <section>
     <h2>5. Third-Party Services</h2>
-    <p>Zentra uses the following third-party services, each governed by their own privacy policies:</p>
+    <p>Zantra uses the following third-party services, each governed by their own privacy policies:</p>
     <table class="data-table">
       <thead>
         <tr>
@@ -556,7 +581,7 @@
   <section>
     <h2>7. Children's Privacy</h2>
     <p>
-      Zentra is not directed at children under the age of 13. We do not
+      Zantra is not directed at children under the age of 13. We do not
       knowingly collect personal information from children. If you believe a
       child has provided us with personal data, please contact us and we will
       delete it promptly.
@@ -578,7 +603,7 @@
       </li>
       <li>
         <strong>Revoke SMS permission</strong> — Go to
-        <em>Android Settings → Apps → Zentra → Permissions</em> to revoke SMS
+        <em>Android Settings → Apps → Zantra → Permissions</em> to revoke SMS
         access at any time. The app continues to work with existing data.
       </li>
       <li>
@@ -629,7 +654,7 @@
       We may update this policy as the app evolves. When we make material
       changes, we will update the "Last updated" date at the top of this page
       and, where appropriate, notify you via an in-app message. Continued use
-      of Zentra after changes are posted constitutes acceptance of the updated
+      of Zantra after changes are posted constitutes acceptance of the updated
       policy.
     </p>
   </section>
@@ -639,8 +664,8 @@
     <h2>11. Contact Us</h2>
     <p>For any privacy-related questions, requests, or concerns:</p>
     <div class="contact-card">
-      <div><strong>App:</strong> Zentra — Smart Finance Tracker</div>
-      <div><strong>Developer:</strong> Zentra AI</div>
+      <div><strong>App:</strong> Zantra — Smart Finance Tracker</div>
+      <div><strong>Developer:</strong> Zantra AI</div>
       <div>
         <strong>Email:</strong>
         <a href="mailto:privacy@zentraai.in">privacy@zentraai.in</a>
@@ -662,7 +687,7 @@
 
 <!-- ── Footer ── -->
 <footer>
-  &copy; 2026 Zentra AI &nbsp;·&nbsp;
+  &copy; 2026 Zantra AI &nbsp;·&nbsp;
   <a href="https://zentraai.in/privacy" style="color:var(--brand);">Privacy Policy</a>
   &nbsp;·&nbsp;
   <a href="mailto:privacy@zentraai.in" style="color:var(--brand);">Contact</a>

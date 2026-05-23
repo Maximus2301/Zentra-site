@@ -34,7 +34,7 @@ class SmsParser {
   );
 
   static final RegExp _debitRegex = RegExp(
-    r'\b(?:debited|deducted|spent|paid|payment|used for|sent|purchase|withdrawn|charged|transfer out|dr)\b',
+    r'\b(?:debited|deducted|spent|paid|payment|used for|sent|purchase|withdrawn|withdrawal|charged|transfer out|dr)\b',
     caseSensitive: false,
   );
 
@@ -55,6 +55,16 @@ class SmsParser {
 
   static final RegExp _maskedSuffixRegex = RegExp(
     r'\b[xX*]{2,}(\d{4})\b',
+    caseSensitive: false,
+  );
+
+  static final RegExp _selfTransferRegex = RegExp(
+    r'\b(?:own\s+a(?:ccount|\/c)|self\s+(?:a(?:ccount|\/c)|transfer)|'
+    r'between\s+(?:your\s+)?(?:own\s+)?accounts?|'
+    r'to\s+(?:your\s+)?own\s+a(?:\/c|ccount)|'
+    r'to\s+self\b|fund\s+transfer\s+to\s+self|'
+    r'sweep\s+(?:in|out)|intrabank\s+transfer|'
+    r'to\s+your\s+(?:savings|current)\s+a(?:\/c|ccount))\b',
     caseSensitive: false,
   );
 
@@ -132,15 +142,23 @@ class SmsParser {
   );
 
   static final RegExp _paymentConfirmedRegex = RegExp(
-    r'\b(?:debited|deducted|withdrawn|paid\s+successfully|payment\s+successful|'
+    r'\b(?:debited|deducted|withdrawn|withdrawal|paid\s+successfully|payment\s+successful|'
     r'payment\s+done|transaction\s+successful|txn\s+successful|successfully\s+paid|'
     r'payment\s+received|received\s+towards|received\s+on\s+your|payment\s+processed|'
     r'upi\s+ref|txn\s+id|txn\s+no|ref(?:erence)?\s+no|transaction\s+id)\b',
     caseSensitive: false,
   );
 
+  // "Payment of INR 5424.02 for Axis Bank Credit Card ... is due" — captures the
+  // total bill amount before any "minimum amount due" phrase can interfere.
+  static final RegExp _paymentIsDueRegex = RegExp(
+    r'\bpayment\s+of\s+(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)\b',
+    caseSensitive: false,
+  );
+
+  // (?<!minimum\s) blocks "minimum amount due" from matching the bare alternative.
   static final RegExp _totalAmountDueRegex = RegExp(
-    r'\b(?:total\s+amount\s+due|outstanding\s+amount\s+due|amount\s+due|bill\s+amount)\b'
+    r'\b(?:total\s+amount\s+due|outstanding\s+amount\s+due|(?<!minimum\s)amount\s+due|bill\s+amount)\b'
     r'.{0,24}?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)',
     caseSensitive: false,
   );
@@ -183,6 +201,16 @@ class SmsParser {
   ];
 
   static const Map<String, String> _sourceMap = {
+    // Bank names first — must resolve before generic payment-method labels so
+    // "Axis Bank Credit Card" → "Axis Bank", not "Credit Card".
+    'hdfc': 'HDFC Bank',
+    'sbi': 'SBI',
+    'icici': 'ICICI Bank',
+    'axis': 'Axis Bank',
+    'kotak': 'Kotak Bank',
+    'yes bank': 'Yes Bank',
+    'pnb': 'PNB',
+    // Payment apps / methods
     'google pay': 'Google Pay',
     'gpay': 'Google Pay',
     'phonepe': 'PhonePe',
@@ -196,13 +224,6 @@ class SmsParser {
     'rtgs': 'RTGS',
     'credit card': 'Credit Card',
     'debit card': 'Debit Card',
-    'hdfc': 'HDFC Bank',
-    'sbi': 'SBI',
-    'icici': 'ICICI Bank',
-    'axis': 'Axis Bank',
-    'kotak': 'Kotak Bank',
-    'yes bank': 'Yes Bank',
-    'pnb': 'PNB',
   };
 
   static const Map<String, String> _plannedBillerMap = {
@@ -266,6 +287,35 @@ class SmsParser {
 
     final amount = _parseAmount(amountMatch.group(1)!);
     if (amount == null || amount <= 0) return null;
+
+    // Self-transfer between own accounts → mark as transfer, not expense/income
+    if (_selfTransferRegex.hasMatch(body)) {
+      final accountLast4st = _extractAccountLast4(body);
+      return Transaction(
+        smsAddress: sender,
+        amount: amount,
+        type: TransactionType.transfer,
+        category: 'Self Transfer',
+        subcategory: 'Between Accounts',
+        merchant: _extractSource('$sender $body').isNotEmpty
+            ? _extractSource('$sender $body')
+            : sender,
+        source: _extractSource('$sender $body'),
+        rawSms: body,
+        date: date,
+        accountLast4: accountLast4st,
+      );
+    }
+
+    // CC payment confirmation from the credit card company side — skip it
+    // BEFORE the debit/credit determination. These SMSes often start with the
+    // word "Payment" which wins position over "received", making isCredit=false
+    // and defeating any isCredit-gated check. The content test alone is
+    // sufficient and safe: the bank-side debit SMS never says "received towards
+    // your credit card".
+    if (_isCcPaymentReceivedSms(body)) {
+      return null;
+    }
 
     final debitMatch = _debitRegex.firstMatch(body);
     final creditMatch = _creditRegex.firstMatch(body);
@@ -467,6 +517,7 @@ class SmsParser {
 
   static double? _extractPlannedPaymentAmount(String body) {
     final matchers = [
+      _paymentIsDueRegex,
       _totalAmountDueRegex,
       _billAmountRegex,
       _minimumAmountDueRegex,
@@ -656,6 +707,30 @@ class SmsParser {
       }
     }
     return '';
+  }
+
+  static bool _isCcPaymentReceivedSms(String body) {
+    final lower = body.toLowerCase();
+    // Must mention "credit card" (or "creditcard")
+    if (!lower.contains('credit card') && !lower.contains('creditcard')) {
+      return false;
+    }
+    // Cashback / rewards credited to CC are real value — keep them
+    if (lower.contains('cashback') || lower.contains('cash back') ||
+        lower.contains('reward') || lower.contains('bonus')) {
+      return false;
+    }
+    // Payment confirmation patterns from CC company
+    return lower.contains('payment received') ||
+        lower.contains('payment accepted') ||
+        lower.contains('payment processed') ||
+        lower.contains('payment acknowledged') ||
+        lower.contains('received towards') ||
+        lower.contains('received against') ||
+        lower.contains('received for your') ||
+        lower.contains('received on your') ||
+        lower.contains('credited against') ||
+        lower.contains('credited towards');
   }
 
   static double? _parseAmount(String rawAmount) {

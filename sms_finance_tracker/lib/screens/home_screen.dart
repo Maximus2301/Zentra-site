@@ -187,21 +187,30 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  'HYT MONEY',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.w800,
+                  'HYT',
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        fontWeight: FontWeight.w900,
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        letterSpacing: 4,
                       ),
                 ),
-                const SizedBox(height: 8),
                 Text(
-                  'Navigate core tools',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  'MONEY',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.85),
+                        letterSpacing: 6,
+                      ),
                 ),
+                const SizedBox(height: 6),
               ],
             ),
           ),
@@ -467,6 +476,11 @@ class _HomeScreenState extends State<HomeScreen> {
               SliverPadding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 12, vertical: 4),
+                sliver: SliverToBoxAdapter(child: _buildHytSenseCard()),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 12, vertical: 4),
                 sliver: SliverToBoxAdapter(
                   child: Card(
                     child: Padding(
@@ -580,6 +594,99 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 24)),
             ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  List<String> _generateInsights() {
+    if (_transactions.isEmpty) return [];
+    final insights = <String>[];
+
+    // Savings status
+    if (_totalIncome > 0) {
+      final saved = _totalIncome - _totalExpense;
+      if (saved > 0) {
+        final pct = (saved / _totalIncome * 100).round();
+        insights.add(
+          'You\'ve saved ₹${_currencyFormat.format(saved)} this month — $pct% of what came in. Solid.',
+        );
+      } else if (saved < 0) {
+        insights.add(
+          'You\'ve spent ₹${_currencyFormat.format(-saved)} more than you earned this month. Worth keeping an eye on.',
+        );
+      }
+    }
+
+    // Top spending category
+    if (_categoryTotals.isNotEmpty) {
+      final top = _categoryTotals.entries.reduce((a, b) => a.value > b.value ? a : b);
+      insights.add(
+        '${top.key} is eating most of your budget — ₹${_currencyFormat.format(top.value)} so far this month.',
+      );
+    }
+
+    // Biggest single purchase
+    final expenses = _transactions.where((t) => t.type == TransactionType.expense).toList();
+    if (expenses.isNotEmpty) {
+      final biggest = expenses.reduce((a, b) => a.amount > b.amount ? a : b);
+      insights.add(
+        'Your biggest single spend was ₹${_currencyFormat.format(biggest.amount)} at ${biggest.merchant}.',
+      );
+    }
+
+    return insights.take(3).toList();
+  }
+
+  Widget _buildHytSenseCard() {
+    final theme = Theme.of(context);
+    final insights = _generateInsights();
+    if (insights.isEmpty) return const SizedBox.shrink();
+
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.tips_and_updates_outlined,
+                  size: 18,
+                  color: theme.colorScheme.primary,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  'HYT Sense',
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            ...insights.map(
+              (insight) => Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '• ',
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(insight, style: theme.textTheme.bodyMedium),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),

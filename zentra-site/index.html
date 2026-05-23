@@ -2,10 +2,328 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=/privacy" />
-  <title>Zentra — Redirecting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYT — Intelligent Tools for Modern Life</title>
+  <meta name="description" content="HYT builds thoughtful, AI-powered products that simplify the complex — finance, engineering, and health." />
+  <meta property="og:title" content="HYT — Intelligent Tools for Modern Life" />
+  <meta property="og:description" content="HYT builds thoughtful, AI-powered products that simplify the complex." />
+  <meta property="og:url" content="https://zentraai.in/" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #0D0D0F;
+      --bg-deep:      #0A0A0C;
+      --surface:      #131315;
+      --surface-2:    #1A1A1D;
+      --border:       #2A2A2E;
+      --border-soft:  #222225;
+      --primary:      #C9A22A;
+      --primary-light:#E2C05E;
+      --primary-deep: #9A7515;
+      --teal:         #6ECFDB;
+      --teal-light:   #A8E8F4;
+      --gold-bright:  #F1D77A;
+      --text:         #F0F0EC;
+      --muted:        #8A8A90;
+      --radius:       18px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(201,162,42,0.15) 0%, transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(110,207,219,0.07) 0%, transparent 25%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10,10,12,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex; align-items: center; gap: 12px; text-decoration: none;
+    }
+    .logo-mark {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: #0D0D1F; border: 1.2px solid rgba(201,162,42,0.30);
+      box-shadow: inset 0 1px 0 rgba(241,215,122,0.08);
+      display: grid; place-items: center; flex-shrink: 0;
+    }
+    .logo-mark span {
+      font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700; line-height: 1;
+      background: linear-gradient(90deg,#8B6914 0%,#B48A1E 20%,#D4AF37 42%,#F1D77A 50%,#D4AF37 58%,#B48A1E 80%,#8B6914 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .logo-name {
+      font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--primary-light);
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-right a {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-right a:hover { color: var(--primary-light); }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 100px 24px 72px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 16px; border: 1px solid rgba(201,162,42,0.22);
+      background: rgba(201,162,42,0.08); border-radius: 999px;
+      font-size: 12px; font-weight: 600; color: var(--primary-light);
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 32px;
+    }
+    .hero-badge span {
+      width: 6px; height: 6px; background: var(--primary); border-radius: 50%;
+      box-shadow: 0 0 12px rgba(201,162,42,0.65);
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 60px); font-weight: 800;
+      line-height: 1.06; letter-spacing: -0.05em; margin-bottom: 20px;
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--primary) 46%, var(--teal) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero p {
+      font-size: 17px; color: var(--muted); max-width: 480px;
+      margin-bottom: 0; line-height: 1.7;
+    }
+
+    /* ── PRODUCT CARDS ── */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1040px;
+      margin: 64px auto 0;
+      padding: 0 24px;
+    }
+
+    .product-card {
+      background: linear-gradient(180deg, rgba(26,26,29,0.97) 0%, rgba(19,19,21,1) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      display: flex; flex-direction: column; gap: 0;
+      text-decoration: none; color: var(--text);
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.28);
+    }
+    .product-card.finance { border-color: rgba(201,162,42,0.32); }
+    .product-card.finance:hover { border-color: rgba(201,162,42,0.6); }
+    .product-card.finance::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--primary-deep), var(--gold-bright), var(--primary));
+    }
+    .product-card.os { border-color: rgba(110,207,219,0.22); }
+    .product-card.os:hover { border-color: rgba(110,207,219,0.5); }
+    .product-card.os::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light), var(--teal));
+    }
+    .product-card.health { border-color: rgba(110,207,219,0.12); }
+    .product-card.health:hover { border-color: rgba(110,207,219,0.28); }
+    .product-card.health::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, #4ECDC4, #88E0D8, #4ECDC4); opacity: 0.5;
+    }
+
+    .card-status {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .status-live   { color: var(--teal); }
+    .status-dev    { color: var(--teal-light); }
+    .status-soon   { color: var(--primary-light); }
+
+    .card-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
+    }
+    .icon-finance { background: rgba(201,162,42,0.12); border: 1px solid rgba(201,162,42,0.18); }
+    .icon-os      { background: rgba(110,207,219,0.10); border: 1px solid rgba(110,207,219,0.16); }
+    .icon-health  { background: rgba(78,205,196,0.10); border: 1px solid rgba(78,205,196,0.16); }
+
+    .card-name {
+      font-size: 22px; font-weight: 800; letter-spacing: -0.04em;
+      margin-bottom: 10px;
+    }
+    .card-desc {
+      font-size: 14px; color: var(--muted); line-height: 1.65;
+      margin-bottom: 32px; flex: 1;
+    }
+
+    .card-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+      padding: 10px 18px; border-radius: 10px; text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      align-self: flex-start;
+    }
+    .card-cta:hover { opacity: 0.88; transform: translateX(2px); }
+    .cta-finance {
+      background: linear-gradient(135deg, var(--gold-bright), var(--primary));
+      color: #1A1200;
+    }
+    .cta-os {
+      background: rgba(110,207,219,0.12); border: 1.5px solid rgba(110,207,219,0.35);
+      color: var(--teal-light);
+    }
+    .cta-health {
+      background: rgba(78,205,196,0.08); border: 1.5px solid rgba(78,205,196,0.25);
+      color: #88E0D8;
+    }
+
+    /* ── TAGLINE BAR ── */
+    .tagline-bar {
+      max-width: 1040px; margin: 72px auto 0; padding: 0 24px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .tagline-bar .line {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+    .tagline-bar span {
+      font-size: 12px; color: var(--muted); letter-spacing: 0.14em;
+      text-transform: uppercase; font-weight: 600; white-space: nowrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+      margin-top: 80px;
+      background: rgba(10,10,12,0.72); backdrop-filter: blur(10px);
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--primary-light); }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .products { grid-template-columns: 1fr; max-width: 480px; }
+      nav { padding: 16px 24px; }
+      .nav-right { gap: 18px; }
+    }
+    @media (max-width: 480px) {
+      footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-  <p>Redirecting to <a href="/privacy">Privacy Policy</a>…</p>
+
+  <nav>
+    <a href="/" class="logo">
+      <div class="logo-mark"><span>H</span></div>
+      <span class="logo-name">HYT</span>
+    </a>
+    <div class="nav-right">
+      <a href="/finance/">Finance</a>
+      <a href="/pms">OS</a>
+      <a href="/health/">Health</a>
+      <a href="/privacy">Privacy</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-badge"><span></span>Building intelligent tools</div>
+    <h1>One brand.<br><span class="gradient">Many problems solved.</span></h1>
+    <p>HYT builds thoughtful, AI-powered products that make the complex feel effortless — starting with finance, engineering, and health.</p>
+  </div>
+
+  <div class="products">
+
+    <!-- HYT MONEY -->
+    <div class="product-card finance" style="cursor:default;">
+      <div class="card-status status-live">● Live on Android</div>
+      <div class="card-icon icon-finance">💰</div>
+      <div class="card-name">HYT MONEY</div>
+      <p class="card-desc">
+        Automatic SMS-based expense tracking, AI financial advisor, payment planner,
+        and Finance Gyan — all in one app for Indian salaried professionals.
+      </p>
+      <a href="/finance/" class="card-cta cta-finance">
+        Explore HYT MONEY →
+      </a>
+    </div>
+
+    <!-- ZANTRA OS -->
+    <div class="product-card os" style="cursor:default;">
+      <div class="card-status status-dev">◈ In Development</div>
+      <div class="card-icon icon-os">⚙️</div>
+      <div class="card-name">ZANTRA OS</div>
+      <p class="card-desc">
+        AI-native execution system for regulated engineering teams — connecting
+        requirements, tests, planning, and lessons learned in one cognitive loop.
+      </p>
+      <a href="/pms" class="card-cta cta-os">
+        Explore ZANTRA OS →
+      </a>
+    </div>
+
+    <!-- HYT HEALTH -->
+    <div class="product-card health" style="cursor:default;">
+      <div class="card-status status-soon">◐ Coming Soon</div>
+      <div class="card-icon icon-health">🏥</div>
+      <div class="card-name">HYT Health</div>
+      <p class="card-desc">
+        Your complete medical history, securely stored and instantly accessible
+        when you need it most. Private health vault for individuals and families.
+      </p>
+      <a href="/health/" class="card-cta cta-health">
+        Learn More →
+      </a>
+    </div>
+
+  </div>
+
+  <div class="tagline-bar">
+    <div class="line"></div>
+    <span>Intelligent tools for modern life</span>
+    <div class="line"></div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/blog/">Blog</a>
+      <a href="mailto:vyantec@gmail.com">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 HYT. All rights reserved.</div>
+  </footer>
+
 </body>
 </html>

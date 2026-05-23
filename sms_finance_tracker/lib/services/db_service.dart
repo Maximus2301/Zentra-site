@@ -6,7 +6,7 @@ import '../models/transaction.dart';
 class DbService {
   // Single cached Future — all concurrent callers share the same init, no race.
   static Future<Database>? _dbFuture;
-  static const int _dbVersion = 41;
+  static const int _dbVersion = 42;
   static const String _createTransactionsTableSql = '''
     CREATE TABLE transactions (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -47,6 +47,18 @@ class DbService {
       lastSeenAt INTEGER NOT NULL
     )
   ''';
+  static const String _createPaymentHistoryTableSql = '''
+    CREATE TABLE IF NOT EXISTS payment_history (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      payment_id INTEGER NOT NULL,
+      year INTEGER NOT NULL,
+      month INTEGER NOT NULL,
+      paid_at INTEGER NOT NULL,
+      is_manual INTEGER NOT NULL DEFAULT 0,
+      matched_txn_id INTEGER,
+      UNIQUE(payment_id, year, month)
+    )
+  ''';
 
   static Future<Database> get database {
     _dbFuture ??= _initDb();
@@ -63,6 +75,7 @@ class DbService {
       onCreate: (db, version) async {
         await db.execute(_createTransactionsTableSql);
         await db.execute(_createRecurringPaymentsTableSql);
+        await db.execute(_createPaymentHistoryTableSql);
       },
       onUpgrade: (db, oldVersion, newVersion) async {
         if (oldVersion < 40) {
@@ -70,6 +83,9 @@ class DbService {
         }
         if (oldVersion < 41) {
           await _migrateToV41(db);
+        }
+        if (oldVersion < 42) {
+          await _migrateToV42(db);
         }
       },
     );
@@ -93,6 +109,12 @@ class DbService {
   // without polluting cashflow transactions.
   static Future<void> _migrateToV41(Database db) async {
     await db.execute(_createRecurringPaymentsTableSql);
+  }
+
+  // v42 adds persistent paid-status history so "paid this month" survives
+  // app restarts and enables the 3-consecutive-month verification check.
+  static Future<void> _migrateToV42(Database db) async {
+    await db.execute(_createPaymentHistoryTableSql);
   }
 
   static Future<void> _addTransactionsColumnIfMissing(
@@ -285,6 +307,7 @@ class DbService {
   static Future<void> deleteRecurringPayment(int id) async {
     final db = await database;
     await db.delete('recurring_payments', where: 'id = ?', whereArgs: [id]);
+    await db.delete('payment_history', where: 'payment_id = ?', whereArgs: [id]);
   }
 
   static Future<void> upsertRecurringPayment(RecurringPayment payment) async {
@@ -345,6 +368,52 @@ class DbService {
       orderBy: 'dueDay ASC, amount DESC, name ASC',
     );
     return maps.map(RecurringPayment.fromMap).toList();
+  }
+
+  // Records a payment as paid for a given month. Replaces any existing record
+  // for that (payment_id, year, month) combination.
+  static Future<void> recordPaymentPaid({
+    required int paymentId,
+    required int year,
+    required int month,
+    required bool isManual,
+    int? matchedTxnId,
+  }) async {
+    final db = await database;
+    await db.insert(
+      'payment_history',
+      {
+        'payment_id': paymentId,
+        'year': year,
+        'month': month,
+        'paid_at': DateTime.now().millisecondsSinceEpoch,
+        'is_manual': isManual ? 1 : 0,
+        'matched_txn_id': matchedTxnId,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  static Future<void> removePaymentPaid(
+      int paymentId, int year, int month) async {
+    final db = await database;
+    await db.delete(
+      'payment_history',
+      where: 'payment_id = ? AND year = ? AND month = ?',
+      whereArgs: [paymentId, year, month],
+    );
+  }
+
+  // Returns the set of payment IDs that have a paid record for the given month.
+  static Future<Set<int>> getPaidPaymentIds(int year, int month) async {
+    final db = await database;
+    final rows = await db.query(
+      'payment_history',
+      columns: ['payment_id'],
+      where: 'year = ? AND month = ?',
+      whereArgs: [year, month],
+    );
+    return rows.map((r) => r['payment_id'] as int).toSet();
   }
 
   static Future<void> deleteTransaction(int id) async {
