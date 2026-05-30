@@ -284,5 +284,46 @@
     ],
     "slug": "sebi-defaulter-recovery-certificate-investor-safet",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-05-30T06:34:36.200824",
+    "title": "RBI Credit Report: What It Means for Indian Professionals",
+    "description": "Understand the RBI's latest BSR-1 credit report, its implications for India's lending landscape, and how it impacts your personal finance choices.",
+    "url": "https://zentraai.in/blog/2026-05-30-rbi-bsr-1-credit-report-impact-indian-salaried.html",
+    "tags": [
+      "RBI",
+      "Personal Finance",
+      "Bank Credit",
+      "Indian Economy",
+      "Loans"
+    ],
+    "slug": "rbi-bsr-1-credit-report-impact-indian-salaried",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-05-30T06:34:58.963686",
+    "title": "RBI Deposits Data Explained for Indian Savers",
+    "description": "Understand the latest RBI report on bank deposits and what it means for your savings. Learn practical steps to optimize your financial planning.",
+    "url": "https://zentraai.in/blog/2026-05-30-rbi-bank-deposits-explained-for-salaried.html",
+    "tags": [
+      "RBI",
+      "Bank Deposits",
+      "Personal Finance"
+    ],
+    "slug": "rbi-bank-deposits-explained-for-salaried",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-05-30T06:35:23.109215",
+    "title": "SEBI Action Against Defaulters: Investor Safety Explained",
+    "description": "Understand how SEBI protects your investments by taking action against defaulters. Learn practical steps to safeguard your financial future in the Indian market.",
+    "url": "https://zentraai.in/blog/2026-05-30-sebi-action-defaulters-investor-safety-india.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Indian Stock Market"
+    ],
+    "slug": "sebi-action-defaulters-investor-safety-india",
+    "source": "SEBI"
   }
 ]
