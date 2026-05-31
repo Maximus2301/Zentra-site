@@ -325,5 +325,44 @@
     ],
     "slug": "sebi-action-defaulters-investor-safety-india",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-05-31T07:09:53.596798",
+    "title": "RBI Bank Credit Report: What it Means for Your Money",
+    "description": "The RBI's BSR-1 report on bank credit reveals key economic trends. Learn how these credit shifts can impact your loans, investments, and overall financial planning.",
+    "url": "https://zentraai.in/blog/2026-05-31-rbi-bsr-1-bank-credit-report-impact-on-you.html",
+    "tags": [
+      "RBI",
+      "Bank Credit",
+      "Personal Finance"
+    ],
+    "slug": "rbi-bsr-1-bank-credit-report-impact-on-you",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-05-31T07:10:16.049667",
+    "title": "RBI Publishes Bank Deposit Data Up To March 2026",
+    "description": "Understand the latest RBI data on bank deposits and how it impacts your savings and financial planning. Learn practical steps to optimize your money in India.",
+    "url": "https://zentraai.in/blog/2026-05-31-rbi-bank-deposit-data-march-2026-implications.html",
+    "tags": [
+      "RBI",
+      "Bank Deposits",
+      "Financial Planning"
+    ],
+    "slug": "rbi-bank-deposit-data-march-2026-implications",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-05-31T07:10:35.698471",
+    "title": "SEBI's Recovery Action: Understanding Investor Protection",
+    "description": "SEBI recently issued a recovery certificate against a defaulter. Understand what this means for investor safety and how regulatory actions protect your investments.",
+    "url": "https://zentraai.in/blog/2026-05-31-sebi-recovery-huf-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-recovery-huf-investor-safety",
+    "source": "SEBI"
   }
 ]
