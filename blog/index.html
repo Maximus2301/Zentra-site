@@ -11,13 +11,12 @@
   <link rel="alternate" type="application/rss+xml" title="HYT MONEY Blog" href="https://zentraai.in/blog/feed.xml" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #0D0D0F; color: #F0F0EC; font-family: 'DM Sans', sans-serif;
-            -webkit-font-smoothing: antialiased; }
+    body { background: #0D0D0F; color: #F0F0EC; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
     a { text-decoration: none; }
     nav { padding: 18px 24px; border-bottom: 1px solid #2A2A2E;
-           display: flex; align-items: center; gap: 14px;
-           background: rgba(10,10,12,0.88); backdrop-filter: blur(20px);
-           position: sticky; top: 0; z-index: 100; }
+          display: flex; align-items: center; gap: 14px;
+          background: rgba(10,10,12,0.88); backdrop-filter: blur(20px);
+          position: sticky; top: 0; z-index: 100; }
     .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .logo-mark { width: 32px; height: 32px; border-radius: 9px;
       background: #0D0D1F; border: 1.2px solid rgba(201,162,42,0.30);
@@ -33,24 +32,83 @@
       text-transform: uppercase; color: #8A8A90; line-height: 1; }
     .nav-sep { color: #2A2A2E; font-size: 14px; }
     .nav-link { color: #8A8A90; font-size: 14px; }
-    .container { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
-    .hero { margin-bottom: 48px; }
-    .hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 800; margin-bottom: 12px; }
+
+    /* ── Page layout ── */
+    .page { max-width: 1400px; margin: 0 auto; padding: 48px 32px 80px; }
+    .hero { margin-bottom: 40px; }
+    .hero h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 800; margin-bottom: 10px; }
     .hero p { color: #8A8A90; font-size: 16px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-    .card { background: linear-gradient(180deg,rgba(26,26,29,0.97) 0%,rgba(19,19,21,1) 100%);
-             border: 1px solid #2A2A2E; border-radius: 14px;
-             padding: 20px; display: flex; flex-direction: column; gap: 10px;
-             transition: border-color 0.2s, transform 0.2s; color: #F0F0EC; }
-    .card:hover { border-color: rgba(201,162,42,0.5); transform: translateY(-2px); }
+
+    /* ── Post list ── */
+    .post-list { display: flex; flex-direction: column; }
+    .post-row { display: flex; align-items: center; gap: 28px;
+      padding: 28px 16px; border-bottom: 1px solid rgba(42,42,46,0.8);
+      border-radius: 12px; transition: background 0.2s; }
+    .post-row:first-child { border-top: 1px solid rgba(42,42,46,0.8); }
+    .post-row:hover { background: rgba(20,20,24,0.7); }
+
+    /* ── Mini carousel ── */
+    .post-carousel { flex-shrink: 0; width: 240px; }
+    .mini-carousel { position: relative; width: 240px; aspect-ratio: 1 / 1;
+      border-radius: 14px; overflow: hidden; background: #131315;
+      border: 1px solid #2A2A2E; }
+    .slides-track { display: flex; width: 500%; height: 100%;
+      transition: transform 0.3s ease; will-change: transform; }
+    .slide { flex: 0 0 20%; height: 100%; }
+    .slide a { display: block; width: 100%; height: 100%; }
+    .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .nav-btn { position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(13,13,15,0.85); color: #E2C05E;
+      border: 1px solid rgba(201,162,42,0.35); border-radius: 8px;
+      width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 18px; font-weight: 700; line-height: 1;
+      backdrop-filter: blur(8px); transition: background 0.2s, opacity 0.2s;
+      z-index: 2; opacity: 0; }
+    .mini-carousel:hover .nav-btn { opacity: 1; }
+    .nav-btn:hover { background: rgba(201,162,42,0.20); }
+    .prev { left: 7px; }
+    .next { right: 7px; }
+    .dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 5px; z-index: 2; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; cursor: pointer;
+      background: rgba(255,255,255,0.22); transition: background 0.2s; }
+    .dot.active { background: #C9A22A; }
+    .slide-counter { position: absolute; top: 8px; right: 9px; z-index: 2;
+      font-size: 10px; font-weight: 700; color: #E2C05E;
+      background: rgba(13,13,15,0.75); padding: 2px 7px; border-radius: 20px;
+      backdrop-filter: blur(6px); border: 1px solid rgba(201,162,42,0.22); }
+
+    /* ── Post content ── */
+    .post-content { flex: 1; display: flex; flex-direction: column; gap: 10px;
+      color: #F0F0EC; padding: 4px 0; min-width: 0; }
+    .post-content:hover .post-title { color: #E2C05E; }
     .card-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
     .tag { background: rgba(201,162,42,0.10); color: #E2C05E; font-size: 11px;
-             font-weight: 600; padding: 3px 8px; border-radius: 20px;
-             border: 1px solid rgba(201,162,42,0.20); }
+      font-weight: 600; padding: 3px 9px; border-radius: 20px;
+      border: 1px solid rgba(201,162,42,0.20); }
     .date { color: #5A5A60; font-size: 12px; }
-    .card h2 { font-size: 15px; font-weight: 700; line-height: 1.4; color: #F0F0EC; }
-    .card p { font-size: 13px; color: #8A8A90; line-height: 1.5; flex: 1; }
+    .post-title { font-size: clamp(17px, 1.8vw, 22px); font-weight: 700;
+      line-height: 1.3; color: #F0F0EC; transition: color 0.2s; }
+    .post-desc { font-size: 14px; color: #8A8A90; line-height: 1.6; }
+    .read-more { display: inline-flex; align-items: center; gap: 5px;
+      color: #C9A22A; font-size: 13px; font-weight: 700; margin-top: 2px; }
+    .post-row.no-carousel .post-carousel { display: none; }
+
     .empty { color: #5A5A60; text-align: center; padding: 60px 0; }
+
+    @media (max-width: 900px) {
+      .page { padding: 32px 20px 60px; }
+      .post-carousel { width: 200px; }
+      .mini-carousel { width: 200px; }
+    }
+    @media (max-width: 640px) {
+      .page { padding: 24px 16px 60px; }
+      .post-row { flex-direction: column; align-items: flex-start; gap: 14px; padding: 20px 12px; }
+      .post-carousel { width: 100%; }
+      .mini-carousel { width: 100%; }
+      .nav-btn { opacity: 1; }
+      .post-title { font-size: 17px; }
+    }
   </style>
 </head>
 <body>
@@ -65,164 +123,767 @@
     <span class="nav-sep">/</span>
     <span class="nav-link">Finance Blog</span>
   </nav>
-  <main class="container">
+  <main class="page">
     <div class="hero">
       <h1>Finance Insights</h1>
       <p>Daily finance news explained simply for Indian salaried professionals.</p>
     </div>
-    <div class="grid">
-      
-    <a href="https://zentraai.in/blog/2026-06-03-sebi-action-mutual-fund-defaulter-investor-safety.html" class="card">
-      <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Mutual Funds</span><span class="date">2026-06-03</span></div>
-      <h2>SEBI action on mutual fund unit transfer defaulter</h2>
-      <p>Understand SEBI&#x27;s action on a defaulter involving mutual fund unit transfers. Learn how to protect your investments and choose a compliant financial advisor.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-06-03-sebi-money-mishra-investor-protection-guide.html" class="card">
-      <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Investor Protection</span><span class="date">2026-06-03</span></div>
-      <h2>SEBI Action on Money Mishra: Investor Protection Guide</h2>
-      <p>Understand SEBI&#x27;s recent action against Money Mishra and learn crucial steps to safeguard your mutual fund investments. Protect your hard-earned money.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-06-03-rbi-interest-rate-pause-impact-salaried-indians.html" class="card">
-      <div class="card-meta"><span class="tag">RBI MPC</span> <span class="tag">Interest Rates</span><span class="date">2026-06-03</span></div>
-      <h2>RBI Interest Rate Pause: Impact on Your Finances</h2>
-      <p>Understand why an RBI interest rate pause matters for your loans, savings, and investments. Learn practical steps to optimize your finances in India&#x27;s current economic climate.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-06-01-rbi-bank-credit-growth-march-2026-impact-india.html" class="card">
-      <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Bank Credit</span><span class="date">2026-06-01</span></div>
-      <h2>India Bank Credit Grows 15.9% in March 2026: What It Means</h2>
-      <p>RBI data shows robust bank credit growth. Understand what this means for your loans, investments, and the Indian economy. Learn practical steps to manage your finances.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-06-01-rbi-repo-rate-impact-emil-savings.html" class="card">
-      <div class="card-meta"><span class="tag">Repo Rate</span> <span class="tag">Personal Finance</span><span class="date">2026-06-01</span></div>
-      <h2>RBI Repo Rate: How it Affects EMIs, Savings &amp; Investments</h2>
-      <p>Learn how the RBI&#x27;s repo rate, currently 5.25%, impacts your EMIs, savings, and investments. Prepare for future rate changes effectively.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-31-sebi-recovery-huf-investor-safety.html" class="card">
-      <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Investor Protection</span><span class="date">2026-05-31</span></div>
-      <h2>SEBI&#x27;s Recovery Action: Understanding Investor Protection</h2>
-      <p>SEBI recently issued a recovery certificate against a defaulter. Understand what this means for investor safety and how regulatory actions protect your investments.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-31-rbi-bank-deposit-data-march-2026-implications.html" class="card">
-      <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Bank Deposits</span><span class="date">2026-05-31</span></div>
-      <h2>RBI Publishes Bank Deposit Data Up To March 2026</h2>
-      <p>Understand the latest RBI data on bank deposits and how it impacts your savings and financial planning. Learn practical steps to optimize your money in India.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-31-rbi-bsr-1-bank-credit-report-impact-on-you.html" class="card">
-      <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Bank Credit</span><span class="date">2026-05-31</span></div>
-      <h2>RBI Bank Credit Report: What it Means for Your Money</h2>
-      <p>The RBI&#x27;s BSR-1 report on bank credit reveals key economic trends. Learn how these credit shifts can impact your loans, investments, and overall financial planning.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-30-sebi-action-defaulters-investor-safety-india.html" class="card">
-      <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Investor Protection</span><span class="date">2026-05-30</span></div>
-      <h2>SEBI Action Against Defaulters: Investor Safety Explained</h2>
-      <p>Understand how SEBI protects your investments by taking action against defaulters. Learn practical steps to safeguard your financial future in the Indian market.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-30-rbi-bank-deposits-explained-for-salaried.html" class="card">
-      <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Bank Deposits</span><span class="date">2026-05-30</span></div>
-      <h2>RBI Deposits Data Explained for Indian Savers</h2>
-      <p>Understand the latest RBI report on bank deposits and what it means for your savings. Learn practical steps to optimize your financial planning.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-30-rbi-bsr-1-credit-report-impact-indian-salaried.html" class="card">
-      <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Personal Finance</span><span class="date">2026-05-30</span></div>
-      <h2>RBI Credit Report: What It Means for Indian Professionals</h2>
-      <p>Understand the RBI&#x27;s latest BSR-1 credit report, its implications for India&#x27;s lending landscape, and how it impacts your personal finance choices.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-28-sebi-defaulter-recovery-certificate-investor-safet.html" class="card">
-      <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Investor Safety</span><span class="date">2026-05-28</span></div>
-      <h2>SEBI Action Against Defaulter: Market Safeguards Explained</h2>
-      <p>Learn about SEBI&#x27;s role in investor protection and how regulatory actions against market defaulters safeguard your investments. Understand key takeaways for a secure financial future.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-28-sebi-market-action-investment-protection-india.html" class="card">
-      <div class="card-meta"><span class="tag">SEBI Regulations</span> <span class="tag">Investment Safety</span><span class="date">2026-05-28</span></div>
-      <h2>SEBI Action Against Defaulter: A Market Insight</h2>
-      <p>Understand SEBI&#x27;s role in upholding market integrity and learn crucial steps to protect your investments from defaults as an Indian salaried professional.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-28-india-bank-credit-growth-march-2026-impact.html" class="card">
-      <div class="card-meta"><span class="tag">Indian Economy</span> <span class="tag">Personal Finance</span><span class="date">2026-05-28</span></div>
-      <h2>India Bank Credit Grows 15.9% in March 2026: What It Means</h2>
-      <p>RBI data shows non-food bank credit surge. Discover how this impacts loan availability, interest rates, and India&#x27;s economic outlook for salaried professionals.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-27-sebi-illiquid-options-risk-salaried-investors.html" class="card">
-      <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Stock Options</span><span class="date">2026-05-27</span></div>
-      <h2>SEBI Action: Illiquid Options &amp; Your Investments</h2>
-      <p>SEBI&#x27;s recent action highlights risks of illiquid stock options. Learn what illiquid options are, why they&#x27;re risky, and how Indian salaried professionals can safeguard their investments from similar pitfalls.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-27-sebi-recovery-market-safety-investor-protection.html" class="card">
-      <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Investor Protection</span><span class="date">2026-05-27</span></div>
-      <h2>SEBI Action Against Defaulter Highlights Market Safety</h2>
-      <p>Learn how SEBI&#x27;s actions against market defaulters protect your investments. Understand the importance of market regulation for Indian salaried professionals.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-27-bank-credit-growth-march-2026-salaried-impact.html" class="card">
-      <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Personal Finance</span><span class="date">2026-05-27</span></div>
-      <h2>Bank Credit Jumps 15.9% in March 2026: Impact on You</h2>
-      <p>RBI reports 15.9% growth in bank credit. Learn how this economic indicator impacts your loans, job market, and financial planning as an Indian salaried professional.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-26-bank-credit-growth-india-impact-on-salaried.html" class="card">
-      <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Bank Credit</span><span class="date">2026-05-26</span></div>
-      <h2>India Bank Credit Surges 15.9%: What It Means For You</h2>
-      <p>Learn about RBI&#x27;s latest report on bank credit growth (15.9%), its implications for the Indian economy, your career, investments, and borrowing costs. Understand the bigger picture.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-25-increase-sip-contributions-wealth-growth.html" class="card">
-      <div class="card-meta"><span class="tag">SIP Strategy</span> <span class="tag">Wealth Building</span><span class="date">2026-05-25</span></div>
-      <h2>Boost Your SIP Performance for Faster Wealth Growth</h2>
-      <p>Learn how small, consistent adjustments to your SIP contributions can significantly accelerate your wealth creation in India. Discover practical strategies to beat inflation and achieve financial goals faster.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-25-prepare-for-inflation-hyt-money-india.html" class="card">
-      <div class="card-meta"><span class="tag">Financial Planning</span> <span class="tag">Inflation India</span><span class="date">2026-05-25</span></div>
-      <h2>Inflation Hits Indian Households: Prepare Now</h2>
-      <p>Learn how rising inflation impacts your finances and discover practical strategies to protect your savings and manage expenses effectively in India.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-25-rbi-may-2026-bulletin-economic-outlook-india.html" class="card">
-      <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Indian Economy</span><span class="date">2026-05-25</span></div>
-      <h2>RBI May 2026 Bulletin: India&#x27;s Economic Outlook</h2>
-      <p>Understand the RBI&#x27;s latest economic outlook for Indian professionals. Learn how global and domestic factors influence your finances and what steps you can take.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-24-wrong-itr-form-consequences-how-to-fix.html" class="card">
-      <div class="card-meta"><span class="tag">ITR Filing</span> <span class="tag">Income Tax</span><span class="date">2026-05-24</span></div>
-      <h2>Avoid ITR Form Errors for Smooth Tax Filing</h2>
-      <p>Learn what happens if you file the wrong ITR form in India. Understand consequences like delayed refunds and how salaried professionals can fix errors for a hassle-free tax season.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-24-flexi-cap-mutual-funds-for-indian-investors.html" class="card">
-      <div class="card-meta"><span class="tag">mutual funds</span> <span class="tag">flexi cap</span><span class="date">2026-05-24</span></div>
-      <h2>Flexi Cap Mutual Funds for Salaried Indians: A Guide</h2>
-      <p>Learn how flexi cap mutual funds invest across market caps and their role in a diversified portfolio for Indian salaried professionals. Understand the benefits and considerations.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-24-indian-bank-credit-growth-march-2026-implications.html" class="card">
-      <div class="card-meta"><span class="tag">financial planning</span> <span class="tag">indian economy</span><span class="date">2026-05-24</span></div>
-      <h2>India Bank Credit Up 15.9% in March 2026: What it Means</h2>
-      <p>RBI data shows India&#x27;s bank credit grew 15.9% by March 2026. Understand what this growth signifies for your personal finances and the Indian economy.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-23-child-crorepati-by-18-sip-investing-india.html" class="card">
-      <div class="card-meta"><span class="tag">child finance</span> <span class="tag">SIP investing</span><span class="date">2026-05-23</span></div>
-      <h2>Build ₹1 Crore for Child: Early SIPs for Future</h2>
-      <p>Secure your child&#x27;s future. Learn how consistent monthly SIPs, starting early, can help Indian parents accumulate ₹1 crore by age 18 through compounding.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-23-missed-home-loan-emi-steps-to-protect-credit.html" class="card">
-      <div class="card-meta"><span class="tag">home loan</span> <span class="tag">credit score</span><span class="date">2026-05-23</span></div>
-      <h2>Missed Home Loan EMI? Protect Your Credit Score</h2>
-      <p>Learn smart steps to take if you miss a home loan EMI. Understand how to communicate with your lender, plan repayments, and protect your credit score from damage.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-23-rbi-bulletin-may-2026-india-economy-resilience.html" class="card">
-      <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Indian Economy</span><span class="date">2026-05-23</span></div>
-      <h2>RBI Bulletin May 2026: India&#x27;s Economic Resilience</h2>
-      <p>Understand key insights from the RBI&#x27;s May 2026 Bulletin. Learn how India&#x27;s economic resilience amidst global uncertainty impacts your personal finances and planning.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-22-indian-bank-credit-growth-march-2026-impact.html" class="card">
-      <div class="card-meta"><span class="tag">banking</span> <span class="tag">indian economy</span><span class="date">2026-05-22</span></div>
-      <h2>Indian Bank Credit Jumps 15.9% in March 2026: What It Means</h2>
-      <p>Understand what India&#x27;s 15.9% rise in bank credit growth means for your finances and the economy. Learn how this trend impacts your financial planning.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-22-rbi-prioritizes-inflation-over-rupee-impact.html" class="card">
-      <div class="card-meta"><span class="tag">RBI</span> <span class="tag">inflation</span><span class="date">2026-05-22</span></div>
-      <h2>RBI&#x27;s Focus: Inflation Over Rupee for Rate Hikes</h2>
-      <p>Understand why RBI prioritizes inflation over rupee stability for interest rate decisions. Learn how this impacts your loans, savings, and financial planning as a salaried professional.</p>
-    </a>
-    <a href="https://zentraai.in/blog/2026-05-22-gold-price-dip-impact-indian-salaried-professional.html" class="card">
-      <div class="card-meta"><span class="tag">gold investment</span> <span class="tag">financial planning</span><span class="date">2026-05-22</span></div>
-      <h2>Gold Prices Dip: What It Means for Your Finances</h2>
-      <p>Understand why gold prices dipped globally and how this impacts your financial planning as an Indian salaried professional. Learn about smart diversification.</p>
-    </a>
+    <div class="post-list">
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c0">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-sebi-action-mutual-fund-defaulter-investor-safety.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-sebi-action-mutual-fund-defaulter-investor-safety/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-sebi-action-mutual-fund-defaulter-investor-safety.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-sebi-action-mutual-fund-defaulter-investor-safety/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-sebi-action-mutual-fund-defaulter-investor-safety.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-sebi-action-mutual-fund-defaulter-investor-safety/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-sebi-action-mutual-fund-defaulter-investor-safety.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-sebi-action-mutual-fund-defaulter-investor-safety/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-sebi-action-mutual-fund-defaulter-investor-safety.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-sebi-action-mutual-fund-defaulter-investor-safety/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c0-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-06-03-sebi-action-mutual-fund-defaulter-investor-safety.html" class="post-content">
+        <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Mutual Funds</span><span class="date">2026-06-03</span></div>
+        <h2 class="post-title">SEBI action on mutual fund unit transfer defaulter</h2>
+        <p class="post-desc">Understand SEBI&#x27;s action on a defaulter involving mutual fund unit transfers. Learn how to protect your investments and choose a compliant financial advisor.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c1">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-sebi-money-mishra-investor-protection-guide.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-sebi-money-mishra-investor-protection-guide/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-sebi-money-mishra-investor-protection-guide.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-sebi-money-mishra-investor-protection-guide/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-sebi-money-mishra-investor-protection-guide.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-sebi-money-mishra-investor-protection-guide/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-sebi-money-mishra-investor-protection-guide.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-sebi-money-mishra-investor-protection-guide/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-sebi-money-mishra-investor-protection-guide.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-sebi-money-mishra-investor-protection-guide/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c1-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-06-03-sebi-money-mishra-investor-protection-guide.html" class="post-content">
+        <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Investor Protection</span><span class="date">2026-06-03</span></div>
+        <h2 class="post-title">SEBI Action on Money Mishra: Investor Protection Guide</h2>
+        <p class="post-desc">Understand SEBI&#x27;s recent action against Money Mishra and learn crucial steps to safeguard your mutual fund investments. Protect your hard-earned money.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c2">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-rbi-interest-rate-pause-impact-salaried-indians.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-rbi-interest-rate-pause-impact-salaried-indians/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-rbi-interest-rate-pause-impact-salaried-indians.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-rbi-interest-rate-pause-impact-salaried-indians/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-rbi-interest-rate-pause-impact-salaried-indians.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-rbi-interest-rate-pause-impact-salaried-indians/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-rbi-interest-rate-pause-impact-salaried-indians.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-rbi-interest-rate-pause-impact-salaried-indians/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-03-rbi-interest-rate-pause-impact-salaried-indians.html"><img src="https://zentraai.in/blog/carousels/2026-06-03-rbi-interest-rate-pause-impact-salaried-indians/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c2-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-06-03-rbi-interest-rate-pause-impact-salaried-indians.html" class="post-content">
+        <div class="card-meta"><span class="tag">RBI MPC</span> <span class="tag">Interest Rates</span><span class="date">2026-06-03</span></div>
+        <h2 class="post-title">RBI Interest Rate Pause: Impact on Your Finances</h2>
+        <p class="post-desc">Understand why an RBI interest rate pause matters for your loans, savings, and investments. Learn practical steps to optimize your finances in India&#x27;s current economic climate.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c3">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-01-rbi-bank-credit-growth-march-2026-impact-india.html"><img src="https://zentraai.in/blog/carousels/2026-06-01-rbi-bank-credit-growth-march-2026-impact-india/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-01-rbi-bank-credit-growth-march-2026-impact-india.html"><img src="https://zentraai.in/blog/carousels/2026-06-01-rbi-bank-credit-growth-march-2026-impact-india/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-01-rbi-bank-credit-growth-march-2026-impact-india.html"><img src="https://zentraai.in/blog/carousels/2026-06-01-rbi-bank-credit-growth-march-2026-impact-india/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-01-rbi-bank-credit-growth-march-2026-impact-india.html"><img src="https://zentraai.in/blog/carousels/2026-06-01-rbi-bank-credit-growth-march-2026-impact-india/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-01-rbi-bank-credit-growth-march-2026-impact-india.html"><img src="https://zentraai.in/blog/carousels/2026-06-01-rbi-bank-credit-growth-march-2026-impact-india/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c3-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-06-01-rbi-bank-credit-growth-march-2026-impact-india.html" class="post-content">
+        <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Bank Credit</span><span class="date">2026-06-01</span></div>
+        <h2 class="post-title">India Bank Credit Grows 15.9% in March 2026: What It Means</h2>
+        <p class="post-desc">RBI data shows robust bank credit growth. Understand what this means for your loans, investments, and the Indian economy. Learn practical steps to manage your finances.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c4">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-01-rbi-repo-rate-impact-emil-savings.html"><img src="https://zentraai.in/blog/carousels/2026-06-01-rbi-repo-rate-impact-emil-savings/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-01-rbi-repo-rate-impact-emil-savings.html"><img src="https://zentraai.in/blog/carousels/2026-06-01-rbi-repo-rate-impact-emil-savings/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-01-rbi-repo-rate-impact-emil-savings.html"><img src="https://zentraai.in/blog/carousels/2026-06-01-rbi-repo-rate-impact-emil-savings/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-01-rbi-repo-rate-impact-emil-savings.html"><img src="https://zentraai.in/blog/carousels/2026-06-01-rbi-repo-rate-impact-emil-savings/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-06-01-rbi-repo-rate-impact-emil-savings.html"><img src="https://zentraai.in/blog/carousels/2026-06-01-rbi-repo-rate-impact-emil-savings/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c4-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-06-01-rbi-repo-rate-impact-emil-savings.html" class="post-content">
+        <div class="card-meta"><span class="tag">Repo Rate</span> <span class="tag">Personal Finance</span><span class="date">2026-06-01</span></div>
+        <h2 class="post-title">RBI Repo Rate: How it Affects EMIs, Savings &amp; Investments</h2>
+        <p class="post-desc">Learn how the RBI&#x27;s repo rate, currently 5.25%, impacts your EMIs, savings, and investments. Prepare for future rate changes effectively.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c5">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-sebi-recovery-huf-investor-safety.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-sebi-recovery-huf-investor-safety/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-sebi-recovery-huf-investor-safety.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-sebi-recovery-huf-investor-safety/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-sebi-recovery-huf-investor-safety.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-sebi-recovery-huf-investor-safety/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-sebi-recovery-huf-investor-safety.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-sebi-recovery-huf-investor-safety/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-sebi-recovery-huf-investor-safety.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-sebi-recovery-huf-investor-safety/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c5-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-31-sebi-recovery-huf-investor-safety.html" class="post-content">
+        <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Investor Protection</span><span class="date">2026-05-31</span></div>
+        <h2 class="post-title">SEBI&#x27;s Recovery Action: Understanding Investor Protection</h2>
+        <p class="post-desc">SEBI recently issued a recovery certificate against a defaulter. Understand what this means for investor safety and how regulatory actions protect your investments.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c6">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-rbi-bank-deposit-data-march-2026-implications.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-rbi-bank-deposit-data-march-2026-implications/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-rbi-bank-deposit-data-march-2026-implications.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-rbi-bank-deposit-data-march-2026-implications/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-rbi-bank-deposit-data-march-2026-implications.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-rbi-bank-deposit-data-march-2026-implications/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-rbi-bank-deposit-data-march-2026-implications.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-rbi-bank-deposit-data-march-2026-implications/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-rbi-bank-deposit-data-march-2026-implications.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-rbi-bank-deposit-data-march-2026-implications/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c6-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-31-rbi-bank-deposit-data-march-2026-implications.html" class="post-content">
+        <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Bank Deposits</span><span class="date">2026-05-31</span></div>
+        <h2 class="post-title">RBI Publishes Bank Deposit Data Up To March 2026</h2>
+        <p class="post-desc">Understand the latest RBI data on bank deposits and how it impacts your savings and financial planning. Learn practical steps to optimize your money in India.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c7">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-rbi-bsr-1-bank-credit-report-impact-on-you.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-rbi-bsr-1-bank-credit-report-impact-on-you/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-rbi-bsr-1-bank-credit-report-impact-on-you.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-rbi-bsr-1-bank-credit-report-impact-on-you/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-rbi-bsr-1-bank-credit-report-impact-on-you.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-rbi-bsr-1-bank-credit-report-impact-on-you/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-rbi-bsr-1-bank-credit-report-impact-on-you.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-rbi-bsr-1-bank-credit-report-impact-on-you/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-31-rbi-bsr-1-bank-credit-report-impact-on-you.html"><img src="https://zentraai.in/blog/carousels/2026-05-31-rbi-bsr-1-bank-credit-report-impact-on-you/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c7-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-31-rbi-bsr-1-bank-credit-report-impact-on-you.html" class="post-content">
+        <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Bank Credit</span><span class="date">2026-05-31</span></div>
+        <h2 class="post-title">RBI Bank Credit Report: What it Means for Your Money</h2>
+        <p class="post-desc">The RBI&#x27;s BSR-1 report on bank credit reveals key economic trends. Learn how these credit shifts can impact your loans, investments, and overall financial planning.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c8">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-sebi-action-defaulters-investor-safety-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-sebi-action-defaulters-investor-safety-india/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-sebi-action-defaulters-investor-safety-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-sebi-action-defaulters-investor-safety-india/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-sebi-action-defaulters-investor-safety-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-sebi-action-defaulters-investor-safety-india/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-sebi-action-defaulters-investor-safety-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-sebi-action-defaulters-investor-safety-india/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-sebi-action-defaulters-investor-safety-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-sebi-action-defaulters-investor-safety-india/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c8-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-30-sebi-action-defaulters-investor-safety-india.html" class="post-content">
+        <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Investor Protection</span><span class="date">2026-05-30</span></div>
+        <h2 class="post-title">SEBI Action Against Defaulters: Investor Safety Explained</h2>
+        <p class="post-desc">Understand how SEBI protects your investments by taking action against defaulters. Learn practical steps to safeguard your financial future in the Indian market.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c9">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-rbi-bank-deposits-explained-for-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-rbi-bank-deposits-explained-for-salaried/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-rbi-bank-deposits-explained-for-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-rbi-bank-deposits-explained-for-salaried/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-rbi-bank-deposits-explained-for-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-rbi-bank-deposits-explained-for-salaried/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-rbi-bank-deposits-explained-for-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-rbi-bank-deposits-explained-for-salaried/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-rbi-bank-deposits-explained-for-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-rbi-bank-deposits-explained-for-salaried/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c9-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-30-rbi-bank-deposits-explained-for-salaried.html" class="post-content">
+        <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Bank Deposits</span><span class="date">2026-05-30</span></div>
+        <h2 class="post-title">RBI Deposits Data Explained for Indian Savers</h2>
+        <p class="post-desc">Understand the latest RBI report on bank deposits and what it means for your savings. Learn practical steps to optimize your financial planning.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c10">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-rbi-bsr-1-credit-report-impact-indian-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-rbi-bsr-1-credit-report-impact-indian-salaried/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-rbi-bsr-1-credit-report-impact-indian-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-rbi-bsr-1-credit-report-impact-indian-salaried/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-rbi-bsr-1-credit-report-impact-indian-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-rbi-bsr-1-credit-report-impact-indian-salaried/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-rbi-bsr-1-credit-report-impact-indian-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-rbi-bsr-1-credit-report-impact-indian-salaried/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-30-rbi-bsr-1-credit-report-impact-indian-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-30-rbi-bsr-1-credit-report-impact-indian-salaried/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c10-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-30-rbi-bsr-1-credit-report-impact-indian-salaried.html" class="post-content">
+        <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Personal Finance</span><span class="date">2026-05-30</span></div>
+        <h2 class="post-title">RBI Credit Report: What It Means for Indian Professionals</h2>
+        <p class="post-desc">Understand the RBI&#x27;s latest BSR-1 credit report, its implications for India&#x27;s lending landscape, and how it impacts your personal finance choices.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c11">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-sebi-defaulter-recovery-certificate-investor-safet.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-sebi-defaulter-recovery-certificate-investor-safet/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-sebi-defaulter-recovery-certificate-investor-safet.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-sebi-defaulter-recovery-certificate-investor-safet/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-sebi-defaulter-recovery-certificate-investor-safet.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-sebi-defaulter-recovery-certificate-investor-safet/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-sebi-defaulter-recovery-certificate-investor-safet.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-sebi-defaulter-recovery-certificate-investor-safet/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-sebi-defaulter-recovery-certificate-investor-safet.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-sebi-defaulter-recovery-certificate-investor-safet/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c11-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-28-sebi-defaulter-recovery-certificate-investor-safet.html" class="post-content">
+        <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Investor Safety</span><span class="date">2026-05-28</span></div>
+        <h2 class="post-title">SEBI Action Against Defaulter: Market Safeguards Explained</h2>
+        <p class="post-desc">Learn about SEBI&#x27;s role in investor protection and how regulatory actions against market defaulters safeguard your investments. Understand key takeaways for a secure financial future.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c12">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-sebi-market-action-investment-protection-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-sebi-market-action-investment-protection-india/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-sebi-market-action-investment-protection-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-sebi-market-action-investment-protection-india/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-sebi-market-action-investment-protection-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-sebi-market-action-investment-protection-india/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-sebi-market-action-investment-protection-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-sebi-market-action-investment-protection-india/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-sebi-market-action-investment-protection-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-sebi-market-action-investment-protection-india/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c12-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-28-sebi-market-action-investment-protection-india.html" class="post-content">
+        <div class="card-meta"><span class="tag">SEBI Regulations</span> <span class="tag">Investment Safety</span><span class="date">2026-05-28</span></div>
+        <h2 class="post-title">SEBI Action Against Defaulter: A Market Insight</h2>
+        <p class="post-desc">Understand SEBI&#x27;s role in upholding market integrity and learn crucial steps to protect your investments from defaults as an Indian salaried professional.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c13">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-india-bank-credit-growth-march-2026-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-india-bank-credit-growth-march-2026-impact/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-india-bank-credit-growth-march-2026-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-india-bank-credit-growth-march-2026-impact/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-india-bank-credit-growth-march-2026-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-india-bank-credit-growth-march-2026-impact/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-india-bank-credit-growth-march-2026-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-india-bank-credit-growth-march-2026-impact/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-28-india-bank-credit-growth-march-2026-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-28-india-bank-credit-growth-march-2026-impact/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c13-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-28-india-bank-credit-growth-march-2026-impact.html" class="post-content">
+        <div class="card-meta"><span class="tag">Indian Economy</span> <span class="tag">Personal Finance</span><span class="date">2026-05-28</span></div>
+        <h2 class="post-title">India Bank Credit Grows 15.9% in March 2026: What It Means</h2>
+        <p class="post-desc">RBI data shows non-food bank credit surge. Discover how this impacts loan availability, interest rates, and India&#x27;s economic outlook for salaried professionals.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c14">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-sebi-illiquid-options-risk-salaried-investors.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-sebi-illiquid-options-risk-salaried-investors/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-sebi-illiquid-options-risk-salaried-investors.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-sebi-illiquid-options-risk-salaried-investors/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-sebi-illiquid-options-risk-salaried-investors.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-sebi-illiquid-options-risk-salaried-investors/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-sebi-illiquid-options-risk-salaried-investors.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-sebi-illiquid-options-risk-salaried-investors/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-sebi-illiquid-options-risk-salaried-investors.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-sebi-illiquid-options-risk-salaried-investors/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c14-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-27-sebi-illiquid-options-risk-salaried-investors.html" class="post-content">
+        <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Stock Options</span><span class="date">2026-05-27</span></div>
+        <h2 class="post-title">SEBI Action: Illiquid Options &amp; Your Investments</h2>
+        <p class="post-desc">SEBI&#x27;s recent action highlights risks of illiquid stock options. Learn what illiquid options are, why they&#x27;re risky, and how Indian salaried professionals can safeguard their investments.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c15">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-sebi-recovery-market-safety-investor-protection.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-sebi-recovery-market-safety-investor-protection/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-sebi-recovery-market-safety-investor-protection.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-sebi-recovery-market-safety-investor-protection/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-sebi-recovery-market-safety-investor-protection.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-sebi-recovery-market-safety-investor-protection/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-sebi-recovery-market-safety-investor-protection.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-sebi-recovery-market-safety-investor-protection/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-sebi-recovery-market-safety-investor-protection.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-sebi-recovery-market-safety-investor-protection/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c15-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-27-sebi-recovery-market-safety-investor-protection.html" class="post-content">
+        <div class="card-meta"><span class="tag">SEBI</span> <span class="tag">Investor Protection</span><span class="date">2026-05-27</span></div>
+        <h2 class="post-title">SEBI Action Against Defaulter Highlights Market Safety</h2>
+        <p class="post-desc">Learn how SEBI&#x27;s actions against market defaulters protect your investments. Understand the importance of market regulation for Indian salaried professionals.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c16">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-bank-credit-growth-march-2026-salaried-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-bank-credit-growth-march-2026-salaried-impact/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-bank-credit-growth-march-2026-salaried-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-bank-credit-growth-march-2026-salaried-impact/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-bank-credit-growth-march-2026-salaried-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-bank-credit-growth-march-2026-salaried-impact/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-bank-credit-growth-march-2026-salaried-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-bank-credit-growth-march-2026-salaried-impact/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-27-bank-credit-growth-march-2026-salaried-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-27-bank-credit-growth-march-2026-salaried-impact/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c16-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-27-bank-credit-growth-march-2026-salaried-impact.html" class="post-content">
+        <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Personal Finance</span><span class="date">2026-05-27</span></div>
+        <h2 class="post-title">Bank Credit Jumps 15.9% in March 2026: Impact on You</h2>
+        <p class="post-desc">RBI reports 15.9% growth in bank credit. Learn how this economic indicator impacts your loans, job market, and financial planning as an Indian salaried professional.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c17">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-26-bank-credit-growth-india-impact-on-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-26-bank-credit-growth-india-impact-on-salaried/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-26-bank-credit-growth-india-impact-on-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-26-bank-credit-growth-india-impact-on-salaried/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-26-bank-credit-growth-india-impact-on-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-26-bank-credit-growth-india-impact-on-salaried/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-26-bank-credit-growth-india-impact-on-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-26-bank-credit-growth-india-impact-on-salaried/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-26-bank-credit-growth-india-impact-on-salaried.html"><img src="https://zentraai.in/blog/carousels/2026-05-26-bank-credit-growth-india-impact-on-salaried/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c17-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-26-bank-credit-growth-india-impact-on-salaried.html" class="post-content">
+        <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Bank Credit</span><span class="date">2026-05-26</span></div>
+        <h2 class="post-title">India Bank Credit Surges 15.9%: What It Means For You</h2>
+        <p class="post-desc">Learn about RBI&#x27;s latest report on bank credit growth (15.9%), its implications for the Indian economy, your career, investments, and borrowing costs.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c18">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-increase-sip-contributions-wealth-growth.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-increase-sip-contributions-wealth-growth/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-increase-sip-contributions-wealth-growth.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-increase-sip-contributions-wealth-growth/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-increase-sip-contributions-wealth-growth.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-increase-sip-contributions-wealth-growth/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-increase-sip-contributions-wealth-growth.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-increase-sip-contributions-wealth-growth/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-increase-sip-contributions-wealth-growth.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-increase-sip-contributions-wealth-growth/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c18-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-25-increase-sip-contributions-wealth-growth.html" class="post-content">
+        <div class="card-meta"><span class="tag">SIP Strategy</span> <span class="tag">Wealth Building</span><span class="date">2026-05-25</span></div>
+        <h2 class="post-title">Boost Your SIP Performance for Faster Wealth Growth</h2>
+        <p class="post-desc">Learn how small, consistent adjustments to your SIP contributions can significantly accelerate your wealth creation. Discover practical strategies to beat inflation and achieve financial goals faster.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c19">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-prepare-for-inflation-hyt-money-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-prepare-for-inflation-hyt-money-india/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-prepare-for-inflation-hyt-money-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-prepare-for-inflation-hyt-money-india/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-prepare-for-inflation-hyt-money-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-prepare-for-inflation-hyt-money-india/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-prepare-for-inflation-hyt-money-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-prepare-for-inflation-hyt-money-india/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-prepare-for-inflation-hyt-money-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-prepare-for-inflation-hyt-money-india/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c19-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-25-prepare-for-inflation-hyt-money-india.html" class="post-content">
+        <div class="card-meta"><span class="tag">Financial Planning</span> <span class="tag">Inflation India</span><span class="date">2026-05-25</span></div>
+        <h2 class="post-title">Inflation Hits Indian Households: Prepare Now</h2>
+        <p class="post-desc">Learn how rising inflation impacts your finances and discover practical strategies to protect your savings and manage expenses effectively in India.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c20">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-rbi-may-2026-bulletin-economic-outlook-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-rbi-may-2026-bulletin-economic-outlook-india/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-rbi-may-2026-bulletin-economic-outlook-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-rbi-may-2026-bulletin-economic-outlook-india/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-rbi-may-2026-bulletin-economic-outlook-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-rbi-may-2026-bulletin-economic-outlook-india/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-rbi-may-2026-bulletin-economic-outlook-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-rbi-may-2026-bulletin-economic-outlook-india/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-25-rbi-may-2026-bulletin-economic-outlook-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-25-rbi-may-2026-bulletin-economic-outlook-india/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c20-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-25-rbi-may-2026-bulletin-economic-outlook-india.html" class="post-content">
+        <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Indian Economy</span><span class="date">2026-05-25</span></div>
+        <h2 class="post-title">RBI May 2026 Bulletin: India&#x27;s Economic Outlook</h2>
+        <p class="post-desc">Understand the RBI&#x27;s latest economic outlook for Indian professionals. Learn how global and domestic factors influence your finances and what steps you can take.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c21">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-wrong-itr-form-consequences-how-to-fix.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-wrong-itr-form-consequences-how-to-fix/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-wrong-itr-form-consequences-how-to-fix.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-wrong-itr-form-consequences-how-to-fix/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-wrong-itr-form-consequences-how-to-fix.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-wrong-itr-form-consequences-how-to-fix/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-wrong-itr-form-consequences-how-to-fix.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-wrong-itr-form-consequences-how-to-fix/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-wrong-itr-form-consequences-how-to-fix.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-wrong-itr-form-consequences-how-to-fix/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c21-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-24-wrong-itr-form-consequences-how-to-fix.html" class="post-content">
+        <div class="card-meta"><span class="tag">ITR Filing</span> <span class="tag">Income Tax</span><span class="date">2026-05-24</span></div>
+        <h2 class="post-title">Avoid ITR Form Errors for Smooth Tax Filing</h2>
+        <p class="post-desc">Learn what happens if you file the wrong ITR form in India. Understand consequences like delayed refunds and how salaried professionals can fix errors for a hassle-free tax season.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c22">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-flexi-cap-mutual-funds-for-indian-investors.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-flexi-cap-mutual-funds-for-indian-investors/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-flexi-cap-mutual-funds-for-indian-investors.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-flexi-cap-mutual-funds-for-indian-investors/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-flexi-cap-mutual-funds-for-indian-investors.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-flexi-cap-mutual-funds-for-indian-investors/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-flexi-cap-mutual-funds-for-indian-investors.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-flexi-cap-mutual-funds-for-indian-investors/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-flexi-cap-mutual-funds-for-indian-investors.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-flexi-cap-mutual-funds-for-indian-investors/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c22-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-24-flexi-cap-mutual-funds-for-indian-investors.html" class="post-content">
+        <div class="card-meta"><span class="tag">mutual funds</span> <span class="tag">flexi cap</span><span class="date">2026-05-24</span></div>
+        <h2 class="post-title">Flexi Cap Mutual Funds for Salaried Indians: A Guide</h2>
+        <p class="post-desc">Learn how flexi cap mutual funds invest across market caps and their role in a diversified portfolio for Indian salaried professionals. Understand the benefits and considerations.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c23">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-indian-bank-credit-growth-march-2026-implications.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-indian-bank-credit-growth-march-2026-implications/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-indian-bank-credit-growth-march-2026-implications.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-indian-bank-credit-growth-march-2026-implications/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-indian-bank-credit-growth-march-2026-implications.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-indian-bank-credit-growth-march-2026-implications/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-indian-bank-credit-growth-march-2026-implications.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-indian-bank-credit-growth-march-2026-implications/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-24-indian-bank-credit-growth-march-2026-implications.html"><img src="https://zentraai.in/blog/carousels/2026-05-24-indian-bank-credit-growth-march-2026-implications/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c23-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-24-indian-bank-credit-growth-march-2026-implications.html" class="post-content">
+        <div class="card-meta"><span class="tag">financial planning</span> <span class="tag">indian economy</span><span class="date">2026-05-24</span></div>
+        <h2 class="post-title">India Bank Credit Up 15.9% in March 2026: What it Means</h2>
+        <p class="post-desc">RBI data shows India&#x27;s bank credit grew 15.9% by March 2026. Understand what this growth signifies for your personal finances and the Indian economy.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c24">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-child-crorepati-by-18-sip-investing-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-child-crorepati-by-18-sip-investing-india/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-child-crorepati-by-18-sip-investing-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-child-crorepati-by-18-sip-investing-india/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-child-crorepati-by-18-sip-investing-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-child-crorepati-by-18-sip-investing-india/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-child-crorepati-by-18-sip-investing-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-child-crorepati-by-18-sip-investing-india/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-child-crorepati-by-18-sip-investing-india.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-child-crorepati-by-18-sip-investing-india/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c24-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-23-child-crorepati-by-18-sip-investing-india.html" class="post-content">
+        <div class="card-meta"><span class="tag">child finance</span> <span class="tag">SIP investing</span><span class="date">2026-05-23</span></div>
+        <h2 class="post-title">Build &#x20B9;1 Crore for Child: Early SIPs for Future</h2>
+        <p class="post-desc">Secure your child&#x27;s future. Learn how consistent monthly SIPs, starting early, can help Indian parents accumulate &#x20B9;1 crore by age 18 through compounding.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c25">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-missed-home-loan-emi-steps-to-protect-credit.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-missed-home-loan-emi-steps-to-protect-credit/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-missed-home-loan-emi-steps-to-protect-credit.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-missed-home-loan-emi-steps-to-protect-credit/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-missed-home-loan-emi-steps-to-protect-credit.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-missed-home-loan-emi-steps-to-protect-credit/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-missed-home-loan-emi-steps-to-protect-credit.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-missed-home-loan-emi-steps-to-protect-credit/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-missed-home-loan-emi-steps-to-protect-credit.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-missed-home-loan-emi-steps-to-protect-credit/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c25-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-23-missed-home-loan-emi-steps-to-protect-credit.html" class="post-content">
+        <div class="card-meta"><span class="tag">home loan</span> <span class="tag">credit score</span><span class="date">2026-05-23</span></div>
+        <h2 class="post-title">Missed Home Loan EMI? Protect Your Credit Score</h2>
+        <p class="post-desc">Learn smart steps to take if you miss a home loan EMI. Understand how to communicate with your lender, plan repayments, and protect your credit score from damage.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c26">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-rbi-bulletin-may-2026-india-economy-resilience.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-rbi-bulletin-may-2026-india-economy-resilience/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-rbi-bulletin-may-2026-india-economy-resilience.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-rbi-bulletin-may-2026-india-economy-resilience/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-rbi-bulletin-may-2026-india-economy-resilience.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-rbi-bulletin-may-2026-india-economy-resilience/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-rbi-bulletin-may-2026-india-economy-resilience.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-rbi-bulletin-may-2026-india-economy-resilience/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-23-rbi-bulletin-may-2026-india-economy-resilience.html"><img src="https://zentraai.in/blog/carousels/2026-05-23-rbi-bulletin-may-2026-india-economy-resilience/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c26-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-23-rbi-bulletin-may-2026-india-economy-resilience.html" class="post-content">
+        <div class="card-meta"><span class="tag">RBI</span> <span class="tag">Indian Economy</span><span class="date">2026-05-23</span></div>
+        <h2 class="post-title">RBI Bulletin May 2026: India&#x27;s Economic Resilience</h2>
+        <p class="post-desc">Understand key insights from the RBI&#x27;s May 2026 Bulletin. Learn how India&#x27;s economic resilience amidst global uncertainty impacts your personal finances and planning.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c27">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-indian-bank-credit-growth-march-2026-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-indian-bank-credit-growth-march-2026-impact/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-indian-bank-credit-growth-march-2026-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-indian-bank-credit-growth-march-2026-impact/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-indian-bank-credit-growth-march-2026-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-indian-bank-credit-growth-march-2026-impact/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-indian-bank-credit-growth-march-2026-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-indian-bank-credit-growth-march-2026-impact/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-indian-bank-credit-growth-march-2026-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-indian-bank-credit-growth-march-2026-impact/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c27-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-22-indian-bank-credit-growth-march-2026-impact.html" class="post-content">
+        <div class="card-meta"><span class="tag">banking</span> <span class="tag">indian economy</span><span class="date">2026-05-22</span></div>
+        <h2 class="post-title">Indian Bank Credit Jumps 15.9% in March 2026: What It Means</h2>
+        <p class="post-desc">Understand what India&#x27;s 15.9% rise in bank credit growth means for your finances and the economy. Learn how this trend impacts your financial planning.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c28">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-rbi-prioritizes-inflation-over-rupee-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-rbi-prioritizes-inflation-over-rupee-impact/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-rbi-prioritizes-inflation-over-rupee-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-rbi-prioritizes-inflation-over-rupee-impact/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-rbi-prioritizes-inflation-over-rupee-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-rbi-prioritizes-inflation-over-rupee-impact/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-rbi-prioritizes-inflation-over-rupee-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-rbi-prioritizes-inflation-over-rupee-impact/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-rbi-prioritizes-inflation-over-rupee-impact.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-rbi-prioritizes-inflation-over-rupee-impact/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c28-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-22-rbi-prioritizes-inflation-over-rupee-impact.html" class="post-content">
+        <div class="card-meta"><span class="tag">RBI</span> <span class="tag">inflation</span><span class="date">2026-05-22</span></div>
+        <h2 class="post-title">RBI&#x27;s Focus: Inflation Over Rupee for Rate Hikes</h2>
+        <p class="post-desc">Understand why RBI prioritizes inflation over rupee stability for interest rate decisions. Learn how this impacts your loans, savings, and financial planning as a salaried professional.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="c29">
+          <div class="slides-track">
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-gold-price-dip-impact-indian-salaried-professional.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-gold-price-dip-impact-indian-salaried-professional/slide-1-hook.jpg" alt="Hook" loading="lazy" onerror="this.closest('.post-carousel').style.display='none';this.closest('.post-row').classList.add('no-carousel')"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-gold-price-dip-impact-indian-salaried-professional.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-gold-price-dip-impact-indian-salaried-professional/slide-2-point1.jpg" alt="Point 1" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-gold-price-dip-impact-indian-salaried-professional.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-gold-price-dip-impact-indian-salaried-professional/slide-3-point2.jpg" alt="Point 2" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-gold-price-dip-impact-indian-salaried-professional.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-gold-price-dip-impact-indian-salaried-professional/slide-4-point3.jpg" alt="Point 3" loading="lazy"></a></div>
+            <div class="slide"><a href="https://zentraai.in/blog/2026-05-22-gold-price-dip-impact-indian-salaried-professional.html"><img src="https://zentraai.in/blog/carousels/2026-05-22-gold-price-dip-impact-indian-salaried-professional/slide-5-cta.jpg" alt="CTA" loading="lazy"></a></div>
+          </div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span class="slide-counter" id="c29-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="https://zentraai.in/blog/2026-05-22-gold-price-dip-impact-indian-salaried-professional.html" class="post-content">
+        <div class="card-meta"><span class="tag">gold investment</span> <span class="tag">financial planning</span><span class="date">2026-05-22</span></div>
+        <h2 class="post-title">Gold Prices Dip: What It Means for Your Finances</h2>
+        <p class="post-desc">Understand why gold prices dipped globally and how this impacts your financial planning as an Indian salaried professional. Learn about smart diversification.</p>
+        <span class="read-more">Read article ›</span>
+      </a>
+    </div>
+
     </div>
   </main>
+
+  <script>
+  (function () {
+    var state = {};
+
+    function go(id, n) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var slides = el.querySelectorAll('.slide');
+      var total = slides.length;
+      n = ((n % total) + total) % total;
+      state[id] = n;
+      el.querySelector('.slides-track').style.transform = 'translateX(-' + (n * (100 / total)) + '%)';
+      el.querySelectorAll('.dot').forEach(function (d, i) { d.classList.toggle('active', i === n); });
+      var counter = document.getElementById(id + '-counter');
+      if (counter) counter.textContent = (n + 1) + ' / ' + total;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.mini-carousel').forEach(function (el) {
+        var id = el.id;
+        state[id] = 0;
+        var prevBtn = el.querySelector('.prev');
+        var nextBtn = el.querySelector('.next');
+        if (prevBtn) prevBtn.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); go(id, (state[id] || 0) - 1); });
+        if (nextBtn) nextBtn.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); go(id, (state[id] || 0) + 1); });
+        el.querySelectorAll('.dot').forEach(function (dot, i) {
+          dot.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); go(id, i); });
+        });
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
