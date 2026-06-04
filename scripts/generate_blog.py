@@ -551,19 +551,52 @@ def build_post_html(data: dict, article: dict, pub_date_str: str, post_url: str,
 
 def rebuild_index(published_log: list[dict]) -> None:
     recent = sorted(published_log, key=lambda e: e["date"], reverse=True)[:30]
-    cards = ""
-    for entry in recent:
+    rows = ""
+    slide_names = [
+        ("slide-1-hook.jpg", "Hook"),
+        ("slide-2-point1.jpg", "Point 1"),
+        ("slide-3-point2.jpg", "Point 2"),
+        ("slide-4-point3.jpg", "Point 3"),
+        ("slide-5-cta.jpg", "CTA"),
+    ]
+    for i, entry in enumerate(recent):
         tags_html = " ".join(
             f'<span class="tag">{html_lib.escape(t)}</span>'
             for t in entry.get("tags", [])[:2]
         )
-        cards += f"""
-    <a href="{entry['url']}" class="card">
-      <div class="card-meta">{tags_html}<span class="date">{entry['date'][:10]}</span></div>
-      <h2>{html_lib.escape(entry['title'])}</h2>
-      <p>{html_lib.escape(entry['description'])}</p>
-    </a>"""
+        filename = entry["url"].rstrip("/").split("/")[-1].replace(".html", "")
+        carousel_base = f"{BLOG_URL}/carousels/{filename}"
+        slides_html = ""
+        dots_html = ""
+        for j, (sname, slabel) in enumerate(slide_names):
+            err = ' onerror="this.closest(\'.post-carousel\').style.display=\'none\';this.closest(\'.post-row\').classList.add(\'no-carousel\')"' if j == 0 else ""
+            slides_html += (
+                f'<div class="slide"><a href="{entry["url"]}">'
+                f'<img src="{carousel_base}/{sname}" alt="{html_lib.escape(slabel)}" loading="lazy"{err}>'
+                f"</a></div>"
+            )
+            dots_html += f'<span class="dot{" active" if j == 0 else ""}"></span>'
+        cid = f"c{i}"
+        rows += f"""
+    <div class="post-row">
+      <div class="post-carousel">
+        <div class="mini-carousel" id="{cid}">
+          <div class="slides-track">{slides_html}</div>
+          <button class="nav-btn prev">&#8249;</button>
+          <button class="nav-btn next">&#8250;</button>
+          <div class="dots">{dots_html}</div>
+          <span class="slide-counter" id="{cid}-counter">1 / 5</span>
+        </div>
+      </div>
+      <a href="{entry['url']}" class="post-content">
+        <div class="card-meta">{tags_html}<span class="date">{entry['date'][:10]}</span></div>
+        <h2 class="post-title">{html_lib.escape(entry['title'])}</h2>
+        <p class="post-desc">{html_lib.escape(entry['description'])}</p>
+        <span class="read-more">Read article &#x203A;</span>
+      </a>
+    </div>"""
 
+    empty_or_rows = '<p class="empty">No posts yet — check back soon.</p>' if not recent else rows
     index_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -599,24 +632,73 @@ def rebuild_index(published_log: list[dict]) -> None:
       text-transform: uppercase; color: #8A8A90; line-height: 1; }}
     .nav-sep {{ color: #2A2A2E; font-size: 14px; }}
     .nav-link {{ color: #8A8A90; font-size: 14px; }}
-    .container {{ max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }}
-    .hero {{ margin-bottom: 48px; }}
-    .hero h1 {{ font-size: clamp(28px, 5vw, 42px); font-weight: 800; margin-bottom: 12px; }}
+    .page {{ max-width: 1400px; margin: 0 auto; padding: 48px 32px 80px; }}
+    .hero {{ margin-bottom: 40px; }}
+    .hero h1 {{ font-size: clamp(28px, 5vw, 48px); font-weight: 800; margin-bottom: 10px; }}
     .hero p {{ color: #8A8A90; font-size: 16px; }}
-    .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }}
-    .card {{ background: linear-gradient(180deg,rgba(26,26,29,0.97) 0%,rgba(19,19,21,1) 100%);
-             border: 1px solid #2A2A2E; border-radius: 14px;
-             padding: 20px; display: flex; flex-direction: column; gap: 10px;
-             transition: border-color 0.2s, transform 0.2s; color: #F0F0EC; }}
-    .card:hover {{ border-color: rgba(201,162,42,0.5); transform: translateY(-2px); }}
+    .post-list {{ display: flex; flex-direction: column; }}
+    .post-row {{ display: flex; align-items: center; gap: 28px;
+      padding: 28px 16px; border-bottom: 1px solid rgba(42,42,46,0.8);
+      border-radius: 12px; transition: background 0.2s; }}
+    .post-row:first-child {{ border-top: 1px solid rgba(42,42,46,0.8); }}
+    .post-row:hover {{ background: rgba(20,20,24,0.7); }}
+    .post-carousel {{ flex-shrink: 0; width: 240px; }}
+    .mini-carousel {{ position: relative; width: 240px; aspect-ratio: 1 / 1;
+      border-radius: 14px; overflow: hidden; background: #131315;
+      border: 1px solid #2A2A2E; }}
+    .slides-track {{ display: flex; width: 500%; height: 100%;
+      transition: transform 0.3s ease; will-change: transform; }}
+    .slide {{ flex: 0 0 20%; height: 100%; }}
+    .slide a {{ display: block; width: 100%; height: 100%; }}
+    .slide img {{ width: 100%; height: 100%; object-fit: cover; display: block; }}
+    .nav-btn {{ position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(13,13,15,0.85); color: #E2C05E;
+      border: 1px solid rgba(201,162,42,0.35); border-radius: 8px;
+      width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 18px; font-weight: 700; line-height: 1;
+      backdrop-filter: blur(8px); transition: background 0.2s, opacity 0.2s;
+      z-index: 2; opacity: 0; }}
+    .mini-carousel:hover .nav-btn {{ opacity: 1; }}
+    .nav-btn:hover {{ background: rgba(201,162,42,0.20); }}
+    .prev {{ left: 7px; }}
+    .next {{ right: 7px; }}
+    .dots {{ position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 5px; z-index: 2; }}
+    .dot {{ width: 6px; height: 6px; border-radius: 50%; cursor: pointer;
+      background: rgba(255,255,255,0.22); transition: background 0.2s; }}
+    .dot.active {{ background: #C9A22A; }}
+    .slide-counter {{ position: absolute; top: 8px; right: 9px; z-index: 2;
+      font-size: 10px; font-weight: 700; color: #E2C05E;
+      background: rgba(13,13,15,0.75); padding: 2px 7px; border-radius: 20px;
+      backdrop-filter: blur(6px); border: 1px solid rgba(201,162,42,0.22); }}
+    .post-content {{ flex: 1; display: flex; flex-direction: column; gap: 10px;
+      color: #F0F0EC; padding: 4px 0; min-width: 0; }}
+    .post-content:hover .post-title {{ color: #E2C05E; }}
     .card-meta {{ display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }}
     .tag {{ background: rgba(201,162,42,0.10); color: #E2C05E; font-size: 11px;
-             font-weight: 600; padding: 3px 8px; border-radius: 20px;
-             border: 1px solid rgba(201,162,42,0.20); }}
+      font-weight: 600; padding: 3px 9px; border-radius: 20px;
+      border: 1px solid rgba(201,162,42,0.20); }}
     .date {{ color: #5A5A60; font-size: 12px; }}
-    .card h2 {{ font-size: 15px; font-weight: 700; line-height: 1.4; color: #F0F0EC; }}
-    .card p {{ font-size: 13px; color: #8A8A90; line-height: 1.5; flex: 1; }}
+    .post-title {{ font-size: clamp(17px, 1.8vw, 22px); font-weight: 700;
+      line-height: 1.3; color: #F0F0EC; transition: color 0.2s; }}
+    .post-desc {{ font-size: 14px; color: #8A8A90; line-height: 1.6; }}
+    .read-more {{ display: inline-flex; align-items: center; gap: 5px;
+      color: #C9A22A; font-size: 13px; font-weight: 700; margin-top: 2px; }}
+    .post-row.no-carousel .post-carousel {{ display: none; }}
     .empty {{ color: #5A5A60; text-align: center; padding: 60px 0; }}
+    @media (max-width: 900px) {{
+      .page {{ padding: 32px 20px 60px; }}
+      .post-carousel {{ width: 200px; }}
+      .mini-carousel {{ width: 200px; }}
+    }}
+    @media (max-width: 640px) {{
+      .page {{ padding: 24px 16px 60px; }}
+      .post-row {{ flex-direction: column; align-items: flex-start; gap: 14px; padding: 20px 12px; }}
+      .post-carousel {{ width: 100%; }}
+      .mini-carousel {{ width: 100%; }}
+      .nav-btn {{ opacity: 1; }}
+      .post-title {{ font-size: 17px; }}
+    }}
   </style>
 </head>
 <body>
@@ -631,15 +713,45 @@ def rebuild_index(published_log: list[dict]) -> None:
     <span class="nav-sep">/</span>
     <span class="nav-link">Finance Blog</span>
   </nav>
-  <main class="container">
+  <main class="page">
     <div class="hero">
       <h1>Finance Insights</h1>
       <p>Daily finance news explained simply for Indian salaried professionals.</p>
     </div>
-    <div class="grid">
-      {'<p class="empty">No posts yet — check back soon.</p>' if not recent else cards}
+    <div class="post-list">
+      {empty_or_rows}
     </div>
   </main>
+  <script>
+  (function () {{
+    var state = {{}};
+    function go(id, n) {{
+      var el = document.getElementById(id);
+      if (!el) return;
+      var slides = el.querySelectorAll('.slide');
+      var total = slides.length;
+      n = ((n % total) + total) % total;
+      state[id] = n;
+      el.querySelector('.slides-track').style.transform = 'translateX(-' + (n * (100 / total)) + '%)';
+      el.querySelectorAll('.dot').forEach(function (d, i) {{ d.classList.toggle('active', i === n); }});
+      var counter = document.getElementById(id + '-counter');
+      if (counter) counter.textContent = (n + 1) + ' / ' + total;
+    }}
+    document.addEventListener('DOMContentLoaded', function () {{
+      document.querySelectorAll('.mini-carousel').forEach(function (el) {{
+        var id = el.id;
+        state[id] = 0;
+        var prevBtn = el.querySelector('.prev');
+        var nextBtn = el.querySelector('.next');
+        if (prevBtn) prevBtn.addEventListener('click', function (e) {{ e.preventDefault(); e.stopPropagation(); go(id, (state[id] || 0) - 1); }});
+        if (nextBtn) nextBtn.addEventListener('click', function (e) {{ e.preventDefault(); e.stopPropagation(); go(id, (state[id] || 0) + 1); }});
+        el.querySelectorAll('.dot').forEach(function (dot, i) {{
+          dot.addEventListener('click', function (e) {{ e.preventDefault(); e.stopPropagation(); go(id, i); }});
+        }});
+      }});
+    }});
+  }})();
+  </script>
 </body>
 </html>"""
     (BLOG_DIR / "index.html").write_text(index_html, encoding="utf-8")
