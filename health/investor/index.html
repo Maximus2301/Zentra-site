@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYT Health — Investor Relations</title>
+  <meta name="description" content="HYT Health investor overview: India's first Healthcare OS. $2B+ TAM, 5-year ₹200Cr ARR roadmap, ABDM-native moat, and a clear path to ₹2,000–4,000Cr valuation." />
+  <meta property="og:title" content="HYT Health — Investor Relations" />
+  <meta property="og:description" content="The Healthcare OS opportunity: ₹200Cr ARR target by Y5, 50,000+ providers, EBITDA+27%. Seed raise open." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #F0F6FF;
+      --bg-alt:      #FFFFFF;
+      --surface:     #FFFFFF;
+      --primary:     #1D4ED8;
+      --primary-h:   #1a44b0;
+      --mid:         #3B82F6;
+      --sky:         #0EA5E9;
+      --sky-light:   #BAE6FD;
+      --light-blue:  #DBEAFE;
+      --xlight:      #EFF6FF;
+      --navy:        #0F2A6B;
+      --text:        #0F172A;
+      --muted:       #475569;
+      --muted-2:     #94A3B8;
+      --border:      #BFDBFE;
+      --border-soft: #E0EDFF;
+      --green:       #22C55E;
+      --amber:       #F59E0B;
+      --radius:      16px;
+      --radius-lg:   22px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 48px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-soft);
+      box-shadow: 0 1px 16px rgba(29,78,216,0.06);
+    }
+    .logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+    .logo-mark {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%);
+      display: grid; place-items: center; flex-shrink: 0;
+      box-shadow: 0 3px 10px rgba(29,78,216,0.30);
+    }
+    .logo-mark span { color: #fff; font-size: 18px; font-weight: 800; line-height: 1; }
+    .logo-copy { display: flex; flex-direction: column; gap: 1px; }
+    .logo-name { font-size: 15px; font-weight: 800; letter-spacing: -0.01em; color: var(--primary); line-height: 1; }
+    .logo-sub { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-2); }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .nav-link { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 6px 12px; border-radius: 8px; transition: color 0.2s; }
+    .nav-link:hover { color: var(--primary); }
+    .nav-cta {
+      padding: 9px 22px; background: var(--primary); color: #fff;
+      font-size: 13px; font-weight: 700; border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 3px 12px rgba(29,78,216,0.28);
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--primary-h); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 96px 24px 80px;
+      background: linear-gradient(160deg, #fff 0%, var(--xlight) 60%, var(--bg) 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -100px; right: -100px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(29,78,216,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 18px; border: 1px solid var(--border);
+      background: var(--surface); border-radius: 999px;
+      font-size: 11px; font-weight: 700; color: var(--primary);
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(29,78,216,0.08);
+    }
+    .hero-kicker-dot { width: 6px; height: 6px; background: var(--amber); border-radius: 50%; box-shadow: 0 0 8px rgba(245,158,11,0.6); }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 68px); font-weight: 900;
+      line-height: 1.03; letter-spacing: -0.04em; margin-bottom: 22px; color: var(--text);
+    }
+    .hero h1 .blue {
+      background: linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-sub {
+      font-size: 18px; color: var(--muted); max-width: 620px; line-height: 1.72; margin-bottom: 44px;
+    }
+    .hero-metrics {
+      display: flex; gap: 40px; flex-wrap: wrap; margin-bottom: 40px;
+    }
+    .h-metric .num { font-size: 32px; font-weight: 900; color: var(--primary); letter-spacing: -0.04em; }
+    .h-metric .lbl { font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+    .hero-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 14px 30px; background: var(--primary); color: #fff;
+      font-size: 15px; font-weight: 700; border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 5px 22px rgba(29,78,216,0.32);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--primary-h); transform: translateY(-2px); }
+    .btn-outline {
+      padding: 14px 30px; background: var(--surface); color: var(--primary);
+      font-size: 15px; font-weight: 700; border-radius: 12px;
+      text-decoration: none; border: 1.5px solid var(--border);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--primary); transform: translateY(-2px); }
+
+    /* ── SHARED ── */
+    .section { padding: 88px 24px; }
+    .section.alt { background: var(--bg-alt); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block; padding: 4px 12px;
+      background: rgba(29,78,216,0.08); color: var(--primary);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
+      border-radius: 6px; margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(26px, 3.2vw, 42px); font-weight: 900;
+      letter-spacing: -0.035em; color: var(--text); margin-bottom: 14px; line-height: 1.13;
+    }
+    .section-desc { font-size: 16px; color: var(--muted); max-width: 540px; line-height: 1.72; }
+    .section-hdr { margin-bottom: 52px; }
+
+    /* ── MARKET SIZE ── */
+    .market-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+    .market-table {
+      background: var(--surface); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: 0 2px 16px rgba(29,78,216,0.06);
+    }
+    .market-table table { width: 100%; border-collapse: collapse; }
+    .market-table th {
+      background: var(--xlight); padding: 12px 18px;
+      font-size: 11px; font-weight: 700; color: var(--primary);
+      letter-spacing: 0.06em; text-transform: uppercase; text-align: left;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .market-table td { padding: 11px 18px; font-size: 13px; color: var(--text); border-bottom: 1px solid var(--border-soft); }
+    .market-table tr:last-child td { border-bottom: none; }
+    .market-table tr.total td { font-weight: 800; color: var(--primary); background: rgba(29,78,216,0.04); }
+    .market-table td.seg { color: var(--muted); }
+    .market-right { display: flex; flex-direction: column; gap: 20px; }
+    .market-callout {
+      background: linear-gradient(135deg, #1D4ED8, #0EA5E9);
+      border-radius: var(--radius-lg); padding: 36px 32px; color: #fff;
+    }
+    .market-callout .big { font-size: 52px; font-weight: 900; letter-spacing: -0.05em; margin-bottom: 4px; color: #fff; }
+    .market-callout .lbl { font-size: 14px; color: rgba(255,255,255,0.80); margin-bottom: 16px; }
+    .market-callout .note { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+    .market-stat-mini {
+      background: var(--surface); border: 1px solid var(--border-soft);
+      border-radius: var(--radius); padding: 22px 24px;
+      display: flex; align-items: center; gap: 16px;
+      box-shadow: 0 1px 8px rgba(29,78,216,0.05);
+    }
+    .msm-num { font-size: 28px; font-weight: 900; color: var(--primary); letter-spacing: -0.04em; white-space: nowrap; }
+    .msm-txt { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── MOAT / DIFFERENTIATORS ── */
+    .moat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .moat-card {
+      background: var(--surface); border: 1px solid var(--border-soft);
+      border-radius: var(--radius); padding: 26px 24px;
+      display: flex; gap: 16px; align-items: flex-start;
+      box-shadow: 0 1px 8px rgba(29,78,216,0.04);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .moat-card:hover { box-shadow: 0 6px 24px rgba(29,78,216,0.10); transform: translateY(-2px); }
+    .moat-num {
+      font-size: 14px; font-weight: 900; color: var(--primary);
+      background: var(--xlight); border: 1px solid var(--border-soft);
+      width: 32px; height: 32px; border-radius: 8px;
+      display: grid; place-items: center; flex-shrink: 0;
+    }
+    .moat-txt h4 { font-size: 15px; font-weight: 700; margin-bottom: 5px; }
+    .moat-txt p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── FINANCIAL PROJECTIONS ── */
+    .proj-table-wrap {
+      background: var(--surface); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: 0 4px 24px rgba(29,78,216,0.07);
+    }
+    .proj-table { width: 100%; border-collapse: collapse; }
+    .proj-table th {
+      background: var(--primary); color: #fff;
+      padding: 14px 20px; font-size: 12px; font-weight: 700;
+      text-align: left; letter-spacing: 0.04em;
+    }
+    .proj-table td {
+      padding: 14px 20px; font-size: 14px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .proj-table tr:last-child td { border-bottom: none; }
+    .proj-table tr:nth-child(even) td { background: var(--xlight); }
+    .proj-table td.year { font-weight: 800; color: var(--primary); }
+    .proj-table td.arr { font-weight: 700; color: var(--text); }
+    .proj-table td.pos { color: #16A34A; font-weight: 700; }
+    .proj-table td.neg { color: #DC2626; }
+    .proj-table td.val { font-weight: 800; color: var(--primary); }
+    .proj-note { font-size: 12px; color: var(--muted-2); margin-top: 14px; line-height: 1.6; font-style: italic; }
+
+    /* ── REVENUE STREAMS ── */
+    .streams-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .stream-card {
+      background: var(--surface); border: 1px solid var(--border-soft);
+      border-radius: var(--radius); padding: 26px 22px;
+      box-shadow: 0 1px 8px rgba(29,78,216,0.04);
+    }
+    .stream-pct { font-size: 28px; font-weight: 900; color: var(--primary); letter-spacing: -0.04em; margin-bottom: 4px; }
+    .stream-name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .stream-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── FUNDING ROADMAP ── */
+    .funding-timeline { display: flex; flex-direction: column; gap: 0; }
+    .funding-row {
+      display: grid; grid-template-columns: 180px 1fr;
+      gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--border-soft);
+      align-items: start;
+    }
+    .funding-row:last-child { border-bottom: none; }
+    .funding-round {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .round-name { font-size: 13px; font-weight: 700; color: var(--primary); }
+    .round-timing { font-size: 12px; color: var(--muted-2); }
+    .round-amount { font-size: 24px; font-weight: 900; color: var(--text); letter-spacing: -0.03em; margin-top: 4px; }
+    .round-usd { font-size: 13px; color: var(--muted); }
+    .funding-detail { display: flex; flex-direction: column; gap: 10px; }
+    .funding-detail .valuation { font-size: 13px; color: var(--muted); }
+    .funding-detail .valuation strong { color: var(--text); }
+    .use-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .use-list li { font-size: 13px; color: var(--muted); display: flex; align-items: flex-start; gap: 8px; line-height: 1.45; }
+    .use-list li::before { content: '→'; color: var(--primary); font-weight: 700; flex-shrink: 0; }
+    .milestone-tag {
+      display: inline-flex; padding: 3px 12px;
+      background: rgba(22,163,74,0.08); color: #16A34A;
+      border: 1px solid rgba(22,163,74,0.20); border-radius: 999px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    }
+
+    /* ── WHY NOW ── */
+    .timing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .timing-card {
+      background: var(--surface); border: 1px solid var(--border-soft);
+      border-radius: var(--radius); padding: 28px 24px;
+      box-shadow: 0 1px 8px rgba(29,78,216,0.04);
+    }
+    .timing-card .t-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+    .timing-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .timing-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    /* ── UNIT ECONOMICS ── */
+    .unit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .unit-card {
+      background: var(--surface); border: 1px solid var(--border-soft);
+      border-radius: var(--radius); padding: 24px 20px; text-align: center;
+    }
+    .unit-tier { font-size: 11px; font-weight: 700; color: var(--muted-2); letter-spacing: 0.10em; text-transform: uppercase; margin-bottom: 8px; }
+    .unit-ltv { font-size: 22px; font-weight: 900; color: var(--primary); margin-bottom: 4px; }
+    .unit-ratio { font-size: 20px; font-weight: 800; color: var(--green); margin-bottom: 4px; }
+    .unit-label { font-size: 11px; color: var(--muted); }
+
+    /* ── EXIT OPTIONS ── */
+    .exit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .exit-card {
+      background: var(--surface); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg); padding: 32px 28px;
+      box-shadow: 0 2px 12px rgba(29,78,216,0.05);
+    }
+    .exit-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
+    .exit-card p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+    .exit-tag {
+      display: inline-block; padding: 4px 12px;
+      background: var(--xlight); border: 1px solid var(--border);
+      font-size: 12px; font-weight: 600; color: var(--primary); border-radius: 8px;
+    }
+    .exit-val { font-size: 28px; font-weight: 900; color: var(--primary); margin-top: 14px; }
+    .exit-val-sub { font-size: 13px; color: var(--muted); }
+    .acquirers { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .acquirer {
+      padding: 5px 14px; background: var(--xlight); border: 1px solid var(--border-soft);
+      font-size: 12px; font-weight: 600; color: var(--text); border-radius: 8px;
+    }
+
+    /* ── SCORE CARD ── */
+    .score-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .score-card {
+      background: var(--surface); border: 1px solid var(--border-soft);
+      border-radius: var(--radius); padding: 22px 22px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .score-badge {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: var(--xlight); border: 1px solid var(--border);
+      display: grid; place-items: center; flex-shrink: 0;
+      font-size: 18px; font-weight: 900; color: var(--primary);
+    }
+    .score-badge.high { background: rgba(22,163,74,0.08); border-color: rgba(22,163,74,0.20); color: #16A34A; }
+    .score-info h4 { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+    .score-info p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* ── CTA ── */
+    .cta-box {
+      background: linear-gradient(135deg, #1A3FA3 0%, #0C5EA8 50%, #0369A1 100%);
+      border-radius: 26px; padding: 80px 48px; text-align: center;
+      box-shadow: 0 8px 40px rgba(29,78,216,0.22);
+    }
+    .cta-box h2 { font-size: clamp(28px, 3vw, 44px); font-weight: 900; color: #fff; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .cta-box p { font-size: 17px; color: rgba(255,255,255,0.78); max-width: 480px; margin: 0 auto 36px; line-height: 1.72; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .cta-btn-white {
+      padding: 15px 32px; background: #fff; color: var(--primary);
+      font-size: 15px; font-weight: 700; border-radius: 12px; text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+      transition: transform 0.15s;
+    }
+    .cta-btn-white:hover { transform: translateY(-2px); }
+    .cta-btn-ghost {
+      padding: 15px 32px; background: rgba(255,255,255,0.12); color: #fff;
+      font-size: 15px; font-weight: 700; border-radius: 12px; text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.30);
+      transition: background 0.2s;
+    }
+    .cta-btn-ghost:hover { background: rgba(255,255,255,0.18); }
+    .cta-disclaimer { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 28px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border-soft); padding: 32px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px; background: var(--surface);
+    }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-copy { font-size: 13px; color: var(--muted-2); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 14px 24px; }
+      .market-grid, .exit-grid { grid-template-columns: 1fr; }
+      .moat-grid { grid-template-columns: 1fr; }
+      .unit-grid { grid-template-columns: 1fr 1fr; }
+      .timing-grid { grid-template-columns: 1fr; }
+      .streams-grid { grid-template-columns: 1fr 1fr; }
+      .score-grid { grid-template-columns: 1fr; }
+      .funding-row { grid-template-columns: 1fr; }
+      .cta-box { padding: 52px 28px; }
+    }
+    @media (max-width: 600px) {
+      .hero-metrics { gap: 24px; }
+      .streams-grid { grid-template-columns: 1fr; }
+      .unit-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+      .proj-table { font-size: 12px; }
+      .proj-table th, .proj-table td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/health/" class="logo">
+    <div class="logo-mark"><span>H</span></div>
+    <div class="logo-copy">
+      <span class="logo-name">HYT Health</span>
+      <span class="logo-sub">Investor Relations</span>
+    </div>
+  </a>
+  <div class="nav-right">
+    <a href="/health/" class="nav-link">Product</a>
+    <a href="#financials" class="nav-link">Financials</a>
+    <a href="#funding" class="nav-link">Funding</a>
+    <a href="mailto:hello@zentraai.in?subject=HYT Health — Investor Enquiry" class="nav-cta">Schedule a Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker"><span class="hero-kicker-dot"></span>Seed Round Open — June 2026</div>
+    <h1>The <span class="blue">Healthcare OS</span><br>opportunity</h1>
+    <p class="hero-sub">India's digital health market is at an inflection point. ABDM crossed 700M registrations. AI disruption of clinical documentation is real. And no single platform has unified the full stack. That is HYT Health's window — and it's open right now.</p>
+    <div class="hero-metrics">
+      <div class="h-metric">
+        <div class="num">₹17,000Cr</div>
+        <div class="lbl">India Health IT TAM (2026)</div>
+      </div>
+      <div class="h-metric">
+        <div class="num">₹44,000Cr</div>
+        <div class="lbl">India Health IT TAM (2030)</div>
+      </div>
+      <div class="h-metric">
+        <div class="num">₹200Cr+</div>
+        <div class="lbl">ARR Target by Year 5</div>
+      </div>
+      <div class="h-metric">
+        <div class="num">7.7/10</div>
+        <div class="lbl">Investor Readiness Score</div>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="mailto:hello@zentraai.in?subject=HYT Health — Investor Deck Request" class="btn-primary">Request Investor Deck</a>
+      <a href="mailto:hello@zentraai.in?subject=HYT Health — Schedule Investor Call" class="btn-outline">Schedule a Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET SIZE -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-hdr">
+      <div class="section-tag">Market Opportunity</div>
+      <h2 class="section-title">A $574B global opportunity,<br>led by India</h2>
+      <p class="section-desc">HYT addresses 9 high-growth healthcare IT segments simultaneously — not as a point solution, but as the OS layer that connects them all.</p>
+    </div>
+    <div class="market-grid">
+      <div class="market-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Segment</th>
+              <th>India TAM 2026</th>
+              <th>India TAM 2030</th>
+              <th>CAGR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="seg">EMR / EHR</td><td>~$520M</td><td>~$1.1B</td><td>18–22%</td></tr>
+            <tr><td class="seg">Telemedicine</td><td>~$850M</td><td>~$2.1B</td><td>25%</td></tr>
+            <tr><td class="seg">AI Clinical Documentation</td><td>~$40M</td><td>~$320M</td><td><strong>52%</strong></td></tr>
+            <tr><td class="seg">Healthcare CRM</td><td>~$95M</td><td>~$280M</td><td>28%</td></tr>
+            <tr><td class="seg">ABDM / FHIR Middleware</td><td>~$25M</td><td>~$190M</td><td><strong>48%</strong></td></tr>
+            <tr><td class="seg">Patient Engagement</td><td>~$60M</td><td>~$220M</td><td>35%</td></tr>
+            <tr><td class="seg">RCM / Billing</td><td>~$210M</td><td>~$480M</td><td>12%</td></tr>
+            <tr><td class="seg">Practice Management</td><td>~$180M</td><td>~$410M</td><td>17%</td></tr>
+            <tr><td class="seg">Healthcare Analytics</td><td>~$75M</td><td>~$210M</td><td>22%</td></tr>
+            <tr class="total"><td>Total Addressable (HYT)</td><td>~$2.05B</td><td>~$5.3B</td><td>~27%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="market-right">
+        <div class="market-callout">
+          <div class="big">$574B</div>
+          <div class="lbl">Global addressable market across all 9 segments HYT targets</div>
+          <div class="note">India leads the ABDM/FHIR interoperability wave. No global platform has built for Indian clinical vocabulary, WhatsApp-first workflows, and ABDM compliance natively. That gap is HYT's advantage.</div>
+        </div>
+        <div class="market-stat-mini">
+          <div class="msm-num">1.3M+</div>
+          <div class="msm-txt">Registered doctors in India — most using paper registers, WhatsApp, and outdated tools. The beachhead is within reach.</div>
+        </div>
+        <div class="market-stat-mini">
+          <div class="msm-num">6L+</div>
+          <div class="msm-txt">Private clinics and 70,000+ hospitals nationwide. No dominant OS player. The incumbent battlefield is fragmented.</div>
+        </div>
+        <div class="market-stat-mini">
+          <div class="msm-num">65%</div>
+          <div class="msm-txt">Of India's doctors practice outside the top 8 metros — completely ignored by every existing health-tech player.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-hdr">
+      <div class="section-tag">Why Now</div>
+      <h2 class="section-title">Three forces converging<br>at the same moment</h2>
+      <p class="section-desc">The window for a Healthcare OS is 18–24 months. These tailwinds don't last forever, and first-mover advantage in platform infrastructure is decisive.</p>
+    </div>
+    <div class="timing-grid">
+      <div class="timing-card">
+        <span class="t-icon">🏛️</span>
+        <h3>ABDM Regulatory Mandate</h3>
+        <p>700M+ ABHA IDs issued. NHA is mandating ABDM compliance for all providers. Every clinic that digitizes must go through ABDM — HYT owns this compliance layer natively. Competitors are bolting it on as an afterthought.</p>
+      </div>
+      <div class="timing-card">
+        <span class="t-icon">🤖</span>
+        <h3>AI Scribe Market Inflection</h3>
+        <p>AI clinical documentation went from concept to product in 18 months globally. India has zero native-language, ABDM-integrated AI Scribe. The window to build and own this category is open right now — it won't be in 24 months.</p>
+      </div>
+      <div class="timing-card">
+        <span class="t-icon">🕳️</span>
+        <h3>No Dominant Platform Player</h3>
+        <p>Practo, HealthPlix, Eka Care, and MocDoc are all point solutions. None has the full clinical + CRM + AI + ABDM + patient app stack. The Healthcare OS category is unclaimed. HYT is positioned to own it before incumbents can pivot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITIVE MOAT -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-hdr">
+      <div class="section-tag">Competitive Moat</div>
+      <h2 class="section-title">10 defensible differentiators</h2>
+      <p class="section-desc">Each moat compounds the others. An ABDM-native platform with proprietary clinical AI data and a 7-module integrated stack is not replicable in under 3 years.</p>
+    </div>
+    <div class="moat-grid">
+      <div class="moat-card">
+        <div class="moat-num">1</div>
+        <div class="moat-txt">
+          <h4>ABDM-Native Architecture</h4>
+          <p>Not bolted on — built from the ground up around ABHA and health record exchange. ABDM compliance IS the data backbone. Other platforms cannot replicate this without a full rebuild.</p>
+        </div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-num">2</div>
+        <div class="moat-txt">
+          <h4>India's First Healthcare CRM</h4>
+          <p>Zero purpose-built healthcare CRM exists in India. Category creation = pricing power + media attention + first-mover defensibility. No competitor has even started building this.</p>
+        </div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-num">3</div>
+        <div class="moat-txt">
+          <h4>AI Scribe in Indian Clinical Context</h4>
+          <p>Indian drug names, Hinglish, ICD codes, ABDM upload — no global tool does this. A proprietary dataset of Indian clinical transcripts builds a data moat that compounds with every consultation.</p>
+        </div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-num">4</div>
+        <div class="moat-txt">
+          <h4>Unified OS — Not a Point Solution</h4>
+          <p>Switching cost is enormous when 7+ modules are integrated: EMR, CRM, billing, teleconsult, lab, ABDM, patient app. Ripping out HYT means replacing your entire clinical infrastructure.</p>
+        </div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-num">5</div>
+        <div class="moat-txt">
+          <h4>WhatsApp-First Patient Engagement</h4>
+          <p>India's default communication layer is WhatsApp. No competitor has truly built clinical care journeys — reminders, follow-ups, prescriptions, post-visit instructions — natively on WhatsApp.</p>
+        </div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-num">6</div>
+        <div class="moat-txt">
+          <h4>API-First Modular Architecture</h4>
+          <p>Every capability exposed as an API. Other health-tech companies can build ON HYT — making us infrastructure, not just software. ABDM-as-a-Service is a standalone ₹50Cr+ revenue stream.</p>
+        </div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-num">7</div>
+        <div class="moat-txt">
+          <h4>Vernacular + Tier 2/3 Readiness</h4>
+          <p>Mobile-first UI in 7 regional languages unlocks 65% of India's doctor market that every competitor ignores. Low-touch onboarding works without a sales rep or IT support.</p>
+        </div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-num">8</div>
+        <div class="moat-txt">
+          <h4>Self-Serve Onboarding in 30 Minutes</h4>
+          <p>Vs. competitors' 2–4 week implementations. Dramatically lower CAC, faster revenue recognition, and a product experience that builds trust from the first session.</p>
+        </div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-num">9</div>
+        <div class="moat-txt">
+          <h4>Revenue-Sharing Marketplace</h4>
+          <p>Labs, pharmacies, insurance — HYT earns a cut of every transaction. Each transaction enriches the data layer, deepens network effects, and creates a defensible ecosystem of partners.</p>
+        </div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-num">10</div>
+        <div class="moat-txt">
+          <h4>Longitudinal Patient Health OS</h4>
+          <p>Patients carry their complete health record across every provider — enabling continuity of care. This data layer, owned by HYT with patient consent, is the long-term platform play.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCIAL PROJECTIONS -->
+<section class="section" id="financials">
+  <div class="section-inner">
+    <div class="section-hdr">
+      <div class="section-tag">Financial Projections</div>
+      <h2 class="section-title">5-year path to<br>₹200Cr+ ARR</h2>
+      <p class="section-desc">Bottom-up model benchmarked against HealthPlix, Practo, Eka Care, and Indian healthcare SaaS comps. Gross margins improve to 89% at scale as AI costs per unit fall.</p>
+    </div>
+    <div class="proj-table-wrap">
+      <table class="proj-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Active Providers</th>
+            <th>ARR</th>
+            <th>Total Revenue</th>
+            <th>Gross Margin</th>
+            <th>EBITDA</th>
+            <th>Valuation (10× ARR)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="year">Y1</td>
+            <td>100–150</td>
+            <td class="arr">₹0.5–0.7 Cr</td>
+            <td>₹0.6 Cr</td>
+            <td>37%</td>
+            <td class="neg">-₹5.1 Cr</td>
+            <td class="val">₹15–25 Cr</td>
+          </tr>
+          <tr>
+            <td class="year">Y2</td>
+            <td>1,100–1,800</td>
+            <td class="arr">₹8–12 Cr</td>
+            <td>₹9.8 Cr</td>
+            <td>63%</td>
+            <td class="neg">-₹11.6 Cr</td>
+            <td class="val">₹80–120 Cr</td>
+          </tr>
+          <tr>
+            <td class="year">Y3</td>
+            <td>4,300–6,500</td>
+            <td class="arr">₹30–42 Cr</td>
+            <td>₹35 Cr</td>
+            <td>78%</td>
+            <td class="neg">-₹4.0 Cr</td>
+            <td class="val">₹300–450 Cr</td>
+          </tr>
+          <tr>
+            <td class="year">Y4</td>
+            <td>11,000–17,000</td>
+            <td class="arr">₹78–107 Cr</td>
+            <td>₹90 Cr</td>
+            <td>84%</td>
+            <td class="pos">+₹24.4 Cr (+27%)</td>
+            <td class="val">₹900–1,300 Cr</td>
+          </tr>
+          <tr>
+            <td class="year">Y5</td>
+            <td>26,000–36,000</td>
+            <td class="arr">₹176–234 Cr</td>
+            <td>₹203 Cr</td>
+            <td>89%</td>
+            <td class="pos">+₹105 Cr (+52%)</td>
+            <td class="val">₹2,200–3,200 Cr</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="proj-note">Projections built bottom-up using Indian healthcare SaaS benchmarks (HealthPlix, Clinicea, Practo, CareStack). Confidence: Medium. Validate with primary diligence. Y3+ gross margins (78–89%) align with Athenahealth (72%) and are achievable via open-source AI model transition in Y3. EBITDA break-even at Month 40 in base case.</p>
+  </div>
+</section>
+
+<!-- REVENUE STREAMS -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-hdr">
+      <div class="section-tag">Revenue Architecture</div>
+      <h2 class="section-title">Multi-stream model,<br>90%+ recurring by Y5</h2>
+      <p class="section-desc">SaaS subscriptions anchor the base. AI add-ons and marketplace rev-share expand ARPU as the platform matures. Multiple bets, each independently valuable.</p>
+    </div>
+    <div class="streams-grid">
+      <div class="stream-card">
+        <div class="stream-pct">65%</div>
+        <div class="stream-name">SaaS Subscriptions</div>
+        <div class="stream-desc">Doctor (₹1,499–₹2,499/mo), Clinic (₹5,999–₹9,999/mo), Hospital (custom). Predictable, recurring, benchmarked to HealthPlix and Clinicea pricing.</div>
+      </div>
+      <div class="stream-card">
+        <div class="stream-pct">13%</div>
+        <div class="stream-name">AI Add-ons</div>
+        <div class="stream-desc">AI Scribe at ₹1,200/doctor/month, Clinical Copilot at ₹800/month, Analytics at ₹2,000/account. 40% adoption rate target by Y3. Gross margin improves to 55%+ with open-source fine-tuning.</div>
+      </div>
+      <div class="stream-card">
+        <div class="stream-pct">6%</div>
+        <div class="stream-name">Marketplace & Transactions</div>
+        <div class="stream-desc">Diagnostics (2% GMV), pharmacy referrals (1.5% GMV), insurance leads (₹500–2,000/lead), consultation fees. Network effects compound with provider growth.</div>
+      </div>
+      <div class="stream-card">
+        <div class="stream-pct">2%</div>
+        <div class="stream-name">ABDM-as-a-Service API</div>
+        <div class="stream-desc">Usage-based FHIR gateway and ABDM APIs for other health-tech companies. ₹5,000–15,000/month per subscriber. Near-zero-cost asset once built. Hidden ₹50Cr+ opportunity.</div>
+      </div>
+      <div class="stream-card">
+        <div class="stream-pct">2%</div>
+        <div class="stream-name">Professional Services</div>
+        <div class="stream-desc">Hospital implementation (₹1.5–5L), data migration, custom development, and training. One-time per enterprise client; high margin at enterprise scale.</div>
+      </div>
+      <div class="stream-card">
+        <div class="stream-pct">12%</div>
+        <div class="stream-name">Future Streams (Y3+)</div>
+        <div class="stream-desc">Insurer B2B SaaS dashboard, corporate health OS, international expansion (SAARC/SEA), pharmacy marketplace, and NHCX claims processing. Each a standalone business.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNIT ECONOMICS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-hdr">
+      <div class="section-tag">Unit Economics</div>
+      <h2 class="section-title">LTV:CAC well above<br>the 3× SaaS threshold</h2>
+      <p class="section-desc">Clinic and hospital segments show exceptional unit economics. Solo doctors are managed via Product-Led Growth to keep CAC below ₹3,000.</p>
+    </div>
+    <div class="unit-grid">
+      <div class="unit-card">
+        <div class="unit-tier">Solo Doctor</div>
+        <div class="unit-ltv">₹22K LTV</div>
+        <div class="unit-ratio">4.4–6.5×</div>
+        <div class="unit-label">LTV:CAC ratio</div>
+      </div>
+      <div class="unit-card">
+        <div class="unit-tier">Clinic (3–10 docs)</div>
+        <div class="unit-ltv">₹1.9L LTV</div>
+        <div class="unit-ratio">9–16×</div>
+        <div class="unit-label">LTV:CAC ratio</div>
+      </div>
+      <div class="unit-card">
+        <div class="unit-tier">Hospital (50–200 beds)</div>
+        <div class="unit-ltv">₹42L–1.2Cr LTV</div>
+        <div class="unit-ratio">19–53×</div>
+        <div class="unit-label">LTV:CAC ratio</div>
+      </div>
+      <div class="unit-card">
+        <div class="unit-tier">Diagnostic Center</div>
+        <div class="unit-ltv">₹1.36L LTV</div>
+        <div class="unit-ratio">5–8×</div>
+        <div class="unit-label">LTV:CAC ratio</div>
+      </div>
+    </div>
+    <p class="proj-note" style="margin-top: 20px;">NRR at Y3+: Solo 95–105% | Clinic 108–115% | Hospital 115–125%. Net Revenue Retention above 100% means the existing cohort grows revenue even with zero new customers.</p>
+  </div>
+</section>
+
+<!-- FUNDING ROADMAP -->
+<section class="section alt" id="funding">
+  <div class="section-inner">
+    <div class="section-hdr">
+      <div class="section-tag">Funding Roadmap</div>
+      <h2 class="section-title">Capital strategy to<br>₹175Cr over 5 years</h2>
+      <p class="section-desc">Staged raises tied to clear milestones. Seed raise currently open. Series A targeted at Month 18–24 post strong PMF proof.</p>
+    </div>
+    <div class="funding-timeline">
+      <div class="funding-row">
+        <div class="funding-round">
+          <div class="round-name">Pre-Seed</div>
+          <div class="round-timing">Month 0–3</div>
+          <div class="round-amount">₹1–2 Cr</div>
+          <div class="round-usd">~$120K–$240K</div>
+        </div>
+        <div class="funding-detail">
+          <div class="valuation">Post-money: <strong>₹6–10 Cr</strong> | Lead: Founders + angels</div>
+          <ul class="use-list">
+            <li>Product architecture and initial engineering team (6–8 people)</li>
+            <li>ABDM sandbox integration and NHA certification initiation</li>
+            <li>AI Scribe prototype development</li>
+          </ul>
+          <div><span class="milestone-tag">Milestone: Working AI Scribe prototype + ABDM sandbox integration</span></div>
+        </div>
+      </div>
+      <div class="funding-row">
+        <div class="funding-round">
+          <div class="round-name">Seed</div>
+          <div class="round-timing">Month 4–8 · Open Now</div>
+          <div class="round-amount">₹4–6 Cr</div>
+          <div class="round-usd">~$480K–$715K</div>
+        </div>
+        <div class="funding-detail">
+          <div class="valuation">Post-money: <strong>₹20–25 Cr</strong> | Lead: Health-tech angels, Kalaari, 100X, Blume</div>
+          <ul class="use-list">
+            <li>Engineering & product team to 15 people — MVP to production</li>
+            <li>AI infrastructure, ABDM certification, NHA approval</li>
+            <li>First 100 paying customers via personal network GTM</li>
+            <li>18-month runway to Series A readiness</li>
+          </ul>
+          <div><span class="milestone-tag">Milestone: ₹2Cr ARR | 100 providers | NPS &gt;50 | Churn &lt;5%</span></div>
+        </div>
+      </div>
+      <div class="funding-row">
+        <div class="funding-round">
+          <div class="round-name">Series A</div>
+          <div class="round-timing">Month 18–24</div>
+          <div class="round-amount">₹20–30 Cr</div>
+          <div class="round-usd">~$2.4M–$3.6M</div>
+        </div>
+        <div class="funding-detail">
+          <div class="valuation">Post-money: <strong>₹80–120 Cr</strong> | Lead: Accel, Sequoia India, Peak XV</div>
+          <ul class="use-list">
+            <li>Engineering scale to 80 engineers — full platform feature parity</li>
+            <li>50-person sales team (inside + field) targeting 5,000 providers</li>
+            <li>AI team expansion + India-specific clinical LLM fine-tuning</li>
+            <li>Category leadership in Healthcare CRM</li>
+            <li>Tier 2/3 city expansion across 3 new states</li>
+          </ul>
+          <div><span class="milestone-tag">Milestone: ₹15–20Cr ARR | 5,000 providers | 3 enterprise pilots</span></div>
+        </div>
+      </div>
+      <div class="funding-row">
+        <div class="funding-round">
+          <div class="round-name">Series B</div>
+          <div class="round-timing">Month 48–60</div>
+          <div class="round-amount">₹80–120 Cr</div>
+          <div class="round-usd">~$9.5M–$14.3M</div>
+        </div>
+        <div class="funding-detail">
+          <div class="valuation">Post-money: <strong>₹500–800 Cr</strong> | Lead: Tiger Global, General Catalyst, Insight</div>
+          <ul class="use-list">
+            <li>Healthcare marketplace launch — labs, pharmacies, insurance</li>
+            <li>ABDM-as-a-Service platform for other health-tech companies</li>
+            <li>International expansion — SAARC and Southeast Asia</li>
+            <li>Corporate health OS for enterprise accounts</li>
+          </ul>
+          <div><span class="milestone-tag">Milestone: ₹90Cr ARR | 15,000 providers | EBITDA positive</span></div>
+        </div>
+      </div>
+      <div class="funding-row">
+        <div class="funding-round">
+          <div class="round-name">IPO / Exit</div>
+          <div class="round-timing">Year 7–8</div>
+          <div class="round-amount">₹2,000–4,000Cr</div>
+          <div class="round-usd">Target valuation</div>
+        </div>
+        <div class="funding-detail">
+          <div class="valuation">NSE/BSE SME → Mainboard OR strategic M&amp;A</div>
+          <ul class="use-list">
+            <li>50,000+ active providers across India and SAARC</li>
+            <li>₹200Cr+ ARR, EBITDA positive at 27%+</li>
+            <li>Healthcare OS for 50M+ patients</li>
+          </ul>
+          <div><span class="milestone-tag">Target: ₹200Cr ARR | 50,000 providers | EBITDA +27%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXIT OPTIONS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-hdr">
+      <div class="section-tag">Exit Potential</div>
+      <h2 class="section-title">Multiple paths to liquidity</h2>
+      <p class="section-desc">The most likely exit is strategic acquisition by a conglomerate building a health ecosystem, or a financial exit via public markets. Both paths are credible.</p>
+    </div>
+    <div class="exit-grid">
+      <div class="exit-card">
+        <span class="exit-tag">Strategic Acquisition</span>
+        <h3>Ecosystem Acquirers</h3>
+        <p>India's largest conglomerates are actively building health ecosystems and need an ABDM-native, AI-powered OS as the technology backbone. HYT's integrated stack is the fastest path to their clinical infrastructure goals.</p>
+        <div class="acquirers">
+          <span class="acquirer">Tata Health</span>
+          <span class="acquirer">Bajaj Finserv Health</span>
+          <span class="acquirer">Reliance Health</span>
+          <span class="acquirer">Oracle Health India</span>
+          <span class="acquirer">Salesforce Health Cloud</span>
+          <span class="acquirer">Apollo Hospitals</span>
+        </div>
+        <div class="exit-val">₹1,500–3,000 Cr</div>
+        <div class="exit-val-sub">Expected strategic premium on ARR multiple at M&A</div>
+      </div>
+      <div class="exit-card">
+        <span class="exit-tag">Public Markets</span>
+        <h3>IPO Path</h3>
+        <p>India's NSE/BSE SME board provides a credible path for a ₹500Cr+ revenue business. The precedent set by Indian SaaS companies (Tata Technologies, Zaggle, MapMyIndia) opens the door for health-tech at scale. Global health-tech comparables trade at 8–12× ARR.</p>
+        <div class="exit-val">₹2,000–4,000 Cr+</div>
+        <div class="exit-val-sub">Target IPO valuation at ₹200Cr ARR × 10–20× ARR multiple</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTOR READINESS SCORECARD -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-hdr">
+      <div class="section-tag">Investor Readiness</div>
+      <h2 class="section-title">7.7/10 overall score</h2>
+      <p class="section-desc">Strong for Seed and Series A. Needs team proof and early revenue traction for Series B. Transparent assessment, not a pitch.</p>
+    </div>
+    <div class="score-grid">
+      <div class="score-card">
+        <div class="score-badge high">9</div>
+        <div class="score-info">
+          <h4>Market Size</h4>
+          <p>India $2B+ TAM → $5.3B by 2030. Global $574B. Multiple high-CAGR sub-segments addressable simultaneously.</p>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-badge high">8</div>
+        <div class="score-info">
+          <h4>Product Differentiation</h4>
+          <p>Healthcare OS framing + ABDM-native + AI Scribe is genuinely differentiated. No direct all-in-one competitor exists today.</p>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-badge high">8</div>
+        <div class="score-info">
+          <h4>Revenue Quality</h4>
+          <p>SaaS + AI add-on + marketplace = multiple streams. 90%+ recurring revenue by Y5. NRR above 100% for clinic and hospital segments.</p>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-badge high">8</div>
+        <div class="score-info">
+          <h4>Exit Potential</h4>
+          <p>Strategic acquirers are actively building health ecosystems. IPO path clear at ₹2,000Cr+ valuation. Multiple credible liquidity events.</p>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-badge">7</div>
+        <div class="score-info">
+          <h4>Capital Efficiency</h4>
+          <p>₹5Cr seed to ₹8–12Cr ARR in 24 months is strong. Burn multiple target: &lt;2.0× in Y2, &lt;1.0× in Y3. Must be maintained.</p>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-badge">7</div>
+        <div class="score-info">
+          <h4>Defensibility / Moat</h4>
+          <p>Data moat (patient records), ABDM compliance, and AI fine-tuned on Indian clinical data. Strong but requires execution speed to lock in before incumbents pivot.</p>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-badge">8</div>
+        <div class="score-info">
+          <h4>Scalability</h4>
+          <p>Cloud-native, multi-tenant, API-first. Scales to 100K+ providers. ABDM gateway is the potential bottleneck at &gt;10K concurrent users — architectural priority.</p>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-badge">6</div>
+        <div class="score-info">
+          <h4>Regulatory Risk</h4>
+          <p>ABDM + DPDP compliance is a moat but also a risk if regulations change. Strategy: treat compliance as infrastructure investment, not overhead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="padding: 48px 24px 88px;">
+  <div class="section-inner">
+    <div class="cta-box">
+      <h2>The window is 18–24 months</h2>
+      <p>ABDM crossed 700M IDs. AI Scribe market is nascent. No dominant OS player exists. The Healthcare OS category is being created right now. We are building it.</p>
+      <div class="cta-actions">
+        <a href="mailto:hello@zentraai.in?subject=HYT Health — Investor Deck Request" class="cta-btn-white">Request Investor Deck</a>
+        <a href="mailto:hello@zentraai.in?subject=HYT Health — Schedule Investor Call" class="cta-btn-ghost">Schedule a Call →</a>
+      </div>
+      <div class="cta-disclaimer">Financial projections are estimates built from Indian healthcare SaaS benchmarks. All numbers must be validated against primary market research and audited financial diligence before use in formal investor materials. Confidence: Medium-High on market sizing; Medium on financials.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="/">HYT</a>
+    <a href="/finance/">HYT Money</a>
+    <a href="/health/">HYT Health — Product</a>
+    <a href="/health/investor/">Investors</a>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="mailto:hello@zentraai.in">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 HYT Health. Confidential — For Investor Use.</div>
+</footer>
+
+</body>
+</html>
