@@ -3,224 +3,688 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HYT Health — Your Private Health Vault</title>
-  <meta name="description" content="HYT Health: your complete medical history, securely stored and instantly accessible. Coming soon." />
-  <meta property="og:title" content="HYT Health — Coming Soon" />
-  <meta property="og:description" content="Your complete medical history, securely stored and instantly accessible when you need it most." />
+  <title>HYT Health — India's First Healthcare Operating System</title>
+  <meta name="description" content="HYT Health: AI-native, ABDM-compliant Clinical OS for doctors and patients. AI Scribe, smart EMR, WhatsApp CRM, and a patient health super app — all in one platform." />
+  <meta property="og:title" content="HYT Health — India's First Healthcare OS" />
+  <meta property="og:description" content="AI-powered EMR, clinical copilot, ABDM compliance, and a patient super app — built together so doctors work faster and patients stay healthier." />
   <meta property="og:url" content="https://zentraai.in/health/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:           #0D0D0F;
-      --bg-deep:      #0A0A0C;
-      --border:       #2A2A2E;
-      --primary:      #C9A22A;
-      --primary-light:#E2C05E;
-      --teal:         #4ECDC4;
-      --teal-light:   #88E0D8;
-      --text:         #F0F0EC;
-      --muted:        #8A8A90;
-      --radius:       18px;
+      --bg:           #F0F6FF;
+      --bg-alt:       #FFFFFF;
+      --surface:      #FFFFFF;
+      --primary:      #1D4ED8;
+      --primary-h:    #1a44b0;
+      --mid:          #3B82F6;
+      --sky:          #0EA5E9;
+      --sky-light:    #BAE6FD;
+      --light-blue:   #DBEAFE;
+      --xlight:       #EFF6FF;
+      --text:         #0F172A;
+      --muted:        #475569;
+      --muted-2:      #94A3B8;
+      --border:       #BFDBFE;
+      --border-soft:  #E0EDFF;
+      --green:        #22C55E;
+      --radius:       16px;
+      --radius-lg:    22px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(78,205,196,0.12) 0%, transparent 30%),
-        radial-gradient(circle at 80% 15%, rgba(136,224,216,0.06) 0%, transparent 25%),
-        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ── NAV ── */
     nav {
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 48px;
-      background: rgba(10,10,12,0.88); backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
+      padding: 14px 48px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-soft);
+      box-shadow: 0 1px 16px rgba(29,78,216,0.06);
     }
 
-    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
     .logo-mark {
       width: 36px; height: 36px; border-radius: 10px;
-      background: #0D0D1F; border: 1.2px solid rgba(201,162,42,0.30);
-      box-shadow: inset 0 1px 0 rgba(241,215,122,0.08);
+      background: linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%);
       display: grid; place-items: center; flex-shrink: 0;
+      box-shadow: 0 3px 10px rgba(29,78,216,0.30);
     }
-    .logo-mark span {
-      font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700; line-height: 1;
-      background: linear-gradient(90deg,#8B6914 0%,#B48A1E 20%,#D4AF37 42%,#F1D77A 50%,#D4AF37 58%,#B48A1E 80%,#8B6914 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    .logo-mark span { color: #fff; font-size: 18px; font-weight: 800; line-height: 1; }
+    .logo-copy { display: flex; flex-direction: column; gap: 1px; }
+    .logo-name { font-size: 15px; font-weight: 800; letter-spacing: -0.01em; color: var(--primary); line-height: 1; }
+    .logo-sub { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-2); line-height: 1; }
+
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a {
+      font-size: 13px; font-weight: 500; color: var(--muted);
+      text-decoration: none; padding: 6px 12px; border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
     }
-    .logo-copy { display: flex; flex-direction: column; gap: 2px; }
-    .logo-name { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--primary-light); line-height: 1; }
-    .logo-sub { font-size: 10px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); line-height: 1; }
+    .nav-links a:hover { color: var(--primary); background: var(--xlight); }
+    .nav-cta {
+      padding: 9px 22px; background: var(--primary); color: #fff !important;
+      font-size: 13px; font-weight: 700; border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 3px 12px rgba(29,78,216,0.28);
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--primary-h) !important; transform: translateY(-1px) !important; }
 
-    .product-strip { display: flex; align-items: center; gap: 6px; }
-    .product-strip a { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: var(--muted); text-decoration: none; transition: color 0.2s; padding: 4px 8px; border-radius: 6px; }
-    .product-strip a:hover { color: var(--primary-light); }
-    .product-strip a.active { color: var(--teal-light); background: rgba(78,205,196,0.10); }
-    .product-strip .sep { color: var(--border); font-size: 13px; }
-
+    /* ── HERO ── */
     .hero {
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; padding: 120px 24px 80px; max-width: 760px; margin: 0 auto;
+      text-align: center; padding: 96px 24px 80px;
+      background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+      position: relative; overflow: hidden;
     }
+    .hero::before {
+      content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 500px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(59,130,246,0.10) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 820px; margin: 0 auto; position: relative; z-index: 1; }
 
-    .status-badge {
+    .badge {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 7px 16px; border: 1px solid rgba(78,205,196,0.25);
-      background: rgba(78,205,196,0.08); border-radius: 999px;
-      font-size: 12px; font-weight: 600; color: var(--teal-light);
-      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 32px;
+      padding: 6px 18px; border: 1px solid var(--border);
+      background: var(--surface); border-radius: 999px;
+      font-size: 11px; font-weight: 700; color: var(--primary);
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 28px;
+      box-shadow: 0 2px 8px rgba(29,78,216,0.08);
     }
-    .status-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; box-shadow: 0 0 12px rgba(78,205,196,0.65); }
+    .badge-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; box-shadow: 0 0 10px rgba(34,197,94,0.6); }
 
     .hero h1 {
-      font-size: clamp(36px, 5vw, 60px); font-weight: 800;
-      line-height: 1.06; letter-spacing: -0.05em; margin-bottom: 20px;
+      font-size: clamp(36px, 5.5vw, 66px); font-weight: 900;
+      line-height: 1.04; letter-spacing: -0.04em; margin-bottom: 22px; color: var(--text);
     }
-    .hero h1 .gradient {
-      background: linear-gradient(135deg, #88E0D8 0%, #4ECDC4 50%, #2ABFB5 100%);
+    .hero h1 .blue {
+      background: linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    .hero p { font-size: 17px; color: var(--muted); max-width: 520px; margin: 0 auto 48px; line-height: 1.7; }
+    .hero p {
+      font-size: 18px; color: var(--muted); max-width: 570px;
+      margin: 0 auto 44px; line-height: 1.72;
+    }
 
-    .features-preview {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-      max-width: 900px; margin: 0 auto; padding: 0 24px 80px;
+    .hero-actions { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 14px 30px; background: var(--primary); color: #fff;
+      font-size: 15px; font-weight: 700; border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 5px 22px rgba(29,78,216,0.32);
+      transition: background 0.2s, transform 0.15s;
     }
-    .feat {
-      background: linear-gradient(180deg, rgba(20,20,23,0.97) 0%, rgba(13,13,15,1) 100%);
-      border: 1px solid rgba(78,205,196,0.14);
-      border-radius: 14px; padding: 24px 20px;
-      text-align: left;
+    .btn-primary:hover { background: var(--primary-h); transform: translateY(-2px); }
+    .btn-outline {
+      padding: 14px 30px; background: var(--surface); color: var(--primary);
+      font-size: 15px; font-weight: 700; border-radius: 12px;
+      text-decoration: none; border: 1.5px solid var(--border);
+      transition: border-color 0.2s, transform 0.15s;
     }
-    .feat-icon { font-size: 24px; margin-bottom: 14px; }
-    .feat h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-    .feat p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .btn-outline:hover { border-color: var(--primary); transform: translateY(-2px); }
 
-    .notify-box {
-      max-width: 480px; margin: 0 auto 100px;
-      background: linear-gradient(180deg, rgba(20,20,23,0.97) 0%, rgba(13,13,15,1) 100%);
-      border: 1px solid rgba(78,205,196,0.20);
-      border-radius: var(--radius); padding: 36px 32px; text-align: center;
+    /* ── SHARED LAYOUT ── */
+    .section { padding: 88px 24px; }
+    .section.alt { background: var(--bg-alt); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-block; padding: 4px 12px;
+      background: rgba(29,78,216,0.08); color: var(--primary);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
+      border-radius: 6px; margin-bottom: 14px;
     }
-    .notify-box h2 { font-size: 20px; font-weight: 800; margin-bottom: 10px; }
-    .notify-box p { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
-    .notify-btn {
+    .section-title {
+      font-size: clamp(26px, 3.2vw, 42px); font-weight: 900;
+      letter-spacing: -0.035em; color: var(--text); margin-bottom: 14px; line-height: 1.13;
+    }
+    .section-desc { font-size: 16px; color: var(--muted); max-width: 520px; line-height: 1.72; }
+    .section-hdr { margin-bottom: 52px; }
+
+    /* ── STATS ── */
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .stat-card {
+      background: var(--surface); border: 1px solid var(--border-soft);
+      border-radius: var(--radius); padding: 30px 22px; text-align: center;
+      box-shadow: 0 2px 12px rgba(29,78,216,0.05);
+    }
+    .stat-num {
+      font-size: 36px; font-weight: 900; letter-spacing: -0.04em;
+      color: var(--primary); margin-bottom: 8px;
+    }
+    .stat-label { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── PRODUCT CARDS ── */
+    .products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .product-card {
+      background: var(--surface); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg); padding: 40px 36px;
+      position: relative; overflow: hidden;
+      box-shadow: 0 2px 16px rgba(29,78,216,0.06);
+    }
+    .product-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--sky));
+    }
+    .product-icon { font-size: 34px; margin-bottom: 18px; display: block; }
+    .product-card h3 { font-size: 23px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .product-card .desc { font-size: 15px; color: var(--muted); line-height: 1.72; margin-bottom: 22px; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      padding: 4px 13px; background: var(--xlight); border: 1px solid var(--border-soft);
+      font-size: 12px; font-weight: 600; color: var(--primary); border-radius: 999px;
+    }
+
+    /* ── AI BANNER ── */
+    .ai-banner {
+      background: linear-gradient(135deg, #1A3FA3 0%, #0C5EA8 50%, #0369A1 100%);
+      border-radius: 24px; padding: 64px 52px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+      box-shadow: 0 8px 40px rgba(29,78,216,0.22);
+    }
+    .ai-left h2 { font-size: 36px; font-weight: 900; color: #fff; letter-spacing: -0.03em; margin-bottom: 16px; line-height: 1.1; }
+    .ai-left p { font-size: 16px; color: rgba(255,255,255,0.78); line-height: 1.72; margin-bottom: 28px; }
+    .ai-feats { display: flex; flex-direction: column; gap: 14px; }
+    .ai-feat {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: rgba(255,255,255,0.09); border-radius: 14px; padding: 16px 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+    .ai-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+    .ai-txt h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+    .ai-txt p { font-size: 13px; color: rgba(255,255,255,0.68); line-height: 1.55; margin: 0; }
+    .ai-btn-white {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 24px;
-      background: rgba(78,205,196,0.12); border: 1.5px solid rgba(78,205,196,0.35);
-      color: var(--teal-light); font-size: 14px; font-weight: 700;
-      border-radius: 12px; text-decoration: none;
-      transition: background 0.2s, border-color 0.2s;
+      padding: 13px 26px; background: #fff; color: var(--primary);
+      font-size: 14px; font-weight: 700; border-radius: 11px; text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+      transition: transform 0.15s;
     }
-    .notify-btn:hover { background: rgba(78,205,196,0.20); border-color: rgba(78,205,196,0.55); }
+    .ai-btn-white:hover { transform: translateY(-2px); }
 
+    /* ── FEATURE GRIDS ── */
+    .feat-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feat-card {
+      background: var(--surface); border: 1px solid var(--border-soft);
+      border-radius: var(--radius); padding: 30px 26px;
+      box-shadow: 0 1px 8px rgba(29,78,216,0.04);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .feat-card:hover {
+      box-shadow: 0 6px 24px rgba(29,78,216,0.10);
+      transform: translateY(-2px);
+    }
+    .f-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+    .feat-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 9px; }
+    .feat-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    /* ── PRINCIPLES STRIP ── */
+    .principles { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .principle {
+      display: flex; align-items: center; gap: 9px;
+      padding: 11px 20px; background: var(--surface);
+      border: 1px solid var(--border-soft); border-radius: 13px;
+      font-size: 13px; font-weight: 600; color: var(--text);
+      box-shadow: 0 1px 6px rgba(29,78,216,0.05);
+    }
+    .principle em { font-style: normal; font-size: 17px; }
+
+    /* ── PRICING ── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .plan {
+      background: var(--surface); border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-lg); padding: 36px 30px;
+      display: flex; flex-direction: column;
+    }
+    .plan.popular {
+      border-color: var(--primary);
+      box-shadow: 0 8px 36px rgba(29,78,216,0.14);
+      position: relative;
+    }
+    .pop-label {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      padding: 4px 16px; background: var(--primary); color: #fff;
+      font-size: 11px; font-weight: 700; border-radius: 999px; white-space: nowrap;
+      letter-spacing: 0.06em;
+    }
+    .plan-tier { font-size: 11px; font-weight: 700; color: var(--muted-2); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+    .plan-price { font-size: 38px; font-weight: 900; color: var(--text); letter-spacing: -0.04em; margin-bottom: 2px; }
+    .plan-price sup { font-size: 18px; vertical-align: super; font-weight: 700; }
+    .plan-price sub { font-size: 16px; font-weight: 500; color: var(--muted); }
+    .plan-for { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .plan-divider { border: none; border-top: 1px solid var(--border-soft); margin: 0 0 22px; }
+    .plan-feats { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .plan-feats li { font-size: 14px; color: var(--muted); display: flex; align-items: flex-start; gap: 9px; line-height: 1.45; }
+    .plan-feats li::before { content: '✓'; color: var(--primary); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .plan-btn {
+      margin-top: 28px; display: block; text-align: center;
+      padding: 13px 24px; border-radius: 11px; font-size: 14px; font-weight: 700;
+      text-decoration: none; transition: background 0.2s, transform 0.15s;
+    }
+    .plan-btn.solid { background: var(--primary); color: #fff; }
+    .plan-btn.solid:hover { background: var(--primary-h); transform: translateY(-1px); }
+    .plan-btn.ghost { background: var(--xlight); color: var(--primary); border: 1.5px solid var(--border); }
+    .plan-btn.ghost:hover { border-color: var(--primary); transform: translateY(-1px); }
+
+    /* ── CTA BOX ── */
+    .cta-box {
+      background: linear-gradient(135deg, var(--xlight) 0%, var(--light-blue) 100%);
+      border: 1px solid var(--border); border-radius: 26px;
+      padding: 80px 48px; text-align: center;
+    }
+    .cta-box h2 { font-size: clamp(28px, 3vw, 42px); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 14px; }
+    .cta-box p { font-size: 16px; color: var(--muted); max-width: 440px; margin: 0 auto 36px; line-height: 1.72; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--border); padding: 36px 48px;
+      border-top: 1px solid var(--border-soft); padding: 32px 48px;
       display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px;
-      background: rgba(10,10,12,0.72); backdrop-filter: blur(10px);
+      flex-wrap: wrap; gap: 16px; background: var(--surface);
     }
-    .footer-links { display: flex; gap: 24px; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
     .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--primary-light); }
-    .footer-copy { font-size: 13px; color: var(--muted); }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-copy { font-size: 13px; color: var(--muted-2); }
 
-    @media (max-width: 768px) {
-      nav { padding: 16px 24px; }
-      .product-strip { display: none; }
-      .features-preview { grid-template-columns: 1fr; max-width: 400px; }
-      footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 14px 24px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .products-grid, .ai-banner { grid-template-columns: 1fr; }
+      .ai-banner { padding: 40px 28px; gap: 36px; }
+      .feat-grid-3 { grid-template-columns: 1fr 1fr; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+      .cta-box { padding: 52px 28px; }
+    }
+    @media (max-width: 580px) {
+      .feat-grid-3 { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="logo">
-      <div class="logo-mark"><span>H</span></div>
-      <div class="logo-copy">
-        <span class="logo-name">HYT</span>
-        <span class="logo-sub">Health</span>
+<!-- NAV -->
+<nav>
+  <a href="/health/" class="logo">
+    <div class="logo-mark"><span>H</span></div>
+    <div class="logo-copy">
+      <span class="logo-name">HYT Health</span>
+      <span class="logo-sub">Healthcare OS</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="/health/investor/">Investors</a>
+    <a href="mailto:hello@zentraai.in?subject=HYT Health — Early Access" class="nav-cta">Get Early Access</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="badge"><span class="badge-dot"></span>Early Access Now Open</div>
+    <h1>India's first<br><span class="blue">Healthcare<br>Operating System</span></h1>
+    <p>HYT Health unifies AI-powered EMR, clinical copilot, ABDM compliance, and a patient super app — so doctors work faster, clinics grow smarter, and patients stay healthier.</p>
+    <div class="hero-actions">
+      <a href="mailto:hello@zentraai.in?subject=HYT Health — Doctor Early Access" class="btn-primary">Request Early Access</a>
+      <a href="#features" class="btn-outline">See All Features</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET STATS -->
+<section class="section alt" style="padding: 48px 24px;">
+  <div class="section-inner">
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">1.3M+</div>
+        <div class="stat-label">Registered doctors in India — most on fragmented, outdated tools</div>
       </div>
-    </a>
-    <div class="product-strip">
-      <a href="/finance/">Finance</a>
-      <span class="sep">·</span>
-      <a href="/pms">OS</a>
-      <span class="sep">·</span>
-      <a href="/health/" class="active">Health</a>
-    </div>
-  </nav>
-
-  <div class="hero">
-    <div class="status-badge"><span></span>Coming Soon</div>
-    <h1>Your health,<br><span class="gradient">always with you.</span></h1>
-    <p>HYT Health is your private medical vault — store records, lab reports, prescriptions, and history securely on your device. Instantly accessible when you or your family need it most.</p>
-  </div>
-
-  <div class="features-preview">
-    <div class="feat">
-      <div class="feat-icon">📁</div>
-      <h3>Complete Medical Records</h3>
-      <p>Store lab reports, prescriptions, doctor notes, and discharge summaries — all organised and searchable.</p>
-    </div>
-    <div class="feat">
-      <div class="feat-icon">👨‍👩‍👧</div>
-      <h3>Family Profiles</h3>
-      <p>Manage health records for your entire family — parents, spouse, children — in one secure place.</p>
-    </div>
-    <div class="feat">
-      <div class="feat-icon">🔒</div>
-      <h3>Privacy First</h3>
-      <p>Your health data stays on your device. No government ID required. No data selling. Ever.</p>
-    </div>
-    <div class="feat">
-      <div class="feat-icon">🆘</div>
-      <h3>Emergency Health Card</h3>
-      <p>One tap access to critical information — blood group, allergies, conditions — even offline.</p>
-    </div>
-    <div class="feat">
-      <div class="feat-icon">📤</div>
-      <h3>Secure Sharing</h3>
-      <p>Share specific records with doctors or specialists via encrypted links — no WhatsApp, no email leaks.</p>
-    </div>
-    <div class="feat">
-      <div class="feat-icon">🏢</div>
-      <h3>Occupational Health</h3>
-      <p>B2B compliance tools for pre-employment medicals and periodic health checks for regulated industries.</p>
+      <div class="stat-card">
+        <div class="stat-num">700M+</div>
+        <div class="stat-label">ABHA IDs created — ABDM is the new compliance standard</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">&lt; 30 min</div>
+        <div class="stat-label">Time to go fully operational — zero IT support required</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">7 langs</div>
+        <div class="stat-label">Hindi, Tamil, Telugu, Kannada, Bengali, Marathi + English</div>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="notify-box">
-    <h2>Get notified at launch</h2>
-    <p>Be among the first to try HYT Health when it goes live.</p>
-    <a href="mailto:vyantec@gmail.com?subject=HYT Health — Notify Me at Launch" class="notify-btn">
-      ✉ Notify Me at Launch
-    </a>
-  </div>
-
-  <footer>
-    <div class="footer-links">
-      <a href="/">HYT</a>
-      <a href="/finance/">HYT MONEY</a>
-      <a href="/privacy">Privacy Policy</a>
-      <a href="mailto:vyantec@gmail.com">Contact</a>
+<!-- TWO PRODUCTS -->
+<section class="section" style="padding-top: 88px;">
+  <div class="section-inner">
+    <div class="section-hdr">
+      <div class="section-tag">Two Products, One OS</div>
+      <h2 class="section-title">Built for both sides of care</h2>
+      <p class="section-desc">The provider platform generates the patient base. The patient app drives provider stickiness. Neither works as well without the other.</p>
     </div>
-    <div class="footer-copy">© 2026 HYT. All rights reserved.</div>
-  </footer>
+    <div class="products-grid">
+      <div class="product-card">
+        <span class="product-icon">🏥</span>
+        <h3>HYT Platform</h3>
+        <p class="desc">A Clinical Operating System for solo doctors, clinics, and hospitals. AI-native workflows, ABDM compliance built in, and everything a modern practice needs — from first appointment to final billing. A solo doctor is fully operational in 30 minutes, zero IT support.</p>
+        <div class="pill-row">
+          <span class="pill">AI Scribe</span>
+          <span class="pill">Smart EMR</span>
+          <span class="pill">E-Prescription</span>
+          <span class="pill">ABDM Native</span>
+          <span class="pill">WhatsApp CRM</span>
+          <span class="pill">Billing & RCM</span>
+          <span class="pill">Teleconsult</span>
+          <span class="pill">Analytics</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">📱</span>
+        <h3>HYT Patient App</h3>
+        <p class="desc">Your complete health companion — records, doctors, family, and health journey all in one place. Patients enrolled at a HYT clinic see clear value before they leave their first appointment. Synced with ABDM's national health network.</p>
+        <div class="pill-row">
+          <span class="pill">Health Timeline</span>
+          <span class="pill">AI Lab Explainer</span>
+          <span class="pill">Family Profiles</span>
+          <span class="pill">Emergency Card</span>
+          <span class="pill">Medication Alerts</span>
+          <span class="pill">Insurance Vault</span>
+          <span class="pill">Teleconsult</span>
+          <span class="pill">ABHA Sync</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI COPILOT HIGHLIGHT -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="ai-banner">
+      <div class="ai-left">
+        <div class="section-tag" style="background: rgba(255,255,255,0.14); color: var(--sky-light);">AI Doctor Copilot</div>
+        <h2>Intelligence in<br>every consultation</h2>
+        <p>HYT's AI isn't a feature tab you open once — it's woven into the consultation workflow from the moment a patient enters the queue to the moment they walk out with their prescription.</p>
+        <a href="mailto:hello@zentraai.in?subject=HYT Health — AI Demo Request" class="ai-btn-white">Request AI Demo →</a>
+      </div>
+      <div class="ai-feats">
+        <div class="ai-feat">
+          <span class="ai-icon">🎙️</span>
+          <div class="ai-txt">
+            <h4>Voice-to-EMR (AI Scribe)</h4>
+            <p>Doctor speaks in Hindi or English. AI transcribes and structures a SOAP note in real time. Biggest time-saver in the clinic.</p>
+          </div>
+        </div>
+        <div class="ai-feat">
+          <span class="ai-icon">📋</span>
+          <div class="ai-txt">
+            <h4>AI Patient Briefing Card</h4>
+            <p>Before you open the consultation: last visit summary, active medications, pending tests, overdue follow-ups. The "wow" moment for doctors.</p>
+          </div>
+        </div>
+        <div class="ai-feat">
+          <span class="ai-icon">🧠</span>
+          <div class="ai-txt">
+            <h4>Differential Diagnosis Engine</h4>
+            <p>Ranked differentials based on symptoms, vitals, and patient history — evidence-based and calibrated for Indian clinical context.</p>
+          </div>
+        </div>
+        <div class="ai-feat">
+          <span class="ai-icon">⚠️</span>
+          <div class="ai-txt">
+            <h4>Drug Interaction Checker</h4>
+            <p>Real-time alerts when a new prescription conflicts with existing medications. Patient safety, fully automated.</p>
+          </div>
+        </div>
+        <div class="ai-feat">
+          <span class="ai-icon">🔬</span>
+          <div class="ai-txt">
+            <h4>Investigation Recommendations</h4>
+            <p>Evidence-based test suggestions for the working diagnosis. Missing history prompts catch gaps before they become errors.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM FEATURES -->
+<section class="section" id="features">
+  <div class="section-inner">
+    <div class="section-hdr">
+      <div class="section-tag">Platform Features</div>
+      <h2 class="section-title">Everything a clinic needs,<br>nothing it doesn't</h2>
+      <p class="section-desc">11 integrated modules, built to work together from Day 1. HYT scales from a solo practitioner to a multi-specialty hospital chain.</p>
+    </div>
+    <div class="feat-grid-3">
+      <div class="feat-card">
+        <span class="f-icon">⚡</span>
+        <h3>30-Minute Self-Onboarding</h3>
+        <p>Step-by-step guided setup wizard — register your clinic, add staff with role-based access, and see your first patient. No IT consultant, no implementation fee, no waiting.</p>
+      </div>
+      <div class="feat-card">
+        <span class="f-icon">📅</span>
+        <h3>Appointment & Queue Management</h3>
+        <p>Walk-in registration, advance booking, token display for waiting rooms, automated 24h/1h WhatsApp reminders, no-show follow-up, and online booking links for your social profiles.</p>
+      </div>
+      <div class="feat-card">
+        <span class="f-icon">💊</span>
+        <h3>Smart E-Prescription</h3>
+        <p>Brand and generic drug search, structured dosage builder, real-time interaction check, save prescription templates, and instant WhatsApp delivery to the patient. FHIR-formatted output.</p>
+      </div>
+      <div class="feat-card">
+        <span class="f-icon">🔗</span>
+        <h3>ABDM-Native Compliance</h3>
+        <p>ABHA creation and linking via OTP, HIP and HIU registration, FHIR-formatted record push with active patient consent. Built from the ground up — not bolted on as an afterthought.</p>
+      </div>
+      <div class="feat-card">
+        <span class="f-icon">🧪</span>
+        <h3>Lab Orders & Report Intelligence</h3>
+        <p>Order tests, receive digital reports, auto-flag out-of-range values with clinical context, track trends across visits. Integrated with SRL, Metropolis, Dr. Lal, and Thyrocare.</p>
+      </div>
+      <div class="feat-card">
+        <span class="f-icon">💬</span>
+        <h3>WhatsApp-First CRM</h3>
+        <p>Appointment reminders, prescriptions, post-visit care instructions, follow-up recalls, and patient campaigns — all delivered over WhatsApp, India's default communication channel.</p>
+      </div>
+      <div class="feat-card">
+        <span class="f-icon">💰</span>
+        <h3>Billing & Revenue Management</h3>
+        <p>OPD billing, UPI/cash/card collection, GST-ready tax invoices, daily revenue summaries, and insurance claims management. Revenue cycle built for the Indian clinic.</p>
+      </div>
+      <div class="feat-card">
+        <span class="f-icon">📹</span>
+        <h3>Integrated Teleconsultation</h3>
+        <p>No third-party app required. Video and audio consult room, prescription sharing, ABDM-compliant teleconsult records, and UPI payment collection — all within HYT.</p>
+      </div>
+      <div class="feat-card">
+        <span class="f-icon">📊</span>
+        <h3>Specialty Clinical Templates</h3>
+        <p>Purpose-built documentation for Ophthalmology, General Practice, Pediatrics, Gynecology, and Dermatology at launch — with an expanding template library for every specialty.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PATIENT APP FEATURES -->
+<section class="section alt" style="padding-top: 88px;">
+  <div class="section-inner">
+    <div class="section-hdr">
+      <div class="section-tag">Patient Super App</div>
+      <h2 class="section-title">Your complete<br>health companion</h2>
+      <p class="section-desc">Patients who visit a HYT-enrolled clinic are invited to the app at registration. From that first visit, they carry their complete health record with them — forever.</p>
+    </div>
+    <div class="feat-grid-3">
+      <div class="feat-card">
+        <span class="f-icon">📊</span>
+        <h3>AI Lab Report Explainer</h3>
+        <p>Plain-language explanation of every lab result — HbA1c, TSH, CBC, lipid panel. Know what your results mean and what action to take, without needing a medical degree.</p>
+      </div>
+      <div class="feat-card">
+        <span class="f-icon">📖</span>
+        <h3>Longitudinal Health Timeline</h3>
+        <p>Every visit, every lab report, every prescription — automatically synced from your ABDM health record and enrolled clinics. Your complete health story in one scroll.</p>
+      </div>
+      <div class="feat-card">
+        <span class="f-icon">👨‍👩‍👧</span>
+        <h3>Family Health Profiles</h3>
+        <p>Manage health records for your parents, spouse, and children from a single app. One account, every family member, all their records in one secure place.</p>
+      </div>
+      <div class="feat-card">
+        <span class="f-icon">🆘</span>
+        <h3>Emergency Health Card</h3>
+        <p>Offline-accessible: blood group, allergies, chronic conditions, current medications, emergency contacts. No unlock required. Could save your life when it matters most.</p>
+      </div>
+      <div class="feat-card">
+        <span class="f-icon">💊</span>
+        <h3>Medication Reminders</h3>
+        <p>Smart reminders linked to your actual prescription — knows exactly what you're supposed to take and when. Adherence tracking included. Never miss a dose again.</p>
+      </div>
+      <div class="feat-card">
+        <span class="f-icon">🛡️</span>
+        <h3>Insurance Vault</h3>
+        <p>Store health insurance policies, get AI summaries of your coverage, discover better plans, and track Section 80D tax-eligible health expenses — all in one place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN PRINCIPLES -->
+<section class="section" style="padding-top: 64px; padding-bottom: 64px;">
+  <div class="section-inner" style="text-align: center;">
+    <div class="section-tag">Built Different</div>
+    <h2 class="section-title" style="margin-bottom: 36px;">Design principles that matter</h2>
+    <div class="principles">
+      <div class="principle"><em>🏛️</em> ABDM-native, not bolted on</div>
+      <div class="principle"><em>📡</em> FHIR R4 data architecture</div>
+      <div class="principle"><em>🤖</em> AI woven into every workflow</div>
+      <div class="principle"><em>💬</em> WhatsApp-first patient communication</div>
+      <div class="principle"><em>📵</em> Offline mode for Tier 2/3 clinics</div>
+      <div class="principle"><em>🌐</em> 7 regional languages</div>
+      <div class="principle"><em>🔒</em> DISHA-compliant data security</div>
+      <div class="principle"><em>⚡</em> Self-serve setup in 30 minutes</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section alt" id="pricing">
+  <div class="section-inner">
+    <div class="section-hdr">
+      <div class="section-tag">Pricing</div>
+      <h2 class="section-title">Transparent pricing,<br>no implementation fees</h2>
+      <p class="section-desc">Start with a free trial. Scale as you grow. Every plan includes ABDM compliance, WhatsApp integration, and the HYT Patient App for your patients.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan">
+        <div class="plan-tier">Starter</div>
+        <div class="plan-price"><sup>₹</sup>1,499<sub>/mo</sub></div>
+        <div class="plan-for">Solo doctor or small clinic</div>
+        <hr class="plan-divider" />
+        <ul class="plan-feats">
+          <li>Smart EMR + SOAP Notes</li>
+          <li>Specialty Clinical Templates</li>
+          <li>Appointment & Queue Management</li>
+          <li>E-Prescription + WhatsApp Delivery</li>
+          <li>Basic ABDM — ABHA, HIP Registration</li>
+          <li>OPD Billing + UPI Collection</li>
+          <li>AI Patient Briefing Card</li>
+          <li>Patient App Access for Your Patients</li>
+        </ul>
+        <a href="mailto:hello@zentraai.in?subject=HYT Health — Starter Plan" class="plan-btn ghost">Start Free Trial</a>
+      </div>
+
+      <div class="plan popular">
+        <div class="pop-label">MOST POPULAR</div>
+        <div class="plan-tier">Professional</div>
+        <div class="plan-price"><sup>₹</sup>8,500<sub>/mo</sub></div>
+        <div class="plan-for">Multi-doctor clinic or diagnostic center</div>
+        <hr class="plan-divider" />
+        <ul class="plan-feats">
+          <li>Everything in Starter</li>
+          <li>AI Scribe — Voice-to-EMR</li>
+          <li>AI Doctor Copilot (DDx, Drug Interactions)</li>
+          <li>Full ABDM — HIU + Consent Management</li>
+          <li>Healthcare CRM + Patient Campaigns</li>
+          <li>Teleconsultation (video + audio)</li>
+          <li>Lab Integration + Trend Analytics</li>
+          <li>Revenue Analytics Dashboard</li>
+          <li>Online Booking Link for Social Profiles</li>
+        </ul>
+        <a href="mailto:hello@zentraai.in?subject=HYT Health — Professional Plan" class="plan-btn solid">Get Early Access</a>
+      </div>
+
+      <div class="plan">
+        <div class="plan-tier">Enterprise</div>
+        <div class="plan-price" style="font-size: 28px; padding-top: 4px;">Custom</div>
+        <div class="plan-for">Hospital chains & corporate health</div>
+        <hr class="plan-divider" />
+        <ul class="plan-feats">
+          <li>Everything in Professional</li>
+          <li>Multi-location Management</li>
+          <li>Hospital HIS Module</li>
+          <li>Insurance & NHCX Claims Processing</li>
+          <li>White-label Option</li>
+          <li>FHIR API Gateway Access</li>
+          <li>Custom AI Fine-tuning</li>
+          <li>Dedicated SLA + Priority Support</li>
+          <li>ABDM-as-a-Service API</li>
+        </ul>
+        <a href="mailto:hello@zentraai.in?subject=HYT Health — Enterprise Enquiry" class="plan-btn ghost">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="padding-top: 48px; padding-bottom: 88px;">
+  <div class="section-inner">
+    <div class="cta-box">
+      <h2>Ready to transform your practice?</h2>
+      <p>Join our early access cohort. Be among the first clinics to go live on HYT Health and shape the product with your direct feedback.</p>
+      <div class="cta-actions">
+        <a href="mailto:hello@zentraai.in?subject=HYT Health — Doctor Early Access Request" class="btn-primary">Request Early Access</a>
+        <a href="/health/investor/" class="btn-outline">Investor Information →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="/">HYT</a>
+    <a href="/finance/">HYT Money</a>
+    <a href="/health/">HYT Health</a>
+    <a href="/health/investor/">For Investors</a>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="mailto:hello@zentraai.in">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 HYT Health. All rights reserved.</div>
+</footer>
 
 </body>
 </html>
