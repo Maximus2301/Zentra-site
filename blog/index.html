@@ -52,9 +52,9 @@
     .mini-carousel { position: relative; width: 240px; aspect-ratio: 1 / 1;
       border-radius: 14px; overflow: hidden; background: #131315;
       border: 1px solid #2A2A2E; }
-    .slides-track { display: flex; width: 500%; height: 100%;
+    .slides-track { display: flex; height: 100%;
       transition: transform 0.3s ease; will-change: transform; }
-    .slide { flex: 0 0 20%; height: 100%; }
+    .slide { height: 100%; }
     .slide a { display: block; width: 100%; height: 100%; }
     .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .nav-btn { position: absolute; top: 50%; transform: translateY(-50%);
@@ -874,6 +874,15 @@
       document.querySelectorAll('.mini-carousel').forEach(function (el) {
         var id = el.id;
         state[id] = 0;
+        var slides = el.querySelectorAll('.slide');
+        var total = slides.length;
+        var track = el.querySelector('.slides-track');
+        if (track && total) {
+          track.style.width = (total * 100) + '%';
+          slides.forEach(function (s) { s.style.flex = '0 0 ' + (100 / total) + '%'; });
+        }
+        var counter = document.getElementById(id + '-counter');
+        if (counter) counter.textContent = '1 / ' + total;
         var prevBtn = el.querySelector('.prev');
         var nextBtn = el.querySelector('.next');
         if (prevBtn) prevBtn.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); go(id, (state[id] || 0) - 1); });

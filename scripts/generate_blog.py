@@ -438,11 +438,10 @@ def _build_carousel_section(post_url: str, title: str, desc: str, carousel_slug:
     enc_li   = quote(desc[:120], safe="")
 
     slides = [
-        ("slide-1-hook.jpg",    "Hook"),
-        ("slide-2-point1.jpg",  "Point 1"),
-        ("slide-3-point2.jpg",  "Point 2"),
-        ("slide-4-point3.jpg",  "Point 3"),
-        ("slide-5-cta.jpg",     "CTA"),
+        ("slide-1-hook.jpg",   "Hook"),
+        ("slide-2-point1.jpg", "Point 1"),
+        ("slide-3-point2.jpg", "Point 2"),
+        ("slide-4-cta.jpg",    "HYT Money"),
     ]
     cards = "".join(
         f'<div class="slide-card">'
@@ -553,11 +552,10 @@ def rebuild_index(published_log: list[dict]) -> None:
     recent = sorted(published_log, key=lambda e: e["date"], reverse=True)[:30]
     rows = ""
     slide_names = [
-        ("slide-1-hook.jpg", "Hook"),
+        ("slide-1-hook.jpg",   "Hook"),
         ("slide-2-point1.jpg", "Point 1"),
         ("slide-3-point2.jpg", "Point 2"),
-        ("slide-4-point3.jpg", "Point 3"),
-        ("slide-5-cta.jpg", "CTA"),
+        ("slide-4-cta.jpg",    "HYT Money"),
     ]
     for i, entry in enumerate(recent):
         tags_html = " ".join(
@@ -585,7 +583,7 @@ def rebuild_index(published_log: list[dict]) -> None:
           <button class="nav-btn prev">&#8249;</button>
           <button class="nav-btn next">&#8250;</button>
           <div class="dots">{dots_html}</div>
-          <span class="slide-counter" id="{cid}-counter">1 / 5</span>
+          <span class="slide-counter" id="{cid}-counter">1 / 4</span>
         </div>
       </div>
       <a href="{entry['url']}" class="post-content">
@@ -646,9 +644,9 @@ def rebuild_index(published_log: list[dict]) -> None:
     .mini-carousel {{ position: relative; width: 240px; aspect-ratio: 1 / 1;
       border-radius: 14px; overflow: hidden; background: #131315;
       border: 1px solid #2A2A2E; }}
-    .slides-track {{ display: flex; width: 500%; height: 100%;
+    .slides-track {{ display: flex; height: 100%;
       transition: transform 0.3s ease; will-change: transform; }}
-    .slide {{ flex: 0 0 20%; height: 100%; }}
+    .slide {{ height: 100%; }}
     .slide a {{ display: block; width: 100%; height: 100%; }}
     .slide img {{ width: 100%; height: 100%; object-fit: cover; display: block; }}
     .nav-btn {{ position: absolute; top: 50%; transform: translateY(-50%);
@@ -741,6 +739,15 @@ def rebuild_index(published_log: list[dict]) -> None:
       document.querySelectorAll('.mini-carousel').forEach(function (el) {{
         var id = el.id;
         state[id] = 0;
+        var slides = el.querySelectorAll('.slide');
+        var total = slides.length;
+        var track = el.querySelector('.slides-track');
+        if (track && total) {{
+          track.style.width = (total * 100) + '%';
+          slides.forEach(function (s) {{ s.style.flex = '0 0 ' + (100 / total) + '%'; }});
+        }}
+        var counter = document.getElementById(id + '-counter');
+        if (counter) counter.textContent = '1 / ' + total;
         var prevBtn = el.querySelector('.prev');
         var nextBtn = el.querySelector('.next');
         if (prevBtn) prevBtn.addEventListener('click', function (e) {{ e.preventDefault(); e.stopPropagation(); go(id, (state[id] || 0) - 1); }});
@@ -794,7 +801,7 @@ def rebuild_feed(published_log: list[dict]) -> None:
 
 # ── Carousel generation ───────────────────────────────────────────────────────
 # Uses content already produced by Gemini (zero extra AI tokens).
-# Playwright renders 5 HTML slides → JPEG 85 quality → carousel.zip.
+# Playwright renders 4 HTML slides → JPEG 85 quality → carousel.zip.
 # Output goes to blog/carousels/<slug>/ which is gitignored — uploaded
 # as a GitHub Actions artifact so the repo stays lean.
 
@@ -804,78 +811,110 @@ _CAROUSEL_CSS = """
   body {
     width: 1080px; height: 1080px; overflow: hidden;
     font-family: 'DM Sans', -apple-system, sans-serif;
-    background: #0D0D0F; color: #F0F0EC;
+    background: #131210; color: #F0F0EC;
     -webkit-font-smoothing: antialiased; position: relative;
   }
   .glow { position: absolute; border-radius: 50%; pointer-events: none; }
+  /* Top header row */
+  .header {
+    position: absolute; top: 48px; left: 64px; right: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  /* Brand badge — solid box for high legibility */
+  .brand-wrap {
+    background: rgba(201,162,42,0.12);
+    border: 1.5px solid rgba(201,162,42,0.38);
+    padding: 8px 20px; border-radius: 12px;
+  }
   .brand {
-    font-size: 20px; font-weight: 800; letter-spacing: 0.20em; text-transform: uppercase;
-    background: linear-gradient(90deg, #8B6914, #D4AF37, #F1D77A, #D4AF37, #8B6914);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    font-size: 18px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase;
+    background: linear-gradient(90deg, #C8961A, #EAC94E, #FAF0A8, #EAC94E, #C8961A);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
+  /* Category pill */
   .pill {
-    background: rgba(201,162,42,0.12); border: 1px solid rgba(201,162,42,0.28);
-    color: #E2C05E; font-size: 12px; font-weight: 700;
-    padding: 5px 14px; border-radius: 999px; letter-spacing: 0.10em; text-transform: uppercase;
+    background: rgba(201,162,42,0.20); border: 1.5px solid rgba(201,162,42,0.55);
+    color: #F4DC7A; font-size: 13px; font-weight: 700;
+    padding: 8px 20px; border-radius: 999px;
+    letter-spacing: 0.08em; text-transform: uppercase;
   }
+  /* Content zone — vertically centred between header (148px) and footer (130px) */
+  .content-zone {
+    position: absolute; top: 148px; bottom: 130px;
+    left: 64px; right: 64px;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    gap: 30px; text-align: center;
+  }
+  /* Footer row */
+  .footer {
+    position: absolute; bottom: 46px; left: 64px; right: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .site { font-size: 15px; font-weight: 600; color: #9090A0; letter-spacing: 0.06em; }
+  .n    { font-size: 13px; font-weight: 700; color: #808090; letter-spacing: 0.12em; }
   .accent-bar {
     position: absolute; bottom: 0; left: 0; right: 0; height: 5px;
     background: linear-gradient(90deg, #8B6914, #D4AF37, #F1D77A, #6ECFDB, transparent);
   }
-  .rule { height: 1px;
-    background: linear-gradient(90deg, rgba(201,162,42,0.55), rgba(110,207,219,0.3), transparent); }
+  .rule {
+    height: 1px; width: 220px;
+    background: linear-gradient(90deg, transparent, rgba(201,162,42,0.60), rgba(110,207,219,0.35), transparent);
+  }
 """
 
 _SLIDE1_CSS = """
-  .glow-top { top: -100px; left: 50%; transform: translateX(-50%);
-    width: 720px; height: 460px;
-    background: radial-gradient(circle, rgba(201,162,42,0.22) 0%, transparent 70%); }
-  .header { position: absolute; top: 56px; left: 72px; right: 72px;
-    display: flex; align-items: center; justify-content: space-between; }
-  .qmark { position: absolute; top: 110px; left: 48px; font-size: 220px; line-height: 1;
-    font-family: Georgia, serif; color: rgba(201,162,42,0.07); }
-  .hook { position: absolute; top: 218px; left: 72px; right: 72px;
-    font-size: 50px; font-weight: 800; line-height: 1.18; letter-spacing: -0.025em; }
-  .divider-wrap { position: absolute; bottom: 196px; left: 72px; right: 72px; }
-  .footer { position: absolute; bottom: 54px; left: 72px; right: 72px;
-    display: flex; align-items: flex-end; justify-content: space-between; }
-  .sub { font-size: 17px; font-weight: 500; color: #6A6A70; line-height: 1.4; max-width: 820px; }
-  .n { font-size: 13px; font-weight: 700; color: #4A4A50; letter-spacing: 0.10em; white-space: nowrap; }
+  .glow-top { top: -80px; left: 50%; transform: translateX(-50%);
+    width: 760px; height: 480px;
+    background: radial-gradient(circle, rgba(201,162,42,0.18) 0%, transparent 70%); }
+  /* Watermark quote mark — behind centred content */
+  .qmark { position: absolute; top: 50%; left: 36px;
+    transform: translateY(-48%);
+    font-size: 210px; line-height: 1; font-family: Georgia, serif;
+    color: rgba(201,162,42,0.06); pointer-events: none; user-select: none; }
+  /* Centred main text */
+  .hook {
+    font-size: 52px; font-weight: 800; line-height: 1.18;
+    letter-spacing: -0.025em; max-width: 920px;
+  }
+  .sub { font-size: 18px; font-weight: 500; color: #6E6E7A; line-height: 1.45; max-width: 860px; }
 """
 
 _SLIDE_TW_CSS = """
-  .header { position: absolute; top: 56px; left: 72px; right: 72px;
-    display: flex; align-items: center; justify-content: space-between; }
-  .bg-num { position: absolute; top: 60px; right: 32px; font-size: 340px; font-weight: 800;
-    line-height: 1; color: rgba(201,162,42,0.055); letter-spacing: -0.06em; }
-  .num-label { position: absolute; top: 182px; left: 72px;
-    font-size: 17px; font-weight: 700; color: rgba(201,162,42,0.45);
-    letter-spacing: 0.22em; text-transform: uppercase; }
-  .tw { position: absolute; top: 248px; left: 72px; right: 110px;
-    font-size: 44px; font-weight: 800; line-height: 1.20; letter-spacing: -0.025em; }
-  .divider-wrap { position: absolute; bottom: 178px; left: 72px; right: 72px; }
-  .footer { position: absolute; bottom: 54px; left: 72px; right: 72px;
-    display: flex; align-items: center; justify-content: space-between; }
-  .site { font-size: 15px; font-weight: 600; color: #5A5A60; letter-spacing: 0.04em; }
-  .n { font-size: 13px; font-weight: 700; color: #4A4A50; letter-spacing: 0.10em; }
+  /* Giant watermark number — centred vertically, pushed right */
+  .bg-num { position: absolute; top: 50%; right: 16px;
+    transform: translateY(-54%);
+    font-size: 330px; font-weight: 800; line-height: 1;
+    color: rgba(201,162,42,0.05); letter-spacing: -0.06em; pointer-events: none; user-select: none; }
+  /* Point label */
+  .num-label {
+    font-size: 15px; font-weight: 700;
+    color: rgba(201,162,42,0.88);
+    letter-spacing: 0.26em; text-transform: uppercase;
+  }
+  /* Key point text */
+  .tw {
+    font-size: 48px; font-weight: 800; line-height: 1.22;
+    letter-spacing: -0.025em; max-width: 940px;
+  }
 """
 
 _SLIDE_CTA_CSS = """
   .glow-c { top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 820px; height: 640px;
-    background: radial-gradient(circle, rgba(201,162,42,0.15) 0%, transparent 70%); }
+    width: 860px; height: 680px;
+    background: radial-gradient(circle, rgba(201,162,42,0.18) 0%, transparent 70%); }
   .center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     text-align: center; width: 920px; }
-  .big-brand { font-size: 76px; font-weight: 800; letter-spacing: 0.16em;
-    background: linear-gradient(90deg, #8B6914, #D4AF37, #F1D77A, #D4AF37, #8B6914);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    margin-bottom: 22px; }
-  .tagline { font-size: 30px; font-weight: 600; color: #8A8A90; line-height: 1.4; margin-bottom: 52px; }
-  .divider-c { height: 1px; margin: 0 auto 52px;
-    background: linear-gradient(90deg, transparent, rgba(201,162,42,0.5), rgba(110,207,219,0.3), transparent); }
-  .cta-line { font-size: 22px; font-weight: 700; color: #E2C05E;
-    letter-spacing: 0.04em; margin-bottom: 14px; }
-  .site-line { font-size: 16px; color: #5A5A60; letter-spacing: 0.06em; }
+  .big-brand { font-size: 80px; font-weight: 800; letter-spacing: 0.16em;
+    background: linear-gradient(90deg, #C8961A, #EAC94E, #FAF0A8, #EAC94E, #C8961A);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin-bottom: 24px; }
+  .tagline { font-size: 30px; font-weight: 600; color: #8A8A9A; line-height: 1.4; margin-bottom: 54px; }
+  .divider-c { height: 1px; width: 400px; margin: 0 auto 54px;
+    background: linear-gradient(90deg, transparent, rgba(201,162,42,0.55), rgba(110,207,219,0.35), transparent); }
+  .cta-line { font-size: 24px; font-weight: 700; color: #EAC94E;
+    letter-spacing: 0.05em; margin-bottom: 16px; }
+  .site-line { font-size: 16px; color: #6A6A78; letter-spacing: 0.06em; }
 """
 
 
@@ -894,20 +933,23 @@ def _make_slide(extra_css: str, body_inner: str) -> str:
 
 
 def _slide_hook(title: str, hook: str, tag: str) -> str:
-    hook_s = (hook[:137] + "…") if len(hook) > 140 else hook
+    hook_s = (hook[:137] + “…”) if len(hook) > 140 else hook
     body = (
-        '<div class="glow glow-top"></div>'
-        '<div class="accent-bar"></div>'
-        '<div class="header">'
-          '<div class="brand">HYT MONEY</div>'
-          '<div class="pill">' + _e(tag) + '</div>'
+        '<div class=”glow glow-top”></div>'
+        '<div class=”accent-bar”></div>'
+        '<div class=”header”>'
+          '<div class=”brand-wrap”><div class=”brand”>HYT MONEY</div></div>'
+          '<div class=”pill”>' + _e(tag) + '</div>'
         '</div>'
-        '<div class="qmark">“</div>'
-        '<div class="hook">' + _e(hook_s) + '</div>'
-        '<div class="divider-wrap"><div class="rule"></div></div>'
-        '<div class="footer">'
-          '<div class="sub">' + _e(title) + '</div>'
-          '<div class="n">1 / 5</div>'
+        '<div class=”qmark”>“</div>'
+        '<div class=”content-zone”>'
+          '<div class=”hook”>' + _e(hook_s) + '</div>'
+          '<div class=”rule”></div>'
+          '<div class=”sub”>' + _e(title) + '</div>'
+        '</div>'
+        '<div class=”footer”>'
+          '<div class=”site”>zentraai.in</div>'
+          '<div class=”n”>1 / 4</div>'
         '</div>'
     )
     return _make_slide(_SLIDE1_CSS, body)
@@ -918,16 +960,18 @@ def _slide_takeaway(takeaway: str, num_str: str, slide_n: int) -> str:
     body = (
         '<div class="accent-bar"></div>'
         '<div class="header">'
-          '<div class="brand">HYT MONEY</div>'
+          '<div class="brand-wrap"><div class="brand">HYT MONEY</div></div>'
           '<div class="pill">Key Takeaway</div>'
         '</div>'
         '<div class="bg-num">' + num_str + '</div>'
-        '<div class="num-label">' + num_str + ' / Key Point</div>'
-        '<div class="tw">' + _e(tw_s) + '</div>'
-        '<div class="divider-wrap"><div class="rule"></div></div>'
+        '<div class="content-zone">'
+          '<div class="num-label">' + num_str + ' &nbsp;|&nbsp; KEY POINT</div>'
+          '<div class="tw">' + _e(tw_s) + '</div>'
+          '<div class="rule"></div>'
+        '</div>'
         '<div class="footer">'
           '<div class="site">zentraai.in</div>'
-          '<div class="n">' + str(slide_n) + ' / 5</div>'
+          '<div class="n">' + str(slide_n) + ' / 4</div>'
         '</div>'
     )
     return _make_slide(_SLIDE_TW_CSS, body)
@@ -943,6 +987,10 @@ def _slide_cta() -> str:
           '<div class="divider-c"></div>'
           '<div class="cta-line">Free on Android</div>'
           '<div class="site-line">zentraai.in &nbsp;·&nbsp; Finance &nbsp;·&nbsp; Track &nbsp;·&nbsp; Grow</div>'
+        '</div>'
+        '<div class="footer">'
+          '<div class="site">zentraai.in</div>'
+          '<div class="n">4 / 4</div>'
         '</div>'
     )
     return _make_slide(_SLIDE_CTA_CSS, body)
@@ -962,16 +1010,15 @@ def generate_carousels(data: dict, slug: str) -> Path | None:
 
     tags   = data.get("tags", [])
     tag    = tags[0].title() if tags else "Finance Insight"
-    tws    = data.get("key_takeaways", ["", "", ""])
+    tws    = data.get("key_takeaways", ["", ""])
     slides = [
         _slide_hook(data["seo_title"], data["hook"], tag),
         _slide_takeaway(tws[0] if len(tws) > 0 else "", "01", 2),
         _slide_takeaway(tws[1] if len(tws) > 1 else "", "02", 3),
-        _slide_takeaway(tws[2] if len(tws) > 2 else "", "03", 4),
         _slide_cta(),
     ]
 
-    names = ["slide-1-hook", "slide-2-point1", "slide-3-point2", "slide-4-point3", "slide-5-cta"]
+    names = ["slide-1-hook", "slide-2-point1", "slide-3-point2", "slide-4-cta"]
 
     try:
         with sync_playwright() as pw:
@@ -1000,7 +1047,7 @@ def generate_carousels(data: dict, slug: str) -> Path | None:
 
     total_kb = sum((carousel_dir / f"{n}.jpg").stat().st_size for n in names
                    if (carousel_dir / f"{n}.jpg").exists()) // 1024
-    print(f"[carousel] 5 slides ({total_kb} KB) → {carousel_dir}")
+    print(f"[carousel] 4 slides ({total_kb} KB) → {carousel_dir}")
     return carousel_dir
 
 
