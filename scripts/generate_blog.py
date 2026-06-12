@@ -14,6 +14,7 @@ Pipeline:
 
 import os
 import re
+import time
 import json
 import hashlib
 import datetime
@@ -222,21 +223,30 @@ def generate_post(article: dict) -> dict | None:
         description=article["description"],
         source=article["source"],
     )
-    try:
-        response = _model.generate_content(prompt)
-        data = json.loads(response.text)
-        # Validate required keys
-        required = {"seo_title", "meta_description", "slug", "hook",
-                    "body_paragraphs", "key_takeaways"}
-        if not required.issubset(data.keys()):
-            print(f"[warn] Gemini response missing keys for: {article['title']}")
+    for attempt in range(3):
+        try:
+            response = _model.generate_content(prompt)
+            data = json.loads(response.text)
+            required = {"seo_title", "meta_description", "slug", "hook",
+                        "body_paragraphs", "key_takeaways"}
+            if not required.issubset(data.keys()):
+                print(f"[warn] Gemini response missing keys for: {article['title']}")
+                return None
+            if not isinstance(data["body_paragraphs"], list) or len(data["body_paragraphs"]) < 2:
+                return None
+            return data
+        except Exception as e:
+            msg = str(e)
+            if "429" in msg and attempt < 2:
+                # Parse the suggested retry delay from the API error message
+                m = re.search(r"retry in ([\d.]+)s", msg)
+                wait = float(m.group(1)) + 5 if m else 65.0
+                print(f"[rate-limit] Quota hit — sleeping {wait:.0f}s then retrying ({attempt + 2}/3)…")
+                time.sleep(wait)
+                continue
+            print(f"[warn] Gemini generation failed: {e}")
             return None
-        if not isinstance(data["body_paragraphs"], list) or len(data["body_paragraphs"]) < 2:
-            return None
-        return data
-    except Exception as e:
-        print(f"[warn] Gemini generation failed: {e}")
-        return None
+    return None
 
 
 # ── HTML generation ───────────────────────────────────────────────────────────
