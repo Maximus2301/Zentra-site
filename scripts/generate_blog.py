@@ -943,7 +943,7 @@ def _make_slide(extra_css: str, body_inner: str) -> str:
 
 
 def _slide_hook(title: str, hook: str, tag: str) -> str:
-    hook_s = (hook[:137] + “…”) if len(hook) > 140 else hook
+hook_s = (hook[:137] + "…") if len(hook) > 140 else hook
     body = (
         '<div class=”glow glow-top”></div>'
         '<div class=”accent-bar”></div>'
