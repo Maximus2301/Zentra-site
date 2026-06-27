@@ -108,5 +108,46 @@
     ],
     "slug": "sebi-illiquid-options-risks-indian-investors",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-06-27T06:41:28.597115",
+    "title": "RBI Draft Money Market Directions Explained",
+    "description": "The RBI released draft directions for money markets. Understand what this means for India's financial system, interest rates, and your personal financial planning.",
+    "url": "https://zentraai.in/blog/2026-06-27-rbi-draft-money-market-directions-explained.html",
+    "tags": [
+      "RBI",
+      "Money Market",
+      "Personal Finance"
+    ],
+    "slug": "rbi-draft-money-market-directions-explained",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-06-27T06:41:47.529692",
+    "title": "RBI Credit Derivatives 2026: What It Means for You",
+    "description": "Understand RBI's new credit derivatives rules taking effect in 2026. Learn how deepened financial markets can impact your investments and the broader Indian economy.",
+    "url": "https://zentraai.in/blog/2026-06-27-rbi-credit-derivatives-impact-indian-economy.html",
+    "tags": [
+      "RBI",
+      "Credit Derivatives",
+      "Indian Economy",
+      "Financial Markets",
+      "Investment Strategy"
+    ],
+    "slug": "rbi-credit-derivatives-impact-indian-economy",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-06-27T06:41:59.339495",
+    "title": "SEBI Action: Understanding Illiquid Stock Options Risk",
+    "description": "Learn about SEBI's actions against illiquid stock option dealings. Understand the risks involved and how to safeguard your investments in derivatives.",
+    "url": "https://zentraai.in/blog/2026-06-27-sebi-illiquid-stock-options-risk-indian-investors.html",
+    "tags": [
+      "Derivatives",
+      "Investment Risk",
+      "SEBI Regulations"
+    ],
+    "slug": "sebi-illiquid-stock-options-risk-indian-investors",
+    "source": "SEBI"
   }
 ]
