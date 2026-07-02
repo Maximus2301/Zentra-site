@@ -307,5 +307,44 @@
     ],
     "slug": "sebi-order-citrus-check-inns-investor-safety",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-07-02T06:53:47.204275",
+    "title": "FRSB 2020(T) Interest Rate Reset Explained",
+    "description": "Understand the latest FRSB 2020(T) interest rate reset and how floating rates impact your savings. Learn what it means for Indian salaried professionals.",
+    "url": "https://zentraai.in/blog/2026-07-02-frsb-2020t-interest-rate-reset-explained.html",
+    "tags": [
+      "investing",
+      "government bonds",
+      "financial planning"
+    ],
+    "slug": "frsb-2020t-interest-rate-reset-explained",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-07-02T06:54:06.675606",
+    "title": "RBI Survey: How Manufacturing Health Affects Your Wallet",
+    "description": "Understand the RBI's latest manufacturing survey (OBICUS) and how its findings can influence your job, investments, and overall financial well-being in India.",
+    "url": "https://zentraai.in/blog/2026-07-02-rbi-manufacturing-survey-impact-on-finances.html",
+    "tags": [
+      "economic indicators",
+      "financial planning",
+      "indian economy"
+    ],
+    "slug": "rbi-manufacturing-survey-impact-on-finances",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-07-02T06:54:19.442183",
+    "title": "SEBI's Recovery Certificate: Protecting Your Investments",
+    "description": "SEBI recently issued a recovery certificate against a defaulter. Learn what this means for Indian salaried professionals and how to safeguard your investments.",
+    "url": "https://zentraai.in/blog/2026-07-02-sebi-recovery-certificate-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Planning"
+    ],
+    "slug": "sebi-recovery-certificate-investor-safety",
+    "source": "SEBI"
   }
 ]
