@@ -1,61 +1,5 @@
 [
   {
-    "date": "2026-06-24T07:02:11.517574",
-    "title": "RBI Inaugurates CAFRAL Campus: Boosting Financial Research",
-    "description": "Learn how RBI's investment in financial research at CAFRAL strengthens India's economy, leading to more stable markets and better personal finance decisions for you.",
-    "url": "https://zentraai.in/blog/2026-06-24-rbi-cafral-campus-financial-research-impact.html",
-    "tags": [
-      "RBI",
-      "Financial Education",
-      "Personal Finance"
-    ],
-    "slug": "rbi-cafral-campus-financial-research-impact",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-06-24T07:02:35.228079",
-    "title": "SEBI Proposes Common Ad Code for Financial Entities",
-    "description": "Learn how SEBI's proposed common advertisement code will protect your investments by ensuring clearer, more transparent financial product promotions. Stay informed and make smarter choices.",
-    "url": "https://zentraai.in/blog/2026-06-24-sebi-ad-code-transparency-for-investors.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Education"
-    ],
-    "slug": "sebi-ad-code-transparency-for-investors",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-06-24T07:03:51.342759",
-    "title": "RBI on Rates: What it Means for Your Money in India",
-    "description": "Understand RBI's latest monetary policy stance on interest rates, crude oil, and monsoon. Learn what this means for your loans, savings, and financial planning.",
-    "url": "https://zentraai.in/blog/2026-06-24-rbi-rates-your-finances-explained-india.html",
-    "tags": [
-      "RBI",
-      "interest rates",
-      "personal finance",
-      "inflation",
-      "loans",
-      "financial planning",
-      "Indian economy"
-    ],
-    "slug": "rbi-rates-your-finances-explained-india",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-06-25T06:59:56.067730",
-    "title": "RBI Data: Private Corporate Performance 2025-26 Impact",
-    "description": "Understand RBI's latest data on India's private corporate sector performance in 2025-26. Discover how business health impacts your job, investments, and personal finance.",
-    "url": "https://zentraai.in/blog/2026-06-25-rbi-corporate-sector-performance-2025-26-impact.html",
-    "tags": [
-      "RBI",
-      "Corporate Sector",
-      "Personal Finance"
-    ],
-    "slug": "rbi-corporate-sector-performance-2025-26-impact",
-    "source": "RBI"
-  },
-  {
     "date": "2026-06-25T07:03:25.427465",
     "title": "SEBI Takes Action on Defaulters for Investor Safety",
     "description": "Understand SEBI's recovery actions against market defaulters and what it means for Indian salaried professionals. Learn how to protect your investments and ensure financial safety.",
@@ -545,5 +489,49 @@
     ],
     "slug": "kharif-sowing-lag-monsoon-impact-food-prices",
     "source": "ET Economy"
+  },
+  {
+    "date": "2026-07-09T06:59:53.067829",
+    "title": "SEBI Acts on Illiquid Stock Options Trading Risks",
+    "description": "Learn why SEBI acts against illiquid stock options trading and how to protect your investments from hidden risks. Understand market regulations.",
+    "url": "https://zentraai.in/blog/2026-07-09-sebi-action-illiquid-stock-options-risks.html",
+    "tags": [
+      "SEBI",
+      "Stock Options",
+      "Illiquid Markets",
+      "Investor Protection",
+      "Financial Education"
+    ],
+    "slug": "sebi-action-illiquid-stock-options-risks",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-09T07:01:06.212617",
+    "title": "SEBI's Recovery Action: Investor Protection & Your Money",
+    "description": "Learn how SEBI's enforcement actions protect Indian investors and why understanding market regulations is crucial for your financial security.",
+    "url": "https://zentraai.in/blog/2026-07-09-sebi-recovery-action-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Education",
+      "Indian Stock Market",
+      "Market Regulation",
+      "Due Diligence"
+    ],
+    "slug": "sebi-recovery-action-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-09T07:02:28.560759",
+    "title": "SEBI's Recovery Order: Protecting Indian Investors",
+    "description": "Understand how SEBI's recent recovery order against Rajesh Pandey highlights market regulation and investor protection for salaried Indian professionals. Learn to safeguard your investments.",
+    "url": "https://zentraai.in/blog/2026-07-09-sebi-recovery-order-investor-protection-india.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-recovery-order-investor-protection-india",
+    "source": "SEBI"
   }
 ]
