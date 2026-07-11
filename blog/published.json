@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-06-26T07:07:00.314910",
-    "title": "RBI Drafts New Money Market Rules 2026 Explained",
-    "description": "Understand RBI's draft directions for money markets. Learn how these regulatory changes could subtly influence interest rates and your financial planning in India.",
-    "url": "https://zentraai.in/blog/2026-06-26-rbi-draft-money-market-rules-2026-explained.html",
-    "tags": [
-      "RBI",
-      "Financial Stability",
-      "Personal Finance"
-    ],
-    "slug": "rbi-draft-money-market-rules-2026-explained",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-06-26T07:07:33.928676",
-    "title": "RBI's New Credit Derivatives Rules Explained",
-    "description": "Understand RBI's 2026 Credit Derivatives Master Direction and its implications for India's financial markets. Learn what this means for you, the salaried professional.",
-    "url": "https://zentraai.in/blog/2026-06-26-rbi-credit-derivatives-master-direction-2026.html",
-    "tags": [
-      "RBI",
-      "Financial Regulation",
-      "Credit Derivatives",
-      "Indian Economy",
-      "Personal Finance"
-    ],
-    "slug": "rbi-credit-derivatives-master-direction-2026",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-06-26T07:07:46.526180",
-    "title": "Understanding Illiquid Options Trading Risks",
-    "description": "SEBI's recent action highlights risks of illiquid stock options. Learn how to identify and avoid such high-risk investments, protecting your financial future.",
-    "url": "https://zentraai.in/blog/2026-06-26-sebi-illiquid-options-risks-indian-investors.html",
-    "tags": [
-      "SEBI",
-      "Stock Options",
-      "Investment Risks"
-    ],
-    "slug": "sebi-illiquid-options-risks-indian-investors",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-06-27T06:41:28.597115",
     "title": "RBI Draft Money Market Directions Explained",
     "description": "The RBI released draft directions for money markets. Understand what this means for India's financial system, interest rates, and your personal financial planning.",
@@ -559,5 +518,44 @@
     ],
     "slug": "rbi-consumer-confidence-survey-impact-you",
     "source": "RBI"
+  },
+  {
+    "date": "2026-07-11T05:57:23.120817",
+    "title": "Mutual Funds Intraday Borrowing: What It Means for You",
+    "description": "Learn about mutual funds' intraday borrowing, why SEBI monitors it, and how this facility ensures smooth operations for your investments.",
+    "url": "https://zentraai.in/blog/2026-07-11-mutual-funds-intraday-borrowing-explained.html",
+    "tags": [
+      "Mutual Funds",
+      "Financial Planning",
+      "Investment Basics"
+    ],
+    "slug": "mutual-funds-intraday-borrowing-explained",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-11T05:57:42.057898",
+    "title": "SEBI Boosts Corporate Bond Awareness for Investors",
+    "description": "SEBI launched new videos to explain corporate bonds. Discover what corporate bonds are, why they matter for your portfolio, and how to approach this investment avenue for potential stability.",
+    "url": "https://zentraai.in/blog/2026-07-11-sebi-promotes-corporate-bond-market-awareness.html",
+    "tags": [
+      "corporate bonds",
+      "SEBI",
+      "investment awareness"
+    ],
+    "slug": "sebi-promotes-corporate-bond-market-awareness",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-11T05:58:01.294501",
+    "title": "ITR-7 Excel Utility AY 2026-27 Released: Key Updates",
+    "description": "The Income Tax Department released the ITR-7 Excel utility for AY 2026-27. Understand who uses it and why tax updates matter for your financial planning.",
+    "url": "https://zentraai.in/blog/2026-07-11-itr-7-excel-utility-ay-2026-27-released.html",
+    "tags": [
+      "Income Tax",
+      "ITR Filing",
+      "Financial Planning"
+    ],
+    "slug": "itr-7-excel-utility-ay-2026-27-released",
+    "source": "Mint Money"
   }
 ]
