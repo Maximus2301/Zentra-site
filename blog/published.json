@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-06-27T06:41:28.597115",
-    "title": "RBI Draft Money Market Directions Explained",
-    "description": "The RBI released draft directions for money markets. Understand what this means for India's financial system, interest rates, and your personal financial planning.",
-    "url": "https://zentraai.in/blog/2026-06-27-rbi-draft-money-market-directions-explained.html",
-    "tags": [
-      "RBI",
-      "Money Market",
-      "Personal Finance"
-    ],
-    "slug": "rbi-draft-money-market-directions-explained",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-06-27T06:41:47.529692",
-    "title": "RBI Credit Derivatives 2026: What It Means for You",
-    "description": "Understand RBI's new credit derivatives rules taking effect in 2026. Learn how deepened financial markets can impact your investments and the broader Indian economy.",
-    "url": "https://zentraai.in/blog/2026-06-27-rbi-credit-derivatives-impact-indian-economy.html",
-    "tags": [
-      "RBI",
-      "Credit Derivatives",
-      "Indian Economy",
-      "Financial Markets",
-      "Investment Strategy"
-    ],
-    "slug": "rbi-credit-derivatives-impact-indian-economy",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-06-27T06:41:59.339495",
-    "title": "SEBI Action: Understanding Illiquid Stock Options Risk",
-    "description": "Learn about SEBI's actions against illiquid stock option dealings. Understand the risks involved and how to safeguard your investments in derivatives.",
-    "url": "https://zentraai.in/blog/2026-06-27-sebi-illiquid-stock-options-risk-indian-investors.html",
-    "tags": [
-      "Derivatives",
-      "Investment Risk",
-      "SEBI Regulations"
-    ],
-    "slug": "sebi-illiquid-stock-options-risk-indian-investors",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-06-28T07:13:12.392277",
     "title": "RBI Drafts New Money Market Directions for 2026",
     "description": "Understand RBI's new draft rules for money markets and how these financial policy changes might subtly impact your personal finances and economic stability in India.",
@@ -556,6 +515,47 @@
       "Financial Planning"
     ],
     "slug": "itr-7-excel-utility-ay-2026-27-released",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-12T06:17:19.261707",
+    "title": "Mutual Funds Use Intraday Borrowing Facility Explained",
+    "description": "Understand why mutual funds use intraday borrowing and what it means for your investments. Learn about liquidity management with HYT MONEY.",
+    "url": "https://zentraai.in/blog/2026-07-12-mutual-funds-intraday-borrowing-liquidity.html",
+    "tags": [
+      "mutual funds",
+      "investment",
+      "liquidity management"
+    ],
+    "slug": "mutual-funds-intraday-borrowing-liquidity",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-12T06:17:37.082519",
+    "title": "SEBI Launches Investor Videos for Corporate Bonds",
+    "description": "SEBI launches new videos to boost corporate bond awareness. Learn how these bonds work, their role in your portfolio, and what steps you can take to explore this investment option.",
+    "url": "https://zentraai.in/blog/2026-07-12-sebi-corporate-bond-awareness-videos.html",
+    "tags": [
+      "corporate bonds",
+      "SEBI",
+      "investor education"
+    ],
+    "slug": "sebi-corporate-bond-awareness-videos",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-12T06:17:50.036690",
+    "title": "Mutual Fund Diversification: Avoid Portfolio Overlap Trap",
+    "description": "Learn why holding many mutual funds doesn't guarantee diversification. Discover how to identify and avoid portfolio overlap to build a focused, effective investment strategy.",
+    "url": "https://zentraai.in/blog/2026-07-12-mutual-fund-diversification-portfolio-overlap.html",
+    "tags": [
+      "mutual funds",
+      "diversification",
+      "portfolio management",
+      "indian investors",
+      "financial planning"
+    ],
+    "slug": "mutual-fund-diversification-portfolio-overlap",
     "source": "Mint Money"
   }
 ]
