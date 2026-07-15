@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-06-30T07:06:57.292850",
-    "title": "India's External Debt Nears $763B: Your Financial View",
-    "description": "Understand India's rising external debt and its economic implications. Learn practical financial steps to secure your wealth amidst macroeconomic shifts for salaried professionals.",
-    "url": "https://zentraai.in/blog/2026-06-30-india-external-debt-march-2026-your-finances.html",
-    "tags": [
-      "Indian Economy",
-      "Personal Finance",
-      "Debt Management"
-    ],
-    "slug": "india-external-debt-march-2026-your-finances",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-06-30T07:07:15.775596",
-    "title": "Check Your ITR Status Online: A Quick Guide for AY 2026-27",
-    "description": "Learn how to easily check your Income Tax Return (ITR) status online, understand its importance, and take necessary actions for a smooth tax process.",
-    "url": "https://zentraai.in/blog/2026-06-30-check-itr-status-online-guide-ay-2026-27.html",
-    "tags": [
-      "income tax",
-      "ITR filing",
-      "tax planning"
-    ],
-    "slug": "check-itr-status-online-guide-ay-2026-27",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-06-30T07:07:39.556909",
-    "title": "New ITR Deadlines: What Salaried Indians Need to Know",
-    "description": "Understand the recent Income Tax Return (ITR) deadline changes for salaried professionals. Learn how these updates affect ITR-1, ITR-2, ITR-3, and ITR-4 filings, ensuring timely compliance.",
-    "url": "https://zentraai.in/blog/2026-06-30-itr-deadline-changes-salaried-professionals.html",
-    "tags": [
-      "ITR",
-      "Tax Filing",
-      "Income Tax India"
-    ],
-    "slug": "itr-deadline-changes-salaried-professionals",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-01T07:53:44.603713",
     "title": "India Equity Investment Tax Rules Explained",
     "description": "Unravel the tax implications of your equity investments in India. Learn how listed shares, MFs, intraday trading, and F&O are taxed based on holding period and gain type.",
@@ -563,5 +524,51 @@
     ],
     "slug": "itat-ruling-gifts-mother-tax-india",
     "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-15T05:45:34.239879",
+    "title": "RBI Simplifies Bank Investment Rules for Funds",
+    "description": "Learn how the RBI's new draft rules for mutual funds, insurance, and pension funds investing in banks could impact your long-term savings and financial future.",
+    "url": "https://zentraai.in/blog/2026-07-15-rbi-bank-shareholding-rules-simplified.html",
+    "tags": [
+      "RBI",
+      "Investments",
+      "Mutual Funds",
+      "Banking Sector",
+      "Financial Planning",
+      "Indian Economy",
+      "Pension Funds"
+    ],
+    "slug": "rbi-bank-shareholding-rules-simplified",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-07-15T05:45:51.803018",
+    "title": "SEBI Action: Dhana Energy Remittance Order Explained",
+    "description": "Learn what SEBI's remittance order against Dhana Energy means for market regulation, investor safety, and how to protect your investments in India.",
+    "url": "https://zentraai.in/blog/2026-07-15-sebi-remittance-order-dhana-energy-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Regulation",
+      "Market Integrity",
+      "Indian Investments",
+      "Dhana Energy"
+    ],
+    "slug": "sebi-remittance-order-dhana-energy-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-15T05:46:03.501696",
+    "title": "SEBI Order: Ravi Bahrathi & Investor Protection",
+    "description": "Understand SEBI's role in market regulation through a recent order. Learn how to protect your investments and identify red flags to safeguard your financial future in India.",
+    "url": "https://zentraai.in/blog/2026-07-15-sebi-remittance-order-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "investor protection",
+      "financial literacy"
+    ],
+    "slug": "sebi-remittance-order-investor-protection",
+    "source": "SEBI"
   }
 ]
