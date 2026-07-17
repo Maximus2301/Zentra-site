@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-07-02T06:53:47.204275",
-    "title": "FRSB 2020(T) Interest Rate Reset Explained",
-    "description": "Understand the latest FRSB 2020(T) interest rate reset and how floating rates impact your savings. Learn what it means for Indian salaried professionals.",
-    "url": "https://zentraai.in/blog/2026-07-02-frsb-2020t-interest-rate-reset-explained.html",
-    "tags": [
-      "investing",
-      "government bonds",
-      "financial planning"
-    ],
-    "slug": "frsb-2020t-interest-rate-reset-explained",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-07-02T06:54:06.675606",
-    "title": "RBI Survey: How Manufacturing Health Affects Your Wallet",
-    "description": "Understand the RBI's latest manufacturing survey (OBICUS) and how its findings can influence your job, investments, and overall financial well-being in India.",
-    "url": "https://zentraai.in/blog/2026-07-02-rbi-manufacturing-survey-impact-on-finances.html",
-    "tags": [
-      "economic indicators",
-      "financial planning",
-      "indian economy"
-    ],
-    "slug": "rbi-manufacturing-survey-impact-on-finances",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-07-02T06:54:19.442183",
-    "title": "SEBI's Recovery Certificate: Protecting Your Investments",
-    "description": "SEBI recently issued a recovery certificate against a defaulter. Learn what this means for Indian salaried professionals and how to safeguard your investments.",
-    "url": "https://zentraai.in/blog/2026-07-02-sebi-recovery-certificate-investor-safety.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Planning"
-    ],
-    "slug": "sebi-recovery-certificate-investor-safety",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-07-03T06:46:16.636122",
     "title": "India's Economic Outlook: Food Inflation & Your Finances",
     "description": "Understand India's economic outlook, including projected food inflation and CPI. Learn how monsoon deficits affect your budget and practical steps for salaried professionals to manage finances.",
@@ -574,5 +535,46 @@
     ],
     "slug": "cost-inflation-index-cii-fy27-impact-india",
     "source": "ET Economy"
+  },
+  {
+    "date": "2026-07-17T05:59:22.852894",
+    "title": "SEBI Acts on Unregistered Investment Advisor",
+    "description": "SEBI's action against 'Rocket Tips' highlights risks of unregistered advisors. Learn how to verify financial professionals and protect your hard-earned investments from fraud.",
+    "url": "https://zentraai.in/blog/2026-07-17-sebi-action-unregistered-investment-advisors.html",
+    "tags": [
+      "SEBI",
+      "Investment Scams",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-action-unregistered-investment-advisors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-17T05:59:37.459588",
+    "title": "India-UK FTA: Impact on Indian Consumers & Brands",
+    "description": "Understand how the India-UK Free Trade Agreement could reshape your shopping basket and inspire innovation in Indian brands. Learn what it means for your finances.",
+    "url": "https://zentraai.in/blog/2026-07-17-india-uk-fta-impact-indian-consumers-brands.html",
+    "tags": [
+      "India UK FTA",
+      "Consumer Finance",
+      "Personal Budgeting"
+    ],
+    "slug": "india-uk-fta-impact-indian-consumers-brands",
+    "source": "ET Economy"
+  },
+  {
+    "date": "2026-07-17T05:59:57.494917",
+    "title": "Dearness Allowance Hike: What It Means For Your Finances",
+    "description": "Understand the recent Dearness Allowance (DA) hike for government employees, its link to inflation, and practical steps for all salaried Indians to manage finances effectively.",
+    "url": "https://zentraai.in/blog/2026-07-17-dearness-allowance-hike-impact-on-finances.html",
+    "tags": [
+      "Dearness Allowance",
+      "Personal Finance",
+      "Inflation",
+      "Salaried Professionals",
+      "Financial Planning"
+    ],
+    "slug": "dearness-allowance-hike-impact-on-finances",
+    "source": "Mint Money"
   }
 ]
