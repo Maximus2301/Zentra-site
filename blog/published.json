@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-07-03T06:46:16.636122",
-    "title": "India's Economic Outlook: Food Inflation & Your Finances",
-    "description": "Understand India's economic outlook, including projected food inflation and CPI. Learn how monsoon deficits affect your budget and practical steps for salaried professionals to manage finances.",
-    "url": "https://zentraai.in/blog/2026-07-03-india-economic-outlook-food-inflation-your-finance.html",
-    "tags": [
-      "inflation",
-      "personal finance",
-      "indian economy"
-    ],
-    "slug": "india-economic-outlook-food-inflation-your-finance",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-07-03T06:46:32.515737",
-    "title": "RBI Penalizes Nirmal Urban Co-operative Bank",
-    "description": "Learn why RBI penalised Nirmal Urban Co-operative Bank and what bank compliance means for your money. Understand how to safeguard your finances in India.",
-    "url": "https://zentraai.in/blog/2026-07-03-rbi-penalty-nirmal-urban-cooperative-bank.html",
-    "tags": [
-      "RBI",
-      "Banking",
-      "Financial Literacy"
-    ],
-    "slug": "rbi-penalty-nirmal-urban-cooperative-bank",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-07-03T06:46:46.660373",
-    "title": "SEBI Action on Illiquid Stock Options & Investor Safety",
-    "description": "Understand SEBI's action against illiquid stock options. Learn how to identify and avoid high-risk investments, ensuring your financial safety as a salaried professional.",
-    "url": "https://zentraai.in/blog/2026-07-03-sebi-illiquid-stock-options-investor-safety.html",
-    "tags": [
-      "SEBI",
-      "Investment Risks",
-      "Stock Options"
-    ],
-    "slug": "sebi-illiquid-stock-options-investor-safety",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-07-04T06:33:05.565977",
     "title": "SEBI Action Against Trdez Investment Private Limited",
     "description": "Learn about SEBI's recovery notice against Trdez Investment. Understand how SEBI protects investors and what steps you can take to safeguard your investments.",
@@ -576,5 +537,44 @@
     ],
     "slug": "dearness-allowance-hike-impact-on-finances",
     "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-18T05:40:30.223030",
+    "title": "RBI Directs Nashik Co-op Bank: What it Means for You",
+    "description": "RBI has issued directions to a co-operative bank. Learn why these directives are important and how to safeguard your savings in Indian co-operative banks.",
+    "url": "https://zentraai.in/blog/2026-07-18-rbi-cooperative-bank-directives-your-savings.html",
+    "tags": [
+      "RBI",
+      "Cooperative Banks",
+      "Financial Safety"
+    ],
+    "slug": "rbi-cooperative-bank-directives-your-savings",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-07-18T05:40:55.240895",
+    "title": "SEBI Simplifies MF Transmission Claims for Families",
+    "description": "Learn how SEBI's new mutual fund transmission rules simplify claiming investments for nominees. Understand the process and secure your family's financial future with ease.",
+    "url": "https://zentraai.in/blog/2026-07-18-sebi-simplifies-mf-transmission-claims.html",
+    "tags": [
+      "mutual funds",
+      "nominations",
+      "investment planning"
+    ],
+    "slug": "sebi-simplifies-mf-transmission-claims",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-18T05:41:12.755869",
+    "title": "Illiquid Stock Options: A SEBI Warning for Investors",
+    "description": "Learn from SEBI's recent action against an individual for illiquid stock options trading. Understand the risks and how to protect your investments.",
+    "url": "https://zentraai.in/blog/2026-07-18-sebi-illiquid-stock-options-risks-salaried-india.html",
+    "tags": [
+      "illiquid options",
+      "investment safety",
+      "SEBI action"
+    ],
+    "slug": "sebi-illiquid-stock-options-risks-salaried-india",
+    "source": "SEBI"
   }
 ]
