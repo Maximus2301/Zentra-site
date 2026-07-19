@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-07-04T06:33:05.565977",
-    "title": "SEBI Action Against Trdez Investment Private Limited",
-    "description": "Learn about SEBI's recovery notice against Trdez Investment. Understand how SEBI protects investors and what steps you can take to safeguard your investments.",
-    "url": "https://zentraai.in/blog/2026-07-04-sebi-recovery-notice-investor-protection.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Education"
-    ],
-    "slug": "sebi-recovery-notice-investor-protection",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-04T06:33:18.965586",
-    "title": "Bad Debt Deduction: ITAT Clarifies for Businesses",
-    "description": "Understand the recent ITAT ruling on bad debt deductions. Learn how it impacts professionals and small businesses regarding written-off debts and income tax claims.",
-    "url": "https://zentraai.in/blog/2026-07-04-itat-bad-debt-deduction-small-business.html",
-    "tags": [
-      "Income Tax",
-      "Business Income",
-      "Tax Deductions"
-    ],
-    "slug": "itat-bad-debt-deduction-small-business",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-04T06:33:35.048090",
-    "title": "EPF Early Withdrawal Tax Rules for Salaried Indians",
-    "description": "Understand EPF early withdrawal tax rules. Learn how your Employees' Provident Fund withdrawals are taxed if taken before five years and how to accurately report them in your ITR.",
-    "url": "https://zentraai.in/blog/2026-07-04-epf-early-withdrawal-tax-rules-india.html",
-    "tags": [
-      "EPF",
-      "Income Tax",
-      "Personal Finance"
-    ],
-    "slug": "epf-early-withdrawal-tax-rules-india",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-05T06:53:53.625548",
     "title": "ITR Filing: Mandatory Conditions Beyond Income",
     "description": "Learn about crucial conditions beyond income that make ITR filing mandatory for Indian salaried professionals. Understand high-value transactions and foreign assets.",
@@ -575,6 +536,47 @@
       "SEBI action"
     ],
     "slug": "sebi-illiquid-stock-options-risks-salaried-india",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-19T06:12:01.353088",
+    "title": "TDS Deducted But Not Deposited: Taxpayer Protection",
+    "description": "Understand the ITAT ruling protecting salaried individuals if TDS is deducted but not deposited by employers. Learn to verify your TDS records and avoid double tax issues.",
+    "url": "https://zentraai.in/blog/2026-07-19-tds-deducted-not-deposited-itat-ruling-taxpayer.html",
+    "tags": [
+      "TDS",
+      "Income Tax India",
+      "Form 26AS",
+      "Taxpayer Protection",
+      "Salaried Professionals"
+    ],
+    "slug": "tds-deducted-not-deposited-itat-ruling-taxpayer",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-19T06:12:24.031593",
+    "title": "RBI Directs Nashik Co-op Bank: Understanding Deposits",
+    "description": "Learn how RBI's recent directions to a co-operative bank affect banking stability. Understand deposit insurance and practical steps for your savings.",
+    "url": "https://zentraai.in/blog/2026-07-19-rbi-directions-cooperative-bank-deposit-safety.html",
+    "tags": [
+      "RBI",
+      "Deposit Insurance",
+      "Personal Finance"
+    ],
+    "slug": "rbi-directions-cooperative-bank-deposit-safety",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-07-19T06:12:44.551833",
+    "title": "SEBI Simplifies Mutual Fund Inheritance Process",
+    "description": "SEBI has streamlined mutual fund transmission claims. Learn how these new rules simplify inheriting mutual funds, reducing paperwork and hassle for your family's financial future.",
+    "url": "https://zentraai.in/blog/2026-07-19-sebi-simplifies-mf-inheritance-process.html",
+    "tags": [
+      "Mutual Funds",
+      "SEBI",
+      "Inheritance Planning"
+    ],
+    "slug": "sebi-simplifies-mf-inheritance-process",
     "source": "SEBI"
   }
 ]
