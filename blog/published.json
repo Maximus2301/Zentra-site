@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-07-05T06:53:53.625548",
-    "title": "ITR Filing: Mandatory Conditions Beyond Income",
-    "description": "Learn about crucial conditions beyond income that make ITR filing mandatory for Indian salaried professionals. Understand high-value transactions and foreign assets.",
-    "url": "https://zentraai.in/blog/2026-07-05-itr-filing-mandatory-conditions-beyond-income.html",
-    "tags": [
-      "ITR Filing",
-      "Income Tax",
-      "Tax Compliance"
-    ],
-    "slug": "itr-filing-mandatory-conditions-beyond-income",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-05T06:54:12.921760",
-    "title": "International Mutual Funds: What Indian Investors Need to Know",
-    "description": "Most international mutual funds are closed to new investments. Learn why, how it impacts your portfolio, and what alternative options Indian professionals have.",
-    "url": "https://zentraai.in/blog/2026-07-05-international-mutual-funds-indian-investors.html",
-    "tags": [
-      "international funds",
-      "mutual funds",
-      "investment strategy"
-    ],
-    "slug": "international-mutual-funds-indian-investors",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-05T06:54:33.441704",
-    "title": "India-Israel Investment Pact: What It Means for You",
-    "description": "India and Israel's new investment pact is active, aiming to boost trade and protect investors. Discover how this economic collaboration can impact India's growth and your finances.",
-    "url": "https://zentraai.in/blog/2026-07-05-india-israel-investment-pact-your-finances.html",
-    "tags": [
-      "India Israel Pact",
-      "Economic Growth",
-      "Personal Finance"
-    ],
-    "slug": "india-israel-investment-pact-your-finances",
-    "source": "ET Economy"
-  },
-  {
     "date": "2026-07-06T07:59:50.071620",
     "title": "Tax Credit Mismatch: How to Check & Fix Your ITR",
     "description": "Learn how to identify and resolve tax credit mismatches in your Income Tax Return. Ensure timely refunds and avoid notices with our simple guide.",
@@ -577,6 +538,49 @@
       "Inheritance Planning"
     ],
     "slug": "sebi-simplifies-mf-inheritance-process",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-20T06:30:38.765601",
+    "title": "RBI Directives: Understanding Co-operative Bank Safety",
+    "description": "Understand recent RBI directives to co-operative banks and their implications for your savings. Learn how to safeguard your money.",
+    "url": "https://zentraai.in/blog/2026-07-20-rbi-directions-cooperative-bank-safety-india.html",
+    "tags": [
+      "Banking Safety",
+      "RBI",
+      "Co-operative Banks"
+    ],
+    "slug": "rbi-directions-cooperative-bank-safety-india",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-07-20T06:30:59.033038",
+    "title": "SEBI Simplifies Mutual Fund Inheritance Claims",
+    "description": "Learn how SEBI's new guidelines make inheriting mutual funds smoother for Indian professionals. Understand the updated process and what steps you can take.",
+    "url": "https://zentraai.in/blog/2026-07-20-sebi-simplifies-mutual-fund-inheritance-claims.html",
+    "tags": [
+      "Mutual Funds",
+      "SEBI",
+      "Nomination",
+      "Estate Planning",
+      "Financial Planning for Families"
+    ],
+    "slug": "sebi-simplifies-mutual-fund-inheritance-claims",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-20T06:31:17.550069",
+    "title": "SEBI Action on Illiquid Options: Know Your Investment Risks",
+    "description": "Learn from a recent SEBI action on illiquid stock options. Understand the risks, protect your investments, and build a secure financial future.",
+    "url": "https://zentraai.in/blog/2026-07-20-sebi-illiquid-options-risk-salaried-investors.html",
+    "tags": [
+      "SEBI",
+      "stock options",
+      "investment risks",
+      "financial planning",
+      "derivatives"
+    ],
+    "slug": "sebi-illiquid-options-risk-salaried-investors",
     "source": "SEBI"
   }
 ]
