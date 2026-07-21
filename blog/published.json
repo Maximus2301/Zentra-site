@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-07-06T07:59:50.071620",
-    "title": "Tax Credit Mismatch: How to Check & Fix Your ITR",
-    "description": "Learn how to identify and resolve tax credit mismatches in your Income Tax Return. Ensure timely refunds and avoid notices with our simple guide.",
-    "url": "https://zentraai.in/blog/2026-07-06-tax-credit-mismatch-fix-itr-refund.html",
-    "tags": [
-      "Income Tax",
-      "TDS",
-      "Tax Refund"
-    ],
-    "slug": "tax-credit-mismatch-fix-itr-refund",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-06T08:00:07.939495",
-    "title": "High FD Rates: Impact on Your Savings Strategy",
-    "description": "Explore how senior citizen FD rates reaching 8.50% impact your savings. Learn about fixed deposits as a stable investment option for salaried professionals.",
-    "url": "https://zentraai.in/blog/2026-07-06-fd-rates-july-2026-impact-salaried-professionals.html",
-    "tags": [
-      "Fixed Deposits",
-      "Savings",
-      "Financial Planning"
-    ],
-    "slug": "fd-rates-july-2026-impact-salaried-professionals",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-06T08:00:24.688957",
-    "title": "ESIC Atal Beemit Vyakti Kalyan Yojana Extended",
-    "description": "Learn how the ESIC's Atal Beemit Vyakti Kalyan Yojana extension provides financial relief during unemployment for eligible Indian salaried professionals.",
-    "url": "https://zentraai.in/blog/2026-07-06-esic-unemployment-benefits-extended.html",
-    "tags": [
-      "ESIC",
-      "unemployment benefits",
-      "financial planning"
-    ],
-    "slug": "esic-unemployment-benefits-extended",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-07T07:00:08.835903",
     "title": "SEBI's Defaulter Action: Safeguarding Your Investments",
     "description": "Learn what a SEBI defaulter notice means for Indian investors. Discover how regulatory actions protect your money and practical steps to secure your financial future.",
@@ -582,5 +543,44 @@
     ],
     "slug": "sebi-illiquid-options-risk-salaried-investors",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-07-21T06:10:43.386575",
+    "title": "SEBI Streamlines Mutual Fund Transmission Claims",
+    "description": "SEBI has simplified mutual fund transmission claims. Learn how this new process makes it easier for nominees and legal heirs to access assets, ensuring a smoother financial transition for your family.",
+    "url": "https://zentraai.in/blog/2026-07-21-sebi-simplifies-mutual-fund-transmission-claims.html",
+    "tags": [
+      "mutual funds",
+      "sebi",
+      "financial planning"
+    ],
+    "slug": "sebi-simplifies-mutual-fund-transmission-claims",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-21T06:11:02.181869",
+    "title": "SEBI Action: Illiquid Stock Options Risks Explained",
+    "description": "Understand SEBI's action on illiquid stock option dealings and its implications for Indian salaried professionals. Learn to protect your investments and avoid common pitfalls.",
+    "url": "https://zentraai.in/blog/2026-07-21-sebi-illiquid-options-risks-indian-investors.html",
+    "tags": [
+      "SEBI Action",
+      "Investment Risks",
+      "Stock Options"
+    ],
+    "slug": "sebi-illiquid-options-risks-indian-investors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-21T06:11:14.965098",
+    "title": "NHAI App Updates Simplify Tolls & Highway Support",
+    "description": "NHAI's RajmargYatra app now offers digital local passes and a multi-language help centre. Discover how these updates streamline highway travel and FASTag support for Indian commuters.",
+    "url": "https://zentraai.in/blog/2026-07-21-nhai-rajmargyatra-app-digital-local-pass.html",
+    "tags": [
+      "FASTag",
+      "NHAI",
+      "Digital Payments"
+    ],
+    "slug": "nhai-rajmargyatra-app-digital-local-pass",
+    "source": "Mint Money"
   }
 ]
