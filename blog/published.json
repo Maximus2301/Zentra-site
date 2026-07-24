@@ -1,49 +1,5 @@
 [
   {
-    "date": "2026-07-09T06:59:53.067829",
-    "title": "SEBI Acts on Illiquid Stock Options Trading Risks",
-    "description": "Learn why SEBI acts against illiquid stock options trading and how to protect your investments from hidden risks. Understand market regulations.",
-    "url": "https://zentraai.in/blog/2026-07-09-sebi-action-illiquid-stock-options-risks.html",
-    "tags": [
-      "SEBI",
-      "Stock Options",
-      "Illiquid Markets",
-      "Investor Protection",
-      "Financial Education"
-    ],
-    "slug": "sebi-action-illiquid-stock-options-risks",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-09T07:01:06.212617",
-    "title": "SEBI's Recovery Action: Investor Protection & Your Money",
-    "description": "Learn how SEBI's enforcement actions protect Indian investors and why understanding market regulations is crucial for your financial security.",
-    "url": "https://zentraai.in/blog/2026-07-09-sebi-recovery-action-investor-protection.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Education",
-      "Indian Stock Market",
-      "Market Regulation",
-      "Due Diligence"
-    ],
-    "slug": "sebi-recovery-action-investor-protection",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-09T07:02:28.560759",
-    "title": "SEBI's Recovery Order: Protecting Indian Investors",
-    "description": "Understand how SEBI's recent recovery order against Rajesh Pandey highlights market regulation and investor protection for salaried Indian professionals. Learn to safeguard your investments.",
-    "url": "https://zentraai.in/blog/2026-07-09-sebi-recovery-order-investor-protection-india.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-recovery-order-investor-protection-india",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-07-10T06:59:48.162068",
     "title": "RBI Inflation Survey: Impact on Your Salary",
     "description": "The RBI conducts an inflation survey. Learn what it means for your household budget, savings, and how to manage rising costs effectively.",
@@ -620,6 +576,47 @@
       "real estate"
     ],
     "slug": "home-loan-mistakes-first-time-buyers-india",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-24T06:08:08.293357",
+    "title": "RBI Penalty on Arvind Sahakari Bank: Know Your Rights",
+    "description": "RBI penalized Arvind Sahakari Bank for rules violations. Discover what this means for your deposits and housing finance, and learn how to protect your financial interests.",
+    "url": "https://zentraai.in/blog/2026-07-24-rbi-penalty-arvind-sahakari-bank-your-money.html",
+    "tags": [
+      "RBI",
+      "banking regulations",
+      "financial literacy",
+      "deposits",
+      "housing finance"
+    ],
+    "slug": "rbi-penalty-arvind-sahakari-bank-your-money",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-07-24T06:08:23.427864",
+    "title": "RBI Penalty: Understanding Deposit Interest Rules",
+    "description": "Learn why RBI penalized a bank for deposit interest rules and how it affects your savings. Understand your rights as a depositor in India.",
+    "url": "https://zentraai.in/blog/2026-07-24-rbi-penalty-deposit-interest-rules-what-it-means.html",
+    "tags": [
+      "RBI",
+      "Bank Deposits",
+      "Interest Rates"
+    ],
+    "slug": "rbi-penalty-deposit-interest-rules-what-it-means",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-07-24T06:08:45.665239",
+    "title": "ITR 143(1) Demand: Understand & Resolve Mismatches",
+    "description": "Received an ITR Section 143(1) tax demand? Learn why it's issued, how to verify mismatches, respond via the e-filing portal, and avoid penalties. Stay compliant.",
+    "url": "https://zentraai.in/blog/2026-07-24-itr-section-143-1-tax-demand-how-to-respond.html",
+    "tags": [
+      "ITR",
+      "Tax Demand",
+      "Income Tax"
+    ],
+    "slug": "itr-section-143-1-tax-demand-how-to-respond",
     "source": "Mint Money"
   }
 ]
