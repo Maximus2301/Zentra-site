@@ -1,83 +1,5 @@
 [
   {
-    "date": "2026-07-10T06:59:48.162068",
-    "title": "RBI Inflation Survey: Impact on Your Salary",
-    "description": "The RBI conducts an inflation survey. Learn what it means for your household budget, savings, and how to manage rising costs effectively.",
-    "url": "https://zentraai.in/blog/2026-07-10-rbi-inflation-survey-impact-salaried.html",
-    "tags": [
-      "inflation",
-      "rbi survey",
-      "financial planning"
-    ],
-    "slug": "rbi-inflation-survey-impact-salaried",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-07-10T06:59:59.860687",
-    "title": "RBI Launches Rural Confidence Survey: What It Means",
-    "description": "Learn how the RBI's Rural Consumer Confidence Survey offers insights into India's economic health and how its findings can indirectly influence your personal finances.",
-    "url": "https://zentraai.in/blog/2026-07-10-rbi-rural-consumer-confidence-survey-impact.html",
-    "tags": [
-      "RBI",
-      "Financial Planning",
-      "Indian Economy"
-    ],
-    "slug": "rbi-rural-consumer-confidence-survey-impact",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-07-10T07:00:17.312137",
-    "title": "RBI's Consumer Confidence Survey: What It Means",
-    "description": "Understand the RBI's Urban Consumer Confidence Survey and how household sentiments on income, spending, and economy can impact your financial planning. Learn to adapt.",
-    "url": "https://zentraai.in/blog/2026-07-10-rbi-consumer-confidence-survey-impact-you.html",
-    "tags": [
-      "RBI",
-      "Consumer Confidence",
-      "Personal Finance"
-    ],
-    "slug": "rbi-consumer-confidence-survey-impact-you",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-07-11T05:57:23.120817",
-    "title": "Mutual Funds Intraday Borrowing: What It Means for You",
-    "description": "Learn about mutual funds' intraday borrowing, why SEBI monitors it, and how this facility ensures smooth operations for your investments.",
-    "url": "https://zentraai.in/blog/2026-07-11-mutual-funds-intraday-borrowing-explained.html",
-    "tags": [
-      "Mutual Funds",
-      "Financial Planning",
-      "Investment Basics"
-    ],
-    "slug": "mutual-funds-intraday-borrowing-explained",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-11T05:57:42.057898",
-    "title": "SEBI Boosts Corporate Bond Awareness for Investors",
-    "description": "SEBI launched new videos to explain corporate bonds. Discover what corporate bonds are, why they matter for your portfolio, and how to approach this investment avenue for potential stability.",
-    "url": "https://zentraai.in/blog/2026-07-11-sebi-promotes-corporate-bond-market-awareness.html",
-    "tags": [
-      "corporate bonds",
-      "SEBI",
-      "investment awareness"
-    ],
-    "slug": "sebi-promotes-corporate-bond-market-awareness",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-11T05:58:01.294501",
-    "title": "ITR-7 Excel Utility AY 2026-27 Released: Key Updates",
-    "description": "The Income Tax Department released the ITR-7 Excel utility for AY 2026-27. Understand who uses it and why tax updates matter for your financial planning.",
-    "url": "https://zentraai.in/blog/2026-07-11-itr-7-excel-utility-ay-2026-27-released.html",
-    "tags": [
-      "Income Tax",
-      "ITR Filing",
-      "Financial Planning"
-    ],
-    "slug": "itr-7-excel-utility-ay-2026-27-released",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-12T06:17:19.261707",
     "title": "Mutual Funds Use Intraday Borrowing Facility Explained",
     "description": "Understand why mutual funds use intraday borrowing and what it means for your investments. Learn about liquidity management with HYT MONEY.",
@@ -617,6 +539,47 @@
       "Income Tax"
     ],
     "slug": "itr-section-143-1-tax-demand-how-to-respond",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-25T06:00:37.425881",
+    "title": "SEBI's Final Order on Axis MF Front Running Explained",
+    "description": "SEBI issued a final order on Axis Mutual Fund's front-running. Learn what this practice is, its impact on your investments, and practical steps to safeguard your portfolio.",
+    "url": "https://zentraai.in/blog/2026-07-25-sebi-axis-mf-front-running-explained-impact.html",
+    "tags": [
+      "mutual funds",
+      "SEBI",
+      "investor protection"
+    ],
+    "slug": "sebi-axis-mf-front-running-explained-impact",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-25T06:00:54.127259",
+    "title": "FM: I-T Dept Must Differentiate Tax Errors & Evasion",
+    "description": "FM's directive on tax errors vs. evasion impacts salaried Indians. Understand how this new approach by the I-T Department affects your tax compliance.",
+    "url": "https://zentraai.in/blog/2026-07-25-fm-it-dept-tax-errors-evasion-india.html",
+    "tags": [
+      "Income Tax",
+      "Tax Compliance",
+      "Finance Minister",
+      "Salaried Professionals",
+      "Tax Tips"
+    ],
+    "slug": "fm-it-dept-tax-errors-evasion-india",
+    "source": "ET Economy"
+  },
+  {
+    "date": "2026-07-25T06:01:14.127625",
+    "title": "ITR Portal: File On Time, No Extension Likely",
+    "description": "Learn why a last-minute ITR filing deadline extension is unlikely this year. Discover practical steps for Indian salaried professionals to file income tax on time and avoid penalties.",
+    "url": "https://zentraai.in/blog/2026-07-25-itr-portal-file-on-time-no-extension-likely.html",
+    "tags": [
+      "ITR Filing",
+      "Income Tax",
+      "Tax Planning"
+    ],
+    "slug": "itr-portal-file-on-time-no-extension-likely",
     "source": "Mint Money"
   }
 ]
