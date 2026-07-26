@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-07-12T06:17:19.261707",
-    "title": "Mutual Funds Use Intraday Borrowing Facility Explained",
-    "description": "Understand why mutual funds use intraday borrowing and what it means for your investments. Learn about liquidity management with HYT MONEY.",
-    "url": "https://zentraai.in/blog/2026-07-12-mutual-funds-intraday-borrowing-liquidity.html",
-    "tags": [
-      "mutual funds",
-      "investment",
-      "liquidity management"
-    ],
-    "slug": "mutual-funds-intraday-borrowing-liquidity",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-12T06:17:37.082519",
-    "title": "SEBI Launches Investor Videos for Corporate Bonds",
-    "description": "SEBI launches new videos to boost corporate bond awareness. Learn how these bonds work, their role in your portfolio, and what steps you can take to explore this investment option.",
-    "url": "https://zentraai.in/blog/2026-07-12-sebi-corporate-bond-awareness-videos.html",
-    "tags": [
-      "corporate bonds",
-      "SEBI",
-      "investor education"
-    ],
-    "slug": "sebi-corporate-bond-awareness-videos",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-12T06:17:50.036690",
-    "title": "Mutual Fund Diversification: Avoid Portfolio Overlap Trap",
-    "description": "Learn why holding many mutual funds doesn't guarantee diversification. Discover how to identify and avoid portfolio overlap to build a focused, effective investment strategy.",
-    "url": "https://zentraai.in/blog/2026-07-12-mutual-fund-diversification-portfolio-overlap.html",
-    "tags": [
-      "mutual funds",
-      "diversification",
-      "portfolio management",
-      "indian investors",
-      "financial planning"
-    ],
-    "slug": "mutual-fund-diversification-portfolio-overlap",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-13T06:36:18.927018",
     "title": "Income Tax Penalties: What Salaried Indians Must Know",
     "description": "Understand income tax penalties for late filing or under-reporting income. Learn how to stay compliant, avoid fees, and safeguard your finances as an Indian salaried professional.",
@@ -580,6 +539,45 @@
       "Tax Planning"
     ],
     "slug": "itr-portal-file-on-time-no-extension-likely",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-26T06:20:15.195437",
+    "title": "FD vs Loan: Urgent Cash Needs for Salaried Indians",
+    "description": "Facing urgent cash needs? Discover whether breaking your FD or taking a loan against it is smarter. Compare costs, penalties, and repayment to protect your long-term savings.",
+    "url": "https://zentraai.in/blog/2026-07-26-break-fd-or-loan-against-fd-urgent-money.html",
+    "tags": [
+      "Fixed Deposit",
+      "Personal Finance",
+      "Emergency Fund"
+    ],
+    "slug": "break-fd-or-loan-against-fd-urgent-money",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-26T06:20:36.988444",
+    "title": "ETF Price vs. NAV: Why Checking Matters for Investors",
+    "description": "Understand why some ETFs trade at a premium to their NAV and how to protect your investments. Learn to compare market price with NAV before buying.",
+    "url": "https://zentraai.in/blog/2026-07-26-etf-market-price-vs-nav-why-it-matters.html",
+    "tags": [
+      "ETFs",
+      "Investing India",
+      "Financial Literacy"
+    ],
+    "slug": "etf-market-price-vs-nav-why-it-matters",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-26T06:20:51.483979",
+    "title": "Nominee Passes Away? Update Your Financial Records Now",
+    "description": "If your mutual fund or bank nominee passes away, your assets are safe. Learn why updating nominee details promptly is vital to prevent delays and complications for your loved ones later.",
+    "url": "https://zentraai.in/blog/2026-07-26-nominee-death-update-mutual-fund-bank-india.html",
+    "tags": [
+      "financial planning",
+      "nomination update",
+      "estate planning"
+    ],
+    "slug": "nominee-death-update-mutual-fund-bank-india",
     "source": "Mint Money"
   }
 ]
