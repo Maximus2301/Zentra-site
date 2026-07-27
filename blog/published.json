@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-07-13T06:36:18.927018",
-    "title": "Income Tax Penalties: What Salaried Indians Must Know",
-    "description": "Understand income tax penalties for late filing or under-reporting income. Learn how to stay compliant, avoid fees, and safeguard your finances as an Indian salaried professional.",
-    "url": "https://zentraai.in/blog/2026-07-13-income-tax-penalties-salaried-professionals.html",
-    "tags": [
-      "income tax",
-      "tax penalties",
-      "ITR filing"
-    ],
-    "slug": "income-tax-penalties-salaried-professionals",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-13T06:36:34.696248",
-    "title": "AY27 ITR Forms Out: Start Your Tax Planning Now",
-    "description": "I-T department released AY27 ITR forms. Learn why this early notification matters for your financial planning and how understanding tax updates can benefit your salaried income.",
-    "url": "https://zentraai.in/blog/2026-07-13-ay27-itr-forms-tax-planning-for-salaried.html",
-    "tags": [
-      "tax planning",
-      "itr forms",
-      "financial literacy",
-      "salaried income",
-      "income tax india"
-    ],
-    "slug": "ay27-itr-forms-tax-planning-for-salaried",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-13T06:36:55.356659",
-    "title": "ITR Filing: \u20b91 Cr Income Mandates Asset Disclosure",
-    "description": "Indian taxpayers earning over \u20b91 crore must now file Schedule AL, disclosing assets and liabilities. Learn what this means for ITR and future financial planning.",
-    "url": "https://zentraai.in/blog/2026-07-13-itr-filing-1-crore-income-asset-disclosure.html",
-    "tags": [
-      "ITR",
-      "Financial Planning",
-      "Wealth Management"
-    ],
-    "slug": "itr-filing-1-crore-income-asset-disclosure",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-14T05:44:46.360116",
     "title": "RBI's Internal Ombudsman: A stronger financial safety net",
     "description": "Learn how the RBI's Internal Ombudsman conference strengthens financial consumer protection across banks, NBFCs, and credit bureaus, ensuring your grievances are addressed effectively.",
@@ -578,6 +537,45 @@
       "estate planning"
     ],
     "slug": "nominee-death-update-mutual-fund-bank-india",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-27T06:47:52.227930",
+    "title": "RBI Rates Stable: What it Means for Your Finances",
+    "description": "Economists predict RBI will hold interest rates. Discover how stable rates could affect your home loans, personal savings, and financial planning in India.",
+    "url": "https://zentraai.in/blog/2026-07-27-rbi-interest-rates-stable-impact-on-finances.html",
+    "tags": [
+      "RBI",
+      "Personal Finance",
+      "Interest Rates"
+    ],
+    "slug": "rbi-interest-rates-stable-impact-on-finances",
+    "source": "ET Economy"
+  },
+  {
+    "date": "2026-07-27T06:48:16.760854",
+    "title": "ITR Filing: FM Asks Tax Officials to Allow Corrections",
+    "description": "Understand how FM Sitharaman's call for responsive tax governance affects your ITR filing. Learn to correct genuine mistakes and navigate the tax system with confidence. Stay compliant and stress-free.",
+    "url": "https://zentraai.in/blog/2026-07-27-itr-filing-genuine-mistakes-finance-minister-relie.html",
+    "tags": [
+      "ITR Filing",
+      "Tax Compliance",
+      "Personal Finance"
+    ],
+    "slug": "itr-filing-genuine-mistakes-finance-minister-relie",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-27T06:48:32.491727",
+    "title": "Strengthen Your SIP Before Market Volatility",
+    "description": "Learn how to prepare your SIP investments for inevitable market corrections. Experts offer practical steps to safeguard your portfolio and make informed financial decisions.",
+    "url": "https://zentraai.in/blog/2026-07-27-prepare-your-sip-before-market-correction.html",
+    "tags": [
+      "SIP Investing",
+      "Market Volatility",
+      "Financial Planning"
+    ],
+    "slug": "prepare-your-sip-before-market-correction",
     "source": "Mint Money"
   }
 ]
