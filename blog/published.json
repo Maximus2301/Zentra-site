@@ -1,48 +1,5 @@
 [
   {
-    "date": "2026-07-16T05:59:28.288716",
-    "title": "RBI Cancels 18 NBFC Registrations: What It Means",
-    "description": "RBI recently cancelled the registration of 18 NBFCs. Understand why this happened, how it could impact your personal finances as a salaried Indian, and practical steps to ensure financial safety.",
-    "url": "https://zentraai.in/blog/2026-07-16-rbi-cancels-nbfc-licenses-what-to-know.html",
-    "tags": [
-      "NBFC",
-      "RBI",
-      "Financial Literacy",
-      "Personal Finance",
-      "Indian Economy"
-    ],
-    "slug": "rbi-cancels-nbfc-licenses-what-to-know",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-07-16T05:59:44.470508",
-    "title": "Foreign ESOP Disclosure: ITAT Penalty Relief Explained",
-    "description": "Understand the recent ITAT ruling on foreign ESOP disclosure and Black Money Act penalties. Learn why accurate reporting is crucial for Indian professionals.",
-    "url": "https://zentraai.in/blog/2026-07-16-itat-foreign-esop-penalty-relief-disclosure.html",
-    "tags": [
-      "Foreign ESOPs",
-      "Income Tax",
-      "ITR Filing"
-    ],
-    "slug": "itat-foreign-esop-penalty-relief-disclosure",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-16T05:59:58.898912",
-    "title": "India's Cost Inflation Index (CII) at 384 for FY27",
-    "description": "Understand India's new Cost Inflation Index (CII) for FY27 and how it impacts your long-term capital gains, helping you save taxes.",
-    "url": "https://zentraai.in/blog/2026-07-16-cost-inflation-index-cii-fy27-impact-india.html",
-    "tags": [
-      "CII",
-      "Cost Inflation Index",
-      "Capital Gains Tax",
-      "Tax Planning",
-      "Indian Finance"
-    ],
-    "slug": "cost-inflation-index-cii-fy27-impact-india",
-    "source": "ET Economy"
-  },
-  {
     "date": "2026-07-17T05:59:22.852894",
     "title": "SEBI Acts on Unregistered Investment Advisor",
     "description": "SEBI's action against 'Rocket Tips' highlights risks of unregistered advisors. Learn how to verify financial professionals and protect your hard-earned investments from fraud.",
@@ -566,6 +523,46 @@
       "hyt money"
     ],
     "slug": "itr-filing-deadline-31-july-salaried-guide",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-30T06:04:32.725434",
+    "title": "SEBI Recovery Order Highlights Investor Safety in India",
+    "description": "Understand SEBI's role in investor protection through a recent recovery order. Learn how to safeguard your investments and ensure compliance in financial dealings.",
+    "url": "https://zentraai.in/blog/2026-07-30-sebi-recovery-order-investor-protection-india.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Regulation"
+    ],
+    "slug": "sebi-recovery-order-investor-protection-india",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-30T06:04:47.290833",
+    "title": "Arbitrage Funds Lead Hybrid MFs Amid Volatile Markets",
+    "description": "Learn why arbitrage funds outperformed other hybrid mutual funds in 2026, how they work, and if they fit your financial goals as an Indian salaried professional.",
+    "url": "https://zentraai.in/blog/2026-07-30-arbitrage-funds-outperform-hybrid-mfs-2026.html",
+    "tags": [
+      "arbitrage funds",
+      "mutual funds",
+      "investment strategies"
+    ],
+    "slug": "arbitrage-funds-outperform-hybrid-mfs-2026",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-30T06:05:00.283507",
+    "title": "ITR Filing Benefits Home Loan & Credit Card Prospects",
+    "description": "Learn how timely Income Tax Return filing strengthens your financial profile, improving your chances for home loans and credit cards. Discover the benefits for salaried professionals.",
+    "url": "https://zentraai.in/blog/2026-07-30-itr-filing-benefits-home-loan-credit-card.html",
+    "tags": [
+      "ITR Filing",
+      "Personal Finance",
+      "Financial Planning",
+      "Tax Compliance"
+    ],
+    "slug": "itr-filing-benefits-home-loan-credit-card",
     "source": "Mint Money"
   }
 ]
