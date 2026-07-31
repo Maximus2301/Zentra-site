@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-07-17T05:59:22.852894",
-    "title": "SEBI Acts on Unregistered Investment Advisor",
-    "description": "SEBI's action against 'Rocket Tips' highlights risks of unregistered advisors. Learn how to verify financial professionals and protect your hard-earned investments from fraud.",
-    "url": "https://zentraai.in/blog/2026-07-17-sebi-action-unregistered-investment-advisors.html",
-    "tags": [
-      "SEBI",
-      "Investment Scams",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-action-unregistered-investment-advisors",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-17T05:59:37.459588",
-    "title": "India-UK FTA: Impact on Indian Consumers & Brands",
-    "description": "Understand how the India-UK Free Trade Agreement could reshape your shopping basket and inspire innovation in Indian brands. Learn what it means for your finances.",
-    "url": "https://zentraai.in/blog/2026-07-17-india-uk-fta-impact-indian-consumers-brands.html",
-    "tags": [
-      "India UK FTA",
-      "Consumer Finance",
-      "Personal Budgeting"
-    ],
-    "slug": "india-uk-fta-impact-indian-consumers-brands",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-07-17T05:59:57.494917",
-    "title": "Dearness Allowance Hike: What It Means For Your Finances",
-    "description": "Understand the recent Dearness Allowance (DA) hike for government employees, its link to inflation, and practical steps for all salaried Indians to manage finances effectively.",
-    "url": "https://zentraai.in/blog/2026-07-17-dearness-allowance-hike-impact-on-finances.html",
-    "tags": [
-      "Dearness Allowance",
-      "Personal Finance",
-      "Inflation",
-      "Salaried Professionals",
-      "Financial Planning"
-    ],
-    "slug": "dearness-allowance-hike-impact-on-finances",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-18T05:40:30.223030",
     "title": "RBI Directs Nashik Co-op Bank: What it Means for You",
     "description": "RBI has issued directions to a co-operative bank. Learn why these directives are important and how to safeguard your savings in Indian co-operative banks.",
@@ -564,5 +523,46 @@
     ],
     "slug": "itr-filing-benefits-home-loan-credit-card",
     "source": "Mint Money"
+  },
+  {
+    "date": "2026-07-31T06:28:27.421312",
+    "title": "RBI Bulk Deposit Rate Changes: Your Savings Impact",
+    "description": "Discover how the RBI's proposed changes to bulk deposit interest rates might affect your financial planning. Learn strategies for smart savings.",
+    "url": "https://zentraai.in/blog/2026-07-31-rbi-bulk-deposit-amendment-impact-savings.html",
+    "tags": [
+      "RBI Policy",
+      "Fixed Deposits",
+      "Personal Finance"
+    ],
+    "slug": "rbi-bulk-deposit-amendment-impact-savings",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-07-31T06:28:49.099273",
+    "title": "SEBI's GARUDA Mechanism: Faster AIF Processing",
+    "description": "SEBI's new GARUDA mechanism speeds up Alternative Investment Fund (AIF) launches. Understand what this means for investment opportunities and market efficiency.",
+    "url": "https://zentraai.in/blog/2026-07-31-sebi-garuda-aif-faster-investment-opportunities.html",
+    "tags": [
+      "AIFs",
+      "SEBI Regulations",
+      "Investment Strategies"
+    ],
+    "slug": "sebi-garuda-aif-faster-investment-opportunities",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-07-31T06:29:07.967483",
+    "title": "SEBI Order: Quasar India Stock Manipulation Recovers Funds",
+    "description": "SEBI acts on Quasar India stock manipulation. Learn about market integrity, how SEBI protects investors, and key steps to safeguard your portfolio from fraudulent schemes.",
+    "url": "https://zentraai.in/blog/2026-07-31-sebi-order-quasar-india-stock-manipulation.html",
+    "tags": [
+      "SEBI",
+      "Market Manipulation",
+      "Investor Protection",
+      "Indian Stock Market",
+      "Financial Planning"
+    ],
+    "slug": "sebi-order-quasar-india-stock-manipulation",
+    "source": "SEBI"
   }
 ]
