@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-07-18T05:40:30.223030",
-    "title": "RBI Directs Nashik Co-op Bank: What it Means for You",
-    "description": "RBI has issued directions to a co-operative bank. Learn why these directives are important and how to safeguard your savings in Indian co-operative banks.",
-    "url": "https://zentraai.in/blog/2026-07-18-rbi-cooperative-bank-directives-your-savings.html",
-    "tags": [
-      "RBI",
-      "Cooperative Banks",
-      "Financial Safety"
-    ],
-    "slug": "rbi-cooperative-bank-directives-your-savings",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-07-18T05:40:55.240895",
-    "title": "SEBI Simplifies MF Transmission Claims for Families",
-    "description": "Learn how SEBI's new mutual fund transmission rules simplify claiming investments for nominees. Understand the process and secure your family's financial future with ease.",
-    "url": "https://zentraai.in/blog/2026-07-18-sebi-simplifies-mf-transmission-claims.html",
-    "tags": [
-      "mutual funds",
-      "nominations",
-      "investment planning"
-    ],
-    "slug": "sebi-simplifies-mf-transmission-claims",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-18T05:41:12.755869",
-    "title": "Illiquid Stock Options: A SEBI Warning for Investors",
-    "description": "Learn from SEBI's recent action against an individual for illiquid stock options trading. Understand the risks and how to protect your investments.",
-    "url": "https://zentraai.in/blog/2026-07-18-sebi-illiquid-stock-options-risks-salaried-india.html",
-    "tags": [
-      "illiquid options",
-      "investment safety",
-      "SEBI action"
-    ],
-    "slug": "sebi-illiquid-stock-options-risks-salaried-india",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-07-19T06:12:01.353088",
     "title": "TDS Deducted But Not Deposited: Taxpayer Protection",
     "description": "Understand the ITAT ruling protecting salaried individuals if TDS is deducted but not deposited by employers. Learn to verify your TDS records and avoid double tax issues.",
@@ -564,5 +525,44 @@
     ],
     "slug": "sebi-order-quasar-india-stock-manipulation",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-08-01T06:13:33.616943",
+    "title": "SEBI Order Against Jalaj Agrawal: Investor Vigilance",
+    "description": "Understand SEBI's role in market integrity, learn why recovery orders are issued, and discover practical steps to protect your investments in India.",
+    "url": "https://zentraai.in/blog/2026-08-01-sebi-recovery-order-investor-vigilance.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-recovery-order-investor-vigilance",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-01T06:13:47.806391",
+    "title": "RBI Handbook of Statistics 2025-26: What It Means",
+    "description": "Learn how the RBI's latest Handbook of Statistics can help Indian salaried professionals understand economic trends and make informed financial decisions.",
+    "url": "https://zentraai.in/blog/2026-08-01-rbi-handbook-statistics-2025-26-financial-impact.html",
+    "tags": [
+      "RBI",
+      "Indian Economy",
+      "Financial Planning"
+    ],
+    "slug": "rbi-handbook-statistics-2025-26-financial-impact",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-08-01T06:14:01.918478",
+    "title": "India Bank Credit Growth Surges to 18.3% in June 2026",
+    "description": "RBI data shows bank credit surged to 18.3% in June 2026. Discover what this lending boom means for your loans, investments, and India's economic outlook. Learn actionable steps for your finances.",
+    "url": "https://zentraai.in/blog/2026-08-01-bank-credit-growth-june-2026-impact-your-finances.html",
+    "tags": [
+      "Indian Economy",
+      "Personal Finance",
+      "Bank Loans"
+    ],
+    "slug": "bank-credit-growth-june-2026-impact-your-finances",
+    "source": "RBI"
   }
 ]
