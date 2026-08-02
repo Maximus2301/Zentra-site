@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-07-19T06:12:01.353088",
-    "title": "TDS Deducted But Not Deposited: Taxpayer Protection",
-    "description": "Understand the ITAT ruling protecting salaried individuals if TDS is deducted but not deposited by employers. Learn to verify your TDS records and avoid double tax issues.",
-    "url": "https://zentraai.in/blog/2026-07-19-tds-deducted-not-deposited-itat-ruling-taxpayer.html",
-    "tags": [
-      "TDS",
-      "Income Tax India",
-      "Form 26AS",
-      "Taxpayer Protection",
-      "Salaried Professionals"
-    ],
-    "slug": "tds-deducted-not-deposited-itat-ruling-taxpayer",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-19T06:12:24.031593",
-    "title": "RBI Directs Nashik Co-op Bank: Understanding Deposits",
-    "description": "Learn how RBI's recent directions to a co-operative bank affect banking stability. Understand deposit insurance and practical steps for your savings.",
-    "url": "https://zentraai.in/blog/2026-07-19-rbi-directions-cooperative-bank-deposit-safety.html",
-    "tags": [
-      "RBI",
-      "Deposit Insurance",
-      "Personal Finance"
-    ],
-    "slug": "rbi-directions-cooperative-bank-deposit-safety",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-07-19T06:12:44.551833",
-    "title": "SEBI Simplifies Mutual Fund Inheritance Process",
-    "description": "SEBI has streamlined mutual fund transmission claims. Learn how these new rules simplify inheriting mutual funds, reducing paperwork and hassle for your family's financial future.",
-    "url": "https://zentraai.in/blog/2026-07-19-sebi-simplifies-mf-inheritance-process.html",
-    "tags": [
-      "Mutual Funds",
-      "SEBI",
-      "Inheritance Planning"
-    ],
-    "slug": "sebi-simplifies-mf-inheritance-process",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-07-20T06:30:38.765601",
     "title": "RBI Directives: Understanding Co-operative Bank Safety",
     "description": "Understand recent RBI directives to co-operative banks and their implications for your savings. Learn how to safeguard your money.",
@@ -563,6 +522,45 @@
       "Bank Loans"
     ],
     "slug": "bank-credit-growth-june-2026-impact-your-finances",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-08-02T06:17:04.524711",
+    "title": "SEBI's Recovery Order: What It Means For Your Investments",
+    "description": "Understand how SEBI's compliance and recovery actions protect Indian investors. Learn practical steps to safeguard your investments from financial misconduct.",
+    "url": "https://zentraai.in/blog/2026-08-02-sebi-recovery-order-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Compliance"
+    ],
+    "slug": "sebi-recovery-order-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-02T06:17:32.290372",
+    "title": "RBI Handbook 2025-26: Economic Insights for You",
+    "description": "Learn how the RBI's latest Handbook of Statistics on the Indian Economy 2025-26 provides crucial data impacting your financial planning and stability.",
+    "url": "https://zentraai.in/blog/2026-08-02-rbi-handbook-2025-26-economy-salaried-impact.html",
+    "tags": [
+      "Indian Economy",
+      "RBI",
+      "Personal Finance"
+    ],
+    "slug": "rbi-handbook-2025-26-economy-salaried-impact",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-08-02T06:17:53.034852",
+    "title": "Indian Bank Credit Surges 18.3% by June 2026",
+    "description": "RBI reports 18.3% bank credit growth in India. Understand what this surge in lending means for your finances, loan rates, and career prospects. Learn practical steps to benefit.",
+    "url": "https://zentraai.in/blog/2026-08-02-india-bank-credit-growth-june-2026-explained.html",
+    "tags": [
+      "Indian Economy",
+      "Personal Finance",
+      "RBI Data"
+    ],
+    "slug": "india-bank-credit-growth-june-2026-explained",
     "source": "RBI"
   }
 ]
