@@ -1,48 +1,5 @@
 [
   {
-    "date": "2026-07-20T06:30:38.765601",
-    "title": "RBI Directives: Understanding Co-operative Bank Safety",
-    "description": "Understand recent RBI directives to co-operative banks and their implications for your savings. Learn how to safeguard your money.",
-    "url": "https://zentraai.in/blog/2026-07-20-rbi-directions-cooperative-bank-safety-india.html",
-    "tags": [
-      "Banking Safety",
-      "RBI",
-      "Co-operative Banks"
-    ],
-    "slug": "rbi-directions-cooperative-bank-safety-india",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-07-20T06:30:59.033038",
-    "title": "SEBI Simplifies Mutual Fund Inheritance Claims",
-    "description": "Learn how SEBI's new guidelines make inheriting mutual funds smoother for Indian professionals. Understand the updated process and what steps you can take.",
-    "url": "https://zentraai.in/blog/2026-07-20-sebi-simplifies-mutual-fund-inheritance-claims.html",
-    "tags": [
-      "Mutual Funds",
-      "SEBI",
-      "Nomination",
-      "Estate Planning",
-      "Financial Planning for Families"
-    ],
-    "slug": "sebi-simplifies-mutual-fund-inheritance-claims",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-20T06:31:17.550069",
-    "title": "SEBI Action on Illiquid Options: Know Your Investment Risks",
-    "description": "Learn from a recent SEBI action on illiquid stock options. Understand the risks, protect your investments, and build a secure financial future.",
-    "url": "https://zentraai.in/blog/2026-07-20-sebi-illiquid-options-risk-salaried-investors.html",
-    "tags": [
-      "SEBI",
-      "stock options",
-      "investment risks",
-      "financial planning",
-      "derivatives"
-    ],
-    "slug": "sebi-illiquid-options-risk-salaried-investors",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-07-21T06:10:43.386575",
     "title": "SEBI Streamlines Mutual Fund Transmission Claims",
     "description": "SEBI has simplified mutual fund transmission claims. Learn how this new process makes it easier for nominees and legal heirs to access assets, ensuring a smoother financial transition for your family.",
@@ -561,6 +518,49 @@
       "RBI Data"
     ],
     "slug": "india-bank-credit-growth-june-2026-explained",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-08-03T06:43:54.363524",
+    "title": "SEBI Recovery Order: Protecting Your Investments in India",
+    "description": "Understand SEBI's role in investor protection through its recent recovery order. Learn how to safeguard your investments from non-compliant entities.",
+    "url": "https://zentraai.in/blog/2026-08-03-sebi-recovery-order-superior-finlease-safety.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-recovery-order-superior-finlease-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-03T06:44:07.119822",
+    "title": "RBI MPC Decision: Understanding Its Impact on Your Money",
+    "description": "The RBI's Monetary Policy Committee met to discuss inflation and growth. Learn how their decisions on the repo rate affect your loans, savings, and financial planning.",
+    "url": "https://zentraai.in/blog/2026-08-03-rbi-mpc-impact-on-salaried-professionals.html",
+    "tags": [
+      "RBI MPC",
+      "Repo Rate",
+      "Personal Finance",
+      "Inflation",
+      "Indian Economy"
+    ],
+    "slug": "rbi-mpc-impact-on-salaried-professionals",
+    "source": "ET Economy"
+  },
+  {
+    "date": "2026-08-03T06:44:28.491226",
+    "title": "RBI Handbook 2025-26: Decoding India's Economic Data",
+    "description": "The RBI's new Handbook of Statistics on the Indian Economy helps salaried professionals understand key economic trends. Learn how this data impacts your finances and planning.",
+    "url": "https://zentraai.in/blog/2026-08-03-rbi-handbook-2025-26-indian-economy-your-money.html",
+    "tags": [
+      "RBI",
+      "Indian Economy",
+      "Personal Finance",
+      "Financial Planning",
+      "Economic Data"
+    ],
+    "slug": "rbi-handbook-2025-26-indian-economy-your-money",
     "source": "RBI"
   }
 ]
