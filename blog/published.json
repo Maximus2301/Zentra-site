@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-07-21T06:10:43.386575",
-    "title": "SEBI Streamlines Mutual Fund Transmission Claims",
-    "description": "SEBI has simplified mutual fund transmission claims. Learn how this new process makes it easier for nominees and legal heirs to access assets, ensuring a smoother financial transition for your family.",
-    "url": "https://zentraai.in/blog/2026-07-21-sebi-simplifies-mutual-fund-transmission-claims.html",
-    "tags": [
-      "mutual funds",
-      "sebi",
-      "financial planning"
-    ],
-    "slug": "sebi-simplifies-mutual-fund-transmission-claims",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-21T06:11:02.181869",
-    "title": "SEBI Action: Illiquid Stock Options Risks Explained",
-    "description": "Understand SEBI's action on illiquid stock option dealings and its implications for Indian salaried professionals. Learn to protect your investments and avoid common pitfalls.",
-    "url": "https://zentraai.in/blog/2026-07-21-sebi-illiquid-options-risks-indian-investors.html",
-    "tags": [
-      "SEBI Action",
-      "Investment Risks",
-      "Stock Options"
-    ],
-    "slug": "sebi-illiquid-options-risks-indian-investors",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-21T06:11:14.965098",
-    "title": "NHAI App Updates Simplify Tolls & Highway Support",
-    "description": "NHAI's RajmargYatra app now offers digital local passes and a multi-language help centre. Discover how these updates streamline highway travel and FASTag support for Indian commuters.",
-    "url": "https://zentraai.in/blog/2026-07-21-nhai-rajmargyatra-app-digital-local-pass.html",
-    "tags": [
-      "FASTag",
-      "NHAI",
-      "Digital Payments"
-    ],
-    "slug": "nhai-rajmargyatra-app-digital-local-pass",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-22T06:08:53.189095",
     "title": "SEBI Freezes Promoter Holdings in Buybacks",
     "description": "Learn about SEBI's new rule freezing promoter holdings during share buybacks. Understand how this impacts market transparency and protects retail investors like you.",
@@ -601,5 +562,46 @@
     ],
     "slug": "sebi-enforcement-investor-protection-india",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-08-05T06:06:06.483660",
+    "title": "RBI Monetary Policy Meeting: What it Means for You",
+    "description": "Understand the RBI Monetary Policy Committee's role and how its decisions on interest rates, inflation, and growth impact your loans, savings, and investments. Plan better.",
+    "url": "https://zentraai.in/blog/2026-08-05-rbi-monetary-policy-impact-salaried-professionals.html",
+    "tags": [
+      "RBI",
+      "Monetary Policy",
+      "Personal Finance"
+    ],
+    "slug": "rbi-monetary-policy-impact-salaried-professionals",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-08-05T06:06:41.391486",
+    "title": "SEBI Warns Against Illiquid Stock Options Trading",
+    "description": "Learn why SEBI acts on illiquid stock options trading. Understand the risks involved and how to make informed choices for your investments.",
+    "url": "https://zentraai.in/blog/2026-08-05-sebi-illiquid-stock-options-trading-risks.html",
+    "tags": [
+      "SEBI",
+      "Stock Options",
+      "Illiquid Markets",
+      "Investment Risks",
+      "Financial Education"
+    ],
+    "slug": "sebi-illiquid-stock-options-trading-risks",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-05T06:07:08.007931",
+    "title": "RBI Holds Repo Rate: What it Means for Your Finances",
+    "description": "The RBI kept the repo rate at 5.25% in August 2026. Understand its impact on your home loans, EMIs, savings, and investments. Learn how to navigate steady rates.",
+    "url": "https://zentraai.in/blog/2026-08-05-rbi-repo-rate-august-2026-impact-your-finances.html",
+    "tags": [
+      "RBI",
+      "Repo Rate",
+      "Personal Finance India"
+    ],
+    "slug": "rbi-repo-rate-august-2026-impact-your-finances",
+    "source": "ET Economy"
   }
 ]
