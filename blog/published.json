@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-07-22T06:08:53.189095",
-    "title": "SEBI Freezes Promoter Holdings in Buybacks",
-    "description": "Learn about SEBI's new rule freezing promoter holdings during share buybacks. Understand how this impacts market transparency and protects retail investors like you.",
-    "url": "https://zentraai.in/blog/2026-07-22-sebi-promoter-holdings-freeze-buyback-rules.html",
-    "tags": [
-      "SEBI",
-      "Buyback",
-      "Regulations",
-      "Investor Protection",
-      "Stock Market India"
-    ],
-    "slug": "sebi-promoter-holdings-freeze-buyback-rules",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-22T06:09:19.627223",
-    "title": "ITR Filing: Essential Documents Checklist",
-    "description": "Simplify your ITR filing. Discover the essential documents needed for a smooth, hassle-free income tax return process for Indian salaried professionals aged 25-40.",
-    "url": "https://zentraai.in/blog/2026-07-22-itr-filing-essential-documents-checklist.html",
-    "tags": [
-      "ITR Filing",
-      "Income Tax",
-      "Personal Finance"
-    ],
-    "slug": "itr-filing-essential-documents-checklist",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-22T06:10:20.023438",
-    "title": "ITR Filing 2026: CBDT Upgrades Portal for Smooth Filing",
-    "description": "Learn how the Income Tax Department's upgraded e-filing portal enhances ITR filing for salaried Indians. Discover key changes and tips for a seamless tax return experience.",
-    "url": "https://zentraai.in/blog/2026-07-22-itr-filing-2026-portal-upgrade-smooth-returns.html",
-    "tags": [
-      "ITR Filing",
-      "Income Tax India",
-      "Tax Planning"
-    ],
-    "slug": "itr-filing-2026-portal-upgrade-smooth-returns",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-23T06:14:50.246409",
     "title": "RBI July 2026 Bulletin: India's Economic Outlook",
     "description": "Understand the RBI's July 2026 Bulletin and its insights into India's economic state amidst global challenges. Learn how to navigate these financial shifts.",
@@ -603,5 +562,46 @@
     ],
     "slug": "rbi-repo-rate-august-2026-impact-your-finances",
     "source": "ET Economy"
+  },
+  {
+    "date": "2026-08-06T06:08:59.292002",
+    "title": "Global Instability: Impact on Your Finances",
+    "description": "Global conflicts and trade tariffs create economic uncertainty. Learn their impact on your finances and practical steps Indian professionals can take.",
+    "url": "https://zentraai.in/blog/2026-08-06-global-economic-instability-indian-finances.html",
+    "tags": [
+      "financial planning",
+      "inflation",
+      "global economy",
+      "personal finance",
+      "Indian professionals"
+    ],
+    "slug": "global-economic-instability-indian-finances",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-08-06T06:09:10.555079",
+    "title": "India's Economy: Growth Outlook & Your Finances (FY27-28)",
+    "description": "Understand India's economic growth projections, the unchanged repo rate, and how these factors influence your personal finances and planning for the future.",
+    "url": "https://zentraai.in/blog/2026-08-06-india-economy-growth-outlook-fy27-fy28.html",
+    "tags": [
+      "Indian Economy",
+      "Personal Finance",
+      "Investment Planning"
+    ],
+    "slug": "india-economy-growth-outlook-fy27-fy28",
+    "source": "ET Economy"
+  },
+  {
+    "date": "2026-08-06T06:09:25.599168",
+    "title": "RBI Surveys: What They Mean for Your Finances",
+    "description": "Understand the RBI's latest surveys on consumer confidence, inflation expectations, and economic forecasts, and learn how they impact your financial planning.",
+    "url": "https://zentraai.in/blog/2026-08-06-rbi-surveys-impact-your-finances.html",
+    "tags": [
+      "RBI",
+      "inflation",
+      "personal finance"
+    ],
+    "slug": "rbi-surveys-impact-your-finances",
+    "source": "RBI"
   }
 ]
