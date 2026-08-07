@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-07-23T06:14:50.246409",
-    "title": "RBI July 2026 Bulletin: India's Economic Outlook",
-    "description": "Understand the RBI's July 2026 Bulletin and its insights into India's economic state amidst global challenges. Learn how to navigate these financial shifts.",
-    "url": "https://zentraai.in/blog/2026-07-23-rbi-july-2026-bulletin-india-economy.html",
-    "tags": [
-      "RBI",
-      "Indian Economy",
-      "Personal Finance"
-    ],
-    "slug": "rbi-july-2026-bulletin-india-economy",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-07-23T06:15:11.460300",
-    "title": "Revised ITR & Capital Loss Carry-Forward Explained",
-    "description": "Understand how a revised ITR impacts capital loss carry-forward for salaried Indian professionals. Learn to preserve your tax benefits.",
-    "url": "https://zentraai.in/blog/2026-07-23-revised-itr-capital-loss-carry-forward-explained.html",
-    "tags": [
-      "Income Tax",
-      "ITR",
-      "Capital Loss",
-      "Tax Planning",
-      "Salaried Professionals"
-    ],
-    "slug": "revised-itr-capital-loss-carry-forward-explained",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-23T06:15:21.915390",
-    "title": "Avoid Common Home Loan Mistakes for Lower EMIs",
-    "description": "First-time home buyers in India often make errors increasing their EMI burden. Learn to optimize tenure, down payment, and credit score for smarter home loan decisions.",
-    "url": "https://zentraai.in/blog/2026-07-23-home-loan-mistakes-first-time-buyers-india.html",
-    "tags": [
-      "home loan",
-      "personal finance",
-      "real estate"
-    ],
-    "slug": "home-loan-mistakes-first-time-buyers-india",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-24T06:08:08.293357",
     "title": "RBI Penalty on Arvind Sahakari Bank: Know Your Rights",
     "description": "RBI penalized Arvind Sahakari Bank for rules violations. Discover what this means for your deposits and housing finance, and learn how to protect your financial interests.",
@@ -603,5 +562,46 @@
     ],
     "slug": "rbi-surveys-impact-your-finances",
     "source": "RBI"
+  },
+  {
+    "date": "2026-08-07T05:10:48.272709",
+    "title": "RBI Penalty on Co-op Bank: KYC Compliance Matters",
+    "description": "Understand why the RBI fined a co-operative bank for KYC non-compliance. Learn how this impacts your banking and what steps you can take to protect your finances.",
+    "url": "https://zentraai.in/blog/2026-08-07-rbi-penalty-co-op-bank-kyc-compliance.html",
+    "tags": [
+      "RBI",
+      "KYC",
+      "Cooperative Bank"
+    ],
+    "slug": "rbi-penalty-co-op-bank-kyc-compliance",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-08-07T05:11:13.299398",
+    "title": "SEBI FY26 Annual Report: Key Insights for Investors",
+    "description": "Discover what SEBI's latest annual report for FY26 reveals about market trends and investor protection. Understand its implications for your investments as an Indian salaried professional.",
+    "url": "https://zentraai.in/blog/2026-08-07-sebi-annual-report-fy26-salaried-investors.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Planning"
+    ],
+    "slug": "sebi-annual-report-fy26-salaried-investors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-07T05:11:30.743582",
+    "title": "RBI Pause: Home Loan EMI Hikes Pushed Back to Dec?",
+    "description": "RBI paused rate hikes, potentially delaying home loan EMI increases. Learn what this means for your finances and smart planning steps for Indian salaried professionals.",
+    "url": "https://zentraai.in/blog/2026-08-07-rbi-pause-home-loan-emi-hike-delay-impact.html",
+    "tags": [
+      "RBI",
+      "Home Loan",
+      "EMI",
+      "Personal Finance",
+      "Interest Rates"
+    ],
+    "slug": "rbi-pause-home-loan-emi-hike-delay-impact",
+    "source": "ET Economy"
   }
 ]
