@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-07-25T06:00:37.425881",
-    "title": "SEBI's Final Order on Axis MF Front Running Explained",
-    "description": "SEBI issued a final order on Axis Mutual Fund's front-running. Learn what this practice is, its impact on your investments, and practical steps to safeguard your portfolio.",
-    "url": "https://zentraai.in/blog/2026-07-25-sebi-axis-mf-front-running-explained-impact.html",
-    "tags": [
-      "mutual funds",
-      "SEBI",
-      "investor protection"
-    ],
-    "slug": "sebi-axis-mf-front-running-explained-impact",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-25T06:00:54.127259",
-    "title": "FM: I-T Dept Must Differentiate Tax Errors & Evasion",
-    "description": "FM's directive on tax errors vs. evasion impacts salaried Indians. Understand how this new approach by the I-T Department affects your tax compliance.",
-    "url": "https://zentraai.in/blog/2026-07-25-fm-it-dept-tax-errors-evasion-india.html",
-    "tags": [
-      "Income Tax",
-      "Tax Compliance",
-      "Finance Minister",
-      "Salaried Professionals",
-      "Tax Tips"
-    ],
-    "slug": "fm-it-dept-tax-errors-evasion-india",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-07-25T06:01:14.127625",
-    "title": "ITR Portal: File On Time, No Extension Likely",
-    "description": "Learn why a last-minute ITR filing deadline extension is unlikely this year. Discover practical steps for Indian salaried professionals to file income tax on time and avoid penalties.",
-    "url": "https://zentraai.in/blog/2026-07-25-itr-portal-file-on-time-no-extension-likely.html",
-    "tags": [
-      "ITR Filing",
-      "Income Tax",
-      "Tax Planning"
-    ],
-    "slug": "itr-portal-file-on-time-no-extension-likely",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-26T06:20:15.195437",
     "title": "FD vs Loan: Urgent Cash Needs for Salaried Indians",
     "description": "Facing urgent cash needs? Discover whether breaking your FD or taking a loan against it is smarter. Compare costs, penalties, and repayment to protect your long-term savings.",
@@ -602,6 +561,48 @@
       "investing mistakes"
     ],
     "slug": "retirement-planning-mistakes-indian-professionals",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-08-09T04:42:38.628099",
+    "title": "SEBI IPO Irregularities: What It Means For Your Investments",
+    "description": "Learn how SEBI addresses IPO irregularities and what steps salaried Indian professionals can take to safeguard their investments in the primary market.",
+    "url": "https://zentraai.in/blog/2026-08-09-sebi-ipo-irregularities-investment-safeguards.html",
+    "tags": [
+      "IPO",
+      "SEBI",
+      "Investment Safety",
+      "Financial Education"
+    ],
+    "slug": "sebi-ipo-irregularities-investment-safeguards",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-09T04:42:58.380883",
+    "title": "SEBI Streamlines Inspections: Enhanced Investor Safety",
+    "description": "Discover how SEBI's revamped market intermediary inspections boost trust and safeguard your investments in India. Learn key actions.",
+    "url": "https://zentraai.in/blog/2026-08-09-sebi-streamlines-inspections-enhanced-investor-saf.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulation",
+      "Financial Planning",
+      "Indian Investors"
+    ],
+    "slug": "sebi-streamlines-inspections-enhanced-investor-saf",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-09T04:43:21.180058",
+    "title": "SEBI's AI Flags 20,000 Fraudulent Online Investment Posts",
+    "description": "Learn how SEBI's Project Sudarsan is tackling misleading financial advice on social media. Understand the risks of finfluencers and protect your investments from fraud.",
+    "url": "https://zentraai.in/blog/2026-08-09-sebi-project-sudarsan-finfluencer-fraud-alert.html",
+    "tags": [
+      "investment safety",
+      "finfluencers",
+      "SEBI India"
+    ],
+    "slug": "sebi-project-sudarsan-finfluencer-fraud-alert",
     "source": "Mint Money"
   }
 ]
