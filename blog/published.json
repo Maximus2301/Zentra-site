@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-07-26T06:20:15.195437",
-    "title": "FD vs Loan: Urgent Cash Needs for Salaried Indians",
-    "description": "Facing urgent cash needs? Discover whether breaking your FD or taking a loan against it is smarter. Compare costs, penalties, and repayment to protect your long-term savings.",
-    "url": "https://zentraai.in/blog/2026-07-26-break-fd-or-loan-against-fd-urgent-money.html",
-    "tags": [
-      "Fixed Deposit",
-      "Personal Finance",
-      "Emergency Fund"
-    ],
-    "slug": "break-fd-or-loan-against-fd-urgent-money",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-26T06:20:36.988444",
-    "title": "ETF Price vs. NAV: Why Checking Matters for Investors",
-    "description": "Understand why some ETFs trade at a premium to their NAV and how to protect your investments. Learn to compare market price with NAV before buying.",
-    "url": "https://zentraai.in/blog/2026-07-26-etf-market-price-vs-nav-why-it-matters.html",
-    "tags": [
-      "ETFs",
-      "Investing India",
-      "Financial Literacy"
-    ],
-    "slug": "etf-market-price-vs-nav-why-it-matters",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-26T06:20:51.483979",
-    "title": "Nominee Passes Away? Update Your Financial Records Now",
-    "description": "If your mutual fund or bank nominee passes away, your assets are safe. Learn why updating nominee details promptly is vital to prevent delays and complications for your loved ones later.",
-    "url": "https://zentraai.in/blog/2026-07-26-nominee-death-update-mutual-fund-bank-india.html",
-    "tags": [
-      "financial planning",
-      "nomination update",
-      "estate planning"
-    ],
-    "slug": "nominee-death-update-mutual-fund-bank-india",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-27T06:47:52.227930",
     "title": "RBI Rates Stable: What it Means for Your Finances",
     "description": "Economists predict RBI will hold interest rates. Discover how stable rates could affect your home loans, personal savings, and financial planning in India.",
@@ -603,6 +564,47 @@
       "SEBI India"
     ],
     "slug": "sebi-project-sudarsan-finfluencer-fraud-alert",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-08-10T05:01:50.124117",
+    "title": "SEBI Acts on IPO Irregularities: Investor Alert",
+    "description": "SEBI took action against IPO irregularities. Learn how this affects your investments and practical steps to safeguard your applications for public issues in India.",
+    "url": "https://zentraai.in/blog/2026-08-10-sebi-ipo-irregularities-protect-your-investments.html",
+    "tags": [
+      "IPO",
+      "SEBI",
+      "Investor Protection",
+      "Financial Education",
+      "Indian Market"
+    ],
+    "slug": "sebi-ipo-irregularities-protect-your-investments",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-10T05:02:09.803914",
+    "title": "SEBI Streamlines Market Intermediary Inspections",
+    "description": "Understand how SEBI's new inspection rules enhance market safety and protect your investments. Learn what this means for your financial planning as a salaried professional.",
+    "url": "https://zentraai.in/blog/2026-08-10-sebi-streamlines-market-inspections-investor-safet.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulation"
+    ],
+    "slug": "sebi-streamlines-market-inspections-investor-safet",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-10T05:02:31.823121",
+    "title": "Gratuity Tax Deduction: ITR Errors & Chennai ITAT Rule",
+    "description": "Learn how a recent ITAT ruling impacts gratuity tax deductions for salaried professionals. Understand ITR reporting errors and protect your rightful claims.",
+    "url": "https://zentraai.in/blog/2026-08-10-gratuity-tax-deduction-itr-error-itat-ruling.html",
+    "tags": [
+      "gratuity",
+      "income tax",
+      "itr filing"
+    ],
+    "slug": "gratuity-tax-deduction-itr-error-itat-ruling",
     "source": "Mint Money"
   }
 ]
