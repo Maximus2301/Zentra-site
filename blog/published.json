@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-07-27T06:47:52.227930",
-    "title": "RBI Rates Stable: What it Means for Your Finances",
-    "description": "Economists predict RBI will hold interest rates. Discover how stable rates could affect your home loans, personal savings, and financial planning in India.",
-    "url": "https://zentraai.in/blog/2026-07-27-rbi-interest-rates-stable-impact-on-finances.html",
-    "tags": [
-      "RBI",
-      "Personal Finance",
-      "Interest Rates"
-    ],
-    "slug": "rbi-interest-rates-stable-impact-on-finances",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-07-27T06:48:16.760854",
-    "title": "ITR Filing: FM Asks Tax Officials to Allow Corrections",
-    "description": "Understand how FM Sitharaman's call for responsive tax governance affects your ITR filing. Learn to correct genuine mistakes and navigate the tax system with confidence. Stay compliant and stress-free.",
-    "url": "https://zentraai.in/blog/2026-07-27-itr-filing-genuine-mistakes-finance-minister-relie.html",
-    "tags": [
-      "ITR Filing",
-      "Tax Compliance",
-      "Personal Finance"
-    ],
-    "slug": "itr-filing-genuine-mistakes-finance-minister-relie",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-27T06:48:32.491727",
-    "title": "Strengthen Your SIP Before Market Volatility",
-    "description": "Learn how to prepare your SIP investments for inevitable market corrections. Experts offer practical steps to safeguard your portfolio and make informed financial decisions.",
-    "url": "https://zentraai.in/blog/2026-07-27-prepare-your-sip-before-market-correction.html",
-    "tags": [
-      "SIP Investing",
-      "Market Volatility",
-      "Financial Planning"
-    ],
-    "slug": "prepare-your-sip-before-market-correction",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-28T06:07:34.451816",
     "title": "India GDP Growth Slows: Impact on Your Finances",
     "description": "India's GDP growth slows to 6.6% by FY27. Learn how weak investments and higher oil prices impact your finances and discover actionable financial planning steps.",
@@ -605,6 +566,47 @@
       "itr filing"
     ],
     "slug": "gratuity-tax-deduction-itr-error-itat-ruling",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-08-11T04:47:11.750540",
+    "title": "SEBI Action on Defaulters: Protecting Your Investments",
+    "description": "Understand how SEBI's recent action against a market defaulter reinforces investor protection. Learn practical steps Indian salaried professionals can take to safeguard their investments.",
+    "url": "https://zentraai.in/blog/2026-08-11-sebi-action-investor-protection-market-integrity.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulation",
+      "Financial Literacy",
+      "Investment Safety"
+    ],
+    "slug": "sebi-action-investor-protection-market-integrity",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-11T04:47:30.550955",
+    "title": "SEBI Action on IPO Irregularities: Investor Impact",
+    "description": "Understand SEBI's recent action on IPO irregularities and its impact on your investments. Learn practical steps to safeguard your portfolio when investing in public offerings.",
+    "url": "https://zentraai.in/blog/2026-08-11-sebi-ipo-irregularities-investor-safety.html",
+    "tags": [
+      "IPO investing",
+      "SEBI regulations",
+      "investor protection"
+    ],
+    "slug": "sebi-ipo-irregularities-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-11T04:47:54.261460",
+    "title": "Online TDS Certificate Applications Coming Soon",
+    "description": "Learn how the upcoming online application for lower or nil TDS certificates can simplify your finances, improve cash flow, and reduce tax refund delays.",
+    "url": "https://zentraai.in/blog/2026-08-11-online-tds-certificate-application-simplified.html",
+    "tags": [
+      "TDS",
+      "Income Tax",
+      "Financial Planning"
+    ],
+    "slug": "online-tds-certificate-application-simplified",
     "source": "Mint Money"
   }
 ]
