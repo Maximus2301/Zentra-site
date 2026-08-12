@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-07-28T06:07:34.451816",
-    "title": "India GDP Growth Slows: Impact on Your Finances",
-    "description": "India's GDP growth slows to 6.6% by FY27. Learn how weak investments and higher oil prices impact your finances and discover actionable financial planning steps.",
-    "url": "https://zentraai.in/blog/2026-07-28-india-gdp-growth-slows-impact-your-finances.html",
-    "tags": [
-      "India Economy",
-      "Financial Planning",
-      "Inflation"
-    ],
-    "slug": "india-gdp-growth-slows-impact-your-finances",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-07-28T06:07:47.843271",
-    "title": "Paytm Offers \u20b911 ITR Filing with ClearTax",
-    "description": "Paytm partners with ClearTax for \u20b911 ITR filing. Learn what's included, who benefits, and essential precautions for filing your income tax return efficiently.",
-    "url": "https://zentraai.in/blog/2026-07-28-paytm-clear-tax-itr-filing-whats-included.html",
-    "tags": [
-      "income tax",
-      "ITR filing",
-      "Paytm ClearTax"
-    ],
-    "slug": "paytm-clear-tax-itr-filing-whats-included",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-28T06:08:00.514957",
-    "title": "Income Tax Refund Delays: Reasons & Solutions for AY 2026-27",
-    "description": "Learn why your income tax refund for AY 2026-27 might be delayed. Discover common reasons like bank errors or pending e-verification and how to resolve them quickly.",
-    "url": "https://zentraai.in/blog/2026-07-28-income-tax-refund-delays-reasons-solutions-ay26-27.html",
-    "tags": [
-      "income tax",
-      "tax refund",
-      "financial planning"
-    ],
-    "slug": "income-tax-refund-delays-reasons-solutions-ay26-27",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-29T06:12:46.946829",
     "title": "SEBI's Recovery Order: What Indian Investors Need to Know",
     "description": "Understand SEBI's role in market compliance, lessons from the Deepali Dwivedi order, and practical steps Indian salaried professionals can take to protect their investments.",
@@ -608,5 +569,48 @@
     ],
     "slug": "online-tds-certificate-application-simplified",
     "source": "Mint Money"
+  },
+  {
+    "date": "2026-08-12T05:11:58.002957",
+    "title": "SEBI Amends Municipal Debt Securities Regulations",
+    "description": "Discover how SEBI's recent updates to municipal debt regulations could create new, stable investment opportunities and strengthen India's urban infrastructure for salaried professionals.",
+    "url": "https://zentraai.in/blog/2026-08-12-sebi-amends-municipal-debt-regulations-2024.html",
+    "tags": [
+      "municipal bonds",
+      "SEBI",
+      "debt market",
+      "investment diversification",
+      "financial planning"
+    ],
+    "slug": "sebi-amends-municipal-debt-regulations-2024",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-12T05:12:10.150147",
+    "title": "SEBI Order and Investor Safety in Indian Markets",
+    "description": "Learn how SEBI's regulatory actions, like the recent order concerning Mr. Ruparel, safeguard investors. Discover practical steps to protect your investments in India.",
+    "url": "https://zentraai.in/blog/2026-08-12-sebi-investor-protection-girishkumar-ruparel.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Education"
+    ],
+    "slug": "sebi-investor-protection-girishkumar-ruparel",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-12T05:12:21.234897",
+    "title": "SEBI action: Investor protection and compliance reminder",
+    "description": "Understand SEBI's role in investor protection and learn critical due diligence steps before investing. Safeguard your finances from unregulated schemes.",
+    "url": "https://zentraai.in/blog/2026-08-12-sebi-recovery-action-investor-protection-lesson.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy",
+      "Investment Safety",
+      "Regulatory Compliance"
+    ],
+    "slug": "sebi-recovery-action-investor-protection-lesson",
+    "source": "SEBI"
   }
 ]
