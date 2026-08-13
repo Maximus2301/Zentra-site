@@ -1,47 +1,5 @@
 [
   {
-    "date": "2026-07-29T06:12:46.946829",
-    "title": "SEBI's Recovery Order: What Indian Investors Need to Know",
-    "description": "Understand SEBI's role in market compliance, lessons from the Deepali Dwivedi order, and practical steps Indian salaried professionals can take to protect their investments.",
-    "url": "https://zentraai.in/blog/2026-07-29-sebi-recovery-order-investor-lessons.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Compliance"
-    ],
-    "slug": "sebi-recovery-order-investor-lessons",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-29T06:13:19.997924",
-    "title": "Sebi Lowers PMS Entry to \u20b925 Lakh for MF-Only Portfolios",
-    "description": "Sebi's new PMS rules make personalized mutual fund portfolios more accessible. Learn how this change could benefit your investment strategy and open new avenues.",
-    "url": "https://zentraai.in/blog/2026-07-29-sebi-lowers-pms-entry-mf-only-portfolios.html",
-    "tags": [
-      "PMS",
-      "Mutual Funds",
-      "Investment"
-    ],
-    "slug": "sebi-lowers-pms-entry-mf-only-portfolios",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-29T06:13:37.273732",
-    "title": "ITR Filing Deadline: Don't Miss 31st July",
-    "description": "Learn about the approaching income tax filing deadline, why it matters for salaried professionals, and practical steps to file your ITR smoothly.",
-    "url": "https://zentraai.in/blog/2026-07-29-itr-filing-deadline-31-july-salaried-guide.html",
-    "tags": [
-      "income tax",
-      "itr filing",
-      "tax deadline",
-      "salaried professionals",
-      "financial planning",
-      "hyt money"
-    ],
-    "slug": "itr-filing-deadline-31-july-salaried-guide",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-30T06:04:32.725434",
     "title": "SEBI Recovery Order Highlights Investor Safety in India",
     "description": "Understand SEBI's role in investor protection through a recent recovery order. Learn how to safeguard your investments and ensure compliance in financial dealings.",
@@ -611,6 +569,45 @@
       "Regulatory Compliance"
     ],
     "slug": "sebi-recovery-action-investor-protection-lesson",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-13T05:16:07.936840",
+    "title": "SEBI Amends Municipal Bond Regulations: Key Changes",
+    "description": "SEBI updated rules for municipal bonds, making them potentially more accessible and standardized. Understand how these changes could impact India's city projects and your investment landscape.",
+    "url": "https://zentraai.in/blog/2026-08-13-sebi-municipal-bond-rules-update.html",
+    "tags": [
+      "Municipal Bonds",
+      "SEBI",
+      "Indian Investments"
+    ],
+    "slug": "sebi-municipal-bond-rules-update",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-13T05:16:26.837466",
+    "title": "SEBI Enforcement: Protecting Indian Investors",
+    "description": "Learn how SEBI protects your investments through regulatory actions. Understand the significance of recent enforcement in the case of Atlanta Infrastructure and Finance.",
+    "url": "https://zentraai.in/blog/2026-08-13-sebi-investor-protection-atlanta-finance-case.html",
+    "tags": [
+      "SEBI",
+      "investor protection",
+      "financial regulation"
+    ],
+    "slug": "sebi-investor-protection-atlanta-finance-case",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-13T05:16:42.901734",
+    "title": "SEBI enforces recovery order: Investor protection",
+    "description": "Understand SEBI's role in protecting investors. Learn how regulatory actions against individuals ensure market integrity and safeguard your investments in India.",
+    "url": "https://zentraai.in/blog/2026-08-13-sebi-recovery-certificate-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-recovery-certificate-investor-protection",
     "source": "SEBI"
   }
 ]
