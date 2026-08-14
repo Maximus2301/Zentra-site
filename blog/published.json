@@ -1,45 +1,5 @@
 [
   {
-    "date": "2026-07-30T06:04:32.725434",
-    "title": "SEBI Recovery Order Highlights Investor Safety in India",
-    "description": "Understand SEBI's role in investor protection through a recent recovery order. Learn how to safeguard your investments and ensure compliance in financial dealings.",
-    "url": "https://zentraai.in/blog/2026-07-30-sebi-recovery-order-investor-protection-india.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Regulation"
-    ],
-    "slug": "sebi-recovery-order-investor-protection-india",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-07-30T06:04:47.290833",
-    "title": "Arbitrage Funds Lead Hybrid MFs Amid Volatile Markets",
-    "description": "Learn why arbitrage funds outperformed other hybrid mutual funds in 2026, how they work, and if they fit your financial goals as an Indian salaried professional.",
-    "url": "https://zentraai.in/blog/2026-07-30-arbitrage-funds-outperform-hybrid-mfs-2026.html",
-    "tags": [
-      "arbitrage funds",
-      "mutual funds",
-      "investment strategies"
-    ],
-    "slug": "arbitrage-funds-outperform-hybrid-mfs-2026",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-07-30T06:05:00.283507",
-    "title": "ITR Filing Benefits Home Loan & Credit Card Prospects",
-    "description": "Learn how timely Income Tax Return filing strengthens your financial profile, improving your chances for home loans and credit cards. Discover the benefits for salaried professionals.",
-    "url": "https://zentraai.in/blog/2026-07-30-itr-filing-benefits-home-loan-credit-card.html",
-    "tags": [
-      "ITR Filing",
-      "Personal Finance",
-      "Financial Planning",
-      "Tax Compliance"
-    ],
-    "slug": "itr-filing-benefits-home-loan-credit-card",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-07-31T06:28:27.421312",
     "title": "RBI Bulk Deposit Rate Changes: Your Savings Impact",
     "description": "Discover how the RBI's proposed changes to bulk deposit interest rates might affect your financial planning. Learn strategies for smart savings.",
@@ -608,6 +568,46 @@
       "Financial Literacy"
     ],
     "slug": "sebi-recovery-certificate-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-14T05:13:24.097705",
+    "title": "SEBI Reviews Accredited Investor Framework",
+    "description": "SEBI is reviewing its Accredited Investor framework. Discover what this means for your investment journey and how you can contribute to shaping future financial regulations.",
+    "url": "https://zentraai.in/blog/2026-08-14-sebi-reviews-accredited-investor-framework.html",
+    "tags": [
+      "SEBI",
+      "Investment Regulations",
+      "Financial Planning"
+    ],
+    "slug": "sebi-reviews-accredited-investor-framework",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-14T05:13:35.509828",
+    "title": "SEBI Investigates IOC Insider Trading: An Overview",
+    "description": "Understand SEBI's investigation into suspected insider trading at IOC. Learn why market integrity matters for your investments and how to protect yourself.",
+    "url": "https://zentraai.in/blog/2026-08-14-sebi-insider-trading-ioc-market-integrity.html",
+    "tags": [
+      "SEBI",
+      "Insider Trading",
+      "Market Integrity",
+      "Investor Protection"
+    ],
+    "slug": "sebi-insider-trading-ioc-market-integrity",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-14T05:13:51.010550",
+    "title": "SEBI Actions on Illiquid Stock Options & Investments",
+    "description": "Learn about SEBI's recent order against Rupee Services Pvt Ltd regarding illiquid stock options. Understand the risks involved and how to protect your investments from similar pitfalls.",
+    "url": "https://zentraai.in/blog/2026-08-14-sebi-illiquid-stock-options-order-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Illiquid Options",
+      "Investor Protection"
+    ],
+    "slug": "sebi-illiquid-stock-options-order-investor-safety",
     "source": "SEBI"
   }
 ]
