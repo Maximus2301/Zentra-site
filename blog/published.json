@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-08-01T06:13:33.616943",
-    "title": "SEBI Order Against Jalaj Agrawal: Investor Vigilance",
-    "description": "Understand SEBI's role in market integrity, learn why recovery orders are issued, and discover practical steps to protect your investments in India.",
-    "url": "https://zentraai.in/blog/2026-08-01-sebi-recovery-order-investor-vigilance.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-recovery-order-investor-vigilance",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-01T06:13:47.806391",
-    "title": "RBI Handbook of Statistics 2025-26: What It Means",
-    "description": "Learn how the RBI's latest Handbook of Statistics can help Indian salaried professionals understand economic trends and make informed financial decisions.",
-    "url": "https://zentraai.in/blog/2026-08-01-rbi-handbook-statistics-2025-26-financial-impact.html",
-    "tags": [
-      "RBI",
-      "Indian Economy",
-      "Financial Planning"
-    ],
-    "slug": "rbi-handbook-statistics-2025-26-financial-impact",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-08-01T06:14:01.918478",
-    "title": "India Bank Credit Growth Surges to 18.3% in June 2026",
-    "description": "RBI data shows bank credit surged to 18.3% in June 2026. Discover what this lending boom means for your loans, investments, and India's economic outlook. Learn actionable steps for your finances.",
-    "url": "https://zentraai.in/blog/2026-08-01-bank-credit-growth-june-2026-impact-your-finances.html",
-    "tags": [
-      "Indian Economy",
-      "Personal Finance",
-      "Bank Loans"
-    ],
-    "slug": "bank-credit-growth-june-2026-impact-your-finances",
-    "source": "RBI"
-  },
-  {
     "date": "2026-08-02T06:17:04.524711",
     "title": "SEBI's Recovery Order: What It Means For Your Investments",
     "description": "Understand how SEBI's compliance and recovery actions protect Indian investors. Learn practical steps to safeguard your investments from financial misconduct.",
@@ -609,5 +570,44 @@
     ],
     "slug": "india-inflation-update-your-finances",
     "source": "ET Economy"
+  },
+  {
+    "date": "2026-08-16T04:06:24.193429",
+    "title": "Income Tax Calendar 2026: Key Deadlines for Salaried Indians",
+    "description": "Navigate India's Income Tax Calendar 2026. Learn crucial deadlines for ITR filing, advance tax, and revised returns to ensure compliance and avoid penalties.",
+    "url": "https://zentraai.in/blog/2026-08-16-income-tax-calendar-2026-salaried-professionals.html",
+    "tags": [
+      "income tax",
+      "tax planning",
+      "financial planning"
+    ],
+    "slug": "income-tax-calendar-2026-salaried-professionals",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-08-16T04:06:41.961092",
+    "title": "RBI Imposes Penalty on IndusInd Bank for Norm Violations",
+    "description": "Learn why RBI fined IndusInd Bank and how this regulatory action protects your deposits. Understand the importance of bank compliance for financial stability.",
+    "url": "https://zentraai.in/blog/2026-08-16-rbi-indusind-bank-penalty-deposits-explained.html",
+    "tags": [
+      "RBI",
+      "Indian Banking",
+      "Personal Finance"
+    ],
+    "slug": "rbi-indusind-bank-penalty-deposits-explained",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-08-16T04:06:58.272993",
+    "title": "SEBI Action & Your Investments: A Cautionary Tale",
+    "description": "SEBI's recent action highlights market integrity. Learn how regulatory oversight protects investors from unfair trading, and what salaried professionals should know to safeguard their investments in the Indian market.",
+    "url": "https://zentraai.in/blog/2026-08-16-sebi-remittance-order-du-digital-investor-lessons.html",
+    "tags": [
+      "SEBI",
+      "investor protection",
+      "market integrity"
+    ],
+    "slug": "sebi-remittance-order-du-digital-investor-lessons",
+    "source": "SEBI"
   }
 ]
