@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-08-02T06:17:04.524711",
-    "title": "SEBI's Recovery Order: What It Means For Your Investments",
-    "description": "Understand how SEBI's compliance and recovery actions protect Indian investors. Learn practical steps to safeguard your investments from financial misconduct.",
-    "url": "https://zentraai.in/blog/2026-08-02-sebi-recovery-order-investor-safety.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Compliance"
-    ],
-    "slug": "sebi-recovery-order-investor-safety",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-02T06:17:32.290372",
-    "title": "RBI Handbook 2025-26: Economic Insights for You",
-    "description": "Learn how the RBI's latest Handbook of Statistics on the Indian Economy 2025-26 provides crucial data impacting your financial planning and stability.",
-    "url": "https://zentraai.in/blog/2026-08-02-rbi-handbook-2025-26-economy-salaried-impact.html",
-    "tags": [
-      "Indian Economy",
-      "RBI",
-      "Personal Finance"
-    ],
-    "slug": "rbi-handbook-2025-26-economy-salaried-impact",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-08-02T06:17:53.034852",
-    "title": "Indian Bank Credit Surges 18.3% by June 2026",
-    "description": "RBI reports 18.3% bank credit growth in India. Understand what this surge in lending means for your finances, loan rates, and career prospects. Learn practical steps to benefit.",
-    "url": "https://zentraai.in/blog/2026-08-02-india-bank-credit-growth-june-2026-explained.html",
-    "tags": [
-      "Indian Economy",
-      "Personal Finance",
-      "RBI Data"
-    ],
-    "slug": "india-bank-credit-growth-june-2026-explained",
-    "source": "RBI"
-  },
-  {
     "date": "2026-08-03T06:43:54.363524",
     "title": "SEBI Recovery Order: Protecting Your Investments in India",
     "description": "Understand SEBI's role in investor protection through its recent recovery order. Learn how to safeguard your investments from non-compliant entities.",
@@ -608,6 +569,45 @@
       "market integrity"
     ],
     "slug": "sebi-remittance-order-du-digital-investor-lessons",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-17T04:09:57.057745",
+    "title": "SEBI Recovery Order: Understanding Market Integrity",
+    "description": "Learn from SEBI's recent recovery order. Understand how market regulators protect investors and ensure fair trading practices in India. Safeguard your investments.",
+    "url": "https://zentraai.in/blog/2026-08-17-sebi-recovery-order-market-integrity-investors.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Planning"
+    ],
+    "slug": "sebi-recovery-order-market-integrity-investors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-17T04:10:15.550501",
+    "title": "SEBI Recovery Order on Trading Activities Explained",
+    "description": "Learn about SEBI's recent recovery order regarding trading activities and understand how regulatory actions protect investors. Discover key steps to safeguard your investments in the Indian market.",
+    "url": "https://zentraai.in/blog/2026-08-17-sebi-action-du-digital-tech-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Education"
+    ],
+    "slug": "sebi-action-du-digital-tech-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-17T04:10:30.980708",
+    "title": "SEBI Recovery Order: Market Integrity & You",
+    "description": "Learn how SEBI's recent remittance order against Girish Kantilal Parmar highlights efforts to ensure fair markets. Understand its implications for your investments and how to stay safe.",
+    "url": "https://zentraai.in/blog/2026-08-17-sebi-remittance-order-market-integrity-investors.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulation"
+    ],
+    "slug": "sebi-remittance-order-market-integrity-investors",
     "source": "SEBI"
   }
 ]
