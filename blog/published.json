@@ -1,48 +1,5 @@
 [
   {
-    "date": "2026-08-03T06:43:54.363524",
-    "title": "SEBI Recovery Order: Protecting Your Investments in India",
-    "description": "Understand SEBI's role in investor protection through its recent recovery order. Learn how to safeguard your investments from non-compliant entities.",
-    "url": "https://zentraai.in/blog/2026-08-03-sebi-recovery-order-superior-finlease-safety.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-recovery-order-superior-finlease-safety",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-03T06:44:07.119822",
-    "title": "RBI MPC Decision: Understanding Its Impact on Your Money",
-    "description": "The RBI's Monetary Policy Committee met to discuss inflation and growth. Learn how their decisions on the repo rate affect your loans, savings, and financial planning.",
-    "url": "https://zentraai.in/blog/2026-08-03-rbi-mpc-impact-on-salaried-professionals.html",
-    "tags": [
-      "RBI MPC",
-      "Repo Rate",
-      "Personal Finance",
-      "Inflation",
-      "Indian Economy"
-    ],
-    "slug": "rbi-mpc-impact-on-salaried-professionals",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-08-03T06:44:28.491226",
-    "title": "RBI Handbook 2025-26: Decoding India's Economic Data",
-    "description": "The RBI's new Handbook of Statistics on the Indian Economy helps salaried professionals understand key economic trends. Learn how this data impacts your finances and planning.",
-    "url": "https://zentraai.in/blog/2026-08-03-rbi-handbook-2025-26-indian-economy-your-money.html",
-    "tags": [
-      "RBI",
-      "Indian Economy",
-      "Personal Finance",
-      "Financial Planning",
-      "Economic Data"
-    ],
-    "slug": "rbi-handbook-2025-26-indian-economy-your-money",
-    "source": "RBI"
-  },
-  {
     "date": "2026-08-04T06:09:09.566820",
     "title": "SEBI Recovery Order: Investor Protection in Focus",
     "description": "Learn how SEBI's recovery orders protect Indian investors. Understand the importance of due diligence, verifying entities, and safeguarding your finances.",
@@ -608,6 +565,47 @@
       "Market Regulation"
     ],
     "slug": "sebi-remittance-order-market-integrity-investors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-18T04:04:21.451690",
+    "title": "SEBI Revises Mutual Fund Registration Form",
+    "description": "Learn how SEBI's updated mutual fund registration process impacts investor safety and market transparency. Understand what this means for your investments.",
+    "url": "https://zentraai.in/blog/2026-08-18-sebi-revises-mf-registration-form-investor-impact.html",
+    "tags": [
+      "Mutual Funds",
+      "SEBI",
+      "Investor Protection"
+    ],
+    "slug": "sebi-revises-mf-registration-form-investor-impact",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-18T04:04:46.032355",
+    "title": "SEBI's Handbook of Statistics 2025-26: Key Insights",
+    "description": "Unlock market transparency with SEBI's Handbook of Statistics 2025-26. Learn how this official data helps Indian salaried professionals make informed investment and financial planning decisions.",
+    "url": "https://zentraai.in/blog/2026-08-18-sebi-handbook-statistics-market-data-insights.html",
+    "tags": [
+      "SEBI",
+      "Market Data",
+      "Financial Planning"
+    ],
+    "slug": "sebi-handbook-statistics-market-data-insights",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-18T04:05:11.417714",
+    "title": "SEBI Investor Protection: Safeguarding Your Savings",
+    "description": "Understand how SEBI protects Indian investors. Learn to identify red flags and safeguard your savings with informed financial choices and regulatory awareness.",
+    "url": "https://zentraai.in/blog/2026-08-18-sebi-investor-protection-india.html",
+    "tags": [
+      "SEBI",
+      "investor protection",
+      "financial literacy",
+      "investment safety",
+      "regulatory compliance"
+    ],
+    "slug": "sebi-investor-protection-india",
     "source": "SEBI"
   }
 ]
