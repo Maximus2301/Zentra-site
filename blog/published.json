@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-08-06T06:08:59.292002",
-    "title": "Global Instability: Impact on Your Finances",
-    "description": "Global conflicts and trade tariffs create economic uncertainty. Learn their impact on your finances and practical steps Indian professionals can take.",
-    "url": "https://zentraai.in/blog/2026-08-06-global-economic-instability-indian-finances.html",
-    "tags": [
-      "financial planning",
-      "inflation",
-      "global economy",
-      "personal finance",
-      "Indian professionals"
-    ],
-    "slug": "global-economic-instability-indian-finances",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-08-06T06:09:10.555079",
-    "title": "India's Economy: Growth Outlook & Your Finances (FY27-28)",
-    "description": "Understand India's economic growth projections, the unchanged repo rate, and how these factors influence your personal finances and planning for the future.",
-    "url": "https://zentraai.in/blog/2026-08-06-india-economy-growth-outlook-fy27-fy28.html",
-    "tags": [
-      "Indian Economy",
-      "Personal Finance",
-      "Investment Planning"
-    ],
-    "slug": "india-economy-growth-outlook-fy27-fy28",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-08-06T06:09:25.599168",
-    "title": "RBI Surveys: What They Mean for Your Finances",
-    "description": "Understand the RBI's latest surveys on consumer confidence, inflation expectations, and economic forecasts, and learn how they impact your financial planning.",
-    "url": "https://zentraai.in/blog/2026-08-06-rbi-surveys-impact-your-finances.html",
-    "tags": [
-      "RBI",
-      "inflation",
-      "personal finance"
-    ],
-    "slug": "rbi-surveys-impact-your-finances",
-    "source": "RBI"
-  },
-  {
     "date": "2026-08-07T05:10:48.272709",
     "title": "RBI Penalty on Co-op Bank: KYC Compliance Matters",
     "description": "Understand why the RBI fined a co-operative bank for KYC non-compliance. Learn how this impacts your banking and what steps you can take to protect your finances.",
@@ -604,6 +563,47 @@
       "Market Safety"
     ],
     "slug": "sebi-action-investor-protection-market-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-21T04:07:44.982415",
+    "title": "SEBI Study: Retail Trends in Equity Derivatives",
+    "description": "Understand key findings from SEBI's study on retail participation in equity derivatives. Learn about trading behaviour, profitability, and smart investment approaches.",
+    "url": "https://zentraai.in/blog/2026-08-21-sebi-study-retail-participation-derivatives.html",
+    "tags": [
+      "SEBI",
+      "Derivatives Trading",
+      "Retail Investors India",
+      "Financial Literacy",
+      "Investment Risks"
+    ],
+    "slug": "sebi-study-retail-participation-derivatives",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-21T04:08:04.149654",
+    "title": "SEBI Acts on Trading Irregularities: A Recovery Order",
+    "description": "Learn how SEBI's enforcement actions, like a recent recovery order against irregular trading, protect market integrity and ensure a safer investment environment.",
+    "url": "https://zentraai.in/blog/2026-08-21-sebi-recovery-order-market-integrity-lessons.html",
+    "tags": [
+      "SEBI",
+      "investor education",
+      "market integrity"
+    ],
+    "slug": "sebi-recovery-order-market-integrity-lessons",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-21T04:08:22.161943",
+    "title": "SEBI Action: Learning from Market Violations",
+    "description": "Understand SEBI's role in market integrity and how regulatory actions protect investors. Learn to identify red flags and safeguard your investments effectively.",
+    "url": "https://zentraai.in/blog/2026-08-21-sebi-action-market-integrity-investor-education.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulations"
+    ],
+    "slug": "sebi-action-market-integrity-investor-education",
     "source": "SEBI"
   }
 ]
