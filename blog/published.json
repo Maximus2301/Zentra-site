@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-08-07T05:10:48.272709",
-    "title": "RBI Penalty on Co-op Bank: KYC Compliance Matters",
-    "description": "Understand why the RBI fined a co-operative bank for KYC non-compliance. Learn how this impacts your banking and what steps you can take to protect your finances.",
-    "url": "https://zentraai.in/blog/2026-08-07-rbi-penalty-co-op-bank-kyc-compliance.html",
-    "tags": [
-      "RBI",
-      "KYC",
-      "Cooperative Bank"
-    ],
-    "slug": "rbi-penalty-co-op-bank-kyc-compliance",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-08-07T05:11:13.299398",
-    "title": "SEBI FY26 Annual Report: Key Insights for Investors",
-    "description": "Discover what SEBI's latest annual report for FY26 reveals about market trends and investor protection. Understand its implications for your investments as an Indian salaried professional.",
-    "url": "https://zentraai.in/blog/2026-08-07-sebi-annual-report-fy26-salaried-investors.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Planning"
-    ],
-    "slug": "sebi-annual-report-fy26-salaried-investors",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-07T05:11:30.743582",
-    "title": "RBI Pause: Home Loan EMI Hikes Pushed Back to Dec?",
-    "description": "RBI paused rate hikes, potentially delaying home loan EMI increases. Learn what this means for your finances and smart planning steps for Indian salaried professionals.",
-    "url": "https://zentraai.in/blog/2026-08-07-rbi-pause-home-loan-emi-hike-delay-impact.html",
-    "tags": [
-      "RBI",
-      "Home Loan",
-      "EMI",
-      "Personal Finance",
-      "Interest Rates"
-    ],
-    "slug": "rbi-pause-home-loan-emi-hike-delay-impact",
-    "source": "ET Economy"
-  },
-  {
     "date": "2026-08-08T04:33:06.201491",
     "title": "SEBI Addresses IPO Irregularities: What Investors Need",
     "description": "Learn from SEBI's recent action on IPO irregularities. Understand market risks and how to protect your investments as a salaried professional in India.",
@@ -605,5 +564,46 @@
     ],
     "slug": "sebi-action-market-integrity-investor-education",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-08-22T04:02:29.003727",
+    "title": "Understanding Risks in Illiquid Stock Options",
+    "description": "Learn about the dangers of illiquid stock options and how SEBI's actions highlight the need for due diligence. Protect your investments from high-risk ventures.",
+    "url": "https://zentraai.in/blog/2026-08-22-illiquid-stock-options-risk-management.html",
+    "tags": [
+      "investment risks",
+      "stock options",
+      "SEBI",
+      "financial literacy",
+      "investor protection"
+    ],
+    "slug": "illiquid-stock-options-risk-management",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-22T04:02:44.860783",
+    "title": "ITR August 31 Deadline: What Salaried Indians Must Know",
+    "description": "Learn why the ITR August 31 deadline matters for you. Understand which ITR form is applicable and how to file correctly to avoid penalties.",
+    "url": "https://zentraai.in/blog/2026-08-22-itr-august-31-deadline-salaried-professionals.html",
+    "tags": [
+      "ITR Filing",
+      "Tax Deadline",
+      "Income Tax India"
+    ],
+    "slug": "itr-august-31-deadline-salaried-professionals",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-08-22T04:03:02.549889",
+    "title": "AUM & Mutual Fund Returns: What Indian Investors Need to Know",
+    "description": "Understand how a mutual fund's Assets Under Management (AUM) can impact returns, especially for mid and small-cap schemes. Learn practical steps to evaluate your investments wisely.",
+    "url": "https://zentraai.in/blog/2026-08-22-aum-impacts-mutual-fund-returns-india.html",
+    "tags": [
+      "Mutual Funds",
+      "AUM",
+      "Investment Strategy"
+    ],
+    "slug": "aum-impacts-mutual-fund-returns-india",
+    "source": "Mint Money"
   }
 ]
