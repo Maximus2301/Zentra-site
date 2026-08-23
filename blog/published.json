@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-08-08T04:33:06.201491",
-    "title": "SEBI Addresses IPO Irregularities: What Investors Need",
-    "description": "Learn from SEBI's recent action on IPO irregularities. Understand market risks and how to protect your investments as a salaried professional in India.",
-    "url": "https://zentraai.in/blog/2026-08-08-sebi-ipo-irregularities-indian-investors.html",
-    "tags": [
-      "IPO",
-      "SEBI",
-      "Investment Tips"
-    ],
-    "slug": "sebi-ipo-irregularities-indian-investors",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-08T04:33:27.071862",
-    "title": "SEBI Streamlines Market Inspections for Safety",
-    "description": "Understand SEBI's updated inspection framework for market intermediaries. Learn how these changes improve market safety and protect your investments in India.",
-    "url": "https://zentraai.in/blog/2026-08-08-sebi-streamlines-market-inspections-investor-safet.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Market Regulations",
-      "Financial Security",
-      "Indian Investors"
-    ],
-    "slug": "sebi-streamlines-market-inspections-investor-safet",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-08T04:33:44.435774",
-    "title": "Retirement Planning Mistakes Indian Salaried Professionals Make",
-    "description": "Learn to avoid common retirement planning mistakes. Discover expert strategies for Indian salaried professionals to build a strong retirement corpus and achieve long-term financial security. Start planning smart.",
-    "url": "https://zentraai.in/blog/2026-08-08-retirement-planning-mistakes-indian-professionals.html",
-    "tags": [
-      "retirement planning",
-      "financial planning india",
-      "investing mistakes"
-    ],
-    "slug": "retirement-planning-mistakes-indian-professionals",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-08-09T04:42:38.628099",
     "title": "SEBI IPO Irregularities: What It Means For Your Investments",
     "description": "Learn how SEBI addresses IPO irregularities and what steps salaried Indian professionals can take to safeguard their investments in the primary market.",
@@ -604,6 +563,47 @@
       "Investment Strategy"
     ],
     "slug": "aum-impacts-mutual-fund-returns-india",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-08-23T04:07:35.444816",
+    "title": "SEBI's Illiquid Options Warning: Investor Lessons",
+    "description": "Learn from SEBI's action against a defaulter in illiquid stock options. Understand the risks and protect your investments as a salaried professional.",
+    "url": "https://zentraai.in/blog/2026-08-23-sebi-illiquid-options-warning-investor-lessons.html",
+    "tags": [
+      "SEBI",
+      "Investment Risks",
+      "Stock Options"
+    ],
+    "slug": "sebi-illiquid-options-warning-investor-lessons",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-23T04:07:49.193367",
+    "title": "EPFO Pension: 10-Year Service Rule Explained for Salaried",
+    "description": "Understand EPFO's crucial 10-year service rule for monthly pension benefits. Learn about PF withdrawals, scheme certificates, and ensuring your retirement security.",
+    "url": "https://zentraai.in/blog/2026-08-23-epfo-pension-10-year-service-rule-india.html",
+    "tags": [
+      "EPFO",
+      "Pension",
+      "Retirement Planning",
+      "Financial Security",
+      "Salaried Professionals"
+    ],
+    "slug": "epfo-pension-10-year-service-rule-india",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-08-23T04:08:09.828774",
+    "title": "Why Indian Investors Stop SIPs During Market Falls",
+    "description": "Discover why sticking to SIPs during market downturns is challenging for Indian professionals and learn practical strategies to maintain investment discipline.",
+    "url": "https://zentraai.in/blog/2026-08-23-why-investors-stop-sips-market-downturns.html",
+    "tags": [
+      "SIP",
+      "Market Volatility",
+      "Financial Planning"
+    ],
+    "slug": "why-investors-stop-sips-market-downturns",
     "source": "Mint Money"
   }
 ]
