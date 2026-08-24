@@ -1,47 +1,5 @@
 [
   {
-    "date": "2026-08-09T04:42:38.628099",
-    "title": "SEBI IPO Irregularities: What It Means For Your Investments",
-    "description": "Learn how SEBI addresses IPO irregularities and what steps salaried Indian professionals can take to safeguard their investments in the primary market.",
-    "url": "https://zentraai.in/blog/2026-08-09-sebi-ipo-irregularities-investment-safeguards.html",
-    "tags": [
-      "IPO",
-      "SEBI",
-      "Investment Safety",
-      "Financial Education"
-    ],
-    "slug": "sebi-ipo-irregularities-investment-safeguards",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-09T04:42:58.380883",
-    "title": "SEBI Streamlines Inspections: Enhanced Investor Safety",
-    "description": "Discover how SEBI's revamped market intermediary inspections boost trust and safeguard your investments in India. Learn key actions.",
-    "url": "https://zentraai.in/blog/2026-08-09-sebi-streamlines-inspections-enhanced-investor-saf.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Market Regulation",
-      "Financial Planning",
-      "Indian Investors"
-    ],
-    "slug": "sebi-streamlines-inspections-enhanced-investor-saf",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-09T04:43:21.180058",
-    "title": "SEBI's AI Flags 20,000 Fraudulent Online Investment Posts",
-    "description": "Learn how SEBI's Project Sudarsan is tackling misleading financial advice on social media. Understand the risks of finfluencers and protect your investments from fraud.",
-    "url": "https://zentraai.in/blog/2026-08-09-sebi-project-sudarsan-finfluencer-fraud-alert.html",
-    "tags": [
-      "investment safety",
-      "finfluencers",
-      "SEBI India"
-    ],
-    "slug": "sebi-project-sudarsan-finfluencer-fraud-alert",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-08-10T05:01:50.124117",
     "title": "SEBI Acts on IPO Irregularities: Investor Alert",
     "description": "SEBI took action against IPO irregularities. Learn how this affects your investments and practical steps to safeguard your applications for public issues in India.",
@@ -604,6 +562,48 @@
       "Financial Planning"
     ],
     "slug": "why-investors-stop-sips-market-downturns",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-08-24T04:12:42.152250",
+    "title": "SEBI Action on Illiquid Stock Options Defaulter",
+    "description": "Understand the risks of illiquid stock options and SEBI's role in market integrity. Learn how to safeguard your investments from similar pitfalls. Essential reading for Indian professionals.",
+    "url": "https://zentraai.in/blog/2026-08-24-sebi-action-illiquid-stock-options-defaulter.html",
+    "tags": [
+      "SEBI",
+      "Investment Risks",
+      "Stock Options"
+    ],
+    "slug": "sebi-action-illiquid-stock-options-defaulter",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-24T04:13:04.531147",
+    "title": "Digital Payments & Income Tax: What Salaried Indians Need",
+    "description": "Understand how large digital payments affect income tax. Learn when transactions might trigger scrutiny and what to check in AIS, 26AS, ITR for compliance.",
+    "url": "https://zentraai.in/blog/2026-08-24-digital-payments-income-tax-salaried-india.html",
+    "tags": [
+      "income tax",
+      "digital payments",
+      "UPI",
+      "NEFT",
+      "financial planning",
+      "salaried professional"
+    ],
+    "slug": "digital-payments-income-tax-salaried-india",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-08-24T04:13:23.481442",
+    "title": "ITR-3 or ITR-4: Guide for Salaried Professionals",
+    "description": "Confused between ITR-3 and ITR-4? Learn how to choose the correct income tax return form for your salary and other income sources, avoiding errors for AY 2026-27.",
+    "url": "https://zentraai.in/blog/2026-08-24-itr-3-itr-4-choice-for-salaried-professionals.html",
+    "tags": [
+      "Income Tax",
+      "ITR Filing",
+      "Presumptive Taxation"
+    ],
+    "slug": "itr-3-itr-4-choice-for-salaried-professionals",
     "source": "Mint Money"
   }
 ]
