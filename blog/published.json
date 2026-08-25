@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-08-10T05:01:50.124117",
-    "title": "SEBI Acts on IPO Irregularities: Investor Alert",
-    "description": "SEBI took action against IPO irregularities. Learn how this affects your investments and practical steps to safeguard your applications for public issues in India.",
-    "url": "https://zentraai.in/blog/2026-08-10-sebi-ipo-irregularities-protect-your-investments.html",
-    "tags": [
-      "IPO",
-      "SEBI",
-      "Investor Protection",
-      "Financial Education",
-      "Indian Market"
-    ],
-    "slug": "sebi-ipo-irregularities-protect-your-investments",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-10T05:02:09.803914",
-    "title": "SEBI Streamlines Market Intermediary Inspections",
-    "description": "Understand how SEBI's new inspection rules enhance market safety and protect your investments. Learn what this means for your financial planning as a salaried professional.",
-    "url": "https://zentraai.in/blog/2026-08-10-sebi-streamlines-market-inspections-investor-safet.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Market Regulation"
-    ],
-    "slug": "sebi-streamlines-market-inspections-investor-safet",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-10T05:02:31.823121",
-    "title": "Gratuity Tax Deduction: ITR Errors & Chennai ITAT Rule",
-    "description": "Learn how a recent ITAT ruling impacts gratuity tax deductions for salaried professionals. Understand ITR reporting errors and protect your rightful claims.",
-    "url": "https://zentraai.in/blog/2026-08-10-gratuity-tax-deduction-itr-error-itat-ruling.html",
-    "tags": [
-      "gratuity",
-      "income tax",
-      "itr filing"
-    ],
-    "slug": "gratuity-tax-deduction-itr-error-itat-ruling",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-08-11T04:47:11.750540",
     "title": "SEBI Action on Defaulters: Protecting Your Investments",
     "description": "Understand how SEBI's recent action against a market defaulter reinforces investor protection. Learn practical steps Indian salaried professionals can take to safeguard their investments.",
@@ -605,5 +564,46 @@
     ],
     "slug": "itr-3-itr-4-choice-for-salaried-professionals",
     "source": "Mint Money"
+  },
+  {
+    "date": "2026-08-25T04:06:32.882190",
+    "title": "ITAT Delhi: TDS Refund Possible Without Original ITR",
+    "description": "Understand ITAT Delhi's ruling on TDS refunds. Learn how to claim your refund even if you missed filing your original ITR as a salaried professional.",
+    "url": "https://zentraai.in/blog/2026-08-25-tds-refund-itat-delhi-original-itr-missed.html",
+    "tags": [
+      "TDS Refund",
+      "Income Tax",
+      "ITR Filing"
+    ],
+    "slug": "tds-refund-itat-delhi-original-itr-missed",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-08-25T04:06:50.140722",
+    "title": "SEBI Enhances Investor Protection & Education in India",
+    "description": "Learn how SEBI's new MoU with RRU and NISM strengthens India's financial markets, boosts investor education, and protects your investments. Stay informed.",
+    "url": "https://zentraai.in/blog/2026-08-25-sebi-rru-nism-mou-investor-protection-india.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-rru-nism-mou-investor-protection-india",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-25T04:07:11.207985",
+    "title": "SEBI Release Order: Financial Recovery & HUF Insights",
+    "description": "Delve into SEBI's recent release order concerning an HUF. Understand financial recovery processes, SEBI's role, and how to protect your own finances.",
+    "url": "https://zentraai.in/blog/2026-08-25-sebi-release-order-huf-financial-recovery-insights.html",
+    "tags": [
+      "SEBI",
+      "Financial Regulation",
+      "HUF",
+      "Investor Protection",
+      "Compliance"
+    ],
+    "slug": "sebi-release-order-huf-financial-recovery-insights",
+    "source": "SEBI"
   }
 ]
