@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-08-11T04:47:11.750540",
-    "title": "SEBI Action on Defaulters: Protecting Your Investments",
-    "description": "Understand how SEBI's recent action against a market defaulter reinforces investor protection. Learn practical steps Indian salaried professionals can take to safeguard their investments.",
-    "url": "https://zentraai.in/blog/2026-08-11-sebi-action-investor-protection-market-integrity.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Market Regulation",
-      "Financial Literacy",
-      "Investment Safety"
-    ],
-    "slug": "sebi-action-investor-protection-market-integrity",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-11T04:47:30.550955",
-    "title": "SEBI Action on IPO Irregularities: Investor Impact",
-    "description": "Understand SEBI's recent action on IPO irregularities and its impact on your investments. Learn practical steps to safeguard your portfolio when investing in public offerings.",
-    "url": "https://zentraai.in/blog/2026-08-11-sebi-ipo-irregularities-investor-safety.html",
-    "tags": [
-      "IPO investing",
-      "SEBI regulations",
-      "investor protection"
-    ],
-    "slug": "sebi-ipo-irregularities-investor-safety",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-11T04:47:54.261460",
-    "title": "Online TDS Certificate Applications Coming Soon",
-    "description": "Learn how the upcoming online application for lower or nil TDS certificates can simplify your finances, improve cash flow, and reduce tax refund delays.",
-    "url": "https://zentraai.in/blog/2026-08-11-online-tds-certificate-application-simplified.html",
-    "tags": [
-      "TDS",
-      "Income Tax",
-      "Financial Planning"
-    ],
-    "slug": "online-tds-certificate-application-simplified",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-08-12T05:11:58.002957",
     "title": "SEBI Amends Municipal Debt Securities Regulations",
     "description": "Discover how SEBI's recent updates to municipal debt regulations could create new, stable investment opportunities and strengthen India's urban infrastructure for salaried professionals.",
@@ -604,6 +563,47 @@
       "Compliance"
     ],
     "slug": "sebi-release-order-huf-financial-recovery-insights",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-26T04:08:51.068351",
+    "title": "RBI Bulletin August 2026: Economic State & Your Finances",
+    "description": "Understand the RBI's August 2026 Bulletin and its insights on India's economy amidst global challenges. Learn how to navigate the economic landscape for your financial well-being.",
+    "url": "https://zentraai.in/blog/2026-08-26-rbi-bulletin-august-2026-impact-indian-finances.html",
+    "tags": [
+      "RBI",
+      "Indian Economy",
+      "Personal Finance",
+      "Monetary Policy",
+      "Salaried Professionals"
+    ],
+    "slug": "rbi-bulletin-august-2026-impact-indian-finances",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-08-26T04:09:05.933058",
+    "title": "SEBI Boosts Investor Protection & Financial Literacy",
+    "description": "SEBI's new MoU with RRU & NISM aims to strengthen investor protection and financial education. Learn how this collaboration benefits your investments and safeguards your financial future.",
+    "url": "https://zentraai.in/blog/2026-08-26-sebi-mou-rru-nism-boosts-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Education"
+    ],
+    "slug": "sebi-mou-rru-nism-boosts-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-26T04:09:17.329596",
+    "title": "SEBI Action: Understanding Recovery Certificates & Your Finances",
+    "description": "Learn what a SEBI recovery certificate means for investors and how regulatory actions protect your financial interests. Understand the importance of due diligence.",
+    "url": "https://zentraai.in/blog/2026-08-26-sebi-recovery-certificate-huf-what-it-means.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-recovery-certificate-huf-what-it-means",
     "source": "SEBI"
   }
 ]
