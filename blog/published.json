@@ -1,87 +1,5 @@
 [
   {
-    "date": "2026-08-12T05:11:58.002957",
-    "title": "SEBI Amends Municipal Debt Securities Regulations",
-    "description": "Discover how SEBI's recent updates to municipal debt regulations could create new, stable investment opportunities and strengthen India's urban infrastructure for salaried professionals.",
-    "url": "https://zentraai.in/blog/2026-08-12-sebi-amends-municipal-debt-regulations-2024.html",
-    "tags": [
-      "municipal bonds",
-      "SEBI",
-      "debt market",
-      "investment diversification",
-      "financial planning"
-    ],
-    "slug": "sebi-amends-municipal-debt-regulations-2024",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-12T05:12:10.150147",
-    "title": "SEBI Order and Investor Safety in Indian Markets",
-    "description": "Learn how SEBI's regulatory actions, like the recent order concerning Mr. Ruparel, safeguard investors. Discover practical steps to protect your investments in India.",
-    "url": "https://zentraai.in/blog/2026-08-12-sebi-investor-protection-girishkumar-ruparel.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Education"
-    ],
-    "slug": "sebi-investor-protection-girishkumar-ruparel",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-12T05:12:21.234897",
-    "title": "SEBI action: Investor protection and compliance reminder",
-    "description": "Understand SEBI's role in investor protection and learn critical due diligence steps before investing. Safeguard your finances from unregulated schemes.",
-    "url": "https://zentraai.in/blog/2026-08-12-sebi-recovery-action-investor-protection-lesson.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy",
-      "Investment Safety",
-      "Regulatory Compliance"
-    ],
-    "slug": "sebi-recovery-action-investor-protection-lesson",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-13T05:16:07.936840",
-    "title": "SEBI Amends Municipal Bond Regulations: Key Changes",
-    "description": "SEBI updated rules for municipal bonds, making them potentially more accessible and standardized. Understand how these changes could impact India's city projects and your investment landscape.",
-    "url": "https://zentraai.in/blog/2026-08-13-sebi-municipal-bond-rules-update.html",
-    "tags": [
-      "Municipal Bonds",
-      "SEBI",
-      "Indian Investments"
-    ],
-    "slug": "sebi-municipal-bond-rules-update",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-13T05:16:26.837466",
-    "title": "SEBI Enforcement: Protecting Indian Investors",
-    "description": "Learn how SEBI protects your investments through regulatory actions. Understand the significance of recent enforcement in the case of Atlanta Infrastructure and Finance.",
-    "url": "https://zentraai.in/blog/2026-08-13-sebi-investor-protection-atlanta-finance-case.html",
-    "tags": [
-      "SEBI",
-      "investor protection",
-      "financial regulation"
-    ],
-    "slug": "sebi-investor-protection-atlanta-finance-case",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-13T05:16:42.901734",
-    "title": "SEBI enforces recovery order: Investor protection",
-    "description": "Understand SEBI's role in protecting investors. Learn how regulatory actions against individuals ensure market integrity and safeguard your investments in India.",
-    "url": "https://zentraai.in/blog/2026-08-13-sebi-recovery-certificate-investor-protection.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-recovery-certificate-investor-protection",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-08-14T05:13:24.097705",
     "title": "SEBI Reviews Accredited Investor Framework",
     "description": "SEBI is reviewing its Accredited Investor framework. Discover what this means for your investment journey and how you can contribute to shaping future financial regulations.",
@@ -604,6 +522,45 @@
       "Financial Literacy"
     ],
     "slug": "sebi-recovery-certificate-huf-what-it-means",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-27T14:24:23.343548",
+    "title": "RBI Desaiganj Bank Action: Your Money Safe?",
+    "description": "Learn what RBI's directions to Desaiganj Nagari Cooperative Bank mean for your savings. Understand deposit insurance and how to protect your funds.",
+    "url": "https://zentraai.in/blog/2026-08-27-rbi-cooperative-bank-directions-your-money.html",
+    "tags": [
+      "Banking Regulation",
+      "RBI",
+      "Personal Finance"
+    ],
+    "slug": "rbi-cooperative-bank-directions-your-money",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-08-27T14:24:56.913827",
+    "title": "SEBI Action: Excel Castronics & Investor Safety",
+    "description": "Understand SEBI's role in market compliance, exemplified by the Excel Castronics case. Learn how regulatory actions protect your investments in India.",
+    "url": "https://zentraai.in/blog/2026-08-27-sebi-compliance-excel-castronics-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulation"
+    ],
+    "slug": "sebi-compliance-excel-castronics-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-27T14:25:14.818037",
+    "title": "SEBI Concludes Recovery in Excel Castronics Case",
+    "description": "Learn how SEBI\u2019s latest recovery action against Tanna Hiralal in the Excel Castronics case protects Indian investors. Understand regulatory compliance and market integrity.",
+    "url": "https://zentraai.in/blog/2026-08-27-sebi-recovery-excel-castronics-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Compliance"
+    ],
+    "slug": "sebi-recovery-excel-castronics-investor-protection",
     "source": "SEBI"
   }
 ]
