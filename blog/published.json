@@ -1,45 +1,5 @@
 [
   {
-    "date": "2026-08-14T05:13:24.097705",
-    "title": "SEBI Reviews Accredited Investor Framework",
-    "description": "SEBI is reviewing its Accredited Investor framework. Discover what this means for your investment journey and how you can contribute to shaping future financial regulations.",
-    "url": "https://zentraai.in/blog/2026-08-14-sebi-reviews-accredited-investor-framework.html",
-    "tags": [
-      "SEBI",
-      "Investment Regulations",
-      "Financial Planning"
-    ],
-    "slug": "sebi-reviews-accredited-investor-framework",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-14T05:13:35.509828",
-    "title": "SEBI Investigates IOC Insider Trading: An Overview",
-    "description": "Understand SEBI's investigation into suspected insider trading at IOC. Learn why market integrity matters for your investments and how to protect yourself.",
-    "url": "https://zentraai.in/blog/2026-08-14-sebi-insider-trading-ioc-market-integrity.html",
-    "tags": [
-      "SEBI",
-      "Insider Trading",
-      "Market Integrity",
-      "Investor Protection"
-    ],
-    "slug": "sebi-insider-trading-ioc-market-integrity",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-14T05:13:51.010550",
-    "title": "SEBI Actions on Illiquid Stock Options & Investments",
-    "description": "Learn about SEBI's recent order against Rupee Services Pvt Ltd regarding illiquid stock options. Understand the risks involved and how to protect your investments from similar pitfalls.",
-    "url": "https://zentraai.in/blog/2026-08-14-sebi-illiquid-stock-options-order-investor-safety.html",
-    "tags": [
-      "SEBI",
-      "Illiquid Options",
-      "Investor Protection"
-    ],
-    "slug": "sebi-illiquid-stock-options-order-investor-safety",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-08-15T04:00:58.111491",
     "title": "RBI Penalizes IndusInd Bank: Impact on Your Deposits",
     "description": "The RBI recently fined IndusInd Bank for non-compliance. Understand what this penalty means for your bank deposits and how to ensure your savings are safe.",
@@ -561,6 +521,45 @@
       "Market Compliance"
     ],
     "slug": "sebi-recovery-excel-castronics-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-28T15:32:28.960870",
+    "title": "RBI Directs Ashok Sahakari Bank: Your Deposit Safety",
+    "description": "The RBI has issued directions to Ashok Sahakari Bank. Understand what this means for your deposits and how to protect your savings in co-operative banks.",
+    "url": "https://zentraai.in/blog/2026-08-28-rbi-directions-ashok-sahakari-bank-deposits.html",
+    "tags": [
+      "RBI",
+      "Banking Safety",
+      "Deposit Insurance"
+    ],
+    "slug": "rbi-directions-ashok-sahakari-bank-deposits",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-08-28T15:32:42.642831",
+    "title": "SEBI Action on Trafiksol IPO: Investor Lessons for You",
+    "description": "Learn from SEBI's final order on the Trafiksol IPO. Understand how regulators protect your investments and key steps to take before participating in any public offering.",
+    "url": "https://zentraai.in/blog/2026-08-28-sebi-trafiksol-ipo-investor-protection-lessons.html",
+    "tags": [
+      "IPO",
+      "SEBI",
+      "investor education"
+    ],
+    "slug": "sebi-trafiksol-ipo-investor-protection-lessons",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-28T15:33:11.009360",
+    "title": "SEBI Extends ETF Trading Rules: What Indian Investors Need",
+    "description": "SEBI extends implementation of new ETF trading rules. Learn how base price, price bands, and call auction impact your ETF investments in India.",
+    "url": "https://zentraai.in/blog/2026-08-28-sebi-extends-etf-trading-rules-investor-impact.html",
+    "tags": [
+      "ETFs",
+      "SEBI",
+      "Investment Tips"
+    ],
+    "slug": "sebi-extends-etf-trading-rules-investor-impact",
     "source": "SEBI"
   }
 ]
