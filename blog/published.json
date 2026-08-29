@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-08-15T04:00:58.111491",
-    "title": "RBI Penalizes IndusInd Bank: Impact on Your Deposits",
-    "description": "The RBI recently fined IndusInd Bank for non-compliance. Understand what this penalty means for your bank deposits and how to ensure your savings are safe.",
-    "url": "https://zentraai.in/blog/2026-08-15-rbi-penalty-indusind-bank-deposits-impact.html",
-    "tags": [
-      "RBI",
-      "Bank Deposits",
-      "Financial Safety"
-    ],
-    "slug": "rbi-penalty-indusind-bank-deposits-impact",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-08-15T04:01:09.478881",
-    "title": "SEBI's Role in Investor Protection: Mindvision Capital Case",
-    "description": "Understand SEBI's role in regulating financial markets and protecting investors. Learn how to safeguard your investments in India, inspired by recent SEBI actions.",
-    "url": "https://zentraai.in/blog/2026-08-15-sebi-mindvision-capital-investor-protection.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-mindvision-capital-investor-protection",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-15T04:01:31.942019",
-    "title": "India's Inflation Update: What It Means for You",
-    "description": "Understand India's latest inflation numbers and how rising food prices impact your salary. Learn practical steps to manage your finances effectively.",
-    "url": "https://zentraai.in/blog/2026-08-15-india-inflation-update-your-finances.html",
-    "tags": [
-      "inflation",
-      "personal finance",
-      "indian economy",
-      "budgeting",
-      "financial planning"
-    ],
-    "slug": "india-inflation-update-your-finances",
-    "source": "ET Economy"
-  },
-  {
     "date": "2026-08-16T04:06:24.193429",
     "title": "Income Tax Calendar 2026: Key Deadlines for Salaried Indians",
     "description": "Navigate India's Income Tax Calendar 2026. Learn crucial deadlines for ITR filing, advance tax, and revised returns to ensure compliance and avoid penalties.",
@@ -560,6 +519,47 @@
       "Investment Tips"
     ],
     "slug": "sebi-extends-etf-trading-rules-investor-impact",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-29T10:16:31.268838",
+    "title": "RBI Directs Ashok Sahakari Bank: Implications for Depositors",
+    "description": "The RBI has issued directions to Ashok Sahakari Bank Ltd. Understand what this means for your deposits, how cooperative banks operate, and crucial steps to protect your savings.",
+    "url": "https://zentraai.in/blog/2026-08-29-rbi-directions-ashok-sahakari-bank-depositors.html",
+    "tags": [
+      "RBI Directives",
+      "Deposit Safety",
+      "Cooperative Banks"
+    ],
+    "slug": "rbi-directions-ashok-sahakari-bank-depositors",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-08-29T10:16:45.115829",
+    "title": "SEBI Action on Trafiksol IPO: Investor Lessons",
+    "description": "Understand SEBI's role in protecting IPO investors. Learn valuable lessons from the Trafiksol ITS Technologies IPO case to safeguard your investments in the Indian market.",
+    "url": "https://zentraai.in/blog/2026-08-29-sebi-trafiksol-ipo-order-investor-lessons.html",
+    "tags": [
+      "IPO",
+      "SEBI",
+      "Investor Protection"
+    ],
+    "slug": "sebi-trafiksol-ipo-order-investor-lessons",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-29T10:17:08.751809",
+    "title": "SEBI Extends ETF Norms Timeline: What It Means",
+    "description": "SEBI has extended the timeline for new ETF trading norms. Learn how this impacts your investments in Exchange Traded Funds and what you need to know.",
+    "url": "https://zentraai.in/blog/2026-08-29-sebi-extends-etf-norms-timeline-investors.html",
+    "tags": [
+      "ETFs",
+      "SEBI",
+      "Investment Tips",
+      "Financial Planning",
+      "Market Regulation"
+    ],
+    "slug": "sebi-extends-etf-norms-timeline-investors",
     "source": "SEBI"
   }
 ]
