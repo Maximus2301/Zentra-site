@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-08-16T04:06:24.193429",
-    "title": "Income Tax Calendar 2026: Key Deadlines for Salaried Indians",
-    "description": "Navigate India's Income Tax Calendar 2026. Learn crucial deadlines for ITR filing, advance tax, and revised returns to ensure compliance and avoid penalties.",
-    "url": "https://zentraai.in/blog/2026-08-16-income-tax-calendar-2026-salaried-professionals.html",
-    "tags": [
-      "income tax",
-      "tax planning",
-      "financial planning"
-    ],
-    "slug": "income-tax-calendar-2026-salaried-professionals",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-08-16T04:06:41.961092",
-    "title": "RBI Imposes Penalty on IndusInd Bank for Norm Violations",
-    "description": "Learn why RBI fined IndusInd Bank and how this regulatory action protects your deposits. Understand the importance of bank compliance for financial stability.",
-    "url": "https://zentraai.in/blog/2026-08-16-rbi-indusind-bank-penalty-deposits-explained.html",
-    "tags": [
-      "RBI",
-      "Indian Banking",
-      "Personal Finance"
-    ],
-    "slug": "rbi-indusind-bank-penalty-deposits-explained",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-08-16T04:06:58.272993",
-    "title": "SEBI Action & Your Investments: A Cautionary Tale",
-    "description": "SEBI's recent action highlights market integrity. Learn how regulatory oversight protects investors from unfair trading, and what salaried professionals should know to safeguard their investments in the Indian market.",
-    "url": "https://zentraai.in/blog/2026-08-16-sebi-remittance-order-du-digital-investor-lessons.html",
-    "tags": [
-      "SEBI",
-      "investor protection",
-      "market integrity"
-    ],
-    "slug": "sebi-remittance-order-du-digital-investor-lessons",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-08-17T04:09:57.057745",
     "title": "SEBI Recovery Order: Understanding Market Integrity",
     "description": "Learn from SEBI's recent recovery order. Understand how market regulators protect investors and ensure fair trading practices in India. Safeguard your investments.",
@@ -560,6 +521,47 @@
       "Market Regulation"
     ],
     "slug": "sebi-extends-etf-norms-timeline-investors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-30T09:22:45.877033",
+    "title": "RBI Directions: What It Means for Your Bank Deposits",
+    "description": "Understand RBI's latest actions on cooperative banks and how to safeguard your money. Learn about deposit insurance and smart banking practices.",
+    "url": "https://zentraai.in/blog/2026-08-30-rbi-directions-ashok-sahakari-bank-deposits.html",
+    "tags": [
+      "RBI",
+      "Cooperative Banks",
+      "Financial Planning",
+      "Deposit Insurance",
+      "Personal Finance"
+    ],
+    "slug": "rbi-directions-ashok-sahakari-bank-deposits",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-08-30T09:23:03.563237",
+    "title": "SEBI's IPO Oversight: What Trafiksol Means For You",
+    "description": "Understand SEBI's role in IPOs and how regulatory scrutiny protects your investments. Learn key steps for due diligence before investing in new public offerings.",
+    "url": "https://zentraai.in/blog/2026-08-30-sebi-ipo-oversight-investor-protection.html",
+    "tags": [
+      "IPO",
+      "SEBI",
+      "Investor Education"
+    ],
+    "slug": "sebi-ipo-oversight-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-08-30T09:23:24.792155",
+    "title": "SEBI Extends ETF Norms Deadline: What It Means for You",
+    "description": "SEBI postponed new ETF trading rules. Learn how this impacts your investments, why understanding ETFs is crucial, and what steps you can take for financial growth.",
+    "url": "https://zentraai.in/blog/2026-08-30-sebi-extends-etf-norms-impact-investors.html",
+    "tags": [
+      "ETFs",
+      "SEBI",
+      "Investment"
+    ],
+    "slug": "sebi-extends-etf-norms-impact-investors",
     "source": "SEBI"
   }
 ]
