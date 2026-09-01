@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-08-18T04:04:21.451690",
-    "title": "SEBI Revises Mutual Fund Registration Form",
-    "description": "Learn how SEBI's updated mutual fund registration process impacts investor safety and market transparency. Understand what this means for your investments.",
-    "url": "https://zentraai.in/blog/2026-08-18-sebi-revises-mf-registration-form-investor-impact.html",
-    "tags": [
-      "Mutual Funds",
-      "SEBI",
-      "Investor Protection"
-    ],
-    "slug": "sebi-revises-mf-registration-form-investor-impact",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-18T04:04:46.032355",
-    "title": "SEBI's Handbook of Statistics 2025-26: Key Insights",
-    "description": "Unlock market transparency with SEBI's Handbook of Statistics 2025-26. Learn how this official data helps Indian salaried professionals make informed investment and financial planning decisions.",
-    "url": "https://zentraai.in/blog/2026-08-18-sebi-handbook-statistics-market-data-insights.html",
-    "tags": [
-      "SEBI",
-      "Market Data",
-      "Financial Planning"
-    ],
-    "slug": "sebi-handbook-statistics-market-data-insights",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-18T04:05:11.417714",
-    "title": "SEBI Investor Protection: Safeguarding Your Savings",
-    "description": "Understand how SEBI protects Indian investors. Learn to identify red flags and safeguard your savings with informed financial choices and regulatory awareness.",
-    "url": "https://zentraai.in/blog/2026-08-18-sebi-investor-protection-india.html",
-    "tags": [
-      "SEBI",
-      "investor protection",
-      "financial literacy",
-      "investment safety",
-      "regulatory compliance"
-    ],
-    "slug": "sebi-investor-protection-india",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-08-19T04:05:30.840824",
     "title": "SEBI Order: Understanding Risks in Illiquid Stock Options",
     "description": "Learn about SEBI's recent order on illiquid stock options. Understand the risks involved and practical steps to protect your investments in derivatives.",
@@ -562,6 +521,45 @@
       "Indian Investors"
     ],
     "slug": "sebi-delays-etf-trading-norms-impact",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-01T08:49:15.108191",
+    "title": "SEBI Action on Citrus Check Inns: Key Learnings",
+    "description": "Understand SEBI's action against Citrus Check Inns and how to protect your investments from unauthorized schemes. Learn key tips for financial safety for salaried professionals.",
+    "url": "https://zentraai.in/blog/2026-09-01-sebi-citrus-check-inns-investment-safety.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-citrus-check-inns-investment-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-01T08:49:32.557526",
+    "title": "SEBI's DU Digital Action: Investor Safeguards for You",
+    "description": "Understand SEBI's recent action in the DU Digital case. Learn how market regulations protect investors and what steps you can take to safeguard your investments in the Indian stock market.",
+    "url": "https://zentraai.in/blog/2026-09-01-sebi-action-du-digital-case-investor-safety-lesson.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Indian Stock Market"
+    ],
+    "slug": "sebi-action-du-digital-case-investor-safety-lesson",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-01T08:49:46.891424",
+    "title": "SEBI's Recovery Order: Protecting Your Investments",
+    "description": "Understand SEBI's recent action in a trading irregularity case. Learn how regulatory bodies protect investors and what you can do to safeguard your hard-earned money.",
+    "url": "https://zentraai.in/blog/2026-09-01-sebi-investor-protection-market-integrity.html",
+    "tags": [
+      "SEBI",
+      "investor education",
+      "market manipulation"
+    ],
+    "slug": "sebi-investor-protection-market-integrity",
     "source": "SEBI"
   }
 ]
