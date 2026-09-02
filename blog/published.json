@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-08-19T04:05:30.840824",
-    "title": "SEBI Order: Understanding Risks in Illiquid Stock Options",
-    "description": "Learn about SEBI's recent order on illiquid stock options. Understand the risks involved and practical steps to protect your investments in derivatives.",
-    "url": "https://zentraai.in/blog/2026-08-19-sebi-illiquid-stock-options-risk-huf.html",
-    "tags": [
-      "SEBI",
-      "stock options",
-      "financial literacy"
-    ],
-    "slug": "sebi-illiquid-stock-options-risk-huf",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-19T04:07:45.324538",
-    "title": "SEBI's Recovery Action: Investor Protection & Market Safety",
-    "description": "Learn about SEBI's action against Sunil Singh of Alfa Finsec and how regulatory oversight protects your investments. Understand market integrity and safeguards for Indian investors.",
-    "url": "https://zentraai.in/blog/2026-08-19-sebi-recovery-action-investor-protection.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Market Regulation"
-    ],
-    "slug": "sebi-recovery-action-investor-protection",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-19T04:07:56.472191",
-    "title": "SEBI Updates Mutual Fund Registration Form Rules",
-    "description": "SEBI has updated the mutual fund registration form. Discover what this means for new mutual fund launches, your investments, and the future of India's MF market.",
-    "url": "https://zentraai.in/blog/2026-08-19-sebi-revises-mf-registration-form-impact.html",
-    "tags": [
-      "mutual funds",
-      "SEBI",
-      "financial planning"
-    ],
-    "slug": "sebi-revises-mf-registration-form-impact",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-08-20T04:05:24.865854",
     "title": "SEBI Order: Manipulative Trades During SENSEX Expiry",
     "description": "Understand SEBI's action against market manipulation during SENSEX expiry. Learn how regulators protect your investments and maintain market fairness for long-term growth.",
@@ -560,6 +521,47 @@
       "market manipulation"
     ],
     "slug": "sebi-investor-protection-market-integrity",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-02T08:02:03.553028",
+    "title": "India's Q1 FY27 Current Account Deficit Rises",
+    "description": "Understand India's Q1 FY27 current account deficit increase. Learn how BoP affects the economy and your personal finances. Get practical tips for financial planning.",
+    "url": "https://zentraai.in/blog/2026-09-02-india-q1-fy27-current-account-deficit-rises.html",
+    "tags": [
+      "Indian Economy",
+      "Personal Finance",
+      "Financial Planning"
+    ],
+    "slug": "india-q1-fy27-current-account-deficit-rises",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-09-02T08:02:23.897082",
+    "title": "RBI Executive Director Appointment Explained",
+    "description": "Understand how RBI's leadership changes, like Shri Suman Ray's ED appointment, indirectly influence India's financial stability and your personal finances.",
+    "url": "https://zentraai.in/blog/2026-09-02-rbi-executive-director-appointment-impact.html",
+    "tags": [
+      "RBI",
+      "Financial Literacy",
+      "Indian Economy",
+      "Personal Finance",
+      "Banking"
+    ],
+    "slug": "rbi-executive-director-appointment-impact",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-09-02T08:02:38.652019",
+    "title": "SEBI's Remittance Order: Protecting Your Investments",
+    "description": "Learn why SEBI's recent remittance order against market irregularities is crucial for safeguarding your stock market investments. Understand how regulatory actions protect your wealth.",
+    "url": "https://zentraai.in/blog/2026-09-02-sebi-remittance-order-investor-safety-india.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Stock Market India"
+    ],
+    "slug": "sebi-remittance-order-investor-safety-india",
     "source": "SEBI"
   }
 ]
