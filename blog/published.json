@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-08-23T04:07:35.444816",
-    "title": "SEBI's Illiquid Options Warning: Investor Lessons",
-    "description": "Learn from SEBI's action against a defaulter in illiquid stock options. Understand the risks and protect your investments as a salaried professional.",
-    "url": "https://zentraai.in/blog/2026-08-23-sebi-illiquid-options-warning-investor-lessons.html",
-    "tags": [
-      "SEBI",
-      "Investment Risks",
-      "Stock Options"
-    ],
-    "slug": "sebi-illiquid-options-warning-investor-lessons",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-23T04:07:49.193367",
-    "title": "EPFO Pension: 10-Year Service Rule Explained for Salaried",
-    "description": "Understand EPFO's crucial 10-year service rule for monthly pension benefits. Learn about PF withdrawals, scheme certificates, and ensuring your retirement security.",
-    "url": "https://zentraai.in/blog/2026-08-23-epfo-pension-10-year-service-rule-india.html",
-    "tags": [
-      "EPFO",
-      "Pension",
-      "Retirement Planning",
-      "Financial Security",
-      "Salaried Professionals"
-    ],
-    "slug": "epfo-pension-10-year-service-rule-india",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-08-23T04:08:09.828774",
-    "title": "Why Indian Investors Stop SIPs During Market Falls",
-    "description": "Discover why sticking to SIPs during market downturns is challenging for Indian professionals and learn practical strategies to maintain investment discipline.",
-    "url": "https://zentraai.in/blog/2026-08-23-why-investors-stop-sips-market-downturns.html",
-    "tags": [
-      "SIP",
-      "Market Volatility",
-      "Financial Planning"
-    ],
-    "slug": "why-investors-stop-sips-market-downturns",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-08-24T04:12:42.152250",
     "title": "SEBI Action on Illiquid Stock Options Defaulter",
     "description": "Understand the risks of illiquid stock options and SEBI's role in market integrity. Learn how to safeguard your investments from similar pitfalls. Essential reading for Indian professionals.",
@@ -560,6 +519,45 @@
       "Financial Planning"
     ],
     "slug": "income-tax-ais-expansion-salaried-professionals",
+    "source": "ET Economy"
+  },
+  {
+    "date": "2026-09-06T08:01:15.681537",
+    "title": "SEBI-ESMA MoU: Strengthening Market Safety & Stability",
+    "description": "Learn how SEBI's MoU with ESMA on Central Counterparties enhances financial market stability and safeguards your investments in India. Understand its importance for long-term financial security.",
+    "url": "https://zentraai.in/blog/2026-09-06-sebi-esma-mou-ccp-market-safety-india.html",
+    "tags": [
+      "SEBI",
+      "Financial Stability",
+      "Investment Safety"
+    ],
+    "slug": "sebi-esma-mou-ccp-market-safety-india",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-06T08:01:37.701107",
+    "title": "Mutual Fund NAV: Don't Let \u20b910 Fool You",
+    "description": "Understand why a mutual fund's Net Asset Value (NAV) doesn't indicate its true value or potential returns. Learn to choose funds wisely.",
+    "url": "https://zentraai.in/blog/2026-09-06-mutual-fund-nav-illusion-hyt-money.html",
+    "tags": [
+      "Mutual Funds",
+      "NAV",
+      "Investment Tips"
+    ],
+    "slug": "mutual-fund-nav-illusion-hyt-money",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-06T08:01:52.482635",
+    "title": "AIS Expansion: GST, Overseas Investments & IT Returns",
+    "description": "Learn how the Income Tax Department's expanded Annual Information Statement (AIS) now includes GST, foreign transactions, and off-market deals, impacting your financial reporting.",
+    "url": "https://zentraai.in/blog/2026-09-06-income-tax-ais-expanded-gst-overseas-investments.html",
+    "tags": [
+      "Income Tax",
+      "AIS",
+      "Financial Planning"
+    ],
+    "slug": "income-tax-ais-expanded-gst-overseas-investments",
     "source": "ET Economy"
   }
 ]
