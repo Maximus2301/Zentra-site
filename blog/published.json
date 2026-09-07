@@ -1,47 +1,5 @@
 [
   {
-    "date": "2026-08-24T04:12:42.152250",
-    "title": "SEBI Action on Illiquid Stock Options Defaulter",
-    "description": "Understand the risks of illiquid stock options and SEBI's role in market integrity. Learn how to safeguard your investments from similar pitfalls. Essential reading for Indian professionals.",
-    "url": "https://zentraai.in/blog/2026-08-24-sebi-action-illiquid-stock-options-defaulter.html",
-    "tags": [
-      "SEBI",
-      "Investment Risks",
-      "Stock Options"
-    ],
-    "slug": "sebi-action-illiquid-stock-options-defaulter",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-24T04:13:04.531147",
-    "title": "Digital Payments & Income Tax: What Salaried Indians Need",
-    "description": "Understand how large digital payments affect income tax. Learn when transactions might trigger scrutiny and what to check in AIS, 26AS, ITR for compliance.",
-    "url": "https://zentraai.in/blog/2026-08-24-digital-payments-income-tax-salaried-india.html",
-    "tags": [
-      "income tax",
-      "digital payments",
-      "UPI",
-      "NEFT",
-      "financial planning",
-      "salaried professional"
-    ],
-    "slug": "digital-payments-income-tax-salaried-india",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-08-24T04:13:23.481442",
-    "title": "ITR-3 or ITR-4: Guide for Salaried Professionals",
-    "description": "Confused between ITR-3 and ITR-4? Learn how to choose the correct income tax return form for your salary and other income sources, avoiding errors for AY 2026-27.",
-    "url": "https://zentraai.in/blog/2026-08-24-itr-3-itr-4-choice-for-salaried-professionals.html",
-    "tags": [
-      "Income Tax",
-      "ITR Filing",
-      "Presumptive Taxation"
-    ],
-    "slug": "itr-3-itr-4-choice-for-salaried-professionals",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-08-25T04:06:32.882190",
     "title": "ITAT Delhi: TDS Refund Possible Without Original ITR",
     "description": "Understand ITAT Delhi's ruling on TDS refunds. Learn how to claim your refund even if you missed filing your original ITR as a salaried professional.",
@@ -559,5 +517,47 @@
     ],
     "slug": "income-tax-ais-expanded-gst-overseas-investments",
     "source": "ET Economy"
+  },
+  {
+    "date": "2026-09-07T08:31:45.941954",
+    "title": "SEBI, ESMA Bolster Market Safety with New MoU",
+    "description": "Understand how SEBI's agreement with ESMA strengthens the safety of your investments. Learn why global cooperation is vital for financial stability in India's markets.",
+    "url": "https://zentraai.in/blog/2026-09-07-sebi-esma-mou-bolsters-india-market-safety.html",
+    "tags": [
+      "SEBI",
+      "Financial Regulation",
+      "Investment Safety"
+    ],
+    "slug": "sebi-esma-mou-bolsters-india-market-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-07T08:31:57.078374",
+    "title": "Mid-cap Funds: Understanding SIP Returns and Performance Gaps",
+    "description": "Learn why only a few mid-cap funds delivered strong SIP returns over 3 years and what this means for your investment strategy.",
+    "url": "https://zentraai.in/blog/2026-09-07-midcap-sip-returns-performance-gaps.html",
+    "tags": [
+      "mutual funds",
+      "SIP investing",
+      "midcap funds"
+    ],
+    "slug": "midcap-sip-returns-performance-gaps",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-07T08:32:16.800446",
+    "title": "Tax Regime Mistake: ITAT Gives Relief, Lessons for You",
+    "description": "Learn how a tax filing error led to a \u20b91.23 lakh demand for a Bengaluru taxpayer. Understand why verifying your ITR and tax regime choice is crucial.",
+    "url": "https://zentraai.in/blog/2026-09-07-tax-regime-mistake-itat-relief-salaried-it-return.html",
+    "tags": [
+      "Income Tax",
+      "Tax Filing",
+      "New Tax Regime",
+      "Old Tax Regime",
+      "ITR",
+      "Tax Planning"
+    ],
+    "slug": "tax-regime-mistake-itat-relief-salaried-it-return",
+    "source": "Mint Money"
   }
 ]
