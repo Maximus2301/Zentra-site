@@ -555,5 +555,44 @@
     ],
     "slug": "sebi-recovery-order-investor-protection-india",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-09-10T08:16:41.464286",
+    "title": "SEBI Action on Illiquid Stock Options Trading at BSE",
+    "description": "Understand SEBI's recent action against illiquid stock options trading. Learn why liquidity matters for your investments and how to safeguard your portfolio from such risks.",
+    "url": "https://zentraai.in/blog/2026-09-10-sebi-action-illiquid-stock-options-risk.html",
+    "tags": [
+      "SEBI",
+      "Stock Options",
+      "Investment Risk"
+    ],
+    "slug": "sebi-action-illiquid-stock-options-risk",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-10T08:17:07.131923",
+    "title": "FD vs Small Savings: Compare Beyond Interest Rates",
+    "description": "Learn to choose between FDs and small savings schemes. Discover key factors like liquidity, tax benefits, and investment limits for smart choices.",
+    "url": "https://zentraai.in/blog/2026-09-10-fd-vs-small-savings-compare-beyond-interest-rates.html",
+    "tags": [
+      "Fixed Deposits",
+      "Small Savings Schemes",
+      "Personal Finance"
+    ],
+    "slug": "fd-vs-small-savings-compare-beyond-interest-rates",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-10T08:17:26.514051",
+    "title": "Retirement Planning: The 3-Bucket Strategy Explained",
+    "description": "Plan a resilient retirement with the 3-bucket strategy. Learn to allocate savings for short, medium, and long-term goals, managing inflation and market volatility.",
+    "url": "https://zentraai.in/blog/2026-09-10-retirement-3-bucket-strategy-for-salaried-indians.html",
+    "tags": [
+      "retirement planning",
+      "investment strategy",
+      "personal finance"
+    ],
+    "slug": "retirement-3-bucket-strategy-for-salaried-indians",
+    "source": "Mint Money"
   }
 ]
