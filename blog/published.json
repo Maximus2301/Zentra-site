@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-08-28T15:32:28.960870",
-    "title": "RBI Directs Ashok Sahakari Bank: Your Deposit Safety",
-    "description": "The RBI has issued directions to Ashok Sahakari Bank. Understand what this means for your deposits and how to protect your savings in co-operative banks.",
-    "url": "https://zentraai.in/blog/2026-08-28-rbi-directions-ashok-sahakari-bank-deposits.html",
-    "tags": [
-      "RBI",
-      "Banking Safety",
-      "Deposit Insurance"
-    ],
-    "slug": "rbi-directions-ashok-sahakari-bank-deposits",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-08-28T15:32:42.642831",
-    "title": "SEBI Action on Trafiksol IPO: Investor Lessons for You",
-    "description": "Learn from SEBI's final order on the Trafiksol IPO. Understand how regulators protect your investments and key steps to take before participating in any public offering.",
-    "url": "https://zentraai.in/blog/2026-08-28-sebi-trafiksol-ipo-investor-protection-lessons.html",
-    "tags": [
-      "IPO",
-      "SEBI",
-      "investor education"
-    ],
-    "slug": "sebi-trafiksol-ipo-investor-protection-lessons",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-28T15:33:11.009360",
-    "title": "SEBI Extends ETF Trading Rules: What Indian Investors Need",
-    "description": "SEBI extends implementation of new ETF trading rules. Learn how base price, price bands, and call auction impact your ETF investments in India.",
-    "url": "https://zentraai.in/blog/2026-08-28-sebi-extends-etf-trading-rules-investor-impact.html",
-    "tags": [
-      "ETFs",
-      "SEBI",
-      "Investment Tips"
-    ],
-    "slug": "sebi-extends-etf-trading-rules-investor-impact",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-08-29T10:16:31.268838",
     "title": "RBI Directs Ashok Sahakari Bank: Implications for Depositors",
     "description": "The RBI has issued directions to Ashok Sahakari Bank Ltd. Understand what this means for your deposits, how cooperative banks operate, and crucial steps to protect your savings.",
@@ -598,5 +559,46 @@
     ],
     "slug": "sebi-recovery-certificate-investor-protection",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-09-12T08:02:03.267535",
+    "title": "Hawkins Cookers FD: Rates, Details & Your Options",
+    "description": "Hawkins Cookers FD offers up to 8% interest. Learn how company FDs work, their risks vs. rewards, and smart ways to evaluate them for your savings.",
+    "url": "https://zentraai.in/blog/2026-09-12-hawkins-cookers-fd-rates-details-investing.html",
+    "tags": [
+      "Fixed Deposits",
+      "Company FDs",
+      "Investment Options",
+      "Financial Planning",
+      "Indian Finance"
+    ],
+    "slug": "hawkins-cookers-fd-rates-details-investing",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-12T08:02:34.721393",
+    "title": "High CIBIL Score But Home Loan Rejected? Understand Why",
+    "description": "A high CIBIL score isn't enough for a home loan in India. Discover what lenders *really* assess: income stability, existing EMIs, property value, and documentation.",
+    "url": "https://zentraai.in/blog/2026-09-12-high-cibil-score-home-loan-rejection-what-to-know.html",
+    "tags": [
+      "Home Loan",
+      "CIBIL Score",
+      "Personal Finance"
+    ],
+    "slug": "high-cibil-score-home-loan-rejection-what-to-know",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-12T08:02:54.152692",
+    "title": "Loan Prepayment: Impact on Interest & Credit",
+    "description": "Considering prepaying your loan? Learn how it affects your interest outgo, EMIs, and why consistent EMI payments are crucial for your credit score.",
+    "url": "https://zentraai.in/blog/2026-09-12-loan-prepayment-interest-credit-score-india.html",
+    "tags": [
+      "loan management",
+      "debt repayment",
+      "personal finance"
+    ],
+    "slug": "loan-prepayment-interest-credit-score-india",
+    "source": "Mint Money"
   }
 ]
