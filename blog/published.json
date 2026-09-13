@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-08-29T10:16:31.268838",
-    "title": "RBI Directs Ashok Sahakari Bank: Implications for Depositors",
-    "description": "The RBI has issued directions to Ashok Sahakari Bank Ltd. Understand what this means for your deposits, how cooperative banks operate, and crucial steps to protect your savings.",
-    "url": "https://zentraai.in/blog/2026-08-29-rbi-directions-ashok-sahakari-bank-depositors.html",
-    "tags": [
-      "RBI Directives",
-      "Deposit Safety",
-      "Cooperative Banks"
-    ],
-    "slug": "rbi-directions-ashok-sahakari-bank-depositors",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-08-29T10:16:45.115829",
-    "title": "SEBI Action on Trafiksol IPO: Investor Lessons",
-    "description": "Understand SEBI's role in protecting IPO investors. Learn valuable lessons from the Trafiksol ITS Technologies IPO case to safeguard your investments in the Indian market.",
-    "url": "https://zentraai.in/blog/2026-08-29-sebi-trafiksol-ipo-order-investor-lessons.html",
-    "tags": [
-      "IPO",
-      "SEBI",
-      "Investor Protection"
-    ],
-    "slug": "sebi-trafiksol-ipo-order-investor-lessons",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-29T10:17:08.751809",
-    "title": "SEBI Extends ETF Norms Timeline: What It Means",
-    "description": "SEBI has extended the timeline for new ETF trading norms. Learn how this impacts your investments in Exchange Traded Funds and what you need to know.",
-    "url": "https://zentraai.in/blog/2026-08-29-sebi-extends-etf-norms-timeline-investors.html",
-    "tags": [
-      "ETFs",
-      "SEBI",
-      "Investment Tips",
-      "Financial Planning",
-      "Market Regulation"
-    ],
-    "slug": "sebi-extends-etf-norms-timeline-investors",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-08-30T09:22:45.877033",
     "title": "RBI Directions: What It Means for Your Bank Deposits",
     "description": "Understand RBI's latest actions on cooperative banks and how to safeguard your money. Learn about deposit insurance and smart banking practices.",
@@ -599,6 +558,47 @@
       "personal finance"
     ],
     "slug": "loan-prepayment-interest-credit-score-india",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-13T08:27:30.698708",
+    "title": "RBI Repo Rate Hike: What It Means for Your Finances",
+    "description": "Learn how the RBI's expected repo rate hikes could impact your loan EMIs and savings. Understand practical steps to manage your finances effectively.",
+    "url": "https://zentraai.in/blog/2026-09-13-rbi-repo-rate-hike-impact-on-salaried-finances.html",
+    "tags": [
+      "repo rate",
+      "EMI impact",
+      "personal finance"
+    ],
+    "slug": "rbi-repo-rate-hike-impact-on-salaried-finances",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-13T08:27:49.179374",
+    "title": "Hybrid Home Loans: Rate Certainty vs. Floating Rates",
+    "description": "Explore hybrid home loans for rate certainty. Learn how they work, compare fixed vs. floating rates, and decide if the premium is worth it for your finances.",
+    "url": "https://zentraai.in/blog/2026-09-13-hybrid-home-loans-fixed-vs-floating-rates.html",
+    "tags": [
+      "Home Loan",
+      "Personal Finance",
+      "Interest Rates"
+    ],
+    "slug": "hybrid-home-loans-fixed-vs-floating-rates",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-13T08:28:05.939922",
+    "title": "Foreign ETF Premiums: A Risk for Indian Investors",
+    "description": "Understand why foreign ETFs traded in India are seeing high premiums and the risks involved. Learn how to navigate these investments wisely.",
+    "url": "https://zentraai.in/blog/2026-09-13-foreign-etf-premiums-indian-investors-beware.html",
+    "tags": [
+      "Foreign ETFs",
+      "Investing India",
+      "Financial Planning",
+      "Market Premiums",
+      "Wealth Management"
+    ],
+    "slug": "foreign-etf-premiums-indian-investors-beware",
     "source": "Mint Money"
   }
 ]
