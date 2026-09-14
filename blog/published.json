@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-08-30T09:22:45.877033",
-    "title": "RBI Directions: What It Means for Your Bank Deposits",
-    "description": "Understand RBI's latest actions on cooperative banks and how to safeguard your money. Learn about deposit insurance and smart banking practices.",
-    "url": "https://zentraai.in/blog/2026-08-30-rbi-directions-ashok-sahakari-bank-deposits.html",
-    "tags": [
-      "RBI",
-      "Cooperative Banks",
-      "Financial Planning",
-      "Deposit Insurance",
-      "Personal Finance"
-    ],
-    "slug": "rbi-directions-ashok-sahakari-bank-deposits",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-08-30T09:23:03.563237",
-    "title": "SEBI's IPO Oversight: What Trafiksol Means For You",
-    "description": "Understand SEBI's role in IPOs and how regulatory scrutiny protects your investments. Learn key steps for due diligence before investing in new public offerings.",
-    "url": "https://zentraai.in/blog/2026-08-30-sebi-ipo-oversight-investor-protection.html",
-    "tags": [
-      "IPO",
-      "SEBI",
-      "Investor Education"
-    ],
-    "slug": "sebi-ipo-oversight-investor-protection",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-30T09:23:24.792155",
-    "title": "SEBI Extends ETF Norms Deadline: What It Means for You",
-    "description": "SEBI postponed new ETF trading rules. Learn how this impacts your investments, why understanding ETFs is crucial, and what steps you can take for financial growth.",
-    "url": "https://zentraai.in/blog/2026-08-30-sebi-extends-etf-norms-impact-investors.html",
-    "tags": [
-      "ETFs",
-      "SEBI",
-      "Investment"
-    ],
-    "slug": "sebi-extends-etf-norms-impact-investors",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-08-31T09:57:42.179557",
     "title": "RBI Directs Ashok Sahakari Bank: What It Means For You",
     "description": "Learn about RBI's directive on Ashok Sahakari Bank. Understand why such actions are taken and how to protect your savings in co-operative banks.",
@@ -599,6 +558,45 @@
       "Wealth Management"
     ],
     "slug": "foreign-etf-premiums-indian-investors-beware",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-14T09:08:24.025338",
+    "title": "Nasdaq Q50 ETF Premium: What Indian Investors Need to Know",
+    "description": "Learn why the Motilal Oswal Nasdaq Q50 ETF surged far above its NAV. Understand ETF premiums, liquidity risks, and how to invest smartly in international funds.",
+    "url": "https://zentraai.in/blog/2026-09-14-motilal-oswal-nasdaq-q50-etf-premium-explained.html",
+    "tags": [
+      "ETFs",
+      "International Investing",
+      "NAV Premium"
+    ],
+    "slug": "motilal-oswal-nasdaq-q50-etf-premium-explained",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-14T09:08:36.051203",
+    "title": "India's Wholesale Inflation Rises: Impact on Your Finances",
+    "description": "India's wholesale inflation accelerated in August. Learn what this means for your daily expenses and how salaried professionals can protect their purchasing power and savings.",
+    "url": "https://zentraai.in/blog/2026-09-14-india-wholesale-inflation-impact-salaried-finances.html",
+    "tags": [
+      "Inflation",
+      "Personal Finance India",
+      "Cost of Living"
+    ],
+    "slug": "india-wholesale-inflation-impact-salaried-finances",
+    "source": "ET Economy"
+  },
+  {
+    "date": "2026-09-14T09:09:01.603072",
+    "title": "Capital Gains Tax on Shares & MFs: Indian Investor Guide",
+    "description": "Understand capital gains tax on stock and mutual fund profits in India. Learn about short-term vs. long-term gains and how tax is calculated on your investments.",
+    "url": "https://zentraai.in/blog/2026-09-14-capital-gains-tax-shares-mutual-funds-india.html",
+    "tags": [
+      "Capital Gains Tax",
+      "Investment Planning",
+      "Indian Finance"
+    ],
+    "slug": "capital-gains-tax-shares-mutual-funds-india",
     "source": "Mint Money"
   }
 ]
