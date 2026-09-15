@@ -1,83 +1,5 @@
 [
   {
-    "date": "2026-08-31T09:57:42.179557",
-    "title": "RBI Directs Ashok Sahakari Bank: What It Means For You",
-    "description": "Learn about RBI's directive on Ashok Sahakari Bank. Understand why such actions are taken and how to protect your savings in co-operative banks.",
-    "url": "https://zentraai.in/blog/2026-08-31-rbi-ashok-sahakari-bank-directive-depositors.html",
-    "tags": [
-      "RBI",
-      "Banking",
-      "Depositor Safety"
-    ],
-    "slug": "rbi-ashok-sahakari-bank-directive-depositors",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-08-31T09:57:59.679565",
-    "title": "SEBI's Trafiksol IPO Order: What Investors Need to Know",
-    "description": "Learn how SEBI's final order on the Trafiksol ITS Technologies IPO reinforces investor protection. Understand the regulator's role and best practices for your IPO investments.",
-    "url": "https://zentraai.in/blog/2026-08-31-sebi-trafiksol-ipo-order-investor-protection.html",
-    "tags": [
-      "IPO",
-      "SEBI",
-      "Investor Protection"
-    ],
-    "slug": "sebi-trafiksol-ipo-order-investor-protection",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-08-31T09:58:25.791003",
-    "title": "SEBI Delays New ETF Trading Norms for Investors",
-    "description": "Understand SEBI's extended timeline for ETF trading rules. Learn how new norms for base price, price bands, and call auctions impact your ETF investments. Stay informed with HYT MONEY.",
-    "url": "https://zentraai.in/blog/2026-08-31-sebi-delays-etf-trading-norms-impact.html",
-    "tags": [
-      "ETFs",
-      "SEBI",
-      "Indian Investors"
-    ],
-    "slug": "sebi-delays-etf-trading-norms-impact",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-01T08:49:15.108191",
-    "title": "SEBI Action on Citrus Check Inns: Key Learnings",
-    "description": "Understand SEBI's action against Citrus Check Inns and how to protect your investments from unauthorized schemes. Learn key tips for financial safety for salaried professionals.",
-    "url": "https://zentraai.in/blog/2026-09-01-sebi-citrus-check-inns-investment-safety.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-citrus-check-inns-investment-safety",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-01T08:49:32.557526",
-    "title": "SEBI's DU Digital Action: Investor Safeguards for You",
-    "description": "Understand SEBI's recent action in the DU Digital case. Learn how market regulations protect investors and what steps you can take to safeguard your investments in the Indian stock market.",
-    "url": "https://zentraai.in/blog/2026-09-01-sebi-action-du-digital-case-investor-safety-lesson.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Indian Stock Market"
-    ],
-    "slug": "sebi-action-du-digital-case-investor-safety-lesson",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-01T08:49:46.891424",
-    "title": "SEBI's Recovery Order: Protecting Your Investments",
-    "description": "Understand SEBI's recent action in a trading irregularity case. Learn how regulatory bodies protect investors and what you can do to safeguard your hard-earned money.",
-    "url": "https://zentraai.in/blog/2026-09-01-sebi-investor-protection-market-integrity.html",
-    "tags": [
-      "SEBI",
-      "investor education",
-      "market manipulation"
-    ],
-    "slug": "sebi-investor-protection-market-integrity",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-09-02T08:02:03.553028",
     "title": "India's Q1 FY27 Current Account Deficit Rises",
     "description": "Understand India's Q1 FY27 current account deficit increase. Learn how BoP affects the economy and your personal finances. Get practical tips for financial planning.",
@@ -598,5 +520,44 @@
     ],
     "slug": "capital-gains-tax-shares-mutual-funds-india",
     "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-15T08:50:29.842198",
+    "title": "Personal Loan Rates Sept 2026: Compare Bank Offers",
+    "description": "Discover current personal loan interest rates from top banks like HDFC, Axis, ICICI. Learn to compare EMIs, fees, and make informed borrowing decisions.",
+    "url": "https://zentraai.in/blog/2026-09-15-personal-loan-rates-sept-2026-hyt-money.html",
+    "tags": [
+      "personal loan",
+      "interest rates",
+      "financial planning"
+    ],
+    "slug": "personal-loan-rates-sept-2026-hyt-money",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-15T08:50:59.624185",
+    "title": "Small-Cap Funds: Navigating Inflows and Volatility Risks",
+    "description": "Small-cap funds attract strong inflows but face inherent volatility. Learn why corrections are common and how to build a resilient investment strategy.",
+    "url": "https://zentraai.in/blog/2026-09-15-small-cap-funds-inflows-volatility-risks-india.html",
+    "tags": [
+      "small-cap funds",
+      "investment strategy",
+      "market volatility"
+    ],
+    "slug": "small-cap-funds-inflows-volatility-risks-india",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-15T08:51:21.552853",
+    "title": "India's Households Shift to Market Investments",
+    "description": "Indian households are shifting savings to market investments. Learn why this trend is crucial for your financial future and practical steps to participate smartly.",
+    "url": "https://zentraai.in/blog/2026-09-15-india-market-investing-boom-salaried-professionals.html",
+    "tags": [
+      "investing",
+      "mutual funds",
+      "financial planning"
+    ],
+    "slug": "india-market-investing-boom-salaried-professionals",
+    "source": "ET Economy"
   }
 ]
