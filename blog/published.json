@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-09-02T08:02:03.553028",
-    "title": "India's Q1 FY27 Current Account Deficit Rises",
-    "description": "Understand India's Q1 FY27 current account deficit increase. Learn how BoP affects the economy and your personal finances. Get practical tips for financial planning.",
-    "url": "https://zentraai.in/blog/2026-09-02-india-q1-fy27-current-account-deficit-rises.html",
-    "tags": [
-      "Indian Economy",
-      "Personal Finance",
-      "Financial Planning"
-    ],
-    "slug": "india-q1-fy27-current-account-deficit-rises",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-09-02T08:02:23.897082",
-    "title": "RBI Executive Director Appointment Explained",
-    "description": "Understand how RBI's leadership changes, like Shri Suman Ray's ED appointment, indirectly influence India's financial stability and your personal finances.",
-    "url": "https://zentraai.in/blog/2026-09-02-rbi-executive-director-appointment-impact.html",
-    "tags": [
-      "RBI",
-      "Financial Literacy",
-      "Indian Economy",
-      "Personal Finance",
-      "Banking"
-    ],
-    "slug": "rbi-executive-director-appointment-impact",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-09-02T08:02:38.652019",
-    "title": "SEBI's Remittance Order: Protecting Your Investments",
-    "description": "Learn why SEBI's recent remittance order against market irregularities is crucial for safeguarding your stock market investments. Understand how regulatory actions protect your wealth.",
-    "url": "https://zentraai.in/blog/2026-09-02-sebi-remittance-order-investor-safety-india.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Stock Market India"
-    ],
-    "slug": "sebi-remittance-order-investor-safety-india",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-09-03T08:11:59.852249",
     "title": "SIP Power: 16 MFs Hit 20%+ Returns Over 10 Years",
     "description": "Understand how consistent SIPs in specific mutual funds can build significant wealth over the long term. Learn key strategies for your financial future.",
@@ -559,5 +518,44 @@
     ],
     "slug": "india-market-investing-boom-salaried-professionals",
     "source": "ET Economy"
+  },
+  {
+    "date": "2026-09-16T08:44:16.414703",
+    "title": "UPI MDR: Impact on SIPs, Insurance, and AutoPay",
+    "description": "Learn how UPI MDR charges from October 15 might impact your mutual fund SIPs, insurance premiums, and other AutoPay. Stay informed about your finances.",
+    "url": "https://zentraai.in/blog/2026-09-16-upi-mdr-impact-sips-autopay-indian-salaried.html",
+    "tags": [
+      "UPI",
+      "SIP",
+      "Financial Planning"
+    ],
+    "slug": "upi-mdr-impact-sips-autopay-indian-salaried",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-16T08:44:36.559219",
+    "title": "CBIC Simplifies EMI Scheme for Indian Manufacturers",
+    "description": "Learn how the CBIC's simplified EMI scheme for manufacturers impacts India's economy, boosting domestic production and potentially influencing your financial landscape.",
+    "url": "https://zentraai.in/blog/2026-09-16-cbic-simplifies-emi-scheme-for-manufacturers.html",
+    "tags": [
+      "Indian Economy",
+      "Manufacturing",
+      "Customs Duty"
+    ],
+    "slug": "cbic-simplifies-emi-scheme-for-manufacturers",
+    "source": "ET Economy"
+  },
+  {
+    "date": "2026-09-16T08:44:58.224038",
+    "title": "UPI MDR Changes: What Indian Users Need to Know",
+    "description": "Understand NPCI's new UPI MDR framework from Oct 15. Learn about the 0.4% charge on select merchant transactions above \u20b92,000 and why consumer payments remain free.",
+    "url": "https://zentraai.in/blog/2026-09-16-upi-mdr-changes-india-what-users-need-to-know.html",
+    "tags": [
+      "UPI",
+      "digital payments",
+      "personal finance"
+    ],
+    "slug": "upi-mdr-changes-india-what-users-need-to-know",
+    "source": "Mint Money"
   }
 ]
