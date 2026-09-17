@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-03T08:11:59.852249",
-    "title": "SIP Power: 16 MFs Hit 20%+ Returns Over 10 Years",
-    "description": "Understand how consistent SIPs in specific mutual funds can build significant wealth over the long term. Learn key strategies for your financial future.",
-    "url": "https://zentraai.in/blog/2026-09-03-sip-power-mutual-fund-wealth-creation.html",
-    "tags": [
-      "SIP",
-      "Mutual Funds",
-      "Wealth Creation"
-    ],
-    "slug": "sip-power-mutual-fund-wealth-creation",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-09-03T08:12:13.205631",
-    "title": "India's GDP Growth: Understanding Economic Indicators",
-    "description": "Learn about India's GDP growth debate, why economists like Neelkanth Mishra affirm strong indicators, and what it means for your personal finances and career prospects.",
-    "url": "https://zentraai.in/blog/2026-09-03-india-gdp-growth-economic-indicators-explained.html",
-    "tags": [
-      "India Economy",
-      "GDP Growth",
-      "Personal Finance"
-    ],
-    "slug": "india-gdp-growth-economic-indicators-explained",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-09-03T08:12:36.026973",
-    "title": "Travel Insurance: Read Fine Print to Avoid Disappointment",
-    "description": "Learn how travel insurance fine print can lead to uncovered claims. Understand common exclusions and practical steps to ensure your policy offers real protection for your next trip.",
-    "url": "https://zentraai.in/blog/2026-09-03-travel-insurance-fine-print-exclusions-india.html",
-    "tags": [
-      "Travel Insurance",
-      "Financial Planning",
-      "Insurance Tips"
-    ],
-    "slug": "travel-insurance-fine-print-exclusions-india",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-09-04T08:06:44.546123",
     "title": "SEBI Action: Demat and MF Folio Attachment",
     "description": "Understand SEBI's power to protect investors. Learn how regulatory actions like demat account attachments impact market safety and your investments.",
@@ -557,5 +518,44 @@
     ],
     "slug": "upi-mdr-changes-india-what-users-need-to-know",
     "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-17T08:47:52.136128",
+    "title": "SEBI Action on Excel Castronics: Upholding Market Integrity",
+    "description": "Understand SEBI's role in market integrity and how its actions protect investors. Learn key steps to safeguard your investments in the Indian stock market.",
+    "url": "https://zentraai.in/blog/2026-09-17-sebi-compliance-excel-castronics-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Indian Stock Market"
+    ],
+    "slug": "sebi-compliance-excel-castronics-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-17T08:48:15.534329",
+    "title": "SEBI's Role in Protecting Your Investments in India",
+    "description": "Understand how SEBI's continuous regulatory actions safeguard Indian financial markets. Learn practical steps to protect your investments and build wealth securely.",
+    "url": "https://zentraai.in/blog/2026-09-17-sebi-investor-protection-market-compliance.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Education"
+    ],
+    "slug": "sebi-investor-protection-market-compliance",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-17T08:48:44.280530",
+    "title": "SEBI Enforces Recovery in Excel Castronics Case",
+    "description": "Understand SEBI's role in enforcing market compliance and protecting investors through actions like the Excel Castronics case. Learn how SEBI safeguards your investments.",
+    "url": "https://zentraai.in/blog/2026-09-17-sebi-enforces-compliance-excel-castronics-case.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Compliance"
+    ],
+    "slug": "sebi-enforces-compliance-excel-castronics-case",
+    "source": "SEBI"
   }
 ]
