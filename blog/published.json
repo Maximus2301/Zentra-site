@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-04T08:06:44.546123",
-    "title": "SEBI Action: Demat and MF Folio Attachment",
-    "description": "Understand SEBI's power to protect investors. Learn how regulatory actions like demat account attachments impact market safety and your investments.",
-    "url": "https://zentraai.in/blog/2026-09-04-sebi-action-demat-mf-folio-attachment-add-life.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Regulation"
-    ],
-    "slug": "sebi-action-demat-mf-folio-attachment-add-life",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-04T08:06:57.011489",
-    "title": "SEBI Reviews Derivative Settlement Price Methodology",
-    "description": "SEBI is reviewing derivative settlement methods. Learn what this means for your investments, portfolio transparency, and how to stay informed as a salaried professional.",
-    "url": "https://zentraai.in/blog/2026-09-04-sebi-derivative-settlement-cas-review.html",
-    "tags": [
-      "SEBI",
-      "Derivatives",
-      "Financial Planning"
-    ],
-    "slug": "sebi-derivative-settlement-cas-review",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-04T08:07:21.630248",
-    "title": "SEBI Action Against Add Life Pharma: Investor Safeguards",
-    "description": "Learn how SEBI's decisive recovery action against Add Life Pharma Ltd protects Indian investors. Understand your rights and key steps to safeguard your hard-earned savings in the dynamic market.",
-    "url": "https://zentraai.in/blog/2026-09-04-sebi-action-add-life-pharma-investor-protection.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Planning"
-    ],
-    "slug": "sebi-action-add-life-pharma-investor-protection",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-09-05T07:46:59.427531",
     "title": "SEBI-ESMA MoU Strengthens Indian Market Safety",
     "description": "SEBI's MoU with ESMA enhances financial market stability by improving cooperation on Central Counterparties (CCPs). Discover what this means for your financial security and investments in India.",
@@ -557,5 +518,44 @@
     ],
     "slug": "sebi-enforces-compliance-excel-castronics-case",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-09-18T08:23:33.359483",
+    "title": "SEBI Action: Protecting Your Investments from Fraud",
+    "description": "Learn how SEBI's actions protect investors from unauthorized operators like Investmart Prop. Understand due diligence to safeguard your financial future.",
+    "url": "https://zentraai.in/blog/2026-09-18-sebi-investor-protection-due-diligence.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Fraud"
+    ],
+    "slug": "sebi-investor-protection-due-diligence",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-18T08:23:49.948612",
+    "title": "India's Strong GDP Growth: What It Means for You",
+    "description": "Learn how Jefferies' optimistic forecast for India's economic growth translates to opportunities for Indian salaried professionals in their career and finances.",
+    "url": "https://zentraai.in/blog/2026-09-18-india-gdp-growth-impact-on-your-finances.html",
+    "tags": [
+      "Indian Economy",
+      "Personal Finance",
+      "Career Growth"
+    ],
+    "slug": "india-gdp-growth-impact-on-your-finances",
+    "source": "ET Economy"
+  },
+  {
+    "date": "2026-09-18T08:24:11.650565",
+    "title": "India's Economy: RBI Hikes & Your Finances",
+    "description": "Learn how potential RBI interest rate hikes, as suggested by JPMorgan, could impact your loans, savings, and investments. Prepare your personal finances.",
+    "url": "https://zentraai.in/blog/2026-09-18-india-rbi-rate-hikes-impact-your-money.html",
+    "tags": [
+      "RBI",
+      "Personal Finance",
+      "Interest Rates"
+    ],
+    "slug": "india-rbi-rate-hikes-impact-your-money",
+    "source": "ET Economy"
   }
 ]
