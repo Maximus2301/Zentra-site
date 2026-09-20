@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-06T08:01:15.681537",
-    "title": "SEBI-ESMA MoU: Strengthening Market Safety & Stability",
-    "description": "Learn how SEBI's MoU with ESMA on Central Counterparties enhances financial market stability and safeguards your investments in India. Understand its importance for long-term financial security.",
-    "url": "https://zentraai.in/blog/2026-09-06-sebi-esma-mou-ccp-market-safety-india.html",
-    "tags": [
-      "SEBI",
-      "Financial Stability",
-      "Investment Safety"
-    ],
-    "slug": "sebi-esma-mou-ccp-market-safety-india",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-06T08:01:37.701107",
-    "title": "Mutual Fund NAV: Don't Let \u20b910 Fool You",
-    "description": "Understand why a mutual fund's Net Asset Value (NAV) doesn't indicate its true value or potential returns. Learn to choose funds wisely.",
-    "url": "https://zentraai.in/blog/2026-09-06-mutual-fund-nav-illusion-hyt-money.html",
-    "tags": [
-      "Mutual Funds",
-      "NAV",
-      "Investment Tips"
-    ],
-    "slug": "mutual-fund-nav-illusion-hyt-money",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-09-06T08:01:52.482635",
-    "title": "AIS Expansion: GST, Overseas Investments & IT Returns",
-    "description": "Learn how the Income Tax Department's expanded Annual Information Statement (AIS) now includes GST, foreign transactions, and off-market deals, impacting your financial reporting.",
-    "url": "https://zentraai.in/blog/2026-09-06-income-tax-ais-expanded-gst-overseas-investments.html",
-    "tags": [
-      "Income Tax",
-      "AIS",
-      "Financial Planning"
-    ],
-    "slug": "income-tax-ais-expanded-gst-overseas-investments",
-    "source": "ET Economy"
-  },
-  {
     "date": "2026-09-07T08:31:45.941954",
     "title": "SEBI, ESMA Bolster Market Safety with New MoU",
     "description": "Understand how SEBI's agreement with ESMA strengthens the safety of your investments. Learn why global cooperation is vital for financial stability in India's markets.",
@@ -555,5 +516,44 @@
     ],
     "slug": "india-new-zealand-fta-economic-impact-finances",
     "source": "ET Economy"
+  },
+  {
+    "date": "2026-09-20T08:44:07.867812",
+    "title": "SEBI Remittance Order: Investor Protection Insights",
+    "description": "Understand SEBI's investor protection mechanisms through a recent remittance order. Learn how regulators safeguard your investments in India.",
+    "url": "https://zentraai.in/blog/2026-09-20-sebi-remittance-order-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Education"
+    ],
+    "slug": "sebi-remittance-order-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-20T08:44:17.915483",
+    "title": "Invesco Global FoFs Reopen: What Indian Investors Need to Know",
+    "description": "Learn about Invesco's international fund reopenings, daily limits, and how global diversification can benefit your portfolio as an Indian salaried professional.",
+    "url": "https://zentraai.in/blog/2026-09-20-invesco-global-fofs-reopen-indian-investors.html",
+    "tags": [
+      "international funds",
+      "mutual funds india",
+      "financial planning"
+    ],
+    "slug": "invesco-global-fofs-reopen-indian-investors",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-20T08:44:37.307414",
+    "title": "Digital Gold: RBI/SEBI Oversight & Physical Backing",
+    "description": "Understand how proposed RBI and SEBI oversight for digital gold, including mandatory physical backing, could impact your investments and enhance security for Indian salaried professionals.",
+    "url": "https://zentraai.in/blog/2026-09-20-digital-gold-rbi-sebi-oversight-physical-backing.html",
+    "tags": [
+      "Digital Gold",
+      "Investor Protection",
+      "Gold Investment"
+    ],
+    "slug": "digital-gold-rbi-sebi-oversight-physical-backing",
+    "source": "Mint Money"
   }
 ]
