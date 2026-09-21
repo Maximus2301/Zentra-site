@@ -1,47 +1,5 @@
 [
   {
-    "date": "2026-09-07T08:31:45.941954",
-    "title": "SEBI, ESMA Bolster Market Safety with New MoU",
-    "description": "Understand how SEBI's agreement with ESMA strengthens the safety of your investments. Learn why global cooperation is vital for financial stability in India's markets.",
-    "url": "https://zentraai.in/blog/2026-09-07-sebi-esma-mou-bolsters-india-market-safety.html",
-    "tags": [
-      "SEBI",
-      "Financial Regulation",
-      "Investment Safety"
-    ],
-    "slug": "sebi-esma-mou-bolsters-india-market-safety",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-07T08:31:57.078374",
-    "title": "Mid-cap Funds: Understanding SIP Returns and Performance Gaps",
-    "description": "Learn why only a few mid-cap funds delivered strong SIP returns over 3 years and what this means for your investment strategy.",
-    "url": "https://zentraai.in/blog/2026-09-07-midcap-sip-returns-performance-gaps.html",
-    "tags": [
-      "mutual funds",
-      "SIP investing",
-      "midcap funds"
-    ],
-    "slug": "midcap-sip-returns-performance-gaps",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-09-07T08:32:16.800446",
-    "title": "Tax Regime Mistake: ITAT Gives Relief, Lessons for You",
-    "description": "Learn how a tax filing error led to a \u20b91.23 lakh demand for a Bengaluru taxpayer. Understand why verifying your ITR and tax regime choice is crucial.",
-    "url": "https://zentraai.in/blog/2026-09-07-tax-regime-mistake-itat-relief-salaried-it-return.html",
-    "tags": [
-      "Income Tax",
-      "Tax Filing",
-      "New Tax Regime",
-      "Old Tax Regime",
-      "ITR",
-      "Tax Planning"
-    ],
-    "slug": "tax-regime-mistake-itat-relief-salaried-it-return",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-09-08T08:14:10.228968",
     "title": "SIPs: Why Fixed Investments Miss Long-Term Goals",
     "description": "Learn why a flat SIP isn't enough for long-term wealth. Discover how income and inflation impact your investments and how to adjust your SIPs effectively.",
@@ -554,6 +512,45 @@
       "Gold Investment"
     ],
     "slug": "digital-gold-rbi-sebi-oversight-physical-backing",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-21T09:10:11.126498",
+    "title": "SEBI Action: Verify Your Investment Advisors",
+    "description": "Learn from SEBI's recent remittance order. Understand why checking SEBI registration of investment advisors is crucial for your financial security.",
+    "url": "https://zentraai.in/blog/2026-09-21-sebi-remittance-order-verify-advisors.html",
+    "tags": [
+      "SEBI",
+      "investor protection",
+      "financial planning"
+    ],
+    "slug": "sebi-remittance-order-verify-advisors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-21T09:10:32.453525",
+    "title": "MF Portfolio Risk Shifts: What Indian Investors Track",
+    "description": "Market shifts can alter your mutual fund portfolio's risk silently. Learn to track asset allocation, concentration, and overlap through regular reviews to keep investments aligned with your goals.",
+    "url": "https://zentraai.in/blog/2026-09-21-mf-portfolio-risk-changes-asset-allocation-review.html",
+    "tags": [
+      "mutual funds",
+      "portfolio management",
+      "asset allocation"
+    ],
+    "slug": "mf-portfolio-risk-changes-asset-allocation-review",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-09-21T09:10:51.859304",
+    "title": "US Fed Hikes & Debt Funds: What Indian Investors Need to Know",
+    "description": "Understand how US Fed rate hikes affect your debt mutual fund investments in India. Learn about potential volatility and emerging opportunities for long-term growth.",
+    "url": "https://zentraai.in/blog/2026-09-21-us-fed-rate-hikes-debt-funds-indian-investors.html",
+    "tags": [
+      "debt funds",
+      "interest rates",
+      "indian finance"
+    ],
+    "slug": "us-fed-rate-hikes-debt-funds-indian-investors",
     "source": "Mint Money"
   }
 ]
