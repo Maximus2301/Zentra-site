@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-09T08:17:27.101799",
-    "title": "RBI Inflation Survey: Impact on Your Finances",
-    "description": "Understand why the RBI's Inflation Expectations Survey matters for your salary, savings, and investments. Learn practical steps to protect your finances from rising prices.",
-    "url": "https://zentraai.in/blog/2026-09-09-rbi-inflation-survey-impact-your-finances.html",
-    "tags": [
-      "inflation",
-      "RBI",
-      "personal finance"
-    ],
-    "slug": "rbi-inflation-survey-impact-your-finances",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-09-09T08:17:44.502048",
-    "title": "RBI's Rural Confidence Survey: Impact on Indian Economy",
-    "description": "Understand the RBI's Rural Consumer Confidence Survey. Learn how rural sentiment impacts India's economy and your personal finances as a salaried professional.",
-    "url": "https://zentraai.in/blog/2026-09-09-rbi-rural-consumer-confidence-survey-impact.html",
-    "tags": [
-      "RBI",
-      "Indian Economy",
-      "Personal Finance"
-    ],
-    "slug": "rbi-rural-consumer-confidence-survey-impact",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-09-09T08:18:01.554137",
-    "title": "SEBI Recovery Order: Investor Protection & Compliance",
-    "description": "Learn about SEBI's recent remittance order, its role in investor protection, and practical steps Indian professionals can take to safeguard their investments.",
-    "url": "https://zentraai.in/blog/2026-09-09-sebi-recovery-order-investor-protection-india.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Due Diligence"
-    ],
-    "slug": "sebi-recovery-order-investor-protection-india",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-09-10T08:16:41.464286",
     "title": "SEBI Action on Illiquid Stock Options Trading at BSE",
     "description": "Understand SEBI's recent action against illiquid stock options trading. Learn why liquidity matters for your investments and how to safeguard your portfolio from such risks.",
@@ -551,6 +512,45 @@
       "Market Regulation"
     ],
     "slug": "sebi-recovery-certificate-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-23T08:44:21.669739",
+    "title": "SEBI Action: Market Integrity & Investor Protection",
+    "description": "Understand SEBI's role in market integrity. Learn how regulatory actions like recovery certificates protect Indian investors and what steps to take for safer investments.",
+    "url": "https://zentraai.in/blog/2026-09-23-sebi-action-market-integrity-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulation"
+    ],
+    "slug": "sebi-action-market-integrity-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-23T08:44:39.891620",
+    "title": "SEBI action against defaulter: What it means for investors",
+    "description": "Understand SEBI's role in market regulation and how actions against defaulters protect your investments. Learn practical steps to safeguard your finances as a salaried professional.",
+    "url": "https://zentraai.in/blog/2026-09-23-sebi-defaulter-recovery-certificate-investor-safet.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-defaulter-recovery-certificate-investor-safet",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-23T08:44:51.708316",
+    "title": "SEBI's Recovery Certificate: Understanding Investor Safety",
+    "description": "Learn about SEBI's role in market regulation, the implications of a recovery certificate for defaulters, and how to safeguard your investments in India.",
+    "url": "https://zentraai.in/blog/2026-09-23-sebi-recovery-certificate-investor-safety-india.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-recovery-certificate-investor-safety-india",
     "source": "SEBI"
   }
 ]
