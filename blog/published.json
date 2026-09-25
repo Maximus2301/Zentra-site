@@ -1,48 +1,5 @@
 [
   {
-    "date": "2026-09-11T08:12:00.471116",
-    "title": "SEBI Remittance Order: Lessons for Indian Investors",
-    "description": "Learn from a recent SEBI recovery order targeting an individual investor. Understand market rules, avoid pitfalls, and protect your investments.",
-    "url": "https://zentraai.in/blog/2026-09-11-sebi-recovery-order-investor-lessons.html",
-    "tags": [
-      "SEBI",
-      "Investor Education",
-      "Market Regulations",
-      "Financial Planning",
-      "Indian Stock Market"
-    ],
-    "slug": "sebi-recovery-order-investor-lessons",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-11T08:12:17.490111",
-    "title": "SEBI Recovery Order: Market Compliance for Investors",
-    "description": "Learn why SEBI issues recovery orders and how market regulations protect investors. Understand the importance of compliance for your trading activities.",
-    "url": "https://zentraai.in/blog/2026-09-11-sebi-recovery-order-market-compliance-investors.html",
-    "tags": [
-      "SEBI",
-      "Market Regulation",
-      "Investor Education"
-    ],
-    "slug": "sebi-recovery-order-market-compliance-investors",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-11T08:12:31.440321",
-    "title": "SEBI Recovery Certificates: Understanding Investor Risk",
-    "description": "Learn what a SEBI Recovery Certificate signifies and how it impacts investors. Understand steps to protect your investments and identify red flags in companies.",
-    "url": "https://zentraai.in/blog/2026-09-11-sebi-recovery-certificate-investor-protection.html",
-    "tags": [
-      "investor protection",
-      "SEBI",
-      "financial awareness",
-      "investment risks",
-      "indian finance"
-    ],
-    "slug": "sebi-recovery-certificate-investor-protection",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-09-12T08:02:03.267535",
     "title": "Hawkins Cookers FD: Rates, Details & Your Options",
     "description": "Hawkins Cookers FD offers up to 8% interest. Learn how company FDs work, their risks vs. rewards, and smart ways to evaluate them for your savings.",
@@ -551,6 +508,47 @@
       "Financial Literacy"
     ],
     "slug": "sebi-ipo-irregularity-attachment-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-25T08:58:47.686526",
+    "title": "SEBI Board Meeting 2026: Enhancing Investor Protection",
+    "description": "Understand key SEBI decisions from September 2026 and how they strengthen your investments, improve market transparency, and safeguard your financial future.",
+    "url": "https://zentraai.in/blog/2026-09-25-sebi-board-meeting-2026-investor-protection-update.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Planning",
+      "Indian Investments",
+      "Market Transparency"
+    ],
+    "slug": "sebi-board-meeting-2026-investor-protection-update",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-25T08:59:06.006898",
+    "title": "SEBI Remittance Order: What it Means for Investors",
+    "description": "Understand how SEBI's regulatory actions protect your investments. Learn practical steps to safeguard your portfolio from market misconduct and ensure financial safety.",
+    "url": "https://zentraai.in/blog/2026-09-25-sebi-remittance-order-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulation"
+    ],
+    "slug": "sebi-remittance-order-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-25T08:59:21.674297",
+    "title": "SEBI Action on Trading: Lessons for Indian Investors",
+    "description": "Understand SEBI's recent remittance order against an individual's trading activity. Learn why market regulations are crucial for investor protection and how to safeguard your investments.",
+    "url": "https://zentraai.in/blog/2026-09-25-sebi-order-trading-activity-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Stock Market India"
+    ],
+    "slug": "sebi-order-trading-activity-investor-safety",
     "source": "SEBI"
   }
 ]
