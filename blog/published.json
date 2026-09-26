@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-09-12T08:02:03.267535",
-    "title": "Hawkins Cookers FD: Rates, Details & Your Options",
-    "description": "Hawkins Cookers FD offers up to 8% interest. Learn how company FDs work, their risks vs. rewards, and smart ways to evaluate them for your savings.",
-    "url": "https://zentraai.in/blog/2026-09-12-hawkins-cookers-fd-rates-details-investing.html",
-    "tags": [
-      "Fixed Deposits",
-      "Company FDs",
-      "Investment Options",
-      "Financial Planning",
-      "Indian Finance"
-    ],
-    "slug": "hawkins-cookers-fd-rates-details-investing",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-09-12T08:02:34.721393",
-    "title": "High CIBIL Score But Home Loan Rejected? Understand Why",
-    "description": "A high CIBIL score isn't enough for a home loan in India. Discover what lenders *really* assess: income stability, existing EMIs, property value, and documentation.",
-    "url": "https://zentraai.in/blog/2026-09-12-high-cibil-score-home-loan-rejection-what-to-know.html",
-    "tags": [
-      "Home Loan",
-      "CIBIL Score",
-      "Personal Finance"
-    ],
-    "slug": "high-cibil-score-home-loan-rejection-what-to-know",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-09-12T08:02:54.152692",
-    "title": "Loan Prepayment: Impact on Interest & Credit",
-    "description": "Considering prepaying your loan? Learn how it affects your interest outgo, EMIs, and why consistent EMI payments are crucial for your credit score.",
-    "url": "https://zentraai.in/blog/2026-09-12-loan-prepayment-interest-credit-score-india.html",
-    "tags": [
-      "loan management",
-      "debt repayment",
-      "personal finance"
-    ],
-    "slug": "loan-prepayment-interest-credit-score-india",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-09-13T08:27:30.698708",
     "title": "RBI Repo Rate Hike: What It Means for Your Finances",
     "description": "Learn how the RBI's expected repo rate hikes could impact your loan EMIs and savings. Understand practical steps to manage your finances effectively.",
@@ -550,5 +509,44 @@
     ],
     "slug": "sebi-order-trading-activity-investor-safety",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-09-26T08:45:29.368032",
+    "title": "RBI Sets Government's WMA Limit at \u20b950,000 Crore",
+    "description": "Understand RBI's Ways and Means Advances (WMA) for the government and how it subtly influences India's economy and your personal finances.",
+    "url": "https://zentraai.in/blog/2026-09-26-rbi-wma-limit-government-finance-india.html",
+    "tags": [
+      "RBI",
+      "Government Finance",
+      "Personal Finance"
+    ],
+    "slug": "rbi-wma-limit-government-finance-india",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-09-26T08:45:48.137771",
+    "title": "RBI Bulletin Sept 2026: Economy & Your Finances",
+    "description": "Learn what the RBI's September 2026 Bulletin means for India's economy, private investment, and your personal finances. Understand key economic trends.",
+    "url": "https://zentraai.in/blog/2026-09-26-rbi-sept-2026-bulletin-economy-finances.html",
+    "tags": [
+      "RBI Bulletin",
+      "Personal Finance India",
+      "Economic Outlook"
+    ],
+    "slug": "rbi-sept-2026-bulletin-economy-finances",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-09-26T08:46:06.037435",
+    "title": "RBI Releases G-Sec Issuance Calendar: Plan Your Investments",
+    "description": "RBI's G-Sec issuance calendar offers transparency for investors. Learn how this move impacts your financial planning and provides stable investment opportunities in government bonds.",
+    "url": "https://zentraai.in/blog/2026-09-26-rbi-g-sec-calendar-investment-planning.html",
+    "tags": [
+      "RBI",
+      "Government Securities",
+      "Financial Planning"
+    ],
+    "slug": "rbi-g-sec-calendar-investment-planning",
+    "source": "RBI"
   }
 ]
