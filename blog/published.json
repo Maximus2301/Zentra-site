@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-09-13T08:27:30.698708",
-    "title": "RBI Repo Rate Hike: What It Means for Your Finances",
-    "description": "Learn how the RBI's expected repo rate hikes could impact your loan EMIs and savings. Understand practical steps to manage your finances effectively.",
-    "url": "https://zentraai.in/blog/2026-09-13-rbi-repo-rate-hike-impact-on-salaried-finances.html",
-    "tags": [
-      "repo rate",
-      "EMI impact",
-      "personal finance"
-    ],
-    "slug": "rbi-repo-rate-hike-impact-on-salaried-finances",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-09-13T08:27:49.179374",
-    "title": "Hybrid Home Loans: Rate Certainty vs. Floating Rates",
-    "description": "Explore hybrid home loans for rate certainty. Learn how they work, compare fixed vs. floating rates, and decide if the premium is worth it for your finances.",
-    "url": "https://zentraai.in/blog/2026-09-13-hybrid-home-loans-fixed-vs-floating-rates.html",
-    "tags": [
-      "Home Loan",
-      "Personal Finance",
-      "Interest Rates"
-    ],
-    "slug": "hybrid-home-loans-fixed-vs-floating-rates",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-09-13T08:28:05.939922",
-    "title": "Foreign ETF Premiums: A Risk for Indian Investors",
-    "description": "Understand why foreign ETFs traded in India are seeing high premiums and the risks involved. Learn how to navigate these investments wisely.",
-    "url": "https://zentraai.in/blog/2026-09-13-foreign-etf-premiums-indian-investors-beware.html",
-    "tags": [
-      "Foreign ETFs",
-      "Investing India",
-      "Financial Planning",
-      "Market Premiums",
-      "Wealth Management"
-    ],
-    "slug": "foreign-etf-premiums-indian-investors-beware",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-09-14T09:08:24.025338",
     "title": "Nasdaq Q50 ETF Premium: What Indian Investors Need to Know",
     "description": "Learn why the Motilal Oswal Nasdaq Q50 ETF surged far above its NAV. Understand ETF premiums, liquidity risks, and how to invest smartly in international funds.",
@@ -547,6 +506,45 @@
       "Financial Planning"
     ],
     "slug": "rbi-g-sec-calendar-investment-planning",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-09-27T09:25:29.608016",
+    "title": "RBI's WMA Limit: Understanding Government Finances",
+    "description": "Learn how the RBI's Ways and Means Advances (WMA) limit for the government impacts India's economy and your personal finances. Understand key financial stability factors.",
+    "url": "https://zentraai.in/blog/2026-09-27-rbi-wma-limit-government-finances-explained.html",
+    "tags": [
+      "Personal Finance",
+      "Indian Economy",
+      "RBI"
+    ],
+    "slug": "rbi-wma-limit-government-finances-explained",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-09-27T09:25:52.324965",
+    "title": "RBI Bulletin Sept 2026: Economy & Investment Outlook",
+    "description": "The RBI's September 2026 Bulletin provides key insights into India's economy and corporate investment. Understand how these reports impact your financial planning and future wealth.",
+    "url": "https://zentraai.in/blog/2026-09-27-rbi-bulletin-sept-2026-economy-investment-impact.html",
+    "tags": [
+      "RBI",
+      "Indian Economy",
+      "Financial Planning"
+    ],
+    "slug": "rbi-bulletin-sept-2026-economy-investment-impact",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-09-27T09:26:01.952706",
+    "title": "RBI G-Sec Calendar: Plan Your Investments with Transparency",
+    "description": "The RBI released its G-Sec issuance calendar. Learn why this transparency matters for your investment planning and how to consider government bonds for stability.",
+    "url": "https://zentraai.in/blog/2026-09-27-rbi-gsec-calendar-investment-planning.html",
+    "tags": [
+      "Government Securities",
+      "Investment Planning",
+      "RBI"
+    ],
+    "slug": "rbi-gsec-calendar-investment-planning",
     "source": "RBI"
   }
 ]
