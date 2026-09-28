@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-14T09:08:24.025338",
-    "title": "Nasdaq Q50 ETF Premium: What Indian Investors Need to Know",
-    "description": "Learn why the Motilal Oswal Nasdaq Q50 ETF surged far above its NAV. Understand ETF premiums, liquidity risks, and how to invest smartly in international funds.",
-    "url": "https://zentraai.in/blog/2026-09-14-motilal-oswal-nasdaq-q50-etf-premium-explained.html",
-    "tags": [
-      "ETFs",
-      "International Investing",
-      "NAV Premium"
-    ],
-    "slug": "motilal-oswal-nasdaq-q50-etf-premium-explained",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-09-14T09:08:36.051203",
-    "title": "India's Wholesale Inflation Rises: Impact on Your Finances",
-    "description": "India's wholesale inflation accelerated in August. Learn what this means for your daily expenses and how salaried professionals can protect their purchasing power and savings.",
-    "url": "https://zentraai.in/blog/2026-09-14-india-wholesale-inflation-impact-salaried-finances.html",
-    "tags": [
-      "Inflation",
-      "Personal Finance India",
-      "Cost of Living"
-    ],
-    "slug": "india-wholesale-inflation-impact-salaried-finances",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-09-14T09:09:01.603072",
-    "title": "Capital Gains Tax on Shares & MFs: Indian Investor Guide",
-    "description": "Understand capital gains tax on stock and mutual fund profits in India. Learn about short-term vs. long-term gains and how tax is calculated on your investments.",
-    "url": "https://zentraai.in/blog/2026-09-14-capital-gains-tax-shares-mutual-funds-india.html",
-    "tags": [
-      "Capital Gains Tax",
-      "Investment Planning",
-      "Indian Finance"
-    ],
-    "slug": "capital-gains-tax-shares-mutual-funds-india",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-09-15T08:50:29.842198",
     "title": "Personal Loan Rates Sept 2026: Compare Bank Offers",
     "description": "Discover current personal loan interest rates from top banks like HDFC, Axis, ICICI. Learn to compare EMIs, fees, and make informed borrowing decisions.",
@@ -545,6 +506,45 @@
       "RBI"
     ],
     "slug": "rbi-gsec-calendar-investment-planning",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-09-28T10:01:30.011324",
+    "title": "RBI's WMA Limit Explained for Salaried Indians",
+    "description": "Understand RBI's Ways and Means Advances (WMA) limit for the government and its potential impact on interest rates, inflation, and your personal finances. Learn how to prepare.",
+    "url": "https://zentraai.in/blog/2026-09-28-rbi-wma-limit-explained-salaried-indians.html",
+    "tags": [
+      "RBI",
+      "WMA",
+      "Personal Finance"
+    ],
+    "slug": "rbi-wma-limit-explained-salaried-indians",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-09-28T10:01:58.349923",
+    "title": "HSBC Forecasts RBI Rate Hikes: Impact on Your Finances",
+    "description": "Understand HSBC's forecast for RBI repo rate hikes in FY27 due to strong growth and inflation. Learn how these changes might affect your loans, savings, and financial planning.",
+    "url": "https://zentraai.in/blog/2026-09-28-rbi-repo-rate-hike-impact-on-finances-hyt.html",
+    "tags": [
+      "RBI Repo Rate",
+      "Personal Finance",
+      "Inflation India"
+    ],
+    "slug": "rbi-repo-rate-hike-impact-on-finances-hyt",
+    "source": "ET Economy"
+  },
+  {
+    "date": "2026-09-28T10:02:24.141847",
+    "title": "RBI Bulletin Sept 2026: Financial Impact for Indians",
+    "description": "Understand the RBI's September 2026 Bulletin. Learn how economic insights on credit, deposits, and investment growth impact your salary, savings, and financial planning.",
+    "url": "https://zentraai.in/blog/2026-09-28-rbi-bulletin-sept-2026-financial-impact-indians.html",
+    "tags": [
+      "RBI",
+      "Personal Finance",
+      "Indian Economy"
+    ],
+    "slug": "rbi-bulletin-sept-2026-financial-impact-indians",
     "source": "RBI"
   }
 ]
