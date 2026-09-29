@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-15T08:50:29.842198",
-    "title": "Personal Loan Rates Sept 2026: Compare Bank Offers",
-    "description": "Discover current personal loan interest rates from top banks like HDFC, Axis, ICICI. Learn to compare EMIs, fees, and make informed borrowing decisions.",
-    "url": "https://zentraai.in/blog/2026-09-15-personal-loan-rates-sept-2026-hyt-money.html",
-    "tags": [
-      "personal loan",
-      "interest rates",
-      "financial planning"
-    ],
-    "slug": "personal-loan-rates-sept-2026-hyt-money",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-09-15T08:50:59.624185",
-    "title": "Small-Cap Funds: Navigating Inflows and Volatility Risks",
-    "description": "Small-cap funds attract strong inflows but face inherent volatility. Learn why corrections are common and how to build a resilient investment strategy.",
-    "url": "https://zentraai.in/blog/2026-09-15-small-cap-funds-inflows-volatility-risks-india.html",
-    "tags": [
-      "small-cap funds",
-      "investment strategy",
-      "market volatility"
-    ],
-    "slug": "small-cap-funds-inflows-volatility-risks-india",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-09-15T08:51:21.552853",
-    "title": "India's Households Shift to Market Investments",
-    "description": "Indian households are shifting savings to market investments. Learn why this trend is crucial for your financial future and practical steps to participate smartly.",
-    "url": "https://zentraai.in/blog/2026-09-15-india-market-investing-boom-salaried-professionals.html",
-    "tags": [
-      "investing",
-      "mutual funds",
-      "financial planning"
-    ],
-    "slug": "india-market-investing-boom-salaried-professionals",
-    "source": "ET Economy"
-  },
-  {
     "date": "2026-09-16T08:44:16.414703",
     "title": "UPI MDR: Impact on SIPs, Insurance, and AutoPay",
     "description": "Learn how UPI MDR charges from October 15 might impact your mutual fund SIPs, insurance premiums, and other AutoPay. Stay informed about your finances.",
@@ -546,5 +507,44 @@
     ],
     "slug": "rbi-bulletin-sept-2026-financial-impact-indians",
     "source": "RBI"
+  },
+  {
+    "date": "2026-09-29T10:01:02.335860",
+    "title": "SEBI Remittance Order: Lessons for Indian Investors",
+    "description": "Learn about SEBI's remittance orders, how they protect investor interests, and key steps Indian salaried professionals can take to safeguard their investments.",
+    "url": "https://zentraai.in/blog/2026-09-29-sebi-remittance-order-investor-protection-india.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-remittance-order-investor-protection-india",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-29T10:01:21.296306",
+    "title": "SEBI Adjudicates IPO Irregularities: Investor Safeguards",
+    "description": "Understand SEBI's recent adjudication on IPO irregularities. Learn how to protect your investments and identify red flags in the primary market. Essential for Indian salaried professionals.",
+    "url": "https://zentraai.in/blog/2026-09-29-sebi-ipo-adjudication-investor-protection.html",
+    "tags": [
+      "IPO",
+      "SEBI",
+      "Investor Protection"
+    ],
+    "slug": "sebi-ipo-adjudication-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-09-29T10:01:35.784195",
+    "title": "SEBI Boosts Investor Protection & Transparency",
+    "description": "Learn how SEBI's latest decisions enhance investor safety and product transparency, empowering Indian salaried professionals to make informed financial choices.",
+    "url": "https://zentraai.in/blog/2026-09-29-sebi-boosts-investor-protection-transparency.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-boosts-investor-protection-transparency",
+    "source": "SEBI"
   }
 ]
