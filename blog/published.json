@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-19T08:11:48.080286",
-    "title": "SEBI Recovery Action: Protecting Your Investments",
-    "description": "Learn how SEBI's actions protect investors. Understand the importance of due diligence and safeguarding your investments as a salaried professional.",
-    "url": "https://zentraai.in/blog/2026-09-19-sebi-recovery-order-investor-safety.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Planning"
-    ],
-    "slug": "sebi-recovery-order-investor-safety",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-19T08:12:06.423931",
-    "title": "Home Loan EMI Ends: Smart Financial Moves for Your Savings",
-    "description": "Your home loan EMI is ending soon. Learn 5 smart financial moves for the freed-up cash: boost emergency funds, review insurance, clear high-cost debt, and supercharge retirement.",
-    "url": "https://zentraai.in/blog/2026-09-19-home-loan-emi-ends-smart-moves-for-savings.html",
-    "tags": [
-      "home loan",
-      "financial planning",
-      "savings"
-    ],
-    "slug": "home-loan-emi-ends-smart-moves-for-savings",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-09-19T08:12:25.312056",
-    "title": "India-NZ FTA: Economic Impact & Your Financial Planning",
-    "description": "The India-New Zealand Free Trade Agreement is set to boost trade. Understand how this pact can influence India's economic growth and impact your financial future.",
-    "url": "https://zentraai.in/blog/2026-09-19-india-new-zealand-fta-economic-impact-finances.html",
-    "tags": [
-      "FTA",
-      "India Economy",
-      "Financial Planning"
-    ],
-    "slug": "india-new-zealand-fta-economic-impact-finances",
-    "source": "ET Economy"
-  },
-  {
     "date": "2026-09-20T08:44:07.867812",
     "title": "SEBI Remittance Order: Investor Protection Insights",
     "description": "Understand SEBI's investor protection mechanisms through a recent remittance order. Learn how regulators safeguard your investments in India.",
@@ -547,6 +508,45 @@
       "Indian Stock Market"
     ],
     "slug": "sebi-remittance-order-market-integrity-investors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-03T09:19:07.231773",
+    "title": "SEBI Enforces Compliance: Safeguarding Indian Investors",
+    "description": "SEBI's latest order highlights investor protection. Learn how SEBI acts to recover funds and safeguard your investments in the Indian market. Understand crucial steps for financial safety.",
+    "url": "https://zentraai.in/blog/2026-10-03-sebi-compliance-investor-protection-india.html",
+    "tags": [
+      "SEBI",
+      "Investor Safety",
+      "Financial Regulation"
+    ],
+    "slug": "sebi-compliance-investor-protection-india",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-03T09:19:26.111416",
+    "title": "RBI Simplifies Bank Share Acquisition for MFs, Insurers",
+    "description": "RBI streamlines bank share acquisition for financial institutions. Learn how this impacts your mutual fund investments, banking sector stability, and long-term financial planning.",
+    "url": "https://zentraai.in/blog/2026-10-03-rbi-simplifies-bank-share-acquisition-mf-impact.html",
+    "tags": [
+      "RBI",
+      "Mutual Funds",
+      "Financial Planning"
+    ],
+    "slug": "rbi-simplifies-bank-share-acquisition-mf-impact",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-10-03T09:19:37.450260",
+    "title": "SEBI Action on S S Traders: Investor Safety Lessons",
+    "description": "SEBI issued a remittance order against S S Traders over ANI Integrated Services Ltd. Learn how market regulations protect investors and what steps salaried Indian professionals can take to safeguard their investments and build long-term wealth.",
+    "url": "https://zentraai.in/blog/2026-10-03-sebi-remittance-order-investor-safety-lessons.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulation"
+    ],
+    "slug": "sebi-remittance-order-investor-safety-lessons",
     "source": "SEBI"
   }
 ]
