@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-20T08:44:07.867812",
-    "title": "SEBI Remittance Order: Investor Protection Insights",
-    "description": "Understand SEBI's investor protection mechanisms through a recent remittance order. Learn how regulators safeguard your investments in India.",
-    "url": "https://zentraai.in/blog/2026-09-20-sebi-remittance-order-investor-protection.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Education"
-    ],
-    "slug": "sebi-remittance-order-investor-protection",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-20T08:44:17.915483",
-    "title": "Invesco Global FoFs Reopen: What Indian Investors Need to Know",
-    "description": "Learn about Invesco's international fund reopenings, daily limits, and how global diversification can benefit your portfolio as an Indian salaried professional.",
-    "url": "https://zentraai.in/blog/2026-09-20-invesco-global-fofs-reopen-indian-investors.html",
-    "tags": [
-      "international funds",
-      "mutual funds india",
-      "financial planning"
-    ],
-    "slug": "invesco-global-fofs-reopen-indian-investors",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-09-20T08:44:37.307414",
-    "title": "Digital Gold: RBI/SEBI Oversight & Physical Backing",
-    "description": "Understand how proposed RBI and SEBI oversight for digital gold, including mandatory physical backing, could impact your investments and enhance security for Indian salaried professionals.",
-    "url": "https://zentraai.in/blog/2026-09-20-digital-gold-rbi-sebi-oversight-physical-backing.html",
-    "tags": [
-      "Digital Gold",
-      "Investor Protection",
-      "Gold Investment"
-    ],
-    "slug": "digital-gold-rbi-sebi-oversight-physical-backing",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-09-21T09:10:11.126498",
     "title": "SEBI Action: Verify Your Investment Advisors",
     "description": "Learn from SEBI's recent remittance order. Understand why checking SEBI registration of investment advisors is crucial for your financial security.",
@@ -547,6 +508,45 @@
       "Market Regulation"
     ],
     "slug": "sebi-remittance-order-investor-safety-lessons",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-04T09:59:06.606264",
+    "title": "SEBI Order: Jay Energy Compliance & Investor Safety",
+    "description": "Understand SEBI's compliance orders like the Jay Energy case. Learn how regulatory actions protect Indian investors and why due diligence is crucial for your investments.",
+    "url": "https://zentraai.in/blog/2026-10-04-sebi-compliance-order-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Due Diligence"
+    ],
+    "slug": "sebi-compliance-order-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-04T09:59:33.663897",
+    "title": "RBI Simplifies Bank Share Acquisition Process",
+    "description": "RBI simplified rules for MFs, insurers, pension funds acquiring bank shares. Understand the potential impact on banking stability and your investments. Learn more.",
+    "url": "https://zentraai.in/blog/2026-10-04-rbi-simplifies-bank-share-acquisition-rules.html",
+    "tags": [
+      "RBI",
+      "Banking Sector",
+      "Indian Investments"
+    ],
+    "slug": "rbi-simplifies-bank-share-acquisition-rules",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-10-04T09:59:49.472005",
+    "title": "SEBI Order on S S Traders: Market Integrity Matters",
+    "description": "Learn why SEBI issued a remittance order against S S Traders. Understand market regulations and how they protect your investments in India.",
+    "url": "https://zentraai.in/blog/2026-10-04-sebi-remittance-order-market-integrity-explained.html",
+    "tags": [
+      "SEBI",
+      "Market Integrity",
+      "Investor Awareness"
+    ],
+    "slug": "sebi-remittance-order-market-integrity-explained",
     "source": "SEBI"
   }
 ]
