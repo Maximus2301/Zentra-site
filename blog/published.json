@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-21T09:10:11.126498",
-    "title": "SEBI Action: Verify Your Investment Advisors",
-    "description": "Learn from SEBI's recent remittance order. Understand why checking SEBI registration of investment advisors is crucial for your financial security.",
-    "url": "https://zentraai.in/blog/2026-09-21-sebi-remittance-order-verify-advisors.html",
-    "tags": [
-      "SEBI",
-      "investor protection",
-      "financial planning"
-    ],
-    "slug": "sebi-remittance-order-verify-advisors",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-21T09:10:32.453525",
-    "title": "MF Portfolio Risk Shifts: What Indian Investors Track",
-    "description": "Market shifts can alter your mutual fund portfolio's risk silently. Learn to track asset allocation, concentration, and overlap through regular reviews to keep investments aligned with your goals.",
-    "url": "https://zentraai.in/blog/2026-09-21-mf-portfolio-risk-changes-asset-allocation-review.html",
-    "tags": [
-      "mutual funds",
-      "portfolio management",
-      "asset allocation"
-    ],
-    "slug": "mf-portfolio-risk-changes-asset-allocation-review",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-09-21T09:10:51.859304",
-    "title": "US Fed Hikes & Debt Funds: What Indian Investors Need to Know",
-    "description": "Understand how US Fed rate hikes affect your debt mutual fund investments in India. Learn about potential volatility and emerging opportunities for long-term growth.",
-    "url": "https://zentraai.in/blog/2026-09-21-us-fed-rate-hikes-debt-funds-indian-investors.html",
-    "tags": [
-      "debt funds",
-      "interest rates",
-      "indian finance"
-    ],
-    "slug": "us-fed-rate-hikes-debt-funds-indian-investors",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-09-22T08:41:45.135277",
     "title": "RBI Basel III Market Risk: What It Means for You",
     "description": "Learn how the RBI's new Basel III capital rules for banks impact the safety of your deposits, loan availability, and the stability of India's financial system.",
@@ -547,6 +508,45 @@
       "Investor Awareness"
     ],
     "slug": "sebi-remittance-order-market-integrity-explained",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-05T10:42:33.723915",
+    "title": "SEBI's Jay Energy Order: Investor Compliance Guide",
+    "description": "Learn about SEBI's recent order against Jay Energy and S. Energies Limited. Understand what it means for Indian investors and how to safeguard your investments.",
+    "url": "https://zentraai.in/blog/2026-10-05-sebi-jay-energy-order-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-jay-energy-order-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-05T10:42:54.521370",
+    "title": "SEBI Remittance Order: Understanding Market Regulation",
+    "description": "Learn about SEBI's recent remittance order and why market regulations are crucial for protecting your investments. Understand how SEBI ensures a safe trading environment for salaried professionals.",
+    "url": "https://zentraai.in/blog/2026-10-05-sebi-remittance-order-market-regulation-investors.html",
+    "tags": [
+      "SEBI",
+      "Market Regulation",
+      "Investor Protection"
+    ],
+    "slug": "sebi-remittance-order-market-regulation-investors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-05T10:43:14.557598",
+    "title": "SEBI Remittance Order: Investor Protection Lessons",
+    "description": "Understand SEBI's remittance orders and their role in investor protection. Learn why regulatory actions like the one against Sadhna Broadcast matter for your investments.",
+    "url": "https://zentraai.in/blog/2026-10-05-sebi-remittance-order-investor-protection-lessons.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Education"
+    ],
+    "slug": "sebi-remittance-order-investor-protection-lessons",
     "source": "SEBI"
   }
 ]
