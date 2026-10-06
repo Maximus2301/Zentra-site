@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-22T08:41:45.135277",
-    "title": "RBI Basel III Market Risk: What It Means for You",
-    "description": "Learn how the RBI's new Basel III capital rules for banks impact the safety of your deposits, loan availability, and the stability of India's financial system.",
-    "url": "https://zentraai.in/blog/2026-09-22-rbi-basel-iii-market-risk-salaried-professionals.html",
-    "tags": [
-      "financial stability",
-      "rbi",
-      "basel iii"
-    ],
-    "slug": "rbi-basel-iii-market-risk-salaried-professionals",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-09-22T08:41:58.681486",
-    "title": "SEBI Recovery Action: Investor Protection & Your Money",
-    "description": "Learn how SEBI protects investors through recovery actions against defaulters. Understand the process, its implications, and steps salaried professionals can take to safeguard investments.",
-    "url": "https://zentraai.in/blog/2026-09-22-sebi-recovery-action-investor-protection.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-recovery-action-investor-protection",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-22T08:42:13.021574",
-    "title": "SEBI Action: Understanding Recovery Certificates",
-    "description": "Learn what a SEBI Recovery Certificate means for investors and how regulatory actions protect your investments. Understand your rights and stay informed.",
-    "url": "https://zentraai.in/blog/2026-09-22-sebi-recovery-certificate-investor-protection.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Market Regulation"
-    ],
-    "slug": "sebi-recovery-certificate-investor-protection",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-09-23T08:44:21.669739",
     "title": "SEBI Action: Market Integrity & Investor Protection",
     "description": "Understand SEBI's role in market integrity. Learn how regulatory actions like recovery certificates protect Indian investors and what steps to take for safer investments.",
@@ -547,6 +508,45 @@
       "Financial Education"
     ],
     "slug": "sebi-remittance-order-investor-protection-lessons",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-06T10:35:40.471436",
+    "title": "SEBI Order: Jay Energy Recovery & Investor Protection",
+    "description": "Understand SEBI's latest order on Jay Energy and S. Energies Limited. Learn how regulatory actions protect your investments and financial interests in India.",
+    "url": "https://zentraai.in/blog/2026-10-06-sebi-jay-energy-order-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-jay-energy-order-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-06T10:36:01.791328",
+    "title": "SEBI Chandigarh Office: Impact on Indian Investors",
+    "description": "SEBI's new Chandigarh office boosts investor protection and financial literacy. Learn how this local presence strengthens market regulation and grievance redressal for salaried Indians.",
+    "url": "https://zentraai.in/blog/2026-10-06-sebi-chandigarh-office-investor-impact.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-chandigarh-office-investor-impact",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-06T10:36:12.049353",
+    "title": "SEBI Launches New Investor Education Initiatives",
+    "description": "Learn how SEBI's \"Samajh Se Investing Simple\" campaign, MUST initiative, and WhatsApp presence enhance investor education for Indian professionals.",
+    "url": "https://zentraai.in/blog/2026-10-06-sebi-investor-education-initiatives.html",
+    "tags": [
+      "SEBI",
+      "Investor Education",
+      "Financial Planning"
+    ],
+    "slug": "sebi-investor-education-initiatives",
     "source": "SEBI"
   }
 ]
