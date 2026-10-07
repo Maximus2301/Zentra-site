@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-23T08:44:21.669739",
-    "title": "SEBI Action: Market Integrity & Investor Protection",
-    "description": "Understand SEBI's role in market integrity. Learn how regulatory actions like recovery certificates protect Indian investors and what steps to take for safer investments.",
-    "url": "https://zentraai.in/blog/2026-09-23-sebi-action-market-integrity-investor-protection.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Market Regulation"
-    ],
-    "slug": "sebi-action-market-integrity-investor-protection",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-23T08:44:39.891620",
-    "title": "SEBI action against defaulter: What it means for investors",
-    "description": "Understand SEBI's role in market regulation and how actions against defaulters protect your investments. Learn practical steps to safeguard your finances as a salaried professional.",
-    "url": "https://zentraai.in/blog/2026-09-23-sebi-defaulter-recovery-certificate-investor-safet.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-defaulter-recovery-certificate-investor-safet",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-23T08:44:51.708316",
-    "title": "SEBI's Recovery Certificate: Understanding Investor Safety",
-    "description": "Learn about SEBI's role in market regulation, the implications of a recovery certificate for defaulters, and how to safeguard your investments in India.",
-    "url": "https://zentraai.in/blog/2026-09-23-sebi-recovery-certificate-investor-safety-india.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-recovery-certificate-investor-safety-india",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-09-24T08:37:17.926495",
     "title": "SEBI Order: Legal Heirs' Financial Liability Examined",
     "description": "Understand how SEBI's recovery orders can impact legal heirs of deceased individuals. Learn about financial liabilities and estate planning to protect your family.",
@@ -548,5 +509,45 @@
     ],
     "slug": "sebi-investor-education-initiatives",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-10-07T10:27:10.668334",
+    "title": "RBI Update: West Asia Conflict & Crude Prices Impact",
+    "description": "Learn how the West Asia conflict and rising crude prices, noted by the RBI, may impact your personal finances, savings, and daily expenses in India. Discover practical financial planning steps.",
+    "url": "https://zentraai.in/blog/2026-10-07-rbi-update-crude-prices-your-finances.html",
+    "tags": [
+      "financial planning",
+      "inflation",
+      "RBI update",
+      "personal finance"
+    ],
+    "slug": "rbi-update-crude-prices-your-finances",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-10-07T10:27:23.810761",
+    "title": "RBI MPC Meeting 2026: What It Means For You",
+    "description": "Understand the Reserve Bank of India's Monetary Policy Committee meeting outcomes and their impact on your loans, investments, and savings. Learn actionable steps for your finances.",
+    "url": "https://zentraai.in/blog/2026-10-07-rbi-mpc-meeting-2026-your-finances-explained.html",
+    "tags": [
+      "Monetary Policy",
+      "RBI",
+      "Personal Finance"
+    ],
+    "slug": "rbi-mpc-meeting-2026-your-finances-explained",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-10-07T10:27:41.910664",
+    "title": "RBI Rate Hike: What It Means For Your Finances",
+    "description": "Understand the RBI's recent repo rate hike and its impact on your loans, investments, and savings. Learn practical steps to manage your money wisely.",
+    "url": "https://zentraai.in/blog/2026-10-07-rbi-rate-hike-impact-salaried-finances.html",
+    "tags": [
+      "RBI",
+      "Repo Rate",
+      "Personal Finance"
+    ],
+    "slug": "rbi-rate-hike-impact-salaried-finances",
+    "source": "ET Economy"
   }
 ]
