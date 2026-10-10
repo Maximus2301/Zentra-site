@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-26T08:45:29.368032",
-    "title": "RBI Sets Government's WMA Limit at \u20b950,000 Crore",
-    "description": "Understand RBI's Ways and Means Advances (WMA) for the government and how it subtly influences India's economy and your personal finances.",
-    "url": "https://zentraai.in/blog/2026-09-26-rbi-wma-limit-government-finance-india.html",
-    "tags": [
-      "RBI",
-      "Government Finance",
-      "Personal Finance"
-    ],
-    "slug": "rbi-wma-limit-government-finance-india",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-09-26T08:45:48.137771",
-    "title": "RBI Bulletin Sept 2026: Economy & Your Finances",
-    "description": "Learn what the RBI's September 2026 Bulletin means for India's economy, private investment, and your personal finances. Understand key economic trends.",
-    "url": "https://zentraai.in/blog/2026-09-26-rbi-sept-2026-bulletin-economy-finances.html",
-    "tags": [
-      "RBI Bulletin",
-      "Personal Finance India",
-      "Economic Outlook"
-    ],
-    "slug": "rbi-sept-2026-bulletin-economy-finances",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-09-26T08:46:06.037435",
-    "title": "RBI Releases G-Sec Issuance Calendar: Plan Your Investments",
-    "description": "RBI's G-Sec issuance calendar offers transparency for investors. Learn how this move impacts your financial planning and provides stable investment opportunities in government bonds.",
-    "url": "https://zentraai.in/blog/2026-09-26-rbi-g-sec-calendar-investment-planning.html",
-    "tags": [
-      "RBI",
-      "Government Securities",
-      "Financial Planning"
-    ],
-    "slug": "rbi-g-sec-calendar-investment-planning",
-    "source": "RBI"
-  },
-  {
     "date": "2026-09-27T09:25:29.608016",
     "title": "RBI's WMA Limit: Understanding Government Finances",
     "description": "Learn how the RBI's Ways and Means Advances (WMA) limit for the government impacts India's economy and your personal finances. Understand key financial stability factors.",
@@ -551,6 +512,47 @@
       "personal finance"
     ],
     "slug": "emergency-fund-safety-fast-access-salaried-india",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-10-10T10:01:39.115832",
+    "title": "RBI's Manufacturing Survey: Impact for Salaried Indians",
+    "description": "Learn about the RBI's quarterly OBICUS survey of the manufacturing sector. Understand how these economic insights from the Reserve Bank of India can indirectly influence your job security and investments.",
+    "url": "https://zentraai.in/blog/2026-10-10-rbi-obicus-survey-impact-salaried-professionals.html",
+    "tags": [
+      "RBI",
+      "Indian Economy",
+      "Personal Finance"
+    ],
+    "slug": "rbi-obicus-survey-impact-salaried-professionals",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-10-10T10:02:03.405264",
+    "title": "SEBI Action on DHFL Defaulter: Lessons for Investors",
+    "description": "Understand SEBI's recovery actions in the DHFL case and how large financial defaults impact your investments. Learn practical steps to protect your personal finances.",
+    "url": "https://zentraai.in/blog/2026-10-10-dhfl-default-recovery-lessons-for-salaried-indians.html",
+    "tags": [
+      "Financial Education",
+      "Investment Safety",
+      "SEBI"
+    ],
+    "slug": "dhfl-default-recovery-lessons-for-salaried-indians",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-10T10:02:14.525721",
+    "title": "Health Insurance EMIs: Smart Payment Options for Indians",
+    "description": "Explore how monthly or quarterly health insurance EMIs work for Indian salaried professionals. Learn if this flexible payment option is right for your budget.",
+    "url": "https://zentraai.in/blog/2026-10-10-health-insurance-emi-flexible-payments-india.html",
+    "tags": [
+      "health insurance",
+      "EMI",
+      "personal finance",
+      "Indian finance",
+      "budgeting"
+    ],
+    "slug": "health-insurance-emi-flexible-payments-india",
     "source": "Mint Money"
   }
 ]
