@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-28T10:01:30.011324",
-    "title": "RBI's WMA Limit Explained for Salaried Indians",
-    "description": "Understand RBI's Ways and Means Advances (WMA) limit for the government and its potential impact on interest rates, inflation, and your personal finances. Learn how to prepare.",
-    "url": "https://zentraai.in/blog/2026-09-28-rbi-wma-limit-explained-salaried-indians.html",
-    "tags": [
-      "RBI",
-      "WMA",
-      "Personal Finance"
-    ],
-    "slug": "rbi-wma-limit-explained-salaried-indians",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-09-28T10:01:58.349923",
-    "title": "HSBC Forecasts RBI Rate Hikes: Impact on Your Finances",
-    "description": "Understand HSBC's forecast for RBI repo rate hikes in FY27 due to strong growth and inflation. Learn how these changes might affect your loans, savings, and financial planning.",
-    "url": "https://zentraai.in/blog/2026-09-28-rbi-repo-rate-hike-impact-on-finances-hyt.html",
-    "tags": [
-      "RBI Repo Rate",
-      "Personal Finance",
-      "Inflation India"
-    ],
-    "slug": "rbi-repo-rate-hike-impact-on-finances-hyt",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-09-28T10:02:24.141847",
-    "title": "RBI Bulletin Sept 2026: Financial Impact for Indians",
-    "description": "Understand the RBI's September 2026 Bulletin. Learn how economic insights on credit, deposits, and investment growth impact your salary, savings, and financial planning.",
-    "url": "https://zentraai.in/blog/2026-09-28-rbi-bulletin-sept-2026-financial-impact-indians.html",
-    "tags": [
-      "RBI",
-      "Personal Finance",
-      "Indian Economy"
-    ],
-    "slug": "rbi-bulletin-sept-2026-financial-impact-indians",
-    "source": "RBI"
-  },
-  {
     "date": "2026-09-29T10:01:02.335860",
     "title": "SEBI Remittance Order: Lessons for Indian Investors",
     "description": "Learn about SEBI's remittance orders, how they protect investor interests, and key steps Indian salaried professionals can take to safeguard their investments.",
@@ -555,6 +516,49 @@
       "real estate india"
     ],
     "slug": "afford-1-crore-house-home-loan-salary-india",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-10-12T11:09:25.629321",
+    "title": "RBI's Manufacturing Survey: What It Means for You",
+    "description": "Discover how the RBI's manufacturing survey impacts India's economic health and your finances. Learn practical steps to secure your financial future amidst economic shifts.",
+    "url": "https://zentraai.in/blog/2026-10-12-rbi-manufacturing-survey-impact-indian-professiona.html",
+    "tags": [
+      "financial planning",
+      "indian economy",
+      "rbi"
+    ],
+    "slug": "rbi-manufacturing-survey-impact-indian-professiona",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-10-12T11:09:49.492489",
+    "title": "India's Inflation Rises: What It Means for Your Salary",
+    "description": "Understand how India's 5.54% inflation in September 2026, driven by rising food prices, affects your salary and savings. Discover practical steps to protect your finances.",
+    "url": "https://zentraai.in/blog/2026-10-12-india-inflation-rise-september-impact-your-finance.html",
+    "tags": [
+      "inflation",
+      "personal finance India",
+      "budgeting",
+      "RBI repo rate",
+      "cost of living"
+    ],
+    "slug": "india-inflation-rise-september-impact-your-finance",
+    "source": "ET Economy"
+  },
+  {
+    "date": "2026-10-12T11:10:01.782167",
+    "title": "SIP Inflows Hit Record \u20b932,490 Cr in September",
+    "description": "September saw record SIP inflows, showcasing growing investor confidence. Understand what this trend means for your personal investment strategy and how to benefit.",
+    "url": "https://zentraai.in/blog/2026-10-12-september-mutual-fund-sip-record-inflows-india.html",
+    "tags": [
+      "mutual funds",
+      "SIP",
+      "financial planning",
+      "investing",
+      "wealth creation"
+    ],
+    "slug": "september-mutual-fund-sip-record-inflows-india",
     "source": "Mint Money"
   }
 ]
