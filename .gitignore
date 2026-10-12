@@ -1,3 +1,25 @@
+# Python virtual environments & build artifacts
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.adk/
+*.db
+*.sqlite3
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
 # Carousel images are committed to the repo so they are accessible at
 # zentraai.in/blog/carousels/<slug>/slide-N.jpg and shown inline on the post page.
 # GitHub Actions also uploads them as artifacts as a backup download.

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google AI Studio | SaveSmart FinTech</title>
+  <style>
+    :root {
+      --bg: #090D16;
+      --surface: #131B2E;
+      --surface-border: #23304E;
+      --accent: #1C2541;
+      --highlight: #38BDF8;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --success: #10B981;
+      --ig-gradient: linear-gradient(45deg, #F58529, #D92E7F, #9B36B7);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text-main); min-height: 100vh; padding: 24px; }
+    .app-container { max-width: 1400px; margin: 0 auto; }
+
+    /* Top Broadcaster Nav */
+    .top-bar { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 20px; padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .brand-group { display: flex; align-items: center; gap: 16px; }
+    .avatar-ring { width: 56px; height: 56px; border-radius: 50%; padding: 3px; background: var(--ig-gradient); display: flex; align-items: center; justify-content: center; }
+    .avatar-img { width: 100%; height: 100%; border-radius: 50%; background: #000; border: 2px solid var(--surface); object-fit: cover; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #FFF; }
+    .channel-title { font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+    .verified-icon { color: #38BDF8; font-size: 16px; }
+    
+    .badge-pill { background: rgba(56, 189, 248, 0.15); border: 1px solid var(--highlight); color: var(--highlight); font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; }
+    .badge-score { background: rgba(16, 185, 129, 0.15); border: 1px solid var(--success); color: var(--success); font-size: 13px; font-weight: 800; padding: 6px 14px; border-radius: 20px; }
+
+    /* Studio Tabs Switcher */
+    .studio-tabs { display: flex; gap: 12px; margin-bottom: 24px; overflow-x: auto; padding-bottom: 6px; }
+    .tab-btn { background: var(--surface); border: 1px solid var(--surface-border); color: var(--text-muted); padding: 12px 24px; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+    .tab-btn:hover { border-color: var(--highlight); color: var(--text-main); }
+    .tab-btn.active { background: var(--highlight); border-color: var(--highlight); color: #000; box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4); }
+
+    /* Layout Split: Phone Simulator & Studio Specs */
+    .studio-workspace { display: grid; grid-template-columns: 460px 1fr; gap: 32px; align-items: start; }
+    @media (max-width: 1024px) { .studio-workspace { grid-template-columns: 1fr; } }
+
+    /* Realistic Phone Mockup (iPhone 16 Pro) */
+    .phone-mockup { width: 440px; margin: 0 auto; background: #000; border: 12px solid #1E293B; border-radius: 54px; box-shadow: 0 25px 60px rgba(0,0,0,0.8), inset 0 0 0 2px #334155; position: relative; overflow: hidden; }
+    .dynamic-island { width: 120px; height: 30px; background: #000; border-radius: 20px; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; }
+    .phone-screen { background: #000; min-height: 860px; padding-top: 50px; position: relative; }
+
+    /* Instagram Native Feed Frame */
+    .ig-header { padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; color: #FFF; }
+    .ig-user-info { display: flex; align-items: center; gap: 10px; }
+    .ig-avatar-mini { width: 34px; height: 34px; border-radius: 50%; background: var(--ig-gradient); padding: 2px; }
+    .ig-avatar-mini img { width: 100%; height: 100%; border-radius: 50%; background: #000; }
+    
+    .ig-media-box { position: relative; width: 100%; aspect-ratio: 4/5; background: #111; overflow: hidden; }
+    .ig-media-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .heart-burst { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); font-size: 80px; opacity: 0; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s; pointer-events: none; }
+    .heart-burst.active { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+
+    .ig-actions { padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; }
+    .ig-action-left { display: flex; gap: 18px; font-size: 24px; cursor: pointer; }
+    .action-icon { transition: transform 0.15s; }
+    .action-icon:hover { transform: scale(1.15); }
+    
+    .ig-caption-zone { padding: 0 16px 20px; font-size: 13px; line-height: 1.5; color: #E2E8F0; }
+    .ig-likes-count { font-weight: 700; margin-bottom: 6px; color: #FFF; }
+    .caption-text { white-space: pre-wrap; }
+
+    /* Interactive Story Viewer (9:16) */
+    .story-viewer { position: relative; width: 100%; height: 860px; background: #0B0F19; display: flex; flex-direction: column; justify-content: space-between; }
+    .story-bars { display: flex; gap: 4px; padding: 12px 16px; z-index: 20; }
+    .story-bar { height: 3px; background: rgba(255,255,255,0.3); flex: 1; border-radius: 2px; overflow: hidden; position: relative; }
+    .story-bar-fill { height: 100%; background: #FFF; width: 0%; transition: width 3s linear; }
+    .story-bar.active .story-bar-fill { width: 100%; }
+    
+    .story-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px; z-index: 10; }
+    .poll-card { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.25); border-radius: 24px; padding: 20px; width: 100%; max-width: 320px; text-align: center; margin-top: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
+    .poll-opt { background: rgba(255, 255, 255, 0.2); border-radius: 14px; padding: 12px 16px; margin-top: 10px; font-weight: 700; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; display: flex; justify-content: space-between; }
+    .poll-opt:hover { background: rgba(255, 255, 255, 0.35); }
+    .poll-opt.selected { background: var(--highlight); color: #000; }
+
+    /* Reels Player (Google Veo Video Engine) */
+    .reels-player { position: relative; width: 100%; height: 860px; background: #000; overflow: hidden; }
+    .reels-video-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.85); animation: slowZoom 8s ease-in-out infinite alternate; }
+    @keyframes slowZoom { 0% { transform: scale(1); } 100% { transform: scale(1.08); } }
+    
+    .reels-floating-actions { position: absolute; right: 16px; bottom: 80px; display: flex; flex-direction: column; gap: 20px; align-items: center; z-index: 20; color: #FFF; }
+    .reels-act-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 26px; cursor: pointer; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+    .reels-act-label { font-size: 11px; font-weight: 700; }
+    
+    .spinning-disc { width: 38px; height: 38px; border-radius: 50%; background: #111; border: 2px solid #FFF; animation: spin 3s linear infinite; display: flex; align-items: center; justify-content: center; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    .reels-bottom-info { position: absolute; left: 16px; bottom: 24px; max-width: 320px; z-index: 20; color: #FFF; }
+    .reels-hook-badge { background: rgba(230, 57, 70, 0.9); padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; display: inline-block; margin-bottom: 8px; text-transform: uppercase; }
+    .reels-caption { font-size: 13px; line-height: 1.4; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+
+    /* Right Column: AI Media Studio Inspector */
+    .studio-panel { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 24px; padding: 28px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .section-header { font-size: 18px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; color: var(--text-main); }
+    .ai-card { background: #0B0F19; border: 1px solid var(--surface-border); border-radius: 16px; padding: 20px; margin-bottom: 20px; }
+    .ai-card-title { font-size: 15px; font-weight: 700; color: var(--highlight); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    
+    .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 12px; }
+    .spec-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 10px 14px; border-radius: 10px; }
+    .spec-lbl { font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+    .spec-val { font-size: 14px; font-weight: 600; color: #FFF; margin-top: 2px; }
+
+    .prompt-box { background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 14px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: #A5F3FC; white-space: pre-wrap; line-height: 1.5; margin-top: 10px; }
+
+    .btn-action-group { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+    .btn-primary { background: var(--accent); color: #FFF; border: none; padding: 14px 24px; border-radius: 14px; font-weight: 700; font-size: 14px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; display: flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4); }
+    .btn-secondary { background: rgba(255,255,255,0.06); color: #FFF; border: 1px solid var(--surface-border); padding: 14px 24px; border-radius: 14px; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.12); }
+  </style>
+</head>
+<body>
+<div class="app-container">
+  <!-- Top Broadcaster Header -->
+  <header class="top-bar">
+    <div class="brand-group">
+      <div class="avatar-ring">
+        <div class="avatar-img">SA</div>
+      </div>
+      <div>
+        <div class="channel-title">
+          <span>SaveSmart FinTech</span>
+          <span class="verified-icon">☑</span>
+          <span class="badge-pill">@fintech_save_smart</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">Making automated investing, emergency fund discipline, and debt relief accessible to young professionals and families through modern smart tooling.</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span class="badge-pill">Target Cohort: First-Time Earners &amp; Gen-Z (21-25 yrs)</span>
+      <span class="badge-score">✓ Critic Score: 9.4/10</span>
+    </div>
+  </header>
+
+  <!-- Studio Format Switcher Tabs -->
+  <div class="studio-tabs">
+    <button class="tab-btn active" onclick="switchTab('feed')">📸 Instagram Feed Post (4:5)</button>
+    <button class="tab-btn" onclick="switchTab('story')">📱 Interactive Stories (9:16)</button>
+    <button class="tab-btn" onclick="switchTab('reel')">🎬 Reels Video Player (Google Veo)</button>
+    <button class="tab-btn" onclick="switchTab('status')">💬 Status Snippet (1:1)</button>
+    <button class="tab-btn" onclick="switchTab('studio')">🔬 Google AI Media Studio</button>
+  </div>
+
+  <div class="studio-workspace">
+    <!-- LEFT: Realistic iPhone 16 Pro Simulator -->
+    <div class="phone-mockup">
+      <div class="dynamic-island">
+        <span style="font-size: 10px; color: #FFF;">9:41</span>
+        <span style="font-size: 10px; color: #FFF;">● 5G</span>
+      </div>
+      <div class="phone-screen">
+
+        <!-- 1. FEED POST VIEW -->
+        <div id="view-feed" class="format-view">
+          <div class="ig-header">
+            <div class="ig-user-info">
+              <div class="ig-avatar-mini"><img src="fintech_save_smart_feed_4x5.png" alt="avatar"></div>
+              <div>
+                <strong style="font-size: 13px;">@fintech_save_smart</strong>
+                <p style="font-size: 11px; color: var(--text-muted);">Statutory Labor Compliance • Legal Alert</p>
+              </div>
+            </div>
+            <span>•••</span>
+          </div>
+
+          <div class="ig-media-box" onclick="triggerHeart()">
+            <img src="fintech_save_smart_feed_4x5.png" alt="Google Imagen 3 Feed Visual">
+            <div class="heart-burst" id="feed-heart">❤️</div>
+          </div>
+
+          <div class="ig-actions">
+            <div class="ig-action-left">
+              <span class="action-icon" onclick="toggleLike(this)">🤍</span>
+              <span class="action-icon">💬</span>
+              <span class="action-icon">↗️</span>
+            </div>
+            <span class="action-icon">🔖</span>
+          </div>
+
+          <div class="ig-caption-zone">
+            <div class="ig-likes-count" id="likes-tally">2,842 likes</div>
+            <p class="caption-text"><strong>@fintech_save_smart</strong> The $1,000 emergency fund rule works, but 90% of young earners make this one fatal mistake with it.
+
+Here is what most companies hope you never find out:
+
+Keeping your emergency cushion in your primary checking account guarantees lifestyle creep. It needs to be automated and frictionless, yet out of immediate swipe reach.
+
+Key steps you must take right now:
+• Automate $5/day savings transfers immediately on payday morning.
+• Park emergency reserves in a dedicated high-yield liquid instrument, not checking.
+• Build the first 30 days of safety before touching volatile equity investments.
+
+Take control of your money today. Comment &#x27;SAVE&#x27; to get our automated 30-day budget template.
+
+📌 Investments are subject to market risks. Read all scheme-related documents carefully before investing.</p>
+          </div>
+        </div>
+
+        <!-- 2. INTERACTIVE STORY VIEW -->
+        <div id="view-story" class="format-view" style="display: none;">
+          <div class="story-viewer">
+            <div class="story-bars">
+              <div class="story-bar active"><div class="story-bar-fill"></div></div>
+              <div class="story-bar"><div class="story-bar-fill"></div></div>
+              <div class="story-bar"><div class="story-bar-fill"></div></div>
+              <div class="story-bar"><div class="story-bar-fill"></div></div>
+            </div>
+
+            <img src="fintech_save_smart_story_9x16.png" alt="Story Background" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+
+            <div class="story-overlay">
+              <div class="poll-card">
+                <span style="font-size: 11px; text-transform: uppercase; color: var(--highlight); font-weight: 800;">Interactive Exit Poll 🚨</span>
+                <h4 style="font-size: 15px; margin-top: 6px; color: #FFF;">Did your former employer delay your FnF past 30 days?</h4>
+                <div class="poll-opt" onclick="votePoll(this, '88%')">
+                  <span>Yes, over 30 days</span>
+                  <span class="pct" style="display: none;">88%</span>
+                </div>
+                <div class="poll-opt" onclick="votePoll(this, '12%')">
+                  <span>Settled on time</span>
+                  <span class="pct" style="display: none;">12%</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding: 20px; z-index: 20; display: flex; gap: 10px;">
+              <input type="text" placeholder="Send anonymous message..." style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 10px 16px; color: #FFF; flex: 1; font-size: 13px;">
+              <span style="font-size: 24px;">🤍</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. REELS VIDEO PLAYER VIEW (GOOGLE VEO ENGINE) -->
+        <div id="view-reel" class="format-view" style="display: none;">
+          <div class="reels-player">
+            <img class="reels-video-bg" src="" alt="Google Veo Reel Simulation">
+
+            <div class="reels-floating-actions">
+              <div class="reels-act-btn"><span>❤️</span><span class="reels-act-label">48.2K</span></div>
+              <div class="reels-act-btn"><span>💬</span><span class="reels-act-label">1,892</span></div>
+              <div class="reels-act-btn"><span>↗️</span><span class="reels-act-label">12.5K</span></div>
+              <div class="spinning-disc">💿</div>
+            </div>
+
+            <div class="reels-bottom-info">
+              <span class="reels-hook-badge">Google Veo 2.0 Engine 🎬</span>
+              <h4 style="font-size: 14px; font-weight: 800;">@fintech_save_smart</h4>
+              <p class="reels-caption">The $1,000 emergency fund rule works, but 90% of young earners make this one fatal mistake with it.</p>
+              <p style="font-size: 11px; color: #CBD5E1; margin-top: 6px;">🎵 Original Audio - Workplace Rights Watch (Statutory Beat)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. STATUS SNIPPET VIEW -->
+        <div id="view-status" class="format-view" style="display: none; padding: 30px 20px; text-align: center;">
+          <img src="" alt="Status Graphic" style="width: 100%; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); margin-top: 100px;">
+          <p style="color: var(--text-muted); font-size: 13px; margin-top: 20px;">Optimized for WhatsApp Status & Instagram Quick Story</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT: Google AI Media Studio Panel -->
+    <div class="studio-panel">
+      <div class="section-header">
+        <span>⚡ Google AI Media Studio & Verification Matrix</span>
+        <span class="badge-pill">ADK 2.0 Engine Active</span>
+      </div>
+
+      <!-- Google Imagen 3 Card -->
+      <div class="ai-card">
+        <div class="ai-card-title">
+          <span>🎨 Google Imagen 3 AI Model</span>
+          <span class="badge-pill">imagen-3.0-generate-002</span>
+        </div>
+        <div class="spec-grid">
+          <div class="spec-box"><div class="spec-lbl">Aspect Ratio</div><div class="spec-val">4:5 & 9:16 Vertical</div></div>
+          <div class="spec-box"><div class="spec-lbl">Output Quality</div><div class="spec-val">8K Commercial Render</div></div>
+          <div class="spec-box"><div class="spec-lbl">Color Grading</div><div class="spec-val">#0B132B, #1C2541, #48CAE4</div></div>
+          <div class="spec-box"><div class="spec-lbl">Person Generation</div><div class="spec-val">Adult Approved (Workplace)</div></div>
+        </div>
+        <div class="prompt-box">PROMPT SPECIFICATION:
+"Bold editorial graphic, typography-driven poster, color palette [&#x27;#0B132B&#x27;, &#x27;#1C2541&#x27;], clean minimalist aesthetic, 4:5 portrait ratio"</div>
+      </div>
+
+      <!-- Google Veo 2.0 Card -->
+      <div class="ai-card">
+        <div class="ai-card-title">
+          <span>🎬 Google Veo 2.0 Video Engine</span>
+          <span class="badge-pill">veo-2.0-generate-001</span>
+        </div>
+        <div class="spec-grid">
+          <div class="spec-box"><div class="spec-lbl">Target Duration</div><div class="spec-val">30s Screenplay</div></div>
+          <div class="spec-box"><div class="spec-lbl">Camera Movement</div><div class="spec-val">Dynamic Push-In Tracking</div></div>
+          <div class="spec-box"><div class="spec-lbl">Frame Rate</div><div class="spec-val">24 FPS Vertical</div></div>
+          <div class="spec-box"><div class="spec-lbl">Audio Track Mood</div><div class="spec-val">Tense cinematic</div></div>
+        </div>
+        <div class="prompt-box">VEO SCENE TIMESTAMPS:
+</div>
+      </div>
+
+      <!-- Autonomous Quality & EQ Scorecard -->
+      <div class="ai-card" style="border-color: rgba(16, 185, 129, 0.4);">
+        <div class="ai-card-title" style="color: var(--success);">
+          <span>🛡 Brand Safety, EQ & Policy Audit</span>
+          <span class="badge-score">PASSED (Score: 9.4/10)</span>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">Exceptional draft. High scroll-stopping hook, empathetic narrative arc, and compliant with all platform and channel guardrails.</p>
+        <div class="spec-grid" style="margin-top: 14px;">
+          <div class="spec-box"><div class="spec-lbl">Channel Isolation</div><div class="spec-val" style="color: var(--success);">✓ Locked to @fintech_save_smart</div></div>
+          <div class="spec-box"><div class="spec-lbl">Statutory Disclaimers</div><div class="spec-val" style="color: var(--success);">✓ Appended & Verified</div></div>
+          <div class="spec-box"><div class="spec-lbl">Character Limits</div><div class="spec-val" style="color: var(--success);">✓ Compliant (&lt; 2,200)</div></div>
+          <div class="spec-box"><div class="spec-lbl">Emotional Resonance</div><div class="spec-val" style="color: var(--highlight);">9.2/10 (Financial Reassurance &amp; Stress Relief)</div></div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="btn-action-group">
+        <button class="btn-primary" onclick="copyCaption()">📋 Copy Instagram Caption</button>
+        <button class="btn-secondary" onclick="alert('Assets downloaded from output directory!')">💾 Download 8K Graphics</button>
+        <button class="btn-secondary" style="border-color: var(--highlight); color: var(--highlight);" onclick="alert('Dispatched to Instagram Graph API container!')">🚀 Publish to Instagram Live</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.format-view').forEach(view => view.style.display = 'none');
+
+    if (tab === 'feed') {
+      document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+      document.getElementById('view-feed').style.display = 'block';
+    } else if (tab === 'story') {
+      document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+      document.getElementById('view-story').style.display = 'block';
+    } else if (tab === 'reel') {
+      document.querySelector('.tab-btn:nth-child(3)').classList.add('active');
+      document.getElementById('view-reel').style.display = 'block';
+    } else if (tab === 'status') {
+      document.querySelector('.tab-btn:nth-child(4)').classList.add('active');
+      document.getElementById('view-status').style.display = 'block';
+    } else if (tab === 'studio') {
+      document.querySelector('.tab-btn:nth-child(5)').classList.add('active');
+      document.getElementById('view-feed').style.display = 'block';
+    }
+  }
+
+  function triggerHeart() {
+    const heart = document.getElementById('feed-heart');
+    heart.classList.add('active');
+    setTimeout(() => heart.classList.remove('active'), 600);
+  }
+
+  function toggleLike(el) {
+    if (el.textContent === '🤍') {
+      el.textContent = '❤️';
+      el.style.color = '#E63946';
+      document.getElementById('likes-tally').textContent = '2,843 likes';
+    } else {
+      el.textContent = '🤍';
+      el.style.color = '#FFF';
+      document.getElementById('likes-tally').textContent = '2,842 likes';
+    }
+  }
+
+  function votePoll(el, pct) {
+    const card = el.parentElement;
+    card.querySelectorAll('.poll-opt').forEach(opt => {
+      opt.classList.remove('selected');
+      opt.querySelector('.pct').style.display = 'inline-block';
+    });
+    el.classList.add('selected');
+  }
+
+  function copyCaption() {
+    const text = document.querySelector('.caption-text').innerText;
+    navigator.clipboard.writeText(text);
+    alert('Caption and hashtags copied to clipboard!');
+  }
+</script>
+</body>
+</html>

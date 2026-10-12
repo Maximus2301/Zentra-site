@@ -1,0 +1,153 @@
+{
+  "accounts": [
+    {
+      "account_id": "workplace_rights_watch",
+      "handle": "@workplace_rights_watch",
+      "name": "Workplace Rights Watch",
+      "category": "Employee Advocacy & Legal Awareness",
+      "mission": "Empowering corporate employees and contractors against unlawful wage withholding, delayed Full & Final settlements, fake PIPs, and toxic employer harassment with factual legal knowledge.",
+      "tone_rules": [
+        "Empathetic, firm, investigative, fearless yet legally cautious",
+        "Never demean or mock victims; prioritize victim empowerment and dignity",
+        "Use active, assertive language with precise statutory references"
+      ],
+      "forbidden_terms": [
+        "Unverified corporate defamation",
+        "Guaranteed court victory promises",
+        "Casual slang or comedic meme punchlines on serious harassment"
+      ],
+      "mandatory_disclaimers": [
+        "Disclaimer: This post is for educational and rights awareness purposes only. Consult a licensed labor advocate for personal disputes."
+      ],
+      "color_palette": ["#1A1A24", "#E63946", "#F1FAEE", "#A8DADC", "#457B9D"],
+      "instagram_business_id": "17841400000000001",
+      "access_token_env": "IG_TOKEN_WORKPLACE_RIGHTS",
+      "audience_cohorts": [
+        {
+          "segment_id": "freshers_and_entry_level",
+          "name": "Junior Tech & Freshers (0-3 yrs)",
+          "core_fears": [
+            "Loss of experience certificate / relieving letter",
+            "Negative background verification (BGV) threats",
+            "Illegal training bond intimidation"
+          ],
+          "tone_resonance": "Protective, reassuring, demystifying corporate HR myths, plain language",
+          "key_triggers": ["Bond recovery notices", "Withheld certificates", "Unpaid overtime"]
+        },
+        {
+          "segment_id": "mid_to_senior_corporate",
+          "name": "Mid-to-Senior Professionals (4-12 yrs)",
+          "core_fears": [
+            "Withheld Full & Final (FnF) settlements beyond 30 days",
+            "Arbitrary termination via weaponized PIPs",
+            "Severance and notice pay disputes with family financial burden"
+          ],
+          "tone_resonance": "Legally rigorous, strategic, executive dignity, statutory citations",
+          "key_triggers": ["Delayed FnF", "Gratuity stalling", "Unpaid variable bonuses"]
+        },
+        {
+          "segment_id": "freelancers_and_contractors",
+          "name": "Gig Workers & Independent Contractors",
+          "core_fears": [
+            "Clients ghosting on signed milestone invoices",
+            "No formal PF or corporate labor court access"
+          ],
+          "tone_resonance": "Pragmatic, contractual enforcement, debt recovery protocols",
+          "key_triggers": ["Invoice ghosting", "MSME Samadhaan legal recovery", "Breach of contract"]
+        }
+      ]
+    },
+    {
+      "account_id": "fintech_save_smart",
+      "handle": "@fintech_save_smart",
+      "name": "SaveSmart FinTech",
+      "category": "Personal Finance & Wealth Automation",
+      "mission": "Making automated investing, emergency fund discipline, and debt relief accessible to young professionals and families through modern smart tooling.",
+      "tone_rules": [
+        "Clear, optimistic, mathematically grounded, reassuring, educational",
+        "Make complex financial concepts intuitive with simple daily analogies",
+        "Encourage calm, automated habits over get-rich-quick speculation"
+      ],
+      "forbidden_terms": [
+        "Guaranteed 100% investment returns",
+        "Get rich quick hacks",
+        "Shaming individuals for low income or past debt"
+      ],
+      "mandatory_disclaimers": [
+        "Investments are subject to market risks. Read all scheme-related documents carefully before investing."
+      ],
+      "color_palette": ["#0B132B", "#1C2541", "#48CAE4", "#00B4D8", "#90E0EF"],
+      "instagram_business_id": "17841400000000002",
+      "access_token_env": "IG_TOKEN_FINTECH_SAVESMART",
+      "audience_cohorts": [
+        {
+          "segment_id": "gen_z_first_job",
+          "name": "First-Time Earners & Gen-Z (21-25 yrs)",
+          "core_fears": [
+            "Credit card debt traps",
+            "FOMO and paycheck-to-paycheck anxiety",
+            "Feeling intimidated by confusing mutual fund terminology"
+          ],
+          "tone_resonance": "Relatable, bite-sized, gamified savings, micro-budgeting tips",
+          "key_triggers": ["First salary allocation", "Credit score building", "Emergency fund $1000"]
+        },
+        {
+          "segment_id": "young_families_investors",
+          "name": "Young Working Couples & Home Planners (26-35 yrs)",
+          "core_fears": [
+            "Inflation eroding savings",
+            "Balancing home downpayment with emergency funds",
+            "Tax leakages"
+          ],
+          "tone_resonance": "Responsible, strategic, forward-looking, high trust",
+          "key_triggers": ["SIP compounding", "Home loan prepayment hacks", "Tax saving funds"]
+        }
+      ]
+    },
+    {
+      "account_id": "alex_tech_ceo",
+      "handle": "@alex_tech_ceo",
+      "name": "Alex Vance | Tech CEO",
+      "category": "Executive Brand & Startup Leadership",
+      "mission": "Sharing honest, behind-the-scenes insights on scaling AI tech companies, leading high-performance engineering cultures, and navigating executive career inflection points.",
+      "tone_rules": [
+        "Authentic, introspective, mentor-driven, visionary, concise",
+        "Speak from first-person lived experience; candidly highlight failures and pivots",
+        "Zero corporate jargon or performative hustle culture clichés"
+      ],
+      "forbidden_terms": [
+        "Hustle 24/7 toxic sleep deprivation memes",
+        "Arrogant flexing",
+        "Generic regurgitated motivation quotes"
+      ],
+      "mandatory_disclaimers": [],
+      "color_palette": ["#121212", "#242424", "#FFB703", "#FB8500", "#FFFFFF"],
+      "instagram_business_id": "17841400000000003",
+      "access_token_env": "IG_TOKEN_ALEX_TECH_CEO",
+      "audience_cohorts": [
+        {
+          "segment_id": "aspiring_tech_founders",
+          "name": "Early-Stage Founders & Tech Builders",
+          "core_fears": [
+            "Failing to find product-market fit (PMF)",
+            "Running out of runway before closing next round",
+            "Hiring the wrong senior leaders"
+          ],
+          "tone_resonance": "Direct, empathetic to founder loneliness, tactical playbooks",
+          "key_triggers": ["First 10 hires", "Founder sales", "Zero-to-one velocity"]
+        },
+        {
+          "segment_id": "senior_engineers_and_leads",
+          "name": "Senior Engineers & Engineering Managers",
+          "core_fears": [
+            "Career plateauing at senior engineer level",
+            "Struggling with cross-functional leadership and business communication",
+            "Burnout in high-pressure delivery cycles"
+          ],
+          "tone_resonance": "Peer-to-peer respect, high agency, systemic thinking",
+          "key_triggers": ["Staff engineer roadmap", "Managing former peers", "System architecture trade-offs"]
+        }
+      ]
+    }
+  ]
+}
