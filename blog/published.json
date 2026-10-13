@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-29T10:01:02.335860",
-    "title": "SEBI Remittance Order: Lessons for Indian Investors",
-    "description": "Learn about SEBI's remittance orders, how they protect investor interests, and key steps Indian salaried professionals can take to safeguard their investments.",
-    "url": "https://zentraai.in/blog/2026-09-29-sebi-remittance-order-investor-protection-india.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-remittance-order-investor-protection-india",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-29T10:01:21.296306",
-    "title": "SEBI Adjudicates IPO Irregularities: Investor Safeguards",
-    "description": "Understand SEBI's recent adjudication on IPO irregularities. Learn how to protect your investments and identify red flags in the primary market. Essential for Indian salaried professionals.",
-    "url": "https://zentraai.in/blog/2026-09-29-sebi-ipo-adjudication-investor-protection.html",
-    "tags": [
-      "IPO",
-      "SEBI",
-      "Investor Protection"
-    ],
-    "slug": "sebi-ipo-adjudication-investor-protection",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-09-29T10:01:35.784195",
-    "title": "SEBI Boosts Investor Protection & Transparency",
-    "description": "Learn how SEBI's latest decisions enhance investor safety and product transparency, empowering Indian salaried professionals to make informed financial choices.",
-    "url": "https://zentraai.in/blog/2026-09-29-sebi-boosts-investor-protection-transparency.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-boosts-investor-protection-transparency",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-09-30T09:52:30.963114",
     "title": "SEBI Order on Front Running: Protect Your Investments",
     "description": "Learn about SEBI's recent action against front-running and how market misconduct affects your investments. Discover ways to safeguard your portfolio.",
@@ -560,5 +521,44 @@
     ],
     "slug": "september-mutual-fund-sip-record-inflows-india",
     "source": "Mint Money"
+  },
+  {
+    "date": "2026-10-13T10:50:51.817231",
+    "title": "SEBI Recovery Order: Lessons for Indian Investors",
+    "description": "SEBI's latest recovery order highlights investor protection. Learn about GDRs, their risks, and how to safeguard your investments in India.",
+    "url": "https://zentraai.in/blog/2026-10-13-sebi-gdr-recovery-investor-protection-lessons.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "GDRs"
+    ],
+    "slug": "sebi-gdr-recovery-investor-protection-lessons",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-13T10:51:11.516421",
+    "title": "SEBI Action on Muse, Pure, Taj Traders: What it Means",
+    "description": "SEBI's remittance order against Muse, Pure, Taj Traders. Learn how regulatory actions protect investors and practical steps to safeguard your financial future.",
+    "url": "https://zentraai.in/blog/2026-10-13-sebi-remittance-order-muse-pure-taj-traders.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Regulation"
+    ],
+    "slug": "sebi-remittance-order-muse-pure-taj-traders",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-13T10:51:34.889409",
+    "title": "SEBI Mutual Fund Regulations 2026: What's New?",
+    "description": "Learn how SEBI's 2026 mutual fund amendments could impact your investments. Understand the changes and strategize for a more secure financial future.",
+    "url": "https://zentraai.in/blog/2026-10-13-sebi-mutual-fund-amendments-2026-impact.html",
+    "tags": [
+      "mutual funds",
+      "SEBI regulations",
+      "investment strategy"
+    ],
+    "slug": "sebi-mutual-fund-amendments-2026-impact",
+    "source": "SEBI"
   }
 ]
