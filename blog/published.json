@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-10-01T10:20:32.273938",
-    "title": "India's Investment Position (IIP) Update Q1 FY27",
-    "description": "The RBI recently released India's IIP for June 2026. Discover what this data signifies for the Indian economy, your personal finances, and how to navigate these changes smartly.",
-    "url": "https://zentraai.in/blog/2026-10-01-india-iip-q1-fy27-investment-position-update.html",
-    "tags": [
-      "financial planning",
-      "indian economy",
-      "rbi update"
-    ],
-    "slug": "india-iip-q1-fy27-investment-position-update",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-10-01T10:20:56.970379",
-    "title": "India's External Debt Reaches US$ 778.2 Billion",
-    "description": "India's external debt rose to $778.2B. Understand its impact on the economy and your finances. Learn practical steps for financial resilience.",
-    "url": "https://zentraai.in/blog/2026-10-01-india-external-debt-q2-2026-implications.html",
-    "tags": [
-      "India Economy",
-      "Personal Finance",
-      "External Debt"
-    ],
-    "slug": "india-external-debt-q2-2026-implications",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-10-01T10:21:07.832176",
-    "title": "SEBI Action on Front-Running: What It Means for You",
-    "description": "Understand SEBI's recent action against front-running and how such market malpractices can impact your investments. Learn to protect your financial interests.",
-    "url": "https://zentraai.in/blog/2026-10-01-sebi-front-running-impact-your-investments.html",
-    "tags": [
-      "SEBI",
-      "Front Running",
-      "Investor Protection"
-    ],
-    "slug": "sebi-front-running-impact-your-investments",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-10-02T09:57:22.571674",
     "title": "SBI Research Sees Rising Inflation: What It Means for You",
     "description": "Understand SBI Research's inflation forecast for India and its impact on your savings and expenses. Learn practical steps to manage rising costs effectively.",
@@ -606,5 +567,46 @@
     ],
     "slug": "imf-applauds-india-growth-what-it-means-for-you",
     "source": "ET Economy"
+  },
+  {
+    "date": "2026-10-16T08:21:39.574519",
+    "title": "SEBI's AI Win: Boosting Investor Education for Indians",
+    "description": "Learn how SEBI's recent global award for AI in investor education helps protect and empower Indian professionals. Discover practical steps for safer investing.",
+    "url": "https://zentraai.in/blog/2026-10-16-sebi-ai-investor-education-award-impact.html",
+    "tags": [
+      "AI in Finance",
+      "Investor Education",
+      "SEBI Updates"
+    ],
+    "slug": "sebi-ai-investor-education-award-impact",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-16T08:22:11.362310",
+    "title": "SEBI's PolicyTwin Win: Impact on Indian Investors",
+    "description": "SEBI's PolicyTwin prototype won a global hackathon. Learn how this regulatory innovation can enhance market safety and transparency, better protecting your investments.",
+    "url": "https://zentraai.in/blog/2026-10-16-sebi-policytwin-win-impact-indian-investors.html",
+    "tags": [
+      "SEBI",
+      "Financial Regulation",
+      "Investor Protection"
+    ],
+    "slug": "sebi-policytwin-win-impact-indian-investors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-16T08:22:28.854464",
+    "title": "Home Loan EMI: Salary Needed for \u20b950L, \u20b975L, \u20b91 Cr Homes",
+    "description": "Understand the monthly salary required for a \u20b950 lakh, \u20b975 lakh, or \u20b91 crore home loan EMI in India. Learn about down payments, upfront costs, and smart financial planning.",
+    "url": "https://zentraai.in/blog/2026-10-16-home-loan-emi-salary-india.html",
+    "tags": [
+      "home loan",
+      "EMI",
+      "financial planning",
+      "salary",
+      "first home buyer"
+    ],
+    "slug": "home-loan-emi-salary-india",
+    "source": "Mint Money"
   }
 ]
