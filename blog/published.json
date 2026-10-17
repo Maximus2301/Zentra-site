@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-10-02T09:57:22.571674",
-    "title": "SBI Research Sees Rising Inflation: What It Means for You",
-    "description": "Understand SBI Research's inflation forecast for India and its impact on your savings and expenses. Learn practical steps to manage rising costs effectively.",
-    "url": "https://zentraai.in/blog/2026-10-02-india-inflation-forecast-sbi-research-impact.html",
-    "tags": [
-      "Inflation India",
-      "Personal Finance",
-      "Financial Planning"
-    ],
-    "slug": "india-inflation-forecast-sbi-research-impact",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-10-02T09:57:42.466720",
-    "title": "SEBI Remittance Order: Lessons for Indian Investors",
-    "description": "Learn how SEBI's compliance and recovery orders, like the one against Jay Energy, protect Indian investors and why due diligence is crucial for your financial safety.",
-    "url": "https://zentraai.in/blog/2026-10-02-sebi-recovery-order-investor-protection-lessons.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Due Diligence"
-    ],
-    "slug": "sebi-recovery-order-investor-protection-lessons",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-02T09:58:02.972884",
-    "title": "SEBI Action on S S Traders: What it Means for You",
-    "description": "Understand SEBI's recent Remittance Order against S S Traders. Learn how market regulations protect your investments and ensure fair trading practices for Indian professionals.",
-    "url": "https://zentraai.in/blog/2026-10-02-sebi-remittance-order-market-integrity-investors.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Market Regulations",
-      "Financial Literacy",
-      "Indian Stock Market"
-    ],
-    "slug": "sebi-remittance-order-market-integrity-investors",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-10-03T09:19:07.231773",
     "title": "SEBI Enforces Compliance: Safeguarding Indian Investors",
     "description": "SEBI's latest order highlights investor protection. Learn how SEBI acts to recover funds and safeguard your investments in the Indian market. Understand crucial steps for financial safety.",
@@ -607,6 +566,48 @@
       "first home buyer"
     ],
     "slug": "home-loan-emi-salary-india",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-10-17T07:57:09.975306",
+    "title": "RBI Approves Emirates NBD, RBL Bank Amalgamation",
+    "description": "Understand the RBI-approved amalgamation of Emirates NBD Bank (Indian branches) with RBL Bank. Learn what this means for your finances as a salaried professional.",
+    "url": "https://zentraai.in/blog/2026-10-17-rbi-approves-emirates-nbd-rbl-bank-amalgamation.html",
+    "tags": [
+      "RBI",
+      "Banking",
+      "RBL Bank",
+      "Emirates NBD",
+      "Amalgamation",
+      "Personal Finance"
+    ],
+    "slug": "rbi-approves-emirates-nbd-rbl-bank-amalgamation",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-10-17T07:57:28.934446",
+    "title": "Step-Up SIPs: Understanding Corpus & Return Growth",
+    "description": "Explore the impact of regular vs. step-up SIPs on your wealth. Understand if annual top-ups mean higher XIRR or just a larger corpus for salaried professionals.",
+    "url": "https://zentraai.in/blog/2026-10-17-step-up-sips-corpus-returns-impact.html",
+    "tags": [
+      "SIPs",
+      "Wealth Creation",
+      "Financial Planning"
+    ],
+    "slug": "step-up-sips-corpus-returns-impact",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-10-17T07:57:51.884042",
+    "title": "Home Loan Rates Revised: Impact for Indian Borrowers",
+    "description": "Learn how recent revisions by major Indian banks to repo-linked lending rates could affect your home loan EMIs and borrowing costs. Understand your next steps.",
+    "url": "https://zentraai.in/blog/2026-10-17-home-loan-rates-revised-indian-banks-impact.html",
+    "tags": [
+      "home loan",
+      "interest rates",
+      "financial planning"
+    ],
+    "slug": "home-loan-rates-revised-indian-banks-impact",
     "source": "Mint Money"
   }
 ]
