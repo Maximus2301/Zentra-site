@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-10-03T09:19:07.231773",
-    "title": "SEBI Enforces Compliance: Safeguarding Indian Investors",
-    "description": "SEBI's latest order highlights investor protection. Learn how SEBI acts to recover funds and safeguard your investments in the Indian market. Understand crucial steps for financial safety.",
-    "url": "https://zentraai.in/blog/2026-10-03-sebi-compliance-investor-protection-india.html",
-    "tags": [
-      "SEBI",
-      "Investor Safety",
-      "Financial Regulation"
-    ],
-    "slug": "sebi-compliance-investor-protection-india",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-03T09:19:26.111416",
-    "title": "RBI Simplifies Bank Share Acquisition for MFs, Insurers",
-    "description": "RBI streamlines bank share acquisition for financial institutions. Learn how this impacts your mutual fund investments, banking sector stability, and long-term financial planning.",
-    "url": "https://zentraai.in/blog/2026-10-03-rbi-simplifies-bank-share-acquisition-mf-impact.html",
-    "tags": [
-      "RBI",
-      "Mutual Funds",
-      "Financial Planning"
-    ],
-    "slug": "rbi-simplifies-bank-share-acquisition-mf-impact",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-10-03T09:19:37.450260",
-    "title": "SEBI Action on S S Traders: Investor Safety Lessons",
-    "description": "SEBI issued a remittance order against S S Traders over ANI Integrated Services Ltd. Learn how market regulations protect investors and what steps salaried Indian professionals can take to safeguard their investments and build long-term wealth.",
-    "url": "https://zentraai.in/blog/2026-10-03-sebi-remittance-order-investor-safety-lessons.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Market Regulation"
-    ],
-    "slug": "sebi-remittance-order-investor-safety-lessons",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-10-04T09:59:06.606264",
     "title": "SEBI Order: Jay Energy Compliance & Investor Safety",
     "description": "Understand SEBI's compliance orders like the Jay Energy case. Learn how regulatory actions protect Indian investors and why due diligence is crucial for your investments.",
@@ -608,6 +569,47 @@
       "financial planning"
     ],
     "slug": "home-loan-rates-revised-indian-banks-impact",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-10-18T08:12:05.434964",
+    "title": "Tax Audit Deadline: Key Checks for Compliance",
+    "description": "Understand the approaching income tax audit deadline. Learn essential last-minute checks and why this matters for Indian salaried professionals' financial compliance.",
+    "url": "https://zentraai.in/blog/2026-10-18-income-tax-audit-deadline-key-checks.html",
+    "tags": [
+      "Income Tax",
+      "Tax Audit",
+      "Financial Planning"
+    ],
+    "slug": "income-tax-audit-deadline-key-checks",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-10-18T08:12:19.480679",
+    "title": "New Form 141: Simpler TDS for Property, Rent & More",
+    "description": "Understand how India's new Form 141 simplifies TDS for property, rent, and professional payments. Make your tax compliance smoother and easier.",
+    "url": "https://zentraai.in/blog/2026-10-18-new-form-141-simplifies-tds-property-rent.html",
+    "tags": [
+      "Income Tax",
+      "TDS",
+      "Form 141",
+      "Tax Compliance",
+      "Indian Tax"
+    ],
+    "slug": "new-form-141-simplifies-tds-property-rent",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-10-18T08:12:39.965219",
+    "title": "KVP vs NSC: Choosing for Your 5-Year Goal",
+    "description": "Deciding between KVP and NSC for a 5-year investment goal? Learn about their interest rates, tax benefits, and how to choose the right one for you.",
+    "url": "https://zentraai.in/blog/2026-10-18-kvp-nsc-compare-post-office-schemes-5-year.html",
+    "tags": [
+      "Post Office Schemes",
+      "KVP",
+      "NSC"
+    ],
+    "slug": "kvp-nsc-compare-post-office-schemes-5-year",
     "source": "Mint Money"
   }
 ]
