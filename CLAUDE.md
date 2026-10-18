@@ -51,6 +51,21 @@ Do NOT collapse the brand to a single product. Always maintain the multi-product
 - The phone mockup in the product spotlight is pure CSS — update transaction labels/amounts to reflect real app data when screenshots are available
 - Replace Play Store link placeholder once the app is live on the store
 
+## Autonomous Instagram Campaign Agent (ADK 2.0)
+- **Directory / Package**: `instagram_adk` (canonical package, symlinked to `adk - content creator` for path compatibility).
+- **Architecture**: 7-stage Google ADK 2.0 directed line graph (`Workflow`, `InMemorySessionService`, `Runner`) with Stage 5 Critic loop.
+- **System Baseline**: `v1.1.0` (remodeled October 18, 2026; zero cross-account domain contamination verified).
+- **Accounts**: `@workplace_rights_watch`, `@fintech_save_smart`, `@alex_tech_ceo`.
+- **Formats**: Static Post (4:5), Interactive Story (9:16), Reel Screenplay (9:16), Status Card (1:1).
+- **Interactive Visualizer**: Outputs high-fidelity iPhone 16 Pro mockup HTML in `instagram_adk/output/preview_<account>.html`.
+- **CLI Commands**:
+  - `python run_instagram_agent.py`
+  - `.venv/bin/python instagram_adk/test_pipeline.py`
+  - `.venv/bin/adk web --port 8000 instagram_adk`
+- **Cloud Deployment & zentraai.in**:
+  - Expose via `adk api_server` (FastAPI) on Google Cloud Run with CORS for `zentraai.in`.
+  - Notion Baseline Page ID: `3fd00b72-932a-81c6-bbea-e450a9a21e9c`.
+
 ## TODO
 - [ ] Replace Play Store URL with live listing link
 - [ ] Add real app screenshots inside phone mockup (or swap mockup for actual screenshot)

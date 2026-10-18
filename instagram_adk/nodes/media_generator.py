@@ -60,7 +60,12 @@ def run_media_generator_node(ctx: Any) -> str:
     # 3. Instagram Reel: Google Veo 2.0 Video Engine (9:16 Vertical)
     if "reel" in active_formats or "all" in active_formats:
         reel_cover_file = OUTPUT_DIR / f"{account.account_id}_reel_cover_9x16.png"
-        reel_prompt = f"Cinematic 9:16 vertical motion scene representing corporate retaliation and legal confrontation, brooding volumetric lighting, slow motion push-in, 4K film look"
+        if "fintech" in account.account_id or "save" in account.account_id:
+            reel_prompt = f"Cinematic 9:16 vertical video representing modern automated personal finance and wealth freedom, elegant minimalist interface, clean bright cinematic lighting, 4K film look"
+        elif "alex" in account.account_id or "ceo" in account.account_id:
+            reel_prompt = f"Cinematic 9:16 vertical video representing startup engineering velocity and leadership decision making, sleek modern tech office, warm natural cinematic lighting, 4K film look"
+        else:
+            reel_prompt = f"Cinematic 9:16 vertical motion scene representing corporate accountability and legal empowerment, brooding volumetric lighting, slow motion push-in, 4K film look"
         
         # Call Google Veo 2.0 Video Generator
         veo_spec = generate_veo_video_spec(

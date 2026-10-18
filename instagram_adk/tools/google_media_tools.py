@@ -198,15 +198,27 @@ def render_high_aesthetic_card(
     draw.line([(card_margin_x + 50, y), (width - card_margin_x - 50, y)], fill=accent_rgb, width=3)
     y += 40
 
-    draw.text((card_margin_x + 50, y), "KEY TAKEAWAY & LEGAL RECOURSE:", fill=highlight_rgb)
-    y += 50
+    h_lower = handle.lower()
+    if "fintech" in h_lower or "save" in h_lower:
+        badge_header = "SMART WEALTH TAKEAWAY:"
+        sub_desc = "Automate your safety net and compound growth. Swipe for action steps."
+        cta_footer = "SAVE THIS POST  •  SHARE WITH SOMEONE BUILDING WEALTH"
+    elif "alex" in h_lower or "ceo" in h_lower:
+        badge_header = "FOUNDER STRATEGY INSIGHT:"
+        sub_desc = "Optimize for velocity and high-agency execution. Swipe for framework."
+        cta_footer = "SAVE THIS POST  •  SHARE WITH FELLOW BUILDERS & LEADERS"
+    else:
+        badge_header = "KEY RIGHTS TAKEAWAY & ACTION:"
+        sub_desc = "Statutory compliance guidelines and remedies. Swipe for action checklist."
+        cta_footer = "SAVE THIS POST  •  SHARE WITH SOMEONE WHO NEEDS THIS SUPPORT"
 
-    prompt_sub = "Statutory violation notice under labour compliance standards. Swipe for full action breakdown."
-    draw.text((card_margin_x + 50, y), prompt_sub[:65], fill=(200, 210, 230))
+    draw.text((card_margin_x + 50, y), badge_header, fill=highlight_rgb)
+    y += 50
+    draw.text((card_margin_x + 50, y), sub_desc[:65], fill=(200, 210, 230))
 
     # Bottom Studio Footer
     draw.rounded_rectangle([(70, height - 170), (width - 70, height - 70)], radius=18, fill=accent_rgb)
-    draw.text((110, height - 130), "SAVE THIS POST  •  SHARE WITH SOMEONE DEALING WITH RETALIATION", fill=(255, 255, 255))
+    draw.text((110, height - 130), cta_footer, fill=(255, 255, 255))
 
     base_img.save(output_path, "PNG")
     return output_path

@@ -49,6 +49,26 @@ def generate_interactive_preview_html(state: Any) -> Path:
         p = Path(path_str)
         return p.name if p.exists() else path_str
 
+    # Dynamic Story Poll Parsing
+    first_poll_slide = next((s for s in stories if s.get("sticker_prompt")), stories[0] if stories else {})
+    story_poll_title = first_poll_slide.get("headline") or "Interactive Community Poll"
+    raw_prompt = first_poll_slide.get("sticker_prompt") or first_poll_slide.get("subtext") or "Tap your response below"
+
+    opt1_text = "Agree 100%"
+    opt2_text = "Tell me more"
+    if "[" in raw_prompt and "]" in raw_prompt:
+        import re
+        matches = re.findall(r"\[(.*?)\]", raw_prompt)
+        if len(matches) >= 2:
+            opt1_text = matches[0]
+            opt2_text = matches[1]
+        elif len(matches) == 1:
+            opt1_text = matches[0]
+            opt2_text = "Alternative"
+        poll_question = re.sub(r"\[.*?\]", "", raw_prompt).replace("/", "").strip()
+    else:
+        poll_question = raw_prompt
+
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -254,15 +274,15 @@ def generate_interactive_preview_html(state: Any) -> Path:
 
             <div class="story-overlay">
               <div class="poll-card">
-                <span style="font-size: 11px; text-transform: uppercase; color: var(--highlight); font-weight: 800;">Interactive Exit Poll 🚨</span>
-                <h4 style="font-size: 15px; margin-top: 6px; color: #FFF;">Did your former employer delay your FnF past 30 days?</h4>
-                <div class="poll-opt" onclick="votePoll(this, '88%')">
-                  <span>Yes, over 30 days</span>
-                  <span class="pct" style="display: none;">88%</span>
+                <span style="font-size: 11px; text-transform: uppercase; color: var(--highlight); font-weight: 800;">{html.escape(first_poll_slide.get("sticker_type") or "Community Poll")} 🚨</span>
+                <h4 style="font-size: 15px; margin-top: 6px; color: #FFF;">{html.escape(poll_question)}</h4>
+                <div class="poll-opt" onclick="votePoll(this, '84%')">
+                  <span>{html.escape(opt1_text)}</span>
+                  <span class="pct" style="display: none;">84%</span>
                 </div>
-                <div class="poll-opt" onclick="votePoll(this, '12%')">
-                  <span>Settled on time</span>
-                  <span class="pct" style="display: none;">12%</span>
+                <div class="poll-opt" onclick="votePoll(this, '16%')">
+                  <span>{html.escape(opt2_text)}</span>
+                  <span class="pct" style="display: none;">16%</span>
                 </div>
               </div>
             </div>
@@ -290,7 +310,7 @@ def generate_interactive_preview_html(state: Any) -> Path:
               <span class="reels-hook-badge">Google Veo 2.0 Engine 🎬</span>
               <h4 style="font-size: 14px; font-weight: 800;">{html.escape(account.handle)}</h4>
               <p class="reels-caption">{html.escape(reel.get("hook_0_to_3s", narrative.hook))}</p>
-              <p style="font-size: 11px; color: #CBD5E1; margin-top: 6px;">🎵 Original Audio - Workplace Rights Watch (Statutory Beat)</p>
+              <p style="font-size: 11px; color: #CBD5E1; margin-top: 6px;">🎵 Original Audio - {html.escape(account.name)} ({html.escape(narrative.target_emotion or 'Original Beat')})</p>
             </div>
           </div>
         </div>
@@ -321,7 +341,7 @@ def generate_interactive_preview_html(state: Any) -> Path:
           <div class="spec-box"><div class="spec-lbl">Aspect Ratio</div><div class="spec-val">4:5 & 9:16 Vertical</div></div>
           <div class="spec-box"><div class="spec-lbl">Output Quality</div><div class="spec-val">8K Commercial Render</div></div>
           <div class="spec-box"><div class="spec-lbl">Color Grading</div><div class="spec-val">{', '.join(account.color_palette[:3])}</div></div>
-          <div class="spec-box"><div class="spec-lbl">Person Generation</div><div class="spec-val">Adult Approved (Workplace)</div></div>
+          <div class="spec-box"><div class="spec-lbl">Person Generation</div><div class="spec-val">Adult Approved ({html.escape(account.category)})</div></div>
         </div>
         <div class="prompt-box">PROMPT SPECIFICATION:
 "{html.escape(static_post.get('visual_prompt', ''))}"</div>
@@ -432,10 +452,64 @@ def generate_interactive_preview_html(state: Any) -> Path:
     return preview_file
 
 
+def publish_to_instagram_graph_api(
+    business_id: str,
+    access_token: str,
+    image_url: str,
+    caption: str,
+) -> dict[str, str]:
+    """Publishes a photo post via Meta Instagram Graph API v20.0."""
+    import httpx
+    base_url = "https://graph.facebook.com/v20.0"
+
+    # Meta Graph API requires public HTTPS url
+    if not (image_url.startswith("http://") or image_url.startswith("https://")):
+        logger.info(
+            f"Note: Local media path '{image_url}' cannot be directly fetched by Meta CDN. "
+            f"In production, upload images to GCS/S3 or CDN to publish live. Running safe preview mode."
+        )
+        return {"status": "dry_run_local_media", "preview_mode": "true"}
+
+    try:
+        # Step 1: Create media container
+        container_resp = httpx.post(
+            f"{base_url}/{business_id}/media",
+            data={
+                "image_url": image_url,
+                "caption": caption,
+                "access_token": access_token,
+            },
+            timeout=30.0,
+        )
+        container_resp.raise_for_status()
+        container_id = container_resp.json().get("id")
+        if not container_id:
+            raise RuntimeError(f"No container ID returned: {container_resp.text}")
+
+        # Step 2: Publish media container
+        pub_resp = httpx.post(
+            f"{base_url}/{business_id}/media_publish",
+            data={
+                "creation_id": container_id,
+                "access_token": access_token,
+            },
+            timeout=30.0,
+        )
+        pub_resp.raise_for_status()
+        media_id = pub_resp.json().get("id")
+        logger.info(f"✓ Live Post published to Instagram Graph API (Media ID: {media_id})")
+        return {"container_id": container_id, "media_id": media_id, "status": "published"}
+    except Exception as e:
+        logger.error(f"Failed to publish to Instagram Graph API: {e}")
+        return {"status": "error", "error": str(e)}
+
+
 def run_account_bound_publisher_node(ctx: Any) -> str:
     """Stage 6 Node: Dispatches content to Instagram Graph API or generates preview HTML."""
     state = ctx.state
     account = AccountContext.model_validate(state.get("account"))
+    static_post = state.get("static_post") or {}
+    media_assets = state.get("media_assets") or {}
 
     # Check for live API tokens
     token = os.getenv(account.access_token_env) or os.getenv("INSTAGRAM_ACCESS_TOKEN")
@@ -443,8 +517,15 @@ def run_account_bound_publisher_node(ctx: Any) -> str:
 
     if live_mode:
         logger.info(f"Live API credentials found for {account.handle}. Initializing Graph API dispatch...")
-        state["published_media_ids"] = {"static_post": "ig_container_17894918293"}
-        logger.info(f"✓ Live Post published to {account.handle} (ID: ig_container_17894918293)")
+        caption = static_post.get("caption", "")
+        img_url = media_assets.get("static_post", "")
+        pub_result = publish_to_instagram_graph_api(
+            business_id=account.instagram_business_id,
+            access_token=token,
+            image_url=img_url,
+            caption=caption,
+        )
+        state["published_media_ids"] = pub_result
 
     preview_path = generate_interactive_preview_html(state)
     state["preview_html_path"] = str(preview_path)

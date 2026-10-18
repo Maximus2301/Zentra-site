@@ -57,6 +57,10 @@ class StorySlide(BaseModel):
     background_mood: str = ""
 
 
+class StoryDraft(BaseModel):
+    slides: list[StorySlide] = Field(default_factory=list)
+
+
 class ReelScene(BaseModel):
     timestamp_start_sec: float
     timestamp_end_sec: float

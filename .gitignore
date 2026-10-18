@@ -10,6 +10,7 @@ __pycache__/
 .adk/
 *.db
 *.sqlite3
+adk - content creator
 
 # Environment variables & secrets
 .env

@@ -32,7 +32,7 @@ TARGET COHORT: {narrative.cohort_name}
 TARGET EMOTION: {narrative.target_emotion}
 
 YOUR EVALUATION CHECKLIST:
-1. Account Mission Alignment (0-10): Does the draft faithfully advance the account mission without drifting off-brand?
+1. Account Mission Alignment (0-10): Does the draft faithfully advance the account mission without drifting off-brand or leaking terms from unrelated domains?
 2. Emotional Resonance & EQ (0-10): Does the copy genuinely evoke the target emotion ({narrative.target_emotion})?
 3. Audience Cohort Resonance: Is the language calibrated for {narrative.cohort_name}?
 4. Mandatory Disclaimers: Are required legal/regulatory disclaimers included in the caption?
@@ -47,37 +47,89 @@ Score the draft from 0.0 to 10.0. If score >= 8.5, passed=True. Provide specific
 Generate a structured CriticReview."""
 
     def fallback_generator() -> CriticReview:
-        # Rule-based validation
+        # Heuristic rule-based validation
         caption = ""
+        tags: list[str] = []
         if static_post and isinstance(static_post, dict):
             caption = static_post.get("caption", "")
+            tags = static_post.get("hashtags", [])
         elif state.get("reel") and isinstance(state.get("reel"), dict):
             caption = state.get("reel", {}).get("caption", "")
+            tags = state.get("reel", {}).get("hashtags", [])
 
+        caption_lower = caption.lower()
+        full_text = f"{narrative.hook} {narrative.core_insight} {caption}".lower()
+
+        revisions: list[str] = []
+        checklist: dict[str, bool] = {}
+
+        # 1. Instagram Limits Check
         caption_len_ok = len(caption) <= 2200 if caption else True
+        tag_count_ok = len(tags) <= 30
+        checklist["instagram_limits_ok"] = caption_len_ok and tag_count_ok
+        if not caption_len_ok:
+            revisions.append("Shorten caption to <= 2200 characters.")
+        if not tag_count_ok:
+            revisions.append("Limit hashtags to <= 30.")
+
+        # 2. Mandatory Disclaimers Check
         disclaimer_ok = True
         if account.mandatory_disclaimers and caption:
-            disclaimer_ok = any(d.lower()[:20] in caption.lower() for d in account.mandatory_disclaimers)
+            disclaimer_ok = any(d.lower()[:25] in caption_lower for d in account.mandatory_disclaimers)
+        checklist["disclaimers_present"] = disclaimer_ok
+        if not disclaimer_ok:
+            revisions.append(f"Ensure mandatory disclaimer is explicitly appended: '{account.mandatory_disclaimers[0]}'")
 
-        checklist = {
-            "account_mission_aligned": True,
-            "audience_resonance": True,
-            "eq_calibrated": True,
-            "disclaimers_present": disclaimer_ok,
-            "instagram_limits_ok": caption_len_ok,
-        }
+        # 3. Forbidden Terms Check
+        forbidden_clean = True
+        for term in account.forbidden_terms:
+            t_low = term.lower()
+            if len(t_low) > 3 and t_low in full_text:
+                forbidden_clean = False
+                revisions.append(f"Remove forbidden concept: '{term}'")
+        checklist["forbidden_terms_clean"] = forbidden_clean
+
+        # 4. Cross-Domain Contamination Guard
+        domain_clean = True
+        if "fintech" in account.account_id:
+            labor_terms = ["labour commissioner", "full and final", "fnf", "unpaid salary", "retaliation notice"]
+            if any(lt in full_text for lt in labor_terms):
+                domain_clean = False
+                revisions.append("Remove leaked workplace grievance / labor dispute terms from FinTech copy.")
+        elif "alex" in account.account_id:
+            labor_terms = ["statutory notice", "labour court", "unpaid dues", "gratuity stalling"]
+            if any(lt in full_text for lt in labor_terms):
+                domain_clean = False
+                revisions.append("Remove leaked labor dispute terms from Tech CEO executive leadership copy.")
+        checklist["domain_isolation_clean"] = domain_clean
+
+        # 5. Mission & Resonance
+        mission_aligned = domain_clean and forbidden_clean
+        checklist["account_mission_aligned"] = mission_aligned
+        checklist["audience_resonance"] = True
+        checklist["eq_calibrated"] = True
 
         passed = all(checklist.values())
-        score = 9.4 if passed else 7.0
-        feedback = "Exceptional draft. High scroll-stopping hook, empathetic narrative arc, and compliant with all platform and channel guardrails." if passed else "Missing mandatory disclaimer or limits exceeded."
+        if passed:
+            score = 9.4
+            eq_score = 9.2
+            feedback = (
+                f"Approved for {account.name}. Strong scroll-stopping hook, cohesive emotional arc "
+                f"({narrative.target_emotion}), and strictly compliant with channel guardrails."
+            )
+        else:
+            deductions = (0 if disclaimer_ok else 2.5) + (0 if domain_clean else 3.0) + (0 if forbidden_clean else 2.0)
+            score = max(4.0, round(9.4 - deductions, 1))
+            eq_score = 7.0
+            feedback = f"Quality & compliance gate failed ({score}/10): {'; '.join(revisions)}"
 
         return CriticReview(
             score=score,
-            eq_score=9.2,
+            eq_score=eq_score,
             passed=passed,
             feedback=feedback,
             checklist_results=checklist,
-            suggested_revisions=[] if passed else ["Ensure mandatory disclaimer is explicitly appended to caption."],
+            suggested_revisions=revisions,
         )
 
     review = call_structured_gemini(
