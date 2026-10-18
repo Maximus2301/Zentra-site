@@ -266,17 +266,17 @@
 
   <div class="products">
 
-    <!-- HYT MONEY -->
+    <!-- HYT MONEY TRACKER -->
     <div class="product-card finance" style="cursor:default;">
       <div class="card-status status-live">● Live on Android</div>
       <div class="card-icon icon-finance">💰</div>
-      <div class="card-name">HYT MONEY</div>
+      <div class="card-name">HYT MONEY TRACKER</div>
       <p class="card-desc">
         Automatic SMS-based expense tracking, AI financial advisor, payment planner,
         and Finance Gyan — all in one app for Indian salaried professionals.
       </p>
       <a href="/finance/" class="card-cta cta-finance">
-        Explore HYT MONEY →
+        Explore HYT MONEY TRACKER →
       </a>
     </div>
 
@@ -324,6 +324,18 @@
     </div>
     <div class="footer-copy">© 2026 HYT. All rights reserved.</div>
   </footer>
+
+  <script>
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var rawRef = params.get('ref') || params.get('referrer') || '';
+        if (/^[A-Za-z0-9]{8}$/.test(rawRef.trim())) {
+          window.location.replace('/finance/?ref=' + encodeURIComponent(rawRef.trim().toUpperCase()));
+        }
+      } catch (e) {}
+    })();
+  </script>
 
 </body>
 </html>
