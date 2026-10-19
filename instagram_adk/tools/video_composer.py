@@ -57,9 +57,11 @@ def render_scene_frame(
     """Renders a cinematic vertical 1080x1920 scene slide with branding & kinetic text."""
     width, height = 1080, 1920
     palette = account.color_palette or ["#0D0D11", "#E63946", "#38BDF8"]
-    bg_rgb = _hex_to_rgb(palette[0])
-    accent_rgb = _hex_to_rgb(palette[1]) if len(palette) > 1 else (201, 162, 42)
-    cyan_rgb = _hex_to_rgb(palette[2]) if len(palette) > 2 else (110, 207, 219)
+    vi = getattr(account, "visual_identity", None)
+    bg_rgb = _hex_to_rgb(vi.bg_color) if vi and vi.bg_color else _hex_to_rgb(palette[0])
+    accent_rgb = _hex_to_rgb(vi.primary_color) if vi and vi.primary_color else (_hex_to_rgb(palette[1]) if len(palette) > 1 else (201, 162, 42))
+    cyan_rgb = _hex_to_rgb(vi.accent_color) if vi and vi.accent_color else (_hex_to_rgb(palette[2]) if len(palette) > 2 else (110, 207, 219))
+    brand_icon = vi.channel_icon if vi and vi.channel_icon else "⚡"
 
     img = Image.new("RGB", (width, height), bg_rgb)
     draw = ImageDraw.Draw(img)
@@ -80,7 +82,7 @@ def render_scene_frame(
 
     # 3. Top Header: Channel branding & Scene progress
     font_small = ImageFont.load_default()
-    brand_header = f"{account.name.upper()}  •  {account.handle}"
+    brand_header = f"{brand_icon}  {account.name.upper()}  •  {account.handle}"
     draw.text((90, 95), brand_header, fill=(200, 200, 210), font=font_small)
 
     scene_progress = f"SCENE {scene_idx}/{total_scenes}  [{start_sec:.1f}s - {end_sec:.1f}s]"

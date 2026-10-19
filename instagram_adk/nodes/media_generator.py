@@ -22,6 +22,7 @@ def run_media_generator_node(ctx: Any) -> str:
 
     assets: dict[str, str] = {}
     video_specs: dict[str, Any] = {}
+    vi_dict = account.visual_identity.model_dump() if account.visual_identity else None
 
     # 1. Static Feed Post: Google Imagen 3 (4:5 Aspect Ratio)
     if "static_post" in active_formats or "all" in active_formats:
@@ -38,6 +39,7 @@ def run_media_generator_node(ctx: Any) -> str:
             account_name=account.name,
             handle=account.handle,
             overlay_hook=narrative.hook,
+            visual_identity=vi_dict,
         )
         assets["static_post"] = str(feed_file)
         logger.info(f"✓ Google Imagen 3 Feed Visual generated: {feed_file.name}")
@@ -54,6 +56,7 @@ def run_media_generator_node(ctx: Any) -> str:
             account_name=account.name,
             handle=account.handle,
             overlay_hook="STORY ALERT: " + narrative.hook,
+            visual_identity=vi_dict,
         )
         assets["story"] = str(story_file)
         logger.info(f"✓ Google Imagen 3 Story Visual generated: {story_file.name}")
@@ -80,6 +83,7 @@ def run_media_generator_node(ctx: Any) -> str:
             account_name=account.name,
             handle=account.handle,
             overlay_hook=f"{reel_obj.duration_seconds if reel_obj else 30}S REEL: " + narrative.hook,
+            visual_identity=vi_dict,
         )
         assets["reel"] = str(reel_cover_file)
 
@@ -130,6 +134,7 @@ def run_media_generator_node(ctx: Any) -> str:
             account_name=account.name,
             handle=account.handle,
             overlay_hook=narrative.hook,
+            visual_identity=vi_dict,
         )
         assets["status"] = str(status_file)
         logger.info(f"✓ Status Graphic generated: {status_file.name}")

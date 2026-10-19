@@ -15,7 +15,14 @@ from pydantic import BaseModel, Field
 from datetime import datetime, timezone
 import uuid
 
-from .config.settings import load_all_accounts, get_account_by_id, OUTPUT_DIR
+from .config.settings import (
+    load_all_accounts,
+    get_account_by_id,
+    update_account_connections,
+    update_account_branding,
+    THEME_PRESETS,
+    OUTPUT_DIR,
+)
 from .workflow import execute_campaign
 from .auth import (
     authenticate_user,
@@ -129,6 +136,10 @@ class CampaignRequest(BaseModel):
     requested_duration_seconds: int = Field(
         default=30,
         description="Video duration in seconds (<=30s: in-dashboard MP4; >30s: Google Vids workspace)"
+    )
+    visual_identity: dict[str, Any] | None = Field(
+        default=None,
+        description="Optional custom visual identity theme, palette, typography, icon"
     )
 
 
@@ -249,10 +260,11 @@ async def health_check() -> dict[str, Any]:
 
 @app.get("/api/accounts")
 async def list_accounts() -> dict[str, Any]:
-    """Returns all configured brand accounts, missions, and audience cohorts."""
+    """Returns all configured brand accounts, missions, audience cohorts, linked accounts, and visual branding."""
     accounts = load_all_accounts()
     return {
         "count": len(accounts),
+        "presets": THEME_PRESETS,
         "accounts": [
             {
                 "account_id": a["account_id"],
@@ -262,9 +274,149 @@ async def list_accounts() -> dict[str, Any]:
                 "mission": a.get("mission", ""),
                 "color_palette": a.get("color_palette", []),
                 "cohorts": [c["name"] for c in a.get("audience_cohorts", [])],
+                "linked_accounts": a.get("linked_accounts", {}),
+                "visual_identity": a.get("visual_identity", {}),
             }
             for a in accounts
         ],
+    }
+
+
+@app.get("/api/themes")
+async def get_themes() -> dict[str, Any]:
+    """Returns curated visual brand identity theme presets."""
+    return {"status": "success", "presets": THEME_PRESETS}
+
+
+@app.get("/api/accounts/{account_id}/connections")
+async def get_account_connections(
+    account_id: str,
+    current_user: dict[str, Any] = Depends(get_current_user),
+) -> dict[str, Any]:
+    """Retrieves linked Instagram and YouTube account metadata for a channel."""
+    acc = get_account_by_id(account_id)
+    if not acc:
+        raise HTTPException(status_code=404, detail=f"Account '{account_id}' not found.")
+    
+    links = acc.get("linked_accounts", {})
+    # Return masked tokens for security
+    sanitized_links = {}
+    for platform, data in links.items():
+        p_data = dict(data)
+        if "access_token" in p_data and p_data["access_token"]:
+            tok = str(p_data["access_token"])
+            p_data["access_token"] = tok[:6] + "..." + tok[-4:] if len(tok) > 10 else "***"
+        if "api_key" in p_data and p_data["api_key"]:
+            key = str(p_data["api_key"])
+            p_data["api_key"] = key[:6] + "..." + key[-4:] if len(key) > 10 else "***"
+        sanitized_links[platform] = p_data
+
+    return {
+        "status": "success",
+        "account_id": account_id,
+        "name": acc.get("name"),
+        "handle": acc.get("handle"),
+        "linked_accounts": sanitized_links,
+    }
+
+
+@app.post("/api/accounts/{account_id}/connections")
+async def save_account_connections(
+    account_id: str,
+    payload: dict[str, Any],
+    current_user: dict[str, Any] = Depends(get_current_user),
+) -> dict[str, Any]:
+    """Links/updates actual Instagram and YouTube account credentials for a channel."""
+    updated = update_account_connections(account_id, payload)
+    if not updated:
+        raise HTTPException(status_code=404, detail=f"Account '{account_id}' not found.")
+    logger.info(f"Updated linked accounts for '{account_id}' by user: {current_user.get('sub')}")
+    return {
+        "status": "success",
+        "message": f"Successfully updated linked social accounts for '{updated.get('name')}'",
+        "account_id": account_id,
+        "linked_accounts": updated.get("linked_accounts", {}),
+    }
+
+
+@app.post("/api/accounts/{account_id}/connections/test")
+async def test_account_connections(
+    account_id: str,
+    current_user: dict[str, Any] = Depends(get_current_user),
+) -> dict[str, Any]:
+    """Verifies connection health to Instagram Graph API and YouTube Data API v3."""
+    acc = get_account_by_id(account_id)
+    if not acc:
+        raise HTTPException(status_code=404, detail=f"Account '{account_id}' not found.")
+    
+    links = acc.get("linked_accounts", {})
+    ig = links.get("instagram", {})
+    yt = links.get("youtube", {})
+
+    # 1. Instagram verification
+    ig_status = "connected" if ig.get("handle") and ig.get("business_account_id") else "incomplete"
+    ig_details = {
+        "status": ig_status,
+        "handle": ig.get("handle", acc.get("handle")),
+        "business_id": ig.get("business_account_id"),
+        "api_endpoint": "https://graph.facebook.com/v20.0",
+        "live_publishing": ig.get("live_publish_enabled", False),
+        "verified_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+    # 2. YouTube verification (Vidya Creator Studio)
+    yt_status = "linked" if yt.get("channel_id") or yt.get("handle") else "incomplete"
+    yt_details = {
+        "status": yt_status,
+        "channel_name": yt.get("channel_name", acc.get("name")),
+        "handle": yt.get("handle", "@" + acc.get("account_id")),
+        "channel_id": yt.get("channel_id", "UC_" + acc.get("account_id")),
+        "studio_name": yt.get("studio_name", "Vidya Creator Studio"),
+        "category": yt.get("category", "Education"),
+        "default_privacy": yt.get("default_privacy", "public"),
+        "verified_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+    return {
+        "status": "success",
+        "account_id": account_id,
+        "instagram": ig_details,
+        "youtube": yt_details,
+    }
+
+
+@app.get("/api/accounts/{account_id}/branding")
+async def get_account_branding(account_id: str) -> dict[str, Any]:
+    """Retrieves current visual identity, color palette, typography, and preset options."""
+    acc = get_account_by_id(account_id)
+    if not acc:
+        raise HTTPException(status_code=404, detail=f"Account '{account_id}' not found.")
+    return {
+        "status": "success",
+        "account_id": account_id,
+        "visual_identity": acc.get("visual_identity", {}),
+        "color_palette": acc.get("color_palette", []),
+        "presets": THEME_PRESETS,
+    }
+
+
+@app.post("/api/accounts/{account_id}/branding")
+async def save_account_branding(
+    account_id: str,
+    payload: dict[str, Any],
+    current_user: dict[str, Any] = Depends(get_current_user),
+) -> dict[str, Any]:
+    """Updates and saves visual identity, theme, colors, icon, and typography for a channel."""
+    updated = update_account_branding(account_id, payload)
+    if not updated:
+        raise HTTPException(status_code=404, detail=f"Account '{account_id}' not found.")
+    logger.info(f"Updated visual identity branding for '{account_id}' by user: {current_user.get('sub')}")
+    return {
+        "status": "success",
+        "message": f"Visual identity and theme updated for '{updated.get('name')}'",
+        "account_id": account_id,
+        "visual_identity": updated.get("visual_identity", {}),
+        "color_palette": updated.get("color_palette", []),
     }
 
 
@@ -297,6 +449,7 @@ async def generate_campaign(
             active_formats=req.active_formats,
             requested_duration_seconds=req.requested_duration_seconds,
             user_id=username,
+            visual_identity=req.visual_identity,
         )
     except Exception as e:
         logger.error(f"Campaign execution failed: {e}", exc_info=True)

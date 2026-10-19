@@ -101,6 +101,7 @@ def generate_imagen_image(
     account_name: str = "Brand",
     handle: str = "@handle",
     overlay_hook: str = "",
+    visual_identity: dict[str, Any] | None = None,
 ) -> Path:
     """Generates high-definition visual assets using Google GenAI Image models (with aesthetic composite fallback)."""
     client = get_genai_client()
@@ -143,6 +144,7 @@ def generate_imagen_image(
         hook=overlay_hook or prompt[:80],
         prompt_hint=prompt,
         color_palette=color_palette or ["#0F172A", "#E63946", "#38BDF8"],
+        visual_identity=visual_identity,
     )
 
 
@@ -203,14 +205,22 @@ def render_high_aesthetic_card(
     hook: str,
     prompt_hint: str,
     color_palette: list[str],
+    visual_identity: dict[str, Any] | None = None,
 ) -> Path:
     """Renders a magazine-grade, glassmorphic visual composite with lighting gradients."""
     width = 1080
     height = 1350 if aspect_ratio == "4:5" else (1920 if aspect_ratio == "9:16" else 1080)
 
-    bg_rgb = hex_to_rgb(color_palette[0])
-    accent_rgb = hex_to_rgb(color_palette[1]) if len(color_palette) > 1 else (230, 57, 70)
-    highlight_rgb = hex_to_rgb(color_palette[2]) if len(color_palette) > 2 else (56, 189, 248)
+    vi = visual_identity or {}
+    bg_hex = vi.get("bg_color") or (color_palette[0] if color_palette else "#0B0F19")
+    accent_hex = vi.get("primary_color") or (color_palette[1] if len(color_palette) > 1 else "#E63946")
+    highlight_hex = vi.get("accent_color") or (color_palette[2] if len(color_palette) > 2 else "#38BDF8")
+    channel_icon = vi.get("channel_icon") or "●"
+    theme_label = vi.get("theme_label") or "AI Studio Verified"
+
+    bg_rgb = hex_to_rgb(bg_hex)
+    accent_rgb = hex_to_rgb(accent_hex)
+    highlight_rgb = hex_to_rgb(highlight_hex)
 
     # 1. Base gradient background
     base_img = Image.new("RGB", (width, height), bg_rgb)
@@ -253,8 +263,8 @@ def render_high_aesthetic_card(
 
     # Header pill
     draw.rounded_rectangle([(70, 80), (width - 70, 180)], radius=16, fill=(28, 35, 58), outline=accent_rgb, width=2)
-    draw.text((110, 115), f"●  {account_name.upper()}  |  {handle}", fill=(255, 255, 255))
-    draw.text((width - 340, 115), "AI STUDIO VERIFIED", fill=highlight_rgb)
+    draw.text((110, 115), f"{channel_icon}  {account_name.upper()}  |  {handle}", fill=(255, 255, 255))
+    draw.text((width - 360, 115), f"THEME: {theme_label[:18].upper()}", fill=highlight_rgb)
 
     # Main Headline Hook inside Glass Card
     words = hook.split()

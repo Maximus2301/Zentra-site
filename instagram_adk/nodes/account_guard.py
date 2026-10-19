@@ -4,7 +4,7 @@ from __future__ import annotations
 import logging
 from typing import Any
 from ..config.settings import get_account_by_id, load_all_accounts
-from ..models.state import AccountContext
+from ..models.state import AccountContext, VisualIdentity
 
 logger = logging.getLogger("instagram_adk.account_guard")
 
@@ -75,12 +75,26 @@ def account_guard_node(ctx: Any) -> str:
 
     account_context = AccountContext(**raw_account)
 
+    # Merge custom visual identity if passed in initial state
+    req_vi = state.get("visual_identity")
+    if req_vi:
+        if isinstance(req_vi, dict):
+            vi_merged = account_context.visual_identity.model_dump() if account_context.visual_identity else {}
+            vi_merged.update({k: v for k, v in req_vi.items() if v is not None})
+            account_context.visual_identity = VisualIdentity.model_validate(vi_merged)
+            if "color_palette" in req_vi and req_vi["color_palette"]:
+                account_context.color_palette = req_vi["color_palette"]
+        elif isinstance(req_vi, VisualIdentity):
+            account_context.visual_identity = req_vi
+            account_context.color_palette = req_vi.color_palette
+
     state["account_id"] = account_id
     state["account"] = account_context.model_dump()
+    state["visual_identity"] = account_context.visual_identity.model_dump() if account_context.visual_identity else None
     state["status"] = "account_locked"
 
     logger.info(
         f"✓ Channel Context Locked: {account_context.name} ({account_context.handle}) | "
-        f"Active Formats: {state['active_formats']} | Cohorts: {len(account_context.audience_cohorts)}"
+        f"Active Formats: {state['active_formats']} | Theme: {account_context.visual_identity.theme if account_context.visual_identity else 'default'}"
     )
     return f"locked:{account_id}"

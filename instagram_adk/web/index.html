@@ -7,7 +7,7 @@
   <meta name="description" content="Autonomous Multi-Channel Instagram Campaign Creator powered by Google ADK 2.0 and Gemini 2.5." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@600;800&family=Outfit:wght@500;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@600;700;800&family=Roboto:wght@400;500;700&family=Space+Grotesk:wght@600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -904,6 +904,286 @@
       border-color: var(--danger);
       background: rgba(255,69,58,0.1);
     }
+
+    /* ── BRANDING & VISUAL IDENTITY STYLES ── */
+    .branding-section {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .branding-section:hover {
+      border-color: rgba(201,162,42,0.4);
+    }
+    .branding-header {
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      background: rgba(255,255,255,0.02);
+    }
+    .branding-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .branding-preset-badge {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: rgba(201,162,42,0.15);
+      border: 1px solid var(--primary);
+      color: var(--primary-light);
+      font-weight: 600;
+    }
+    .branding-chevron {
+      font-size: 11px;
+      color: var(--text-muted);
+      transition: transform 0.2s;
+    }
+    .branding-chevron.collapsed {
+      transform: rotate(-90deg);
+    }
+    .branding-body {
+      padding: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .theme-presets-row {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .theme-preset-pill {
+      padding: 6px 12px;
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .theme-preset-pill:hover {
+      border-color: rgba(201,162,42,0.4);
+      color: var(--text);
+    }
+    .theme-preset-pill.active {
+      background: rgba(201,162,42,0.15);
+      border-color: var(--primary);
+      color: var(--gold-bright);
+    }
+    .branding-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .color-picker-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 4px 8px;
+    }
+    .color-picker-wrap input[type="color"] {
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: transparent;
+    }
+    .color-picker-wrap input[type="text"] {
+      border: none;
+      background: transparent;
+      padding: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      width: 70px;
+      color: var(--text);
+    }
+    .icon-quick-pills {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .icon-quick-pill {
+      font-size: 16px;
+      cursor: pointer;
+      padding: 3px 6px;
+      border-radius: 6px;
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      transition: all 0.15s;
+    }
+    .icon-quick-pill:hover {
+      transform: scale(1.2);
+      border-color: var(--primary);
+    }
+
+    /* Live Brand DNA Mini-Card Preview */
+    .brand-preview-card {
+      background: #0B0F19;
+      border: 2px solid #E63946;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      transition: all 0.3s;
+    }
+    .brand-preview-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .brand-preview-icon {
+      font-size: 20px;
+      margin-right: 8px;
+    }
+    .brand-preview-handle {
+      font-size: 12px;
+      font-weight: 700;
+      color: #FFF;
+    }
+    .brand-preview-tagline {
+      font-size: 10px;
+      color: #94A3B8;
+    }
+    .brand-preview-style-badge {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: rgba(56,189,248,0.15);
+      color: #38BDF8;
+      border: 1px solid #38BDF8;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .brand-preview-headline {
+      font-size: 14px;
+      font-weight: 800;
+      color: #FFF;
+      margin: 8px 0;
+      line-height: 1.3;
+    }
+    .brand-preview-palette-swatches {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .preview-swatch {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.3);
+      display: inline-block;
+    }
+
+    /* ── SOCIAL LINKS DRAWER ── */
+    .social-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .social-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .social-drawer {
+      position: fixed;
+      top: 0;
+      right: -580px;
+      width: 540px;
+      max-width: 95vw;
+      height: 100vh;
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      z-index: 101;
+      box-shadow: -15px 0 45px rgba(0,0,0,0.75);
+      display: flex;
+      flex-direction: column;
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .social-drawer.active {
+      right: 0;
+    }
+    .social-channel-tab {
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .social-channel-tab.active {
+      background: rgba(110,207,219,0.15);
+      border-color: var(--teal);
+      color: var(--teal-light);
+    }
+    .social-platform-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .platform-tab-btn {
+      padding: 12px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .platform-tab-btn:hover {
+      border-color: rgba(110,207,219,0.4);
+    }
+    .platform-tab-btn.active {
+      background: rgba(110,207,219,0.12);
+      border-color: var(--teal);
+      box-shadow: 0 0 16px rgba(110,207,219,0.15);
+    }
+    .social-status-indicator {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--success);
+    }
+    .test-result-box {
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
@@ -929,6 +1209,12 @@
       <button type="button" class="btn-history-nav" id="btnOpenHistory" onclick="openHistoryDrawer()" style="display: none;">
         <span>📜 Past Sessions</span>
         <span id="historyBadgeCount" class="history-badge-count">0</span>
+      </button>
+
+      <!-- Linked Accounts Nav Button -->
+      <button type="button" class="btn-history-nav" id="btnOpenSocialLinks" onclick="openSocialLinksDrawer()" style="display: none; border-color: rgba(110,207,219,0.35); color: var(--teal-light);">
+        <span>🔗 Social Links</span>
+        <span id="socialLinksBadge" class="history-badge-count" style="background: rgba(110,207,219,0.2); color: var(--teal); border-color: var(--teal);">● 2 Connected</span>
       </button>
 
       <div class="api-badge" id="apiStatusBadge" onclick="openSettingsModal()" title="Click to configure Cloud Run API Server">
@@ -1073,6 +1359,150 @@
             </div>
             <div class="form-hint" id="routingHint">
               <strong>≤30s:</strong> Generates playable 1080x1920 MP4 video directly in the studio. <strong>>30s:</strong> Automates Google Vids Workspace blueprint with 1-click launch.
+            </div>
+          </div>
+
+          <!-- Brand Visual Identity & Styling Section -->
+          <div class="branding-section" id="brandingSection">
+            <div class="branding-header" onclick="toggleBrandingAccordion()">
+              <div class="branding-title">
+                <span>🎨</span>
+                <span>Visual Identity & Brand DNA</span>
+                <span id="currentThemeBadge" class="branding-preset-badge">Investigative Legal</span>
+              </div>
+              <span id="brandingChevron" class="branding-chevron">▼</span>
+            </div>
+            
+            <div class="branding-body" id="brandingBody">
+              <!-- Preset Selector -->
+              <div class="form-group" style="margin-bottom: 12px;">
+                <label class="form-label" style="font-size: 11px;">Theme Preset</label>
+                <div class="theme-presets-row" id="themePresetsRow">
+                  <div class="theme-preset-pill active" onclick="applyThemePreset('investigative_legal')">🛡️ Investigative Legal</div>
+                  <div class="theme-preset-pill" onclick="applyThemePreset('fintech_mint_gold')">💰 FinTech Mint & Gold</div>
+                  <div class="theme-preset-pill" onclick="applyThemePreset('cyberpunk_tech_glow')">⚡ Cyberpunk Glow</div>
+                  <div class="theme-preset-pill" onclick="applyThemePreset('editorial_luxury')">📰 Editorial Luxury</div>
+                  <div class="theme-preset-pill" onclick="applyThemePreset('vibrant_pop')">🔥 Vibrant Pop</div>
+                  <div class="theme-preset-pill" onclick="applyThemePreset('nordic_minimal')">🌿 Nordic Minimal</div>
+                  <div class="theme-preset-pill" onclick="applyThemePreset('custom')">🎨 Custom</div>
+                </div>
+              </div>
+
+              <!-- Live Brand DNA Mini-Card Preview -->
+              <div class="brand-preview-card" id="brandPreviewCard">
+                <div class="brand-preview-header">
+                  <div style="display:flex; align-items:center;">
+                    <span id="previewBrandIcon" class="brand-preview-icon">⚖️</span>
+                    <div>
+                      <div id="previewBrandHandle" class="brand-preview-handle">@workplace_rights_watch</div>
+                      <div id="previewBrandTagline" class="brand-preview-tagline">Visual Brand DNA</div>
+                    </div>
+                  </div>
+                  <span id="previewStyleBadge" class="brand-preview-style-badge">Line Style</span>
+                </div>
+                <div id="previewHeadlineSample" class="brand-preview-headline">
+                  High-Impact Headline Sample
+                </div>
+                <div class="brand-preview-palette-swatches">
+                  <span class="preview-swatch" id="swatchPrimary" style="background:#E63946;" title="Primary Color"></span>
+                  <span class="preview-swatch" id="swatchAccent" style="background:#38BDF8;" title="Accent Glow"></span>
+                  <span class="preview-swatch" id="swatchBg" style="background:#0B0F19;" title="Background Tone"></span>
+                  <span class="preview-swatch" id="swatchText" style="background:#F8FAFC;" title="Contrast Text"></span>
+                </div>
+              </div>
+
+              <!-- Color Pickers 2x2 Grid -->
+              <div class="branding-grid-2col">
+                <div class="color-picker-item">
+                  <label class="form-label" style="font-size:11px; margin-bottom:4px;">Primary Brand Color</label>
+                  <div class="color-picker-wrap">
+                    <input type="color" id="viPrimaryColor" value="#E63946" oninput="onVisualIdentityChange()" />
+                    <input type="text" id="viPrimaryHex" value="#E63946" maxlength="7" oninput="onHexInputChange('viPrimaryColor', this.value)" />
+                  </div>
+                </div>
+                <div class="color-picker-item">
+                  <label class="form-label" style="font-size:11px; margin-bottom:4px;">Accent / Glow Color</label>
+                  <div class="color-picker-wrap">
+                    <input type="color" id="viAccentColor" value="#38BDF8" oninput="onVisualIdentityChange()" />
+                    <input type="text" id="viAccentHex" value="#38BDF8" maxlength="7" oninput="onHexInputChange('viAccentColor', this.value)" />
+                  </div>
+                </div>
+                <div class="color-picker-item">
+                  <label class="form-label" style="font-size:11px; margin-bottom:4px;">Surface Tone (Dark)</label>
+                  <div class="color-picker-wrap">
+                    <input type="color" id="viBgColor" value="#0B0F19" oninput="onVisualIdentityChange()" />
+                    <input type="text" id="viBgHex" value="#0B0F19" maxlength="7" oninput="onHexInputChange('viBgColor', this.value)" />
+                  </div>
+                </div>
+                <div class="color-picker-item">
+                  <label class="form-label" style="font-size:11px; margin-bottom:4px;">Contrast Text</label>
+                  <div class="color-picker-wrap">
+                    <input type="color" id="viTextColor" value="#F8FAFC" oninput="onVisualIdentityChange()" />
+                    <input type="text" id="viTextHex" value="#F8FAFC" maxlength="7" oninput="onHexInputChange('viTextColor', this.value)" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Icon & Iconography Style -->
+              <div class="branding-grid-2col" style="margin-top: 10px;">
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label" style="font-size:11px; margin-bottom:4px;">Channel Icon</label>
+                  <div style="display:flex; gap:6px; align-items:center;">
+                    <input type="text" id="viChannelIcon" value="⚖️" maxlength="4" style="width:48px; text-align:center; font-size:18px; padding:6px;" oninput="onVisualIdentityChange()" />
+                    <div class="icon-quick-pills">
+                      <span class="icon-quick-pill" onclick="setQuickIcon('⚖️')">⚖️</span>
+                      <span class="icon-quick-pill" onclick="setQuickIcon('💰')">💰</span>
+                      <span class="icon-quick-pill" onclick="setQuickIcon('🚀')">🚀</span>
+                      <span class="icon-quick-pill" onclick="setQuickIcon('💡')">💡</span>
+                      <span class="icon-quick-pill" onclick="setQuickIcon('🔥')">🔥</span>
+                      <span class="icon-quick-pill" onclick="setQuickIcon('⚡')">⚡</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label" style="font-size:11px; margin-bottom:4px;">Iconography Style</label>
+                  <select id="viIconographyStyle" onchange="onVisualIdentityChange()">
+                    <option value="line">Line (Lucide Minimalist)</option>
+                    <option value="glassmorphism">Glassmorphism (3D Glow)</option>
+                    <option value="tech_terminal">Tech Terminal (Cyber Monospace)</option>
+                    <option value="editorial_serif">Editorial Serif (Classic Monogram)</option>
+                    <option value="vibrant_emoji">Vibrant Emoji (Punchy 3D)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Typography Selection -->
+              <div class="branding-grid-2col" style="margin-top: 10px;">
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label" style="font-size:11px; margin-bottom:4px;">Headline Typography</label>
+                  <select id="viHeadlineFont" onchange="onVisualIdentityChange()">
+                    <option value="Plus Jakarta Sans">Plus Jakarta Sans (Modern Clean)</option>
+                    <option value="Syne">Syne (Avant-Garde Tech Bold)</option>
+                    <option value="Space Grotesk">Space Grotesk (Tech / Web3)</option>
+                    <option value="Montserrat">Montserrat (Commercial Bold)</option>
+                    <option value="Playfair Display">Playfair Display (Luxury Serif)</option>
+                    <option value="Bebas Neue">Bebas Neue (Punchy Uppercase)</option>
+                    <option value="Outfit">Outfit (Clean Scandinavian)</option>
+                    <option value="Inter">Inter (Swiss Precision)</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label" style="font-size:11px; margin-bottom:4px;">Body / Captions</label>
+                  <select id="viBodyFont" onchange="onVisualIdentityChange()">
+                    <option value="Inter">Inter (Crisp Legibility)</option>
+                    <option value="Roboto">Roboto (Standard Clean)</option>
+                    <option value="JetBrains Mono">JetBrains Mono (Monospace Data)</option>
+                    <option value="Lora">Lora (Editorial Literary)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Actions: Save as Default DNA -->
+              <div style="display:flex; justify-content:flex-end; margin-top:12px;">
+                <button type="button" class="btn-copy" onclick="saveCurrentChannelBranding()" style="font-size:12px; padding:6px 14px;">
+                  💾 Save as Channel Default DNA
+                </button>
+              </div>
             </div>
           </div>
 
@@ -1335,6 +1765,123 @@
         <div style="font-size: 32px; margin-bottom: 12px;">📜</div>
         <p>No past campaign sessions found.</p>
         <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Launch a campaign to record your first agentic workflow session.</p>
+  </aside>
+
+  <!-- LINKED SOCIAL ACCOUNTS DRAWER & OVERLAY -->
+  <div class="social-overlay" id="socialOverlay" onclick="closeSocialLinksDrawer()"></div>
+  <aside class="social-drawer" id="socialLinksDrawer" aria-label="Linked Social Accounts">
+    <div class="history-header">
+      <div class="history-title-box">
+        <div class="history-title">Linked Social Accounts</div>
+        <div class="history-role-tag" style="background: rgba(110,207,219,0.15); color: var(--teal); border-color: var(--teal);">
+          📺 Vidya & Instagram Studio
+        </div>
+      </div>
+      <button type="button" class="btn-history-close" onclick="closeSocialLinksDrawer()" title="Close">✕</button>
+    </div>
+
+    <!-- Active Channel Tab Switcher -->
+    <div style="padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; gap: 8px; overflow-x: auto; background: var(--surface-2);">
+      <button type="button" class="social-channel-tab active" id="socTab_workplace_rights_watch" onclick="switchSocialAccountTab('workplace_rights_watch')">⚖️ Workplace Rights</button>
+      <button type="button" class="social-channel-tab" id="socTab_fintech_save_smart" onclick="switchSocialAccountTab('fintech_save_smart')">💰 SaveSmart</button>
+      <button type="button" class="social-channel-tab" id="socTab_alex_tech_ceo" onclick="switchSocialAccountTab('alex_tech_ceo')">🚀 Alex Vance CEO</button>
+    </div>
+
+    <div class="social-body" style="padding: 24px; overflow-y: auto; flex: 1;">
+      <!-- Social Platform Sub-tabs: Instagram vs YouTube -->
+      <div class="social-platform-tabs">
+        <button type="button" class="platform-tab-btn active" id="btnPlatInstagram" onclick="switchPlatformSubTab('instagram')">
+          <span>📸 Instagram Business</span>
+          <span class="social-status-indicator" id="igLiveStatus">● Connected</span>
+        </button>
+        <button type="button" class="platform-tab-btn" id="btnPlatYouTube" onclick="switchPlatformSubTab('youtube')">
+          <span>▶️ YouTube (Vidya Studio)</span>
+          <span class="social-status-indicator" id="ytLiveStatus">● Linked</span>
+        </button>
+      </div>
+
+      <!-- TAB 1: INSTAGRAM CONFIG -->
+      <div id="subTabInstagram" class="platform-config-view">
+        <div class="form-group">
+          <label class="form-label">Instagram Handle</label>
+          <input type="text" id="igHandleInput" placeholder="@handle" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Instagram Business Account ID</label>
+          <input type="text" id="igBusinessIdInput" placeholder="17841400000000001" />
+          <div class="form-hint">Meta Graph API Business Account ID linked to Facebook Page.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Meta Graph API Access Token (or Environment Token)</label>
+          <input type="password" id="igAccessTokenInput" placeholder="EAABw..." />
+          <div class="form-hint">Server fallback: <code>IG_TOKEN_...</code> or <code>INSTAGRAM_ACCESS_TOKEN</code> in Cloud Run environment.</div>
+        </div>
+        <div class="form-group" style="display:flex; align-items:center; justify-content:space-between; padding:12px; background:var(--surface-2); border-radius:var(--radius-sm); border:1px solid var(--border);">
+          <div>
+            <div style="font-size:13px; font-weight:700;">Live Publishing Engine</div>
+            <div style="font-size:11px; color:var(--text-muted);">Directly dispatch campaigns to Instagram Graph API v20.0</div>
+          </div>
+          <input type="checkbox" id="igLivePublishToggle" style="accent-color:var(--teal); width:18px; height:18px;" />
+        </div>
+        <div style="display:flex; gap:10px; margin-top:20px;">
+          <button type="button" class="btn-copy" style="flex:1;" onclick="testSocialConnection('instagram')">🧪 Test Instagram Connection</button>
+          <button type="button" class="btn-launch" style="flex:1; margin-top:0;" onclick="saveSocialConnectionsCurrent()">💾 Save Instagram Settings</button>
+        </div>
+        <div id="igTestResultBox" class="test-result-box" style="display:none; margin-top:14px;"></div>
+      </div>
+
+      <!-- TAB 2: YOUTUBE VIDYA STUDIO CONFIG -->
+      <div id="subTabYouTube" class="platform-config-view" style="display:none;">
+        <div class="form-group">
+          <label class="form-label">YouTube Channel Name & Studio Title</label>
+          <input type="text" id="ytChannelNameInput" placeholder="Workplace Rights Watch (Vidya Studio)" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">YouTube Channel ID</label>
+          <input type="text" id="ytChannelIdInput" placeholder="UC_wrw_labor_rights_official" />
+          <div class="form-hint">Unique 24-character YouTube Channel ID starting with <code>UC</code>.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">YouTube Handle</label>
+          <input type="text" id="ytHandleInput" placeholder="@WorkplaceRightsWatch" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">YouTube Data API v3 Key</label>
+          <input type="password" id="ytApiKeyInput" placeholder="AIzaSy..." />
+          <div class="form-hint">Google Cloud Console YouTube Data API v3 service key.</div>
+        </div>
+        <div class="branding-grid-2col">
+          <div class="form-group">
+            <label class="form-label">Default Upload Category</label>
+            <select id="ytCategorySelect">
+              <option value="Education">Education & Awareness</option>
+              <option value="Tax & Law">Tax & Labor Law</option>
+              <option value="Science & Technology">Science & Technology</option>
+              <option value="Finance">Finance & Investing</option>
+              <option value="Howto & Style">How-To & Guides</option>
+              <option value="News & Politics">News & Analysis</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Default Privacy</label>
+            <select id="ytPrivacySelect">
+              <option value="public">Public</option>
+              <option value="unlisted">Unlisted</option>
+              <option value="private">Private Draft</option>
+            </select>
+          </div>
+        </div>
+        <div style="padding:14px; background:rgba(110,207,219,0.08); border-radius:var(--radius-sm); border:1px solid rgba(110,207,219,0.3); margin-top:10px;">
+          <div style="font-size:12px; font-weight:700; color:var(--teal);">📺 Vidya Creator Studio Engine</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">
+            Synchronized with Google Vids workspace blueprints (>30s videos) and automated multi-scene vertical video composition (≤30s videos).
+          </div>
+        </div>
+        <div style="display:flex; gap:10px; margin-top:20px;">
+          <button type="button" class="btn-copy" style="flex:1;" onclick="testSocialConnection('youtube')">🧪 Test YouTube Connection</button>
+          <button type="button" class="btn-launch" style="flex:1; margin-top:0;" onclick="saveSocialConnectionsCurrent()">💾 Save YouTube Settings</button>
+        </div>
+        <div id="ytTestResultBox" class="test-result-box" style="display:none; margin-top:14px;"></div>
       </div>
     </div>
   </aside>
@@ -1513,18 +2060,21 @@
       const userBadge = document.getElementById('userBadge');
       const userNameText = document.getElementById('userNameText');
       const btnOpenHistory = document.getElementById('btnOpenHistory');
+      const btnOpenSocialLinks = document.getElementById('btnOpenSocialLinks');
 
       if (!token || !user) {
         authGate.style.display = 'grid';
         changePasswordModal.style.display = 'none';
         userBadge.style.display = 'none';
         if (btnOpenHistory) btnOpenHistory.style.display = 'none';
+        if (btnOpenSocialLinks) btnOpenSocialLinks.style.display = 'none';
         return false;
       }
 
       userNameText.textContent = user.username || user.email || 'Admin';
       userBadge.style.display = 'inline-flex';
       if (btnOpenHistory) btnOpenHistory.style.display = 'inline-flex';
+      if (btnOpenSocialLinks) btnOpenSocialLinks.style.display = 'inline-flex';
 
       const isAdmin = (user.role === 'admin' || user.username === 'admin');
       const roleTag = document.getElementById('historyRoleTag');
@@ -1546,7 +2096,396 @@
       authGate.style.display = 'none';
       changePasswordModal.style.display = 'none';
       loadHistoryBadge();
+      loadSocialBadge();
       return true;
+    }
+
+    // ── VISUAL IDENTITY & THEME PRESETS ──
+    const THEME_PRESETS = {
+      investigative_legal: {
+        theme: "investigative_legal",
+        theme_label: "Investigative Legal High-Contrast",
+        channel_icon: "⚖️",
+        iconography_style: "line",
+        primary_color: "#E63946",
+        accent_color: "#38BDF8",
+        bg_color: "#0B0F19",
+        text_color: "#F8FAFC",
+        color_palette: ["#0B0F19", "#E63946", "#38BDF8", "#F1FAEE", "#334155"],
+        headline_font: "Plus Jakarta Sans",
+        body_font: "Inter",
+        font_weight: "bold",
+        letter_spacing: "tracked"
+      },
+      fintech_mint_gold: {
+        theme: "fintech_mint_gold",
+        theme_label: "FinTech Mint & Wealth Gold",
+        channel_icon: "💰",
+        iconography_style: "glassmorphism",
+        primary_color: "#00B4D8",
+        accent_color: "#C9A22A",
+        bg_color: "#0B132B",
+        text_color: "#FFFFFF",
+        color_palette: ["#0B132B", "#00B4D8", "#C9A22A", "#90E0EF", "#1C2541"],
+        headline_font: "Space Grotesk",
+        body_font: "Inter",
+        font_weight: "bold",
+        letter_spacing: "normal"
+      },
+      cyberpunk_tech_glow: {
+        theme: "cyberpunk_tech_glow",
+        theme_label: "Cyberpunk / AI Tech Glow",
+        channel_icon: "🚀",
+        iconography_style: "tech_terminal",
+        primary_color: "#8B5CF6",
+        accent_color: "#06B6D4",
+        bg_color: "#08080C",
+        text_color: "#F1F5F9",
+        color_palette: ["#08080C", "#8B5CF6", "#06B6D4", "#EC4899", "#1E1E2F"],
+        headline_font: "Syne",
+        body_font: "JetBrains Mono",
+        font_weight: "bold",
+        letter_spacing: "tracked"
+      },
+      editorial_luxury: {
+        theme: "editorial_luxury",
+        theme_label: "Editorial Serif & Executive Luxury",
+        channel_icon: "🏛️",
+        iconography_style: "editorial_serif",
+        primary_color: "#D4AF37",
+        accent_color: "#E2E8F0",
+        bg_color: "#121212",
+        text_color: "#FFFFFF",
+        color_palette: ["#121212", "#D4AF37", "#E2E8F0", "#3E2723", "#F5F5F0"],
+        headline_font: "Playfair Display",
+        body_font: "Lora",
+        font_weight: "bold",
+        letter_spacing: "tracked"
+      },
+      vibrant_pop: {
+        theme: "vibrant_pop",
+        theme_label: "Vibrant Pop & Viral Punch",
+        channel_icon: "🔥",
+        iconography_style: "vibrant_emoji",
+        primary_color: "#FF007F",
+        accent_color: "#FFB703",
+        bg_color: "#0D0D15",
+        text_color: "#FFFFFF",
+        color_palette: ["#0D0D15", "#FF007F", "#FFB703", "#7928CA", "#00DFD8"],
+        headline_font: "Bebas Neue",
+        body_font: "Roboto",
+        font_weight: "bold",
+        letter_spacing: "tracked"
+      },
+      nordic_minimal: {
+        theme: "nordic_minimal",
+        theme_label: "Nordic Minimalist & Calm",
+        channel_icon: "💡",
+        iconography_style: "line",
+        primary_color: "#10B981",
+        accent_color: "#64748B",
+        bg_color: "#0F172A",
+        text_color: "#F8FAFC",
+        color_palette: ["#0F172A", "#10B981", "#64748B", "#E2E8F0", "#1E293B"],
+        headline_font: "Outfit",
+        body_font: "Inter",
+        font_weight: "semibold",
+        letter_spacing: "normal"
+      }
+    };
+
+    let currentVisualIdentity = { ...THEME_PRESETS.investigative_legal };
+    let activeSocialAccount = "workplace_rights_watch";
+    let activeSocialPlatform = "instagram";
+
+    function toggleBrandingAccordion() {
+      const body = document.getElementById('brandingBody');
+      const chev = document.getElementById('brandingChevron');
+      if (body.style.display === 'none') {
+        body.style.display = 'block';
+        chev.classList.remove('collapsed');
+      } else {
+        body.style.display = 'none';
+        chev.classList.add('collapsed');
+      }
+    }
+
+    function applyThemePreset(themeKey) {
+      document.querySelectorAll('.theme-preset-pill').forEach(pill => {
+        pill.classList.toggle('active', pill.getAttribute('onclick')?.includes(`'${themeKey}'`));
+      });
+
+      if (themeKey === 'custom') {
+        currentVisualIdentity.theme = 'custom';
+        currentVisualIdentity.theme_label = 'Custom Brand DNA';
+        document.getElementById('currentThemeBadge').textContent = 'Custom Brand DNA';
+        return;
+      }
+
+      const preset = THEME_PRESETS[themeKey];
+      if (!preset) return;
+
+      currentVisualIdentity = { ...preset };
+
+      document.getElementById('currentThemeBadge').textContent = preset.theme_label;
+      document.getElementById('viPrimaryColor').value = preset.primary_color;
+      document.getElementById('viPrimaryHex').value = preset.primary_color;
+      document.getElementById('viAccentColor').value = preset.accent_color;
+      document.getElementById('viAccentHex').value = preset.accent_color;
+      document.getElementById('viBgColor').value = preset.bg_color;
+      document.getElementById('viBgHex').value = preset.bg_color;
+      document.getElementById('viTextColor').value = preset.text_color;
+      document.getElementById('viTextHex').value = preset.text_color;
+      document.getElementById('viChannelIcon').value = preset.channel_icon;
+      document.getElementById('viIconographyStyle').value = preset.iconography_style;
+      document.getElementById('viHeadlineFont').value = preset.headline_font;
+      document.getElementById('viBodyFont').value = preset.body_font;
+
+      updateBrandPreview();
+    }
+
+    function onVisualIdentityChange() {
+      currentVisualIdentity.primary_color = document.getElementById('viPrimaryColor').value;
+      document.getElementById('viPrimaryHex').value = currentVisualIdentity.primary_color;
+
+      currentVisualIdentity.accent_color = document.getElementById('viAccentColor').value;
+      document.getElementById('viAccentHex').value = currentVisualIdentity.accent_color;
+
+      currentVisualIdentity.bg_color = document.getElementById('viBgColor').value;
+      document.getElementById('viBgHex').value = currentVisualIdentity.bg_color;
+
+      currentVisualIdentity.text_color = document.getElementById('viTextColor').value;
+      document.getElementById('viTextHex').value = currentVisualIdentity.text_color;
+
+      currentVisualIdentity.channel_icon = document.getElementById('viChannelIcon').value || '⚡';
+      currentVisualIdentity.iconography_style = document.getElementById('viIconographyStyle').value;
+      currentVisualIdentity.headline_font = document.getElementById('viHeadlineFont').value;
+      currentVisualIdentity.body_font = document.getElementById('viBodyFont').value;
+      currentVisualIdentity.color_palette = [
+        currentVisualIdentity.bg_color,
+        currentVisualIdentity.primary_color,
+        currentVisualIdentity.accent_color,
+        currentVisualIdentity.text_color
+      ];
+
+      updateBrandPreview();
+    }
+
+    function onHexInputChange(colorInputId, hexVal) {
+      if (/^#[0-9A-Fa-f]{6}$/.test(hexVal)) {
+        document.getElementById(colorInputId).value = hexVal;
+        onVisualIdentityChange();
+      }
+    }
+
+    function setQuickIcon(icon) {
+      document.getElementById('viChannelIcon').value = icon;
+      onVisualIdentityChange();
+    }
+
+    function updateBrandPreview() {
+      const card = document.getElementById('brandPreviewCard');
+      const icon = document.getElementById('previewBrandIcon');
+      const handle = document.getElementById('previewBrandHandle');
+      const headline = document.getElementById('previewHeadlineSample');
+      const badge = document.getElementById('previewStyleBadge');
+      const pSwatch = document.getElementById('swatchPrimary');
+      const aSwatch = document.getElementById('swatchAccent');
+      const bgSwatch = document.getElementById('swatchBg');
+      const tSwatch = document.getElementById('swatchText');
+
+      if (!card) return;
+
+      card.style.background = currentVisualIdentity.bg_color;
+      card.style.borderColor = currentVisualIdentity.primary_color;
+      icon.textContent = currentVisualIdentity.channel_icon;
+      
+      const accId = document.getElementById('selectedAccount')?.value || 'workplace_rights_watch';
+      handle.textContent = accId === 'fintech_save_smart' ? '@fintech_save_smart' : (accId === 'alex_tech_ceo' ? '@alex_tech_ceo' : '@workplace_rights_watch');
+      
+      headline.style.fontFamily = `'${currentVisualIdentity.headline_font}', sans-serif`;
+      headline.style.color = currentVisualIdentity.text_color;
+      
+      badge.textContent = `${currentVisualIdentity.iconography_style.replace('_', ' ')} style`;
+      badge.style.color = currentVisualIdentity.accent_color;
+      badge.style.borderColor = currentVisualIdentity.accent_color;
+      badge.style.background = `${currentVisualIdentity.accent_color}22`;
+
+      pSwatch.style.background = currentVisualIdentity.primary_color;
+      aSwatch.style.background = currentVisualIdentity.accent_color;
+      bgSwatch.style.background = currentVisualIdentity.bg_color;
+      tSwatch.style.background = currentVisualIdentity.text_color;
+    }
+
+    async function saveCurrentChannelBranding() {
+      const token = getAuthToken();
+      if (!token) {
+        alert('Authentication required.');
+        return;
+      }
+      const accountId = document.getElementById('selectedAccount').value;
+      try {
+        const res = await fetch(`${currentApiUrl}/api/accounts/${accountId}/branding`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(currentVisualIdentity)
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alert(`✓ Saved Brand Visual DNA for ${accountId}!`);
+        } else {
+          alert(`Error saving branding: ${data.detail || res.status}`);
+        }
+      } catch (err) {
+        alert(`Failed to save branding: ${err.message}`);
+      }
+    }
+
+    // ── LINKED SOCIAL ACCOUNTS (VIDYA & INSTAGRAM) ──
+    function openSocialLinksDrawer() {
+      document.getElementById('socialOverlay').classList.add('active');
+      document.getElementById('socialLinksDrawer').classList.add('active');
+      const accId = document.getElementById('selectedAccount')?.value || 'workplace_rights_watch';
+      switchSocialAccountTab(accId);
+    }
+
+    function closeSocialLinksDrawer() {
+      document.getElementById('socialOverlay').classList.remove('active');
+      document.getElementById('socialLinksDrawer').classList.remove('active');
+    }
+
+    function switchSocialAccountTab(accountId) {
+      activeSocialAccount = accountId;
+      document.querySelectorAll('.social-channel-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.id === `socTab_${accountId}`);
+      });
+      loadSocialConnectionsForAccount(accountId);
+    }
+
+    function switchPlatformSubTab(platform) {
+      activeSocialPlatform = platform;
+      document.getElementById('btnPlatInstagram').classList.toggle('active', platform === 'instagram');
+      document.getElementById('btnPlatYouTube').classList.toggle('active', platform === 'youtube');
+      document.getElementById('subTabInstagram').style.display = platform === 'instagram' ? 'block' : 'none';
+      document.getElementById('subTabYouTube').style.display = platform === 'youtube' ? 'block' : 'none';
+    }
+
+    async function loadSocialConnectionsForAccount(accountId) {
+      const token = getAuthToken();
+      if (!token) return;
+
+      try {
+        const res = await fetch(`${currentApiUrl}/api/accounts/${accountId}/connections`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const links = data.linked_accounts || {};
+          const ig = links.instagram || {};
+          const yt = links.youtube || {};
+
+          document.getElementById('igHandleInput').value = ig.handle || (accountId === 'fintech_save_smart' ? '@fintech_save_smart' : (accountId === 'alex_tech_ceo' ? '@alex_tech_ceo' : '@workplace_rights_watch'));
+          document.getElementById('igBusinessIdInput').value = ig.business_account_id || (accountId === 'fintech_save_smart' ? '17841400000000002' : '17841400000000001');
+          document.getElementById('igLivePublishToggle').checked = ig.live_publish_enabled || false;
+
+          document.getElementById('ytChannelNameInput').value = yt.channel_name || (accountId === 'fintech_save_smart' ? 'SaveSmart FinTech (Vidya Studio)' : 'Workplace Rights Watch (Vidya Studio)');
+          document.getElementById('ytChannelIdInput').value = yt.channel_id || (accountId === 'fintech_save_smart' ? 'UC_savesmart_wealth_academy' : 'UC_wrw_labor_rights_official');
+          document.getElementById('ytHandleInput').value = yt.handle || `@${accountId}`;
+          if (yt.category) document.getElementById('ytCategorySelect').value = yt.category;
+          if (yt.default_privacy) document.getElementById('ytPrivacySelect').value = yt.default_privacy;
+        }
+      } catch (e) {
+        console.warn('Could not load connections:', e);
+      }
+    }
+
+    async function saveSocialConnectionsCurrent() {
+      const token = getAuthToken();
+      if (!token) {
+        alert('Authentication required.');
+        return;
+      }
+
+      const payload = {
+        instagram: {
+          handle: document.getElementById('igHandleInput').value.trim(),
+          business_account_id: document.getElementById('igBusinessIdInput').value.trim(),
+          live_publish_enabled: document.getElementById('igLivePublishToggle').checked,
+        },
+        youtube: {
+          channel_name: document.getElementById('ytChannelNameInput').value.trim(),
+          channel_id: document.getElementById('ytChannelIdInput').value.trim(),
+          handle: document.getElementById('ytHandleInput').value.trim(),
+          category: document.getElementById('ytCategorySelect').value,
+          default_privacy: document.getElementById('ytPrivacySelect').value,
+          studio_name: "Vidya Creator Studio"
+        }
+      };
+
+      const igTok = document.getElementById('igAccessTokenInput').value.trim();
+      if (igTok && !igTok.includes('...')) payload.instagram.access_token = igTok;
+
+      const ytKey = document.getElementById('ytApiKeyInput').value.trim();
+      if (ytKey && !ytKey.includes('...')) payload.youtube.api_key = ytKey;
+
+      try {
+        const res = await fetch(`${currentApiUrl}/api/accounts/${activeSocialAccount}/connections`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alert(`✓ Saved social accounts for ${activeSocialAccount}!`);
+          loadSocialBadge();
+        } else {
+          alert(`Error saving connections: ${data.detail || res.status}`);
+        }
+      } catch (err) {
+        alert(`Failed to save connections: ${err.message}`);
+      }
+    }
+
+    async function testSocialConnection(platform) {
+      const token = getAuthToken();
+      if (!token) {
+        alert('Authentication required.');
+        return;
+      }
+      const box = platform === 'instagram' ? document.getElementById('igTestResultBox') : document.getElementById('ytTestResultBox');
+      box.style.display = 'block';
+      box.textContent = `Pinging ${platform === 'instagram' ? 'Instagram Graph API v20.0' : 'YouTube Data API v3 (Vidya Studio)'}...`;
+
+      try {
+        const res = await fetch(`${currentApiUrl}/api/accounts/${activeSocialAccount}/connections/test`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const data = await res.json();
+        if (res.ok) {
+          const detail = platform === 'instagram' ? data.instagram : data.youtube;
+          box.innerHTML = `<span style="color:var(--success);">✓ Connection Active & Verified:</span><br>` +
+            `• Platform: ${platform === 'instagram' ? 'Instagram Business' : 'YouTube (Vidya Studio)'}<br>` +
+            `• Handle: ${detail.handle}<br>` +
+            `• ID: ${detail.business_id || detail.channel_id}<br>` +
+            `• Status: ${detail.status.toUpperCase()}`;
+        } else {
+          box.innerHTML = `<span style="color:var(--danger);">✕ Test failed:</span> ${data.detail || res.status}`;
+        }
+      } catch (e) {
+        box.innerHTML = `<span style="color:var(--danger);">✕ Connection failed:</span> ${e.message}`;
+      }
+    }
+
+    async function loadSocialBadge() {
+      const badge = document.getElementById('socialLinksBadge');
+      if (badge) badge.textContent = '● 2 Linked';
     }
 
     // Handle Password Login
@@ -1731,6 +2670,17 @@
         document.getElementById('requestedTopic').value = preset.topic;
         document.getElementById('requestedEmotion').value = preset.emotion;
       }
+
+      const channelThemeMap = {
+        workplace_rights_watch: 'investigative_legal',
+        fintech_save_smart: 'fintech_mint_gold',
+        alex_tech_ceo: 'cyberpunk_tech_glow'
+      };
+      if (channelThemeMap[accountId]) {
+        applyThemePreset(channelThemeMap[accountId]);
+      } else {
+        updateBrandPreview();
+      }
     }
 
     // Tab Switching
@@ -1800,7 +2750,8 @@
           requested_topic: topic || null,
           requested_emotion: emotion || null,
           requested_duration_seconds: selectedVideoDuration,
-          active_formats: formats
+          active_formats: formats,
+          visual_identity: currentVisualIdentity
         };
 
         updateStepper(3);

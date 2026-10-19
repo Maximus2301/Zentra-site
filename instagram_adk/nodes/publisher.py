@@ -69,25 +69,43 @@ def generate_interactive_preview_html(state: Any) -> Path:
     else:
         poll_question = raw_prompt
 
+    vi = account.visual_identity
+    vi_bg = vi.bg_color if vi and vi.bg_color else "#090D16"
+    vi_primary = vi.primary_color if vi and vi.primary_color else (account.color_palette[1] if len(account.color_palette) > 1 else '#E63946')
+    vi_accent = vi.accent_color if vi and vi.accent_color else '#38BDF8'
+    vi_icon = vi.channel_icon if vi and vi.channel_icon else '●'
+    vi_headline_font = vi.headline_font if vi and vi.headline_font else 'Plus Jakarta Sans'
+    vi_body_font = vi.body_font if vi and vi.body_font else 'Inter'
+    vi_theme_label = vi.theme_label if vi and vi.theme_label else 'Custom Brand Theme'
+
+    linked_ig = (account.linked_accounts or {}).get("instagram", {})
+    linked_yt = (account.linked_accounts or {}).get("youtube", {})
+
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google AI Studio | {html.escape(account.name)}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@600;800&family=Outfit:wght@500;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@600;700;800&family=Roboto:wght@400;500;700&family=Space+Grotesk:wght@600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>
     :root {{
-      --bg: #090D16;
+      --bg: {vi_bg};
       --surface: #131B2E;
       --surface-border: #23304E;
-      --accent: {account.color_palette[1] if len(account.color_palette) > 1 else '#E63946'};
-      --highlight: #38BDF8;
+      --accent: {vi_primary};
+      --highlight: {vi_accent};
       --text-main: #F8FAFC;
       --text-muted: #94A3B8;
       --success: #10B981;
+      --font-headline: '{vi_headline_font}', sans-serif;
+      --font-body: '{vi_body_font}', sans-serif;
       --ig-gradient: linear-gradient(45deg, #F58529, #D92E7F, #9B36B7);
     }}
-    * {{ box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; }}
+    * {{ box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-body); }}
+    h1, h2, h3, h4, .channel-title, .ai-card-title, .section-header {{ font-family: var(--font-headline); }}
     body {{ background: var(--bg); color: var(--text-main); min-height: 100vh; padding: 24px; }}
     .app-container {{ max-width: 1400px; margin: 0 auto; }}
 
@@ -95,16 +113,17 @@ def generate_interactive_preview_html(state: Any) -> Path:
     .top-bar {{ background: var(--surface); border: 1px solid var(--surface-border); border-radius: 20px; padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }}
     .brand-group {{ display: flex; align-items: center; gap: 16px; }}
     .avatar-ring {{ width: 56px; height: 56px; border-radius: 50%; padding: 3px; background: var(--ig-gradient); display: flex; align-items: center; justify-content: center; }}
-    .avatar-img {{ width: 100%; height: 100%; border-radius: 50%; background: #000; border: 2px solid var(--surface); object-fit: cover; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #FFF; }}
+    .avatar-img {{ width: 100%; height: 100%; border-radius: 50%; background: #000; border: 2px solid var(--surface); object-fit: cover; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #FFF; }}
     .channel-title {{ font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 8px; }}
     .verified-icon {{ color: #38BDF8; font-size: 16px; }}
     
     .badge-pill {{ background: rgba(56, 189, 248, 0.15); border: 1px solid var(--highlight); color: var(--highlight); font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; }}
     .badge-score {{ background: rgba(16, 185, 129, 0.15); border: 1px solid var(--success); color: var(--success); font-size: 13px; font-weight: 800; padding: 6px 14px; border-radius: 20px; }}
+    .badge-social {{ background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); color: #FFF; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 5px; }}
 
     /* Studio Tabs Switcher */
     .studio-tabs {{ display: flex; gap: 12px; margin-bottom: 24px; overflow-x: auto; padding-bottom: 6px; }}
-    .tab-btn {{ background: var(--surface); border: 1px solid var(--surface-border); color: var(--text-muted); padding: 12px 24px; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }}
+    .tab-btn {{ background: var(--surface); border: 1px solid var(--surface-border); color: var(--text-muted); padding: 12px 24px; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; font-family: var(--font-headline); }}
     .tab-btn:hover {{ border-color: var(--highlight); color: var(--text-main); }}
     .tab-btn.active {{ background: var(--highlight); border-color: var(--highlight); color: #000; box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4); }}
 
@@ -192,18 +211,21 @@ def generate_interactive_preview_html(state: Any) -> Path:
   <header class="top-bar">
     <div class="brand-group">
       <div class="avatar-ring">
-        <div class="avatar-img">{html.escape(account.name[:2].upper())}</div>
+        <div class="avatar-img">{vi_icon}</div>
       </div>
       <div>
         <div class="channel-title">
           <span>{html.escape(account.name)}</span>
           <span class="verified-icon">☑</span>
           <span class="badge-pill">{html.escape(account.handle)}</span>
+          <span class="badge-pill" style="border-color: var(--accent); color: var(--accent);">{html.escape(vi_theme_label)}</span>
         </div>
         <p style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">{html.escape(account.mission)}</p>
       </div>
     </div>
-    <div style="display: flex; align-items: center; gap: 12px;">
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+      <span class="badge-social">📷 {html.escape(linked_ig.get('handle') or account.handle)} · Connected</span>
+      <span class="badge-social">▶️ {html.escape(linked_yt.get('channel_name') or 'Vidya Studio')} · Linked</span>
       <span class="badge-pill">Target Cohort: {html.escape(narrative.cohort_name)}</span>
       <span class="badge-score">✓ Critic Score: {critic.score if critic else 9.4}/10</span>
     </div>

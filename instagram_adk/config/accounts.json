@@ -19,9 +19,54 @@
       "mandatory_disclaimers": [
         "Disclaimer: This post is for educational and rights awareness purposes only. Consult a licensed labor advocate for personal disputes."
       ],
-      "color_palette": ["#1A1A24", "#E63946", "#F1FAEE", "#A8DADC", "#457B9D"],
+      "color_palette": [
+        "#070B14",
+        "#FF2A2A",
+        "#00D4FF",
+        "#FFFFFF"
+      ],
       "instagram_business_id": "17841400000000001",
       "access_token_env": "IG_TOKEN_WORKPLACE_RIGHTS",
+      "linked_accounts": {
+        "instagram": {
+          "handle": "@wrw_official",
+          "business_account_id": "17841499999999999",
+          "connected": true,
+          "live_publish_enabled": true,
+          "access_token_env": "IG_TOKEN_WORKPLACE_RIGHTS",
+          "access_token": "EAAX_test_token_1234567890"
+        },
+        "youtube": {
+          "channel_name": "Workplace Rights Watch (Vidya Studio)",
+          "handle": "@wrw_studio",
+          "channel_id": "UC_test_wrw_channel",
+          "connected": true,
+          "category": "Education",
+          "default_privacy": "public",
+          "studio_name": "Vidya Creator Studio",
+          "api_key": "AIzaSy_test_api_key_12345"
+        }
+      },
+      "visual_identity": {
+        "theme": "investigative_legal",
+        "theme_label": "Investigative Legal High-Contrast",
+        "channel_icon": "⚖️",
+        "iconography_style": "line",
+        "primary_color": "#FF2A2A",
+        "accent_color": "#00D4FF",
+        "bg_color": "#070B14",
+        "text_color": "#FFFFFF",
+        "color_palette": [
+          "#070B14",
+          "#FF2A2A",
+          "#00D4FF",
+          "#FFFFFF"
+        ],
+        "headline_font": "Syne",
+        "body_font": "Inter",
+        "font_weight": "bold",
+        "letter_spacing": "tracked"
+      },
       "audience_cohorts": [
         {
           "segment_id": "freshers_and_entry_level",
@@ -32,7 +77,11 @@
             "Illegal training bond intimidation"
           ],
           "tone_resonance": "Protective, reassuring, demystifying corporate HR myths, plain language",
-          "key_triggers": ["Bond recovery notices", "Withheld certificates", "Unpaid overtime"]
+          "key_triggers": [
+            "Bond recovery notices",
+            "Withheld certificates",
+            "Unpaid overtime"
+          ]
         },
         {
           "segment_id": "mid_to_senior_corporate",
@@ -43,7 +92,11 @@
             "Severance and notice pay disputes with family financial burden"
           ],
           "tone_resonance": "Legally rigorous, strategic, executive dignity, statutory citations",
-          "key_triggers": ["Delayed FnF", "Gratuity stalling", "Unpaid variable bonuses"]
+          "key_triggers": [
+            "Delayed FnF",
+            "Gratuity stalling",
+            "Unpaid variable bonuses"
+          ]
         },
         {
           "segment_id": "freelancers_and_contractors",
@@ -53,7 +106,11 @@
             "No formal PF or corporate labor court access"
           ],
           "tone_resonance": "Pragmatic, contractual enforcement, debt recovery protocols",
-          "key_triggers": ["Invoice ghosting", "MSME Samadhaan legal recovery", "Breach of contract"]
+          "key_triggers": [
+            "Invoice ghosting",
+            "MSME Samadhaan legal recovery",
+            "Breach of contract"
+          ]
         }
       ]
     },
@@ -76,9 +133,54 @@
       "mandatory_disclaimers": [
         "Investments are subject to market risks. Read all scheme-related documents carefully before investing."
       ],
-      "color_palette": ["#0B132B", "#1C2541", "#48CAE4", "#00B4D8", "#90E0EF"],
+      "color_palette": [
+        "#0B132B",
+        "#00B4D8",
+        "#C9A22A",
+        "#90E0EF",
+        "#1C2541"
+      ],
       "instagram_business_id": "17841400000000002",
       "access_token_env": "IG_TOKEN_FINTECH_SAVESMART",
+      "linked_accounts": {
+        "instagram": {
+          "handle": "@fintech_save_smart",
+          "business_account_id": "17841400000000002",
+          "connected": true,
+          "live_publish_enabled": false,
+          "access_token_env": "IG_TOKEN_FINTECH_SAVESMART"
+        },
+        "youtube": {
+          "channel_name": "SaveSmart FinTech",
+          "handle": "@SaveSmartFintech",
+          "channel_id": "UC_savesmart_wealth_academy",
+          "connected": true,
+          "category": "Education",
+          "default_privacy": "public",
+          "studio_name": "Vidya Creator Studio"
+        }
+      },
+      "visual_identity": {
+        "theme": "fintech_mint_gold",
+        "theme_label": "FinTech Mint & Wealth Gold",
+        "channel_icon": "💰",
+        "iconography_style": "glassmorphism",
+        "primary_color": "#00B4D8",
+        "accent_color": "#C9A22A",
+        "bg_color": "#0B132B",
+        "text_color": "#FFFFFF",
+        "color_palette": [
+          "#0B132B",
+          "#00B4D8",
+          "#C9A22A",
+          "#90E0EF",
+          "#1C2541"
+        ],
+        "headline_font": "Space Grotesk",
+        "body_font": "Inter",
+        "font_weight": "bold",
+        "letter_spacing": "normal"
+      },
       "audience_cohorts": [
         {
           "segment_id": "gen_z_first_job",
@@ -89,7 +191,11 @@
             "Feeling intimidated by confusing mutual fund terminology"
           ],
           "tone_resonance": "Relatable, bite-sized, gamified savings, micro-budgeting tips",
-          "key_triggers": ["First salary allocation", "Credit score building", "Emergency fund $1000"]
+          "key_triggers": [
+            "First salary allocation",
+            "Credit score building",
+            "Emergency fund $1000"
+          ]
         },
         {
           "segment_id": "young_families_investors",
@@ -100,7 +206,11 @@
             "Tax leakages"
           ],
           "tone_resonance": "Responsible, strategic, forward-looking, high trust",
-          "key_triggers": ["SIP compounding", "Home loan prepayment hacks", "Tax saving funds"]
+          "key_triggers": [
+            "SIP compounding",
+            "Home loan prepayment hacks",
+            "Tax saving funds"
+          ]
         }
       ]
     },
@@ -121,9 +231,54 @@
         "Generic regurgitated motivation quotes"
       ],
       "mandatory_disclaimers": [],
-      "color_palette": ["#121212", "#242424", "#FFB703", "#FB8500", "#FFFFFF"],
+      "color_palette": [
+        "#08080C",
+        "#8B5CF6",
+        "#06B6D4",
+        "#EC4899",
+        "#1E1E2F"
+      ],
       "instagram_business_id": "17841400000000003",
       "access_token_env": "IG_TOKEN_ALEX_TECH_CEO",
+      "linked_accounts": {
+        "instagram": {
+          "handle": "@alex_tech_ceo",
+          "business_account_id": "17841400000000003",
+          "connected": true,
+          "live_publish_enabled": false,
+          "access_token_env": "IG_TOKEN_ALEX_TECH_CEO"
+        },
+        "youtube": {
+          "channel_name": "Alex Vance | Tech CEO",
+          "handle": "@AlexVanceTech",
+          "channel_id": "UC_alex_vance_tech_ceo",
+          "connected": true,
+          "category": "Science & Technology",
+          "default_privacy": "public",
+          "studio_name": "Vidya Creator Studio"
+        }
+      },
+      "visual_identity": {
+        "theme": "cyberpunk_tech_glow",
+        "theme_label": "Cyberpunk / AI Tech Glow",
+        "channel_icon": "🚀",
+        "iconography_style": "tech_terminal",
+        "primary_color": "#8B5CF6",
+        "accent_color": "#06B6D4",
+        "bg_color": "#08080C",
+        "text_color": "#F1F5F9",
+        "color_palette": [
+          "#08080C",
+          "#8B5CF6",
+          "#06B6D4",
+          "#EC4899",
+          "#1E1E2F"
+        ],
+        "headline_font": "Syne",
+        "body_font": "JetBrains Mono",
+        "font_weight": "bold",
+        "letter_spacing": "tracked"
+      },
       "audience_cohorts": [
         {
           "segment_id": "aspiring_tech_founders",
@@ -134,7 +289,11 @@
             "Hiring the wrong senior leaders"
           ],
           "tone_resonance": "Direct, empathetic to founder loneliness, tactical playbooks",
-          "key_triggers": ["First 10 hires", "Founder sales", "Zero-to-one velocity"]
+          "key_triggers": [
+            "First 10 hires",
+            "Founder sales",
+            "Zero-to-one velocity"
+          ]
         },
         {
           "segment_id": "senior_engineers_and_leads",
@@ -145,7 +304,11 @@
             "Burnout in high-pressure delivery cycles"
           ],
           "tone_resonance": "Peer-to-peer respect, high agency, systemic thinking",
-          "key_triggers": ["Staff engineer roadmap", "Managing former peers", "System architecture trade-offs"]
+          "key_triggers": [
+            "Staff engineer roadmap",
+            "Managing former peers",
+            "System architecture trade-offs"
+          ]
         }
       ]
     }

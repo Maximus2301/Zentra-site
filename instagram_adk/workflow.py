@@ -91,6 +91,7 @@ async def execute_campaign(
     active_formats: list[str] | None = None,
     requested_duration_seconds: int = 30,
     user_id: str = "admin",
+    visual_identity: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Asynchronously runs the full ADK 2.0 workflow pipeline."""
     if active_formats is None:
@@ -103,6 +104,7 @@ async def execute_campaign(
         "requested_emotion": requested_emotion,
         "requested_duration_seconds": requested_duration_seconds,
         "active_formats": active_formats,
+        "visual_identity": visual_identity,
         "status": "initialized",
         "revision_count": 0,
         "max_revisions": 2,
@@ -147,6 +149,7 @@ def run_campaign_sync(
     requested_emotion: str | None = None,
     active_formats: list[str] | None = None,
     requested_duration_seconds: int = 30,
+    visual_identity: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Synchronous entrypoint for CLI and script execution."""
     return asyncio.run(
@@ -157,5 +160,6 @@ def run_campaign_sync(
             requested_emotion=requested_emotion,
             active_formats=active_formats,
             requested_duration_seconds=requested_duration_seconds,
+            visual_identity=visual_identity,
         )
     )

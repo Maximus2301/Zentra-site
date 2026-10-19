@@ -13,6 +13,24 @@ class AudienceCohort(BaseModel):
     key_triggers: list[str] = Field(default_factory=list)
 
 
+class VisualIdentity(BaseModel):
+    theme: str = "investigative_legal"
+    theme_label: str = "Investigative Legal High-Contrast"
+    channel_icon: str = "⚖️"
+    iconography_style: str = "line"  # line, glassmorphism, tech_terminal, editorial_serif, vibrant_emoji
+    primary_color: str = "#E63946"
+    accent_color: str = "#38BDF8"
+    bg_color: str = "#0B0F19"
+    text_color: str = "#F8FAFC"
+    color_palette: list[str] = Field(
+        default_factory=lambda: ["#0B0F19", "#E63946", "#38BDF8", "#F1FAEE", "#334155"]
+    )
+    headline_font: str = "Plus Jakarta Sans"
+    body_font: str = "Inter"
+    font_weight: str = "bold"
+    letter_spacing: str = "tracked"
+
+
 class AccountContext(BaseModel):
     account_id: str
     handle: str
@@ -26,6 +44,8 @@ class AccountContext(BaseModel):
     instagram_business_id: str = ""
     access_token_env: str = ""
     audience_cohorts: list[AudienceCohort] = Field(default_factory=list)
+    linked_accounts: dict[str, Any] = Field(default_factory=dict)
+    visual_identity: VisualIdentity | None = None
 
 
 class CoreNarrative(BaseModel):
@@ -112,6 +132,7 @@ class InstagramCampaignState(BaseModel):
     active_formats: list[str] = Field(
         default_factory=lambda: ["static_post", "story", "reel", "status"]
     )
+    visual_identity: VisualIdentity | None = None
 
     # Stage 1: Strategy & Evolved Narrative
     narrative: CoreNarrative | None = None

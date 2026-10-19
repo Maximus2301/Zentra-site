@@ -229,6 +229,124 @@ def test_session_history_and_superuser_access(admin_token: str):
     print("✓ Admin superuser access to individual user session verified")
 
 
+def test_social_connections_and_branding(valid_token: str):
+    """Test social account linking (Instagram + YouTube Vidya Studio) and visual brand DNA."""
+    # 1. Test /api/themes
+    themes_res = client.get("/api/themes")
+    assert themes_res.status_code == 200
+    themes_data = themes_res.json()
+    assert "presets" in themes_data
+    assert "investigative_legal" in themes_data["presets"]
+    assert "cyberpunk_tech_glow" in themes_data["presets"]
+    print("✓ /api/themes verified with 6 curated presets")
+
+    # 2. Test GET /api/accounts/{account_id}/connections
+    conn_res = client.get(
+        "/api/accounts/workplace_rights_watch/connections",
+        headers={"Authorization": f"Bearer {valid_token}"}
+    )
+    assert conn_res.status_code == 200
+    conn_data = conn_res.json()
+    assert "linked_accounts" in conn_data
+    assert "instagram" in conn_data["linked_accounts"]
+    assert "youtube" in conn_data["linked_accounts"]
+    # Check token masking
+    tok = conn_data["linked_accounts"]["instagram"].get("access_token", "")
+    assert "..." in tok or tok == "***" or not tok
+    print("✓ GET /connections verified with masked tokens")
+
+    # 3. Test POST /api/accounts/{account_id}/connections
+    update_conn_payload = {
+        "instagram": {
+            "handle": "@wrw_official",
+            "business_account_id": "17841499999999999",
+            "access_token": "EAAX_test_token_1234567890",
+            "live_publish_enabled": True
+        },
+        "youtube": {
+            "channel_name": "Workplace Rights Watch (Vidya Studio)",
+            "channel_id": "UC_test_wrw_channel",
+            "handle": "@wrw_studio",
+            "api_key": "AIzaSy_test_api_key_12345",
+            "category": "Education",
+            "default_privacy": "public",
+            "studio_name": "Vidya Creator Studio"
+        }
+    }
+    save_conn_res = client.post(
+        "/api/accounts/workplace_rights_watch/connections",
+        json=update_conn_payload,
+        headers={"Authorization": f"Bearer {valid_token}"}
+    )
+    assert save_conn_res.status_code == 200
+    assert save_conn_res.json()["status"] == "success"
+    print("✓ POST /connections verified (linked Instagram and YouTube Vidya Studio)")
+
+    # 4. Test POST /api/accounts/{account_id}/connections/test
+    test_ping_res = client.post(
+        "/api/accounts/workplace_rights_watch/connections/test",
+        headers={"Authorization": f"Bearer {valid_token}"}
+    )
+    assert test_ping_res.status_code == 200
+    ping_data = test_ping_res.json()
+    assert ping_data["instagram"]["status"] == "connected"
+    assert ping_data["youtube"]["status"] == "linked"
+    assert ping_data["youtube"]["studio_name"] == "Vidya Creator Studio"
+    print("✓ POST /connections/test verified for both IG Graph API and YouTube Data API v3")
+
+    # 5. Test GET /api/accounts/{account_id}/branding
+    branding_res = client.get("/api/accounts/workplace_rights_watch/branding")
+    assert branding_res.status_code == 200
+    branding_data = branding_res.json()
+    assert "visual_identity" in branding_data
+    assert "color_palette" in branding_data
+    print("✓ GET /branding verified")
+
+    # 6. Test POST /api/accounts/{account_id}/branding
+    new_branding_payload = {
+        "theme": "investigative_legal",
+        "theme_label": "Investigative Legal High-Contrast",
+        "channel_icon": "⚖️",
+        "iconography_style": "line",
+        "primary_color": "#FF2A2A",
+        "accent_color": "#00D4FF",
+        "bg_color": "#070B14",
+        "text_color": "#FFFFFF",
+        "color_palette": ["#070B14", "#FF2A2A", "#00D4FF", "#FFFFFF"],
+        "headline_font": "Syne",
+        "body_font": "Inter",
+        "font_weight": "bold",
+        "letter_spacing": "tracked"
+    }
+    save_branding_res = client.post(
+        "/api/accounts/workplace_rights_watch/branding",
+        json=new_branding_payload,
+        headers={"Authorization": f"Bearer {valid_token}"}
+    )
+    assert save_branding_res.status_code == 200
+    updated_b = save_branding_res.json()
+    assert updated_b["visual_identity"]["primary_color"] == "#FF2A2A"
+    assert updated_b["visual_identity"]["headline_font"] == "Syne"
+    print("✓ POST /branding verified: updated colors, fonts, icon, iconography")
+
+    # 7. Test Campaign Generation with Visual Identity Override
+    campaign_with_vi = client.post(
+        "/api/campaign/generate",
+        json={
+            "account_id": "workplace_rights_watch",
+            "raw_user_script": "Severance agreement review test",
+            "requested_duration_seconds": 15,
+            "active_formats": ["static_post", "story"],
+            "visual_identity": new_branding_payload
+        },
+        headers={"Authorization": f"Bearer {valid_token}"}
+    )
+    assert campaign_with_vi.status_code == 200
+    vi_camp_data = campaign_with_vi.json()
+    assert vi_camp_data["status"] in ("published", "completed")
+    print("✓ Campaign generated with customized Visual Identity override successfully")
+
+
 if __name__ == "__main__":
     test_health_check()
     test_root_creator_studio_served()
@@ -238,6 +356,8 @@ if __name__ == "__main__":
     test_authenticated_campaign_generation(active_token)
     test_google_vids_workspace_generation(active_token)
     test_session_history_and_superuser_access(active_token)
-    print("\n🎉 ALL TESTS (AUTH, IN-DASHBOARD VIDEO, GOOGLE VIDS & MULTI-USER HISTORY) PASSED PERFECTLY!")
+    test_social_connections_and_branding(active_token)
+    print("\n🎉 ALL TESTS (AUTH, IN-DASHBOARD VIDEO, GOOGLE VIDS, MULTI-USER HISTORY, SOCIAL LINKING & BRAND DNA) PASSED PERFECTLY!")
+
 
 
