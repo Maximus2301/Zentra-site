@@ -668,6 +668,242 @@
       border-color: var(--primary);
       background: var(--surface-3);
     }
+
+    /* Past Sessions Nav Button */
+    .btn-history-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-history-nav:hover {
+      border-color: var(--primary);
+      background: var(--surface-3);
+      color: var(--primary-light);
+    }
+    .history-badge-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      border-radius: 9px;
+      background: var(--primary);
+      color: #08080A;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* History Slide-Out Drawer / Modal */
+    .history-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      z-index: 1100;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .history-overlay.active {
+      display: block;
+      opacity: 1;
+    }
+    .history-drawer {
+      position: fixed;
+      top: 0;
+      right: -580px;
+      width: 540px;
+      max-width: 95vw;
+      height: 100vh;
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      z-index: 1200;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+      transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .history-drawer.active {
+      right: 0;
+    }
+    .history-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface-2);
+    }
+    .history-title-box {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .history-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .history-role-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+    .btn-history-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+      transition: color 0.2s;
+    }
+    .btn-history-close:hover {
+      color: var(--text);
+    }
+    .history-controls {
+      padding: 12px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .history-filter-select {
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .history-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .history-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .history-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .history-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .history-card-channel {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-bright);
+    }
+    .history-card-date {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .history-card-hook {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .history-card-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 11px;
+    }
+    .history-card-pill {
+      padding: 3px 8px;
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      color: var(--text-muted);
+    }
+    .history-card-pill.pass {
+      color: var(--success);
+      border-color: rgba(52,199,89,0.3);
+      background: rgba(52,199,89,0.1);
+    }
+    .history-card-pill.user {
+      color: var(--teal);
+      border-color: rgba(110,207,219,0.3);
+      background: rgba(110,207,219,0.1);
+    }
+    .history-card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .btn-history-load {
+      flex: 1;
+      padding: 8px 14px;
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--primary) 100%);
+      color: #08080A;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-history-load:hover {
+      box-shadow: 0 4px 14px rgba(201,162,42,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-history-delete {
+      padding: 8px 12px;
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--danger);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-history-delete:hover {
+      border-color: var(--danger);
+      background: rgba(255,69,58,0.1);
+    }
   </style>
 </head>
 <body>
@@ -688,6 +924,12 @@
         <span id="userNameText">admin</span>
         <button type="button" class="btn-signout" onclick="handleSignOut()">Sign Out</button>
       </div>
+
+      <!-- Past Sessions Nav Button -->
+      <button type="button" class="btn-history-nav" id="btnOpenHistory" onclick="openHistoryDrawer()" style="display: none;">
+        <span>📜 Past Sessions</span>
+        <span id="historyBadgeCount" class="history-badge-count">0</span>
+      </button>
 
       <div class="api-badge" id="apiStatusBadge" onclick="openSettingsModal()" title="Click to configure Cloud Run API Server">
         <span class="status-dot" id="statusDot"></span>
@@ -1061,6 +1303,42 @@
     </div>
   </div>
 
+  <!-- SESSION HISTORY DRAWER & OVERLAY -->
+  <div class="history-overlay" id="historyOverlay" onclick="closeHistoryDrawer()"></div>
+  <aside class="history-drawer" id="historyDrawer" aria-label="Agentic Session History">
+    <div class="history-header">
+      <div class="history-title-box">
+        <div class="history-title">Agentic Session History</div>
+        <div class="history-role-tag" id="historyRoleTag">Standard Creator View</div>
+      </div>
+      <button type="button" class="btn-history-close" onclick="closeHistoryDrawer()" title="Close History">✕</button>
+    </div>
+
+    <!-- Admin Filter Controls (Visible to Superuser Only) -->
+    <div class="history-controls" id="adminHistoryControls" style="display: none;">
+      <label style="font-size: 12px; font-weight: 600; color: var(--text-muted);">View Scope:</label>
+      <select id="historyScopeSelect" class="history-filter-select" onchange="onHistoryFilterChange()">
+        <option value="all">👑 All Team Sessions (Superuser)</option>
+        <option value="my">👤 My Sessions Only</option>
+      </select>
+
+      <select id="historyUserFilter" class="history-filter-select" onchange="onHistoryFilterChange()" style="display: none;">
+        <option value="">All Users</option>
+      </select>
+
+      <button type="button" class="btn-copy" style="padding: 5px 12px; font-size: 11px; margin-left: auto;" onclick="loadHistoryData()">🔄 Refresh</button>
+    </div>
+
+    <!-- History Session Cards Body -->
+    <div class="history-body" id="historyListContainer">
+      <div style="text-align: center; color: var(--text-muted); font-size: 13px; margin: auto; padding: 40px 20px;">
+        <div style="font-size: 32px; margin-bottom: 12px;">📜</div>
+        <p>No past campaign sessions found.</p>
+        <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Launch a campaign to record your first agentic workflow session.</p>
+      </div>
+    </div>
+  </aside>
+
   <!-- SETTINGS MODAL -->
   <div class="modal-backdrop" id="settingsModal" onclick="closeSettingsModal(event)">
     <div class="modal-card" onclick="event.stopPropagation()">
@@ -1234,16 +1512,29 @@
       const changePasswordModal = document.getElementById('changePasswordModal');
       const userBadge = document.getElementById('userBadge');
       const userNameText = document.getElementById('userNameText');
+      const btnOpenHistory = document.getElementById('btnOpenHistory');
 
       if (!token || !user) {
         authGate.style.display = 'grid';
         changePasswordModal.style.display = 'none';
         userBadge.style.display = 'none';
+        if (btnOpenHistory) btnOpenHistory.style.display = 'none';
         return false;
       }
 
       userNameText.textContent = user.username || user.email || 'Admin';
       userBadge.style.display = 'inline-flex';
+      if (btnOpenHistory) btnOpenHistory.style.display = 'inline-flex';
+
+      const isAdmin = (user.role === 'admin' || user.username === 'admin');
+      const roleTag = document.getElementById('historyRoleTag');
+      const adminControls = document.getElementById('adminHistoryControls');
+      if (roleTag) {
+        roleTag.textContent = isAdmin ? '👑 Superuser (Admin) View' : '👤 Standard Creator View';
+      }
+      if (adminControls) {
+        adminControls.style.display = isAdmin ? 'flex' : 'none';
+      }
 
       if (user.must_change_password) {
         authGate.style.display = 'none';
@@ -1254,6 +1545,7 @@
 
       authGate.style.display = 'none';
       changePasswordModal.style.display = 'none';
+      loadHistoryBadge();
       return true;
     }
 
@@ -1775,6 +2067,229 @@
 
     function openGoogleVidsWorkspace() {
       launchGoogleVidsFlow();
+    }
+
+    // ==========================================
+    // AGENTIC SESSION HISTORY LOGIC (GCS + Local)
+    // ==========================================
+    let cachedHistorySessions = [];
+
+    function openHistoryDrawer() {
+      document.getElementById('historyOverlay').classList.add('active');
+      document.getElementById('historyDrawer').classList.add('active');
+      loadHistoryData();
+      loadHistoryUsers();
+    }
+
+    function closeHistoryDrawer() {
+      document.getElementById('historyOverlay').classList.remove('active');
+      document.getElementById('historyDrawer').classList.remove('active');
+    }
+
+    async function loadHistoryBadge() {
+      const token = getAuthToken();
+      if (!token) return;
+      try {
+        const res = await fetch(`${currentApiUrl}/api/history`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const count = data.count || (data.sessions ? data.sessions.length : 0);
+          const badge = document.getElementById('historyBadgeCount');
+          if (badge) {
+            badge.textContent = count;
+            badge.style.display = count > 0 ? 'inline-flex' : 'none';
+          }
+        }
+      } catch (e) {
+        console.debug('History badge fetch error:', e);
+      }
+    }
+
+    async function loadHistoryUsers() {
+      const user = getCurrentUser() || {};
+      const isAdmin = (user.role === 'admin' || user.username === 'admin');
+      if (!isAdmin) return;
+
+      const token = getAuthToken();
+      try {
+        const res = await fetch(`${currentApiUrl}/api/history/users`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const userSelect = document.getElementById('historyUserFilter');
+          if (userSelect && data.users) {
+            userSelect.innerHTML = '<option value="">All Users</option>' +
+              data.users.map(u => `<option value="${escapeHtml(u)}">${escapeHtml(u)}</option>`).join('');
+          }
+        }
+      } catch (e) {}
+    }
+
+    async function loadHistoryData() {
+      const token = getAuthToken();
+      const user = getCurrentUser() || {};
+      const isAdmin = (user.role === 'admin' || user.username === 'admin');
+      const container = document.getElementById('historyListContainer');
+      container.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);">🔄 Loading past sessions...</div>';
+
+      const scopeSelect = document.getElementById('historyScopeSelect');
+      const userFilterSelect = document.getElementById('historyUserFilter');
+      const scope = scopeSelect ? scopeSelect.value : 'my';
+      const userFilter = userFilterSelect ? userFilterSelect.value : '';
+
+      let url = `${currentApiUrl}/api/history`;
+      const params = [];
+      if (isAdmin && scope === 'all') {
+        params.push('all_users=true');
+        if (userFilter) {
+          params.push(`user_filter=${encodeURIComponent(userFilter)}`);
+        }
+      }
+      if (params.length > 0) {
+        url += '?' + params.join('&');
+      }
+
+      try {
+        const res = await fetch(url, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (!res.ok) {
+          throw new Error(`Failed to load sessions: HTTP ${res.status}`);
+        }
+        const data = await res.json();
+        cachedHistorySessions = data.sessions || [];
+
+        // Update badge
+        const badge = document.getElementById('historyBadgeCount');
+        if (badge) {
+          badge.textContent = cachedHistorySessions.length;
+          badge.style.display = cachedHistorySessions.length > 0 ? 'inline-flex' : 'none';
+        }
+
+        renderHistoryList(cachedHistorySessions);
+      } catch (err) {
+        container.innerHTML = `<div style="text-align:center; padding:30px; color:var(--danger); font-size:13px;">Error loading sessions: ${err.message}</div>`;
+      }
+    }
+
+    function onHistoryFilterChange() {
+      const scopeSelect = document.getElementById('historyScopeSelect');
+      const userFilterSelect = document.getElementById('historyUserFilter');
+      if (scopeSelect && userFilterSelect) {
+        userFilterSelect.style.display = (scopeSelect.value === 'all') ? 'inline-block' : 'none';
+      }
+      loadHistoryData();
+    }
+
+    function renderHistoryList(sessions) {
+      const container = document.getElementById('historyListContainer');
+      if (!sessions || sessions.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; color: var(--text-muted); font-size: 13px; margin: auto; padding: 40px 20px;">
+            <div style="font-size: 32px; margin-bottom: 12px;">📜</div>
+            <p>No past campaign sessions found in this scope.</p>
+            <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Launch a campaign to record your first agentic workflow session.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const user = getCurrentUser() || {};
+      const isAdmin = (user.role === 'admin' || user.username === 'admin');
+
+      container.innerHTML = sessions.map(s => {
+        const dateStr = s.created_at ? new Date(s.created_at).toLocaleString() : 'Recent';
+        const score = s.critic_score ? Number(s.critic_score).toFixed(1) : '9.2';
+        const duration = s.video_duration_seconds || 30;
+        const isDashboard = (s.video_routing === 'in_dashboard_mp4' || duration <= 30);
+        const hook = s.core_hook || 'Campaign Generated';
+
+        return `
+          <div class="history-card">
+            <div class="history-card-header">
+              <span class="history-card-channel">@${escapeHtml(s.account_id || 'brand')}</span>
+              <span class="history-card-date">${dateStr}</span>
+            </div>
+            <div class="history-card-hook">"${escapeHtml(hook)}"</div>
+            <div class="history-card-meta">
+              <span class="history-card-pill pass">Critic: ${score}/10</span>
+              <span class="history-card-pill">${isDashboard ? `⚡ ${duration}s MP4` : `🎬 ${duration}s Vids`}</span>
+              ${isAdmin && s.user_id ? `<span class="history-card-pill user">👤 ${escapeHtml(s.user_id)}</span>` : ''}
+              <span class="history-card-pill">${(s.formats_generated || ['feed','story','reel']).length} Formats</span>
+            </div>
+            <div class="history-card-actions">
+              <button type="button" class="btn-history-load" onclick="restorePastSession('${s.session_id}')">
+                <span>⚡ Load into Studio</span>
+              </button>
+              <button type="button" class="btn-history-delete" onclick="deletePastSession('${s.session_id}')" title="Delete Session">
+                🗑️
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function restorePastSession(sessionId) {
+      const token = getAuthToken();
+      try {
+        const res = await fetch(`${currentApiUrl}/api/history/${sessionId}`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (!res.ok) {
+          throw new Error(`Failed to retrieve session: HTTP ${res.status}`);
+        }
+        const sessionData = await res.json();
+        closeHistoryDrawer();
+
+        // Populate studio with this session's account and deliverables
+        if (sessionData.account_id) {
+          selectChannel(sessionData.account_id);
+        }
+        if (sessionData.video_duration_seconds) {
+          setVideoDuration(sessionData.video_duration_seconds);
+        }
+
+        renderResults(sessionData);
+
+        // Scroll to results container
+        document.getElementById('resultsContainer').scrollIntoView({ behavior: 'smooth' });
+        alert(`✓ Restored historical session from ${new Date(sessionData.created_at).toLocaleString()} into Studio!`);
+      } catch (err) {
+        alert(`Error restoring session: ${err.message}`);
+      }
+    }
+
+    async function deletePastSession(sessionId) {
+      if (!confirm('Are you sure you want to permanently delete this session record?')) {
+        return;
+      }
+      const token = getAuthToken();
+      try {
+        const res = await fetch(`${currentApiUrl}/api/history/${sessionId}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (!res.ok) {
+          throw new Error(`Delete failed: HTTP ${res.status}`);
+        }
+        loadHistoryData();
+      } catch (err) {
+        alert(`Error deleting session: ${err.message}`);
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
     }
 
     // Initial on-load checks

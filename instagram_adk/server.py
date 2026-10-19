@@ -12,6 +12,9 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
+from datetime import datetime, timezone
+import uuid
+
 from .config.settings import load_all_accounts, get_account_by_id, OUTPUT_DIR
 from .workflow import execute_campaign
 from .auth import (
@@ -21,6 +24,15 @@ from .auth import (
     verify_session_token,
     verify_google_id_token,
     init_user_store,
+    create_new_user,
+)
+from .storage.session_store import (
+    save_session,
+    list_sessions,
+    get_session,
+    get_session_media_path,
+    delete_session,
+    list_all_active_users,
 )
 
 # Initialize user accounts store on startup
@@ -145,10 +157,12 @@ async def login(req: LoginRequest) -> dict[str, Any]:
     if not valid or not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=msg)
 
+    role = user.get("role", "admin" if user["username"] == "admin" else "creator")
     token = create_session_token(
         username=user["username"],
         email=user.get("email", ""),
         must_change_password=user.get("must_change_password", False),
+        role=role,
     )
     return {
         "access_token": token,
@@ -156,7 +170,7 @@ async def login(req: LoginRequest) -> dict[str, Any]:
         "user": {
             "username": user["username"],
             "email": user.get("email", ""),
-            "role": user.get("role", "admin"),
+            "role": role,
             "must_change_password": user.get("must_change_password", False),
         },
     }
@@ -173,11 +187,12 @@ async def change_password(
     if not success:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=msg)
 
-    # Issue refreshed token with must_change_password = False
+    role = current_user.get("role", "admin" if username == "admin" else "creator")
     new_token = create_session_token(
         username=username,
         email=current_user.get("email", ""),
         must_change_password=False,
+        role=role,
     )
     return {
         "success": True,
@@ -193,11 +208,14 @@ async def google_login(req: GoogleAuthRequest) -> dict[str, Any]:
     if not valid or not user_info:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=msg)
 
+    role = "creator"
     token = create_session_token(
         username=user_info["username"],
         email=user_info["email"],
         must_change_password=False,
+        role=role,
     )
+    user_info["role"] = role
     return {
         "access_token": token,
         "token_type": "bearer",
@@ -211,6 +229,7 @@ async def get_me(current_user: dict[str, Any] = Depends(get_current_user)) -> di
     return {
         "username": current_user.get("sub"),
         "email": current_user.get("email"),
+        "role": current_user.get("role", "admin" if current_user.get("sub") == "admin" else "creator"),
         "must_change_password": current_user.get("mcp", False),
     }
 
@@ -267,7 +286,8 @@ async def generate_campaign(
             detail=f"Unknown account_id: '{req.account_id}'. Use /api/accounts to see configured profiles."
         )
 
-    logger.info(f"Received campaign generation request for channel: {req.account_id}")
+    username = current_user.get("sub", "admin")
+    logger.info(f"Received campaign generation request for channel: {req.account_id} by user: {username}")
     try:
         result = await execute_campaign(
             account_id=req.account_id,
@@ -276,7 +296,7 @@ async def generate_campaign(
             requested_emotion=req.requested_emotion,
             active_formats=req.active_formats,
             requested_duration_seconds=req.requested_duration_seconds,
-            user_id="cloud_api_user",
+            user_id=username,
         )
     except Exception as e:
         logger.error(f"Campaign execution failed: {e}", exc_info=True)
@@ -291,8 +311,12 @@ async def generate_campaign(
     reel_video_path = result.get("media_assets", {}).get("reel_video")
     reel_video_url = f"/media/{Path(reel_video_path).name}" if reel_video_path and Path(reel_video_path).exists() else None
 
-    return {
+    session_id = result.get("session_id") or str(uuid.uuid4())
+    session_response = {
         "status": result.get("status", "completed"),
+        "session_id": session_id,
+        "user_id": username,
+        "created_at": datetime.now(timezone.utc).isoformat(),
         "account_id": req.account_id,
         "channel_name": result.get("account", {}).get("name"),
         "handle": result.get("account", {}).get("handle"),
@@ -311,6 +335,21 @@ async def generate_campaign(
         "bundle": bundle,
     }
 
+    # Persist session to multi-user durable storage (GCS + local cache)
+    try:
+        media_files_map = dict(result.get("media_assets", {}))
+        if preview_file.exists():
+            media_files_map["preview_html"] = str(preview_file)
+        save_session(
+            user_id=username,
+            session_data=session_response,
+            media_files=media_files_map,
+        )
+    except Exception as e:
+        logger.error(f"Failed to persist session to session store: {e}")
+
+    return session_response
+
 
 @app.get("/api/campaign/preview/{account_id}", response_class=HTMLResponse)
 async def get_preview_html(account_id: str) -> HTMLResponse:
@@ -319,3 +358,106 @@ async def get_preview_html(account_id: str) -> HTMLResponse:
     if not preview_file.exists():
         raise HTTPException(status_code=404, detail=f"No preview generated for '{account_id}' yet.")
     return HTMLResponse(content=preview_file.read_text(encoding="utf-8"), status_code=200)
+
+
+@app.get("/api/history")
+async def get_session_history(
+    all_users: bool = False,
+    user_filter: str | None = None,
+    current_user: dict[str, Any] = Depends(get_current_user),
+) -> dict[str, Any]:
+    """Retrieves past content creation sessions. Superuser (admin) can view all users' sessions."""
+    username = current_user.get("sub", "admin")
+    is_admin = current_user.get("role") == "admin" or username == "admin"
+    if not is_admin:
+        all_users = False
+        user_filter = None
+
+    sessions = list_sessions(
+        user_id=username,
+        is_admin=is_admin,
+        all_users=all_users,
+        user_filter=user_filter,
+    )
+    return {
+        "status": "success",
+        "count": len(sessions),
+        "is_admin": is_admin,
+        "current_user": username,
+        "sessions": sessions,
+    }
+
+
+@app.get("/api/history/users")
+async def get_history_users(
+    current_user: dict[str, Any] = Depends(get_current_user),
+) -> dict[str, Any]:
+    """Admin-only: Lists all active users who have created sessions."""
+    username = current_user.get("sub", "admin")
+    is_admin = current_user.get("role") == "admin" or username == "admin"
+    if not is_admin:
+        raise HTTPException(status_code=403, detail="Superuser (admin) access required.")
+    users = list_all_active_users()
+    return {"status": "success", "users": users}
+
+
+@app.get("/api/history/{session_id}")
+async def get_session_detail(
+    session_id: str,
+    current_user: dict[str, Any] = Depends(get_current_user),
+) -> dict[str, Any]:
+    """Retrieves complete details of a specific past session."""
+    username = current_user.get("sub", "admin")
+    is_admin = current_user.get("role") == "admin" or username == "admin"
+    sess = get_session(
+        session_id=session_id,
+        user_id=username,
+        is_admin=is_admin,
+    )
+    if not sess:
+        raise HTTPException(status_code=404, detail="Session not found or access denied.")
+    return sess
+
+
+@app.get("/api/history/{session_id}/media/{filename}")
+async def get_history_media(
+    session_id: str,
+    filename: str,
+    current_user: dict[str, Any] = Depends(get_current_user),
+):
+    """Streams a historical media asset with authorization check."""
+    username = current_user.get("sub", "admin")
+    is_admin = current_user.get("role") == "admin" or username == "admin"
+    media_path = get_session_media_path(
+        session_id=session_id,
+        filename=filename,
+        user_id=username,
+        is_admin=is_admin,
+    )
+    if not media_path or not media_path.exists():
+        alt_path = OUTPUT_DIR / filename
+        if alt_path.exists():
+            media_path = alt_path
+        else:
+            raise HTTPException(status_code=404, detail="Media asset not found.")
+
+    media_type = "video/mp4" if media_path.suffix == ".mp4" else ("image/png" if media_path.suffix == ".png" else "application/octet-stream")
+    return FileResponse(media_path, media_type=media_type)
+
+
+@app.delete("/api/history/{session_id}")
+async def delete_history_session(
+    session_id: str,
+    current_user: dict[str, Any] = Depends(get_current_user),
+) -> dict[str, Any]:
+    """Deletes a past session record and associated media."""
+    username = current_user.get("sub", "admin")
+    is_admin = current_user.get("role") == "admin" or username == "admin"
+    success = delete_session(
+        session_id=session_id,
+        user_id=username,
+        is_admin=is_admin,
+    )
+    if not success:
+        raise HTTPException(status_code=404, detail="Session not found or permission denied.")
+    return {"status": "deleted", "session_id": session_id}

@@ -81,7 +81,7 @@ def init_user_store(force: bool = False) -> dict[str, Any]:
             "email": "vyantec@gmail.com",
             "password_hash": vyan_hash,
             "salt": vyan_salt,
-            "role": "admin",
+            "role": "creator",
             "must_change_password": False,
             "created_at": time.time(),
         },
@@ -166,11 +166,17 @@ def change_user_password(username: str, old_password: str, new_password: str) ->
     return True, "Password successfully updated."
 
 
-def create_session_token(username: str, email: str, must_change_password: bool = False) -> str:
-    """Creates a URL-safe cryptographically signed session token."""
+def create_session_token(
+    username: str,
+    email: str,
+    must_change_password: bool = False,
+    role: str = "creator",
+) -> str:
+    """Creates a URL-safe cryptographically signed session token with role information."""
     payload = {
         "sub": username,
         "email": email,
+        "role": role,
         "mcp": must_change_password,
         "exp": int(time.time()) + TOKEN_EXPIRY_SECONDS,
         "nonce": secrets.token_hex(8),
@@ -199,10 +205,38 @@ def verify_session_token(token: str) -> Optional[dict[str, Any]]:
         if payload.get("exp", 0) < time.time():
             return None
 
+        if "role" not in payload:
+            payload["role"] = "admin" if payload.get("sub") == "admin" else "creator"
+
         return payload
     except Exception as e:
         logger.debug(f"Token verification error: {e}")
         return None
+
+
+def create_new_user(username: str, email: str, password: str, role: str = "creator") -> Tuple[bool, str]:
+    """Admin function to create a new platform user."""
+    users = get_users()
+    key = username.strip().lower()
+    if key in [u.lower() for u in users.keys()]:
+        return False, f"Username '{username}' already exists."
+
+    for u_data in users.values():
+        if u_data.get("email", "").lower() == email.strip().lower():
+            return False, f"User with email '{email}' already exists."
+
+    pwd_hash, salt = _hash_password(password)
+    users[username] = {
+        "username": username,
+        "email": email.strip(),
+        "password_hash": pwd_hash,
+        "salt": salt,
+        "role": role,
+        "must_change_password": False,
+        "created_at": time.time(),
+    }
+    save_users(users)
+    return True, f"User '{username}' created successfully."
 
 
 async def verify_google_id_token(id_token: str) -> Tuple[bool, Optional[dict[str, Any]], str]:

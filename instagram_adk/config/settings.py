@@ -15,7 +15,10 @@ CONFIG_DIR = Path(__file__).resolve().parent
 ACCOUNTS_FILE = CONFIG_DIR / "accounts.json"
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+SESSIONS_DIR = OUTPUT_DIR / "sessions"
+SESSIONS_DIR.mkdir(parents=True, exist_ok=True)
 
+SESSIONS_BUCKET_NAME = os.getenv("SESSIONS_BUCKET_NAME", "zentra-creator-sessions-546102264289")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") or ""
 
 

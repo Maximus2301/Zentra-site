@@ -165,6 +165,70 @@ def test_google_vids_workspace_generation(valid_token: str):
     print("✓ >30s Google Vids Workspace Route verified: Prompt & Blueprint ready for vids.new")
 
 
+def test_session_history_and_superuser_access(admin_token: str):
+    """Test user-specific session history and superuser (admin) global auditing."""
+    # 1. Login as standard user vyantec@gmail.com
+    vyan_login = client.post("/api/auth/login", json={"username": "vyantec@gmail.com", "password": "ZentraVyan2026!"})
+    assert vyan_login.status_code == 200
+    vyan_token = vyan_login.json()["access_token"]
+    assert vyan_login.json()["user"]["role"] == "creator"
+
+    # 2. Standard user generates a campaign
+    vyan_gen = client.post(
+        "/api/campaign/generate",
+        json={"account_id": "alex_tech_ceo", "raw_user_script": "Vyan content draft test", "requested_duration_seconds": 15},
+        headers={"Authorization": f"Bearer {vyan_token}"}
+    )
+    assert vyan_gen.status_code == 200
+    vyan_data = vyan_gen.json()
+    vyan_session_id = vyan_data.get("session_id")
+    assert vyan_session_id is not None
+    print(f"✓ Standard user generated session: {vyan_session_id}")
+
+    # 3. Standard user queries /api/history
+    vyan_history = client.get("/api/history", headers={"Authorization": f"Bearer {vyan_token}"})
+    assert vyan_history.status_code == 200
+    vh_data = vyan_history.json()
+    assert vh_data["is_admin"] is False
+    assert any(s["session_id"] == vyan_session_id for s in vh_data["sessions"])
+    print("✓ Standard user history returned successfully")
+
+    # 4. Standard user tries to query /api/history/users (must get 403 Forbidden)
+    forbidden_users = client.get("/api/history/users", headers={"Authorization": f"Bearer {vyan_token}"})
+    assert forbidden_users.status_code == 403
+    print("✓ Standard user forbidden from accessing /api/history/users (403 verified)")
+
+    # 5. Superuser (admin) queries /api/history without all_users
+    admin_history = client.get("/api/history", headers={"Authorization": f"Bearer {admin_token}"})
+    assert admin_history.status_code == 200
+    assert admin_history.json()["is_admin"] is True
+
+    # 6. Superuser (admin) queries /api/history with all_users=true
+    admin_all_history = client.get("/api/history?all_users=true", headers={"Authorization": f"Bearer {admin_token}"})
+    assert admin_all_history.status_code == 200
+    all_sess = admin_all_history.json()["sessions"]
+    # Admin must see Vyan's session
+    assert any(s["session_id"] == vyan_session_id for s in all_sess)
+    print("✓ Superuser (admin) can see sessions created by standard users (all_users=true)")
+
+    # 7. Superuser (admin) queries /api/history/users
+    admin_users = client.get("/api/history/users", headers={"Authorization": f"Bearer {admin_token}"})
+    assert admin_users.status_code == 200
+    assert "users" in admin_users.json()
+    print("✓ Admin successfully accessed user list from /api/history/users")
+
+    # 8. Retrieve session detail via /api/history/{session_id}
+    detail_res = client.get(f"/api/history/{vyan_session_id}", headers={"Authorization": f"Bearer {vyan_token}"})
+    assert detail_res.status_code == 200
+    assert detail_res.json()["session_id"] == vyan_session_id
+
+    # 9. Admin can also retrieve Vyan's session detail
+    admin_detail = client.get(f"/api/history/{vyan_session_id}", headers={"Authorization": f"Bearer {admin_token}"})
+    assert admin_detail.status_code == 200
+    assert admin_detail.json()["session_id"] == vyan_session_id
+    print("✓ Admin superuser access to individual user session verified")
+
+
 if __name__ == "__main__":
     test_health_check()
     test_root_creator_studio_served()
@@ -173,5 +237,7 @@ if __name__ == "__main__":
     active_token = test_authentication_and_password_change_flow()
     test_authenticated_campaign_generation(active_token)
     test_google_vids_workspace_generation(active_token)
-    print("\n🎉 ALL TESTS (AUTH, IN-DASHBOARD VIDEO & GOOGLE VIDS) PASSED PERFECTLY!")
+    test_session_history_and_superuser_access(active_token)
+    print("\n🎉 ALL TESTS (AUTH, IN-DASHBOARD VIDEO, GOOGLE VIDS & MULTI-USER HISTORY) PASSED PERFECTLY!")
+
 
