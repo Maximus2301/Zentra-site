@@ -47,11 +47,12 @@ if OUTPUT_DIR.exists():
 
 # Creator Studio UI directory resolution (works locally, in package, and in container)
 PACKAGE_WEB_DIR = Path(__file__).resolve().parent / "web"
+ROOT_CREATOR_DIR = Path(__file__).resolve().parent.parent / "creator"
 LOCAL_CREATOR_DIR = Path(__file__).resolve().parent.parent / "zentra-site" / "creator"
 CONTAINER_CREATOR_DIR = Path("/app/creator")
 
 def get_creator_index_file() -> Path | None:
-    for candidate in [PACKAGE_WEB_DIR / "index.html", LOCAL_CREATOR_DIR / "index.html", CONTAINER_CREATOR_DIR / "index.html"]:
+    for candidate in [ROOT_CREATOR_DIR / "index.html", PACKAGE_WEB_DIR / "index.html", LOCAL_CREATOR_DIR / "index.html", CONTAINER_CREATOR_DIR / "index.html"]:
         if candidate.exists():
             return candidate
     return None

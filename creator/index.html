@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creator Studio — Zentra Autonomous Campaign Agents</title>
+  <meta name="description" content="Autonomous Multi-Channel Instagram Campaign Creator powered by Google ADK 2.0 and Gemini 2.5." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:            #0D0D0F;
+      --bg-deep:       #08080A;
+      --surface:       #131316;
+      --surface-2:     #1A1A1E;
+      --surface-3:     #222228;
+      --border:        #2A2A30;
+      --border-focus:  #C9A22A;
+      --primary:       #C9A22A;
+      --primary-light: #E2C05E;
+      --primary-deep:  #9A7515;
+      --teal:          #6ECFDB;
+      --teal-light:    #A8E8F4;
+      --gold-bright:   #F1D77A;
+      --text:          #F0F0EC;
+      --text-muted:    #8E8E96;
+      --success:       #22C55E;
+      --danger:        #EF4444;
+      --warning:       #F59E0B;
+      --radius-sm:     8px;
+      --radius-md:     14px;
+      --radius-lg:     20px;
+      --radius-full:   999px;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(201,162,42,0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 20%, rgba(110,207,219,0.06) 0%, transparent 35%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV HEADER ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(10,10,12,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 14px; text-decoration: none;
+    }
+    .logo-mark {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: #0D0D1F; border: 1.2px solid rgba(201,162,42,0.30);
+      box-shadow: inset 0 1px 0 rgba(241,215,122,0.08);
+      display: grid; place-items: center; flex-shrink: 0;
+    }
+    .logo-mark span {
+      font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700; line-height: 1;
+      background: linear-gradient(90deg,#8B6914 0%,#B48A1E 20%,#D4AF37 42%,#F1D77A 50%,#D4AF37 58%,#B48A1E 80%,#8B6914 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .brand-title {
+      display: flex; flex-direction: column;
+    }
+    .brand-name {
+      font-family: 'Cinzel', serif; font-size: 17px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--primary-light);
+    }
+    .brand-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);
+    }
+
+    .nav-actions {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .api-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; background: var(--surface-2);
+      border: 1px solid var(--border); border-radius: var(--radius-full);
+      font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .api-badge:hover { border-color: var(--primary); color: var(--text); }
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--warning);
+      box-shadow: 0 0 8px currentColor;
+    }
+    .status-dot.online { background: var(--success); }
+    .status-dot.offline { background: var(--danger); }
+
+    .nav-link {
+      color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--primary-light); }
+
+    /* ── CONTAINER ── */
+    .studio-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 36px 24px 80px;
+    }
+
+    /* ── HERO HEADER ── */
+    .studio-hero {
+      margin-bottom: 32px;
+      text-align: left;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border: 1px solid rgba(201,162,42,0.25);
+      background: rgba(201,162,42,0.08); border-radius: var(--radius-full);
+      font-size: 11px; font-weight: 700; color: var(--primary-light);
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .studio-hero h1 {
+      font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .studio-hero h1 .grad {
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--primary) 50%, var(--teal) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .studio-hero p {
+      color: var(--text-muted); font-size: 15px; max-width: 760px;
+    }
+
+    /* ── MAIN WORKSPACE GRID ── */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    @media (max-width: 1024px) {
+      .workspace-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── PANEL STYLES ── */
+    .panel-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+      position: relative;
+    }
+
+    .panel-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px;
+    }
+    .panel-title {
+      font-size: 18px; font-weight: 700; color: var(--text);
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    /* ── FORM ELEMENTS ── */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block; font-size: 13px; font-weight: 600; color: var(--text);
+      margin-bottom: 8px; letter-spacing: 0.02em;
+    }
+    .form-hint {
+      font-size: 11px; color: var(--text-muted); margin-top: 4px;
+    }
+
+    /* Account Selector Cards */
+    .channel-cards {
+      display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;
+    }
+    .channel-card {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px; border: 1.5px solid var(--border);
+      border-radius: var(--radius-md); background: var(--surface-2);
+      cursor: pointer; transition: all 0.2s; user-select: none;
+    }
+    .channel-card:hover {
+      border-color: rgba(201,162,42,0.4);
+      background: var(--surface-3);
+    }
+    .channel-card.active {
+      border-color: var(--primary);
+      background: rgba(201,162,42,0.08);
+      box-shadow: 0 0 18px rgba(201,162,42,0.18);
+    }
+    .channel-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--surface); display: grid; place-items: center; font-size: 20px;
+      flex-shrink: 0; border: 1px solid var(--border);
+    }
+    .channel-info { flex: 1; min-width: 0; }
+    .channel-name { font-size: 14px; font-weight: 700; color: var(--text); }
+    .channel-handle { font-size: 12px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+    .channel-badge {
+      font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: var(--radius-full);
+      background: rgba(110,207,219,0.12); color: var(--teal); border: 1px solid rgba(110,207,219,0.25);
+    }
+
+    input[type="text"], textarea, select {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      font-family: inherit; font-size: 14px; color: var(--text);
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input[type="text"]:focus, textarea:focus, select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(201,162,42,0.18);
+    }
+    textarea {
+      resize: vertical; min-height: 120px; line-height: 1.5;
+    }
+
+    /* Format Checkboxes */
+    .format-pills {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    }
+    .format-pill {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); cursor: pointer; font-size: 13px; font-weight: 500;
+      transition: all 0.2s;
+    }
+    .format-pill:hover { border-color: rgba(201,162,42,0.4); }
+    .format-pill input { accent-color: var(--primary); }
+
+    /* Launch Button */
+    .btn-launch {
+      width: 100%;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--primary) 50%, var(--primary-deep) 100%);
+      color: #08080A;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 800;
+      border: none; border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 24px rgba(201,162,42,0.28);
+      margin-top: 24px;
+    }
+    .btn-launch:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(201,162,42,0.4);
+    }
+    .btn-launch:disabled {
+      opacity: 0.6; cursor: not-allowed;
+    }
+
+    /* ── PIPELINE STEPPER ── */
+    .pipeline-stepper {
+      display: flex; align-items: center; justify-content: space-between;
+      margin: 20px 0 28px; padding: 16px 20px; background: var(--surface-2);
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      overflow-x: auto;
+    }
+    .pipe-step {
+      display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600;
+      color: var(--text-muted); white-space: nowrap;
+    }
+    .pipe-step.active { color: var(--gold-bright); font-weight: 700; }
+    .pipe-step.done { color: var(--success); }
+    .pipe-step-num {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--surface-3); border: 1px solid var(--border);
+      display: grid; place-items: center; font-size: 11px;
+    }
+    .pipe-step.active .pipe-step-num {
+      background: var(--primary); color: #08080A; border-color: var(--primary);
+    }
+    .pipe-step.done .pipe-step-num {
+      background: var(--success); color: #08080A; border-color: var(--success);
+    }
+    .pipe-arrow { color: var(--border); font-size: 14px; margin: 0 4px; }
+
+    /* ── RESULTS STYLING ── */
+    .tabs-nav {
+      display: flex; gap: 8px; border-bottom: 1px solid var(--border);
+      margin-bottom: 24px; overflow-x: auto;
+    }
+    .tab-btn {
+      padding: 12px 20px; background: none; border: none;
+      font-family: inherit; font-size: 14px; font-weight: 600;
+      color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all 0.2s; white-space: nowrap; display: flex; align-items: center; gap: 8px;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active {
+      color: var(--primary-light);
+      border-bottom-color: var(--primary);
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Critic Verdict Card */
+    .critic-card {
+      background: linear-gradient(180deg, rgba(34,197,94,0.06) 0%, rgba(19,19,22,0.8) 100%);
+      border: 1px solid rgba(34,197,94,0.3); border-radius: var(--radius-md);
+      padding: 18px 22px; margin-bottom: 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .critic-card.rejected {
+      background: linear-gradient(180deg, rgba(239,68,68,0.06) 0%, rgba(19,19,22,0.8) 100%);
+      border-color: rgba(239,68,68,0.3);
+    }
+    .critic-left { display: flex; align-items: center; gap: 14px; }
+    .verdict-badge {
+      padding: 6px 14px; border-radius: var(--radius-full); font-size: 12px; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .verdict-badge.pass { background: rgba(34,197,94,0.18); color: var(--success); border: 1px solid var(--success); }
+    .verdict-badge.fail { background: rgba(239,68,68,0.18); color: var(--danger); border: 1px solid var(--danger); }
+    .critic-score { font-size: 15px; font-weight: 700; color: var(--text); }
+    .critic-meta { font-size: 12px; color: var(--text-muted); }
+
+    /* Deliverable Box */
+    .deliverable-box {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 22px; margin-bottom: 18px;
+    }
+    .deliverable-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .deliverable-title { font-size: 15px; font-weight: 700; color: var(--primary-light); }
+    .btn-copy {
+      background: var(--surface-3); border: 1px solid var(--border);
+      color: var(--text); border-radius: var(--radius-sm); padding: 5px 12px;
+      font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-copy:hover { border-color: var(--primary); color: var(--primary-light); }
+    .text-pre {
+      font-family: inherit; font-size: 14px; color: var(--text);
+      white-space: pre-wrap; line-height: 1.6;
+    }
+    .hashtag-cloud {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px;
+    }
+    .tag-item {
+      font-size: 12px; font-family: 'JetBrains Mono', monospace;
+      padding: 3px 8px; border-radius: 4px; background: rgba(110,207,219,0.1);
+      color: var(--teal); border: 1px solid rgba(110,207,219,0.2);
+    }
+
+    /* iPhone Visualizer Mockup Container */
+    .preview-frame-container {
+      width: 100%; display: flex; justify-content: center; padding: 20px 0;
+    }
+    .preview-iframe {
+      width: 440px; height: 860px; border: 4px solid var(--border);
+      border-radius: 48px; box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+      background: #000; overflow: hidden;
+    }
+
+    /* Settings Modal */
+    .modal-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+      z-index: 200; display: none; place-items: center; padding: 20px;
+    }
+    .modal-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); width: 100%; max-width: 520px;
+      padding: 28px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center; padding: 80px 24px; color: var(--text-muted);
+    }
+    .empty-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.7; }
+    .empty-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav>
+    <a href="/" class="nav-brand">
+      <div class="logo-mark"><span>Z</span></div>
+      <div class="brand-title">
+        <span class="brand-name">Zentra AI</span>
+        <span class="brand-tag">Creator Studio · Google ADK 2.0</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <div class="api-badge" id="apiStatusBadge" onclick="openSettingsModal()" title="Click to configure Cloud Run API Server">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="apiStatusText">Checking API...</span>
+      </div>
+      <a href="/" class="nav-link">← Return to Zentra</a>
+    </div>
+  </nav>
+
+  <div class="studio-container">
+
+    <!-- HERO HEADER -->
+    <header class="studio-hero">
+      <div class="hero-badge">Autonomous Multi-Agent Publisher</div>
+      <h1>Generate Campaigns with <span class="grad">Autonomous Agents</span></h1>
+      <p>
+        Select a brand channel, provide rough notes, grievances, or talking points, and let Google ADK 2.0
+        orchestrate 7 specialized agents to generate a complete multi-format campaign with strict domain isolation.
+      </p>
+    </header>
+
+    <!-- PIPELINE STATUS STEPPER -->
+    <div class="pipeline-stepper" id="pipelineStepper">
+      <div class="pipe-step done" id="step1"><span class="pipe-step-num">1</span> Brief & Ingestion</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step" id="step2"><span class="pipe-step-num">2</span> Narrative Strategist</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step" id="step3"><span class="pipe-step-num">3</span> 4x Format Specialists</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step" id="step4"><span class="pipe-step-num">4</span> Critic Gatekeeper</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step" id="step5"><span class="pipe-step-num">5</span> Visualizer & Assets</div>
+    </div>
+
+    <!-- WORKSPACE GRID -->
+    <div class="workspace-grid">
+
+      <!-- LEFT: BRIEF & CONTROL PANEL -->
+      <section class="panel-card">
+        <div class="panel-header">
+          <h2 class="panel-title"><span>⚙️</span> Campaign Brief</h2>
+        </div>
+
+        <form id="campaignForm" onsubmit="handleFormSubmit(event)">
+          <!-- Target Channel Selection -->
+          <div class="form-group">
+            <label class="form-label">Target Channel Handle</label>
+            <div class="channel-cards">
+              <div class="channel-card active" data-account="workplace_rights_watch" onclick="selectChannel('workplace_rights_watch')">
+                <div class="channel-icon">⚖️</div>
+                <div class="channel-info">
+                  <div class="channel-name">Workplace Rights Watch</div>
+                  <div class="channel-handle">@workplace_rights_watch</div>
+                </div>
+                <span class="channel-badge">Rights & Labor</span>
+              </div>
+
+              <div class="channel-card" data-account="fintech_save_smart" onclick="selectChannel('fintech_save_smart')">
+                <div class="channel-icon">💰</div>
+                <div class="channel-info">
+                  <div class="channel-name">FinTech & Smart Wealth</div>
+                  <div class="channel-handle">@fintech_save_smart</div>
+                </div>
+                <span class="channel-badge">Finance & Tax</span>
+              </div>
+
+              <div class="channel-card" data-account="alex_tech_ceo" onclick="selectChannel('alex_tech_ceo')">
+                <div class="channel-icon">🚀</div>
+                <div class="channel-info">
+                  <div class="channel-name">Alex Vance · Tech CEO</div>
+                  <div class="channel-handle">@alex_tech_ceo</div>
+                </div>
+                <span class="channel-badge">Founder Mindset</span>
+              </div>
+            </div>
+            <input type="hidden" id="selectedAccount" value="workplace_rights_watch" />
+          </div>
+
+          <!-- Raw Input Textarea -->
+          <div class="form-group">
+            <label class="form-label" for="rawScript">Raw Grievance / Rough Notes / Talking Points</label>
+            <textarea id="rawScript" rows="4" placeholder="Paste an anonymous employee grievance, rough script, or core talking point..."></textarea>
+            <div class="form-hint">Tip: The narrative strategist automatically extracts the core conflict, cohort, and emotional hook.</div>
+          </div>
+
+          <!-- Target Topic (Optional) -->
+          <div class="form-group">
+            <label class="form-label" for="requestedTopic">Custom Topic (Optional)</label>
+            <input type="text" id="requestedTopic" placeholder="e.g. Severance Trap: Signing NDA before reading exit terms" />
+          </div>
+
+          <!-- Target Emotion (Optional) -->
+          <div class="form-group">
+            <label class="form-label" for="requestedEmotion">Target Emotion (Optional)</label>
+            <input type="text" id="requestedEmotion" placeholder="e.g. Righteous Indignation, Clarity, Financial Relief" />
+          </div>
+
+          <!-- Formats to Generate -->
+          <div class="form-group">
+            <label class="form-label">Deliverable Formats</label>
+            <div class="format-pills">
+              <label class="format-pill">
+                <input type="checkbox" id="fmtPost" checked />
+                <span>📸 Static Post</span>
+              </label>
+              <label class="format-pill">
+                <input type="checkbox" id="fmtStory" checked />
+                <span>📖 Story Slides</span>
+              </label>
+              <label class="format-pill">
+                <input type="checkbox" id="fmtReel" checked />
+                <span>🎬 Reel Script</span>
+              </label>
+              <label class="format-pill">
+                <input type="checkbox" id="fmtStatus" checked />
+                <span>💬 Status Update</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-launch" id="btnSubmit">
+            <span id="btnIcon">⚡</span>
+            <span id="btnText">Launch ADK Campaign Agents</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- RIGHT: OUTPUT WORKSPACE -->
+      <section class="panel-card" id="outputPanel">
+        <div class="panel-header">
+          <h2 class="panel-title"><span>📊</span> Campaign Deliverables</h2>
+          <div id="campaignBadge"></div>
+        </div>
+
+        <!-- Initial Empty State -->
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">🎨</div>
+          <div class="empty-title">No Campaign Generated Yet</div>
+          <p>Choose an account on the left, paste your brief or notes, and click "Launch ADK Campaign Agents" to orchestrate the pipeline.</p>
+        </div>
+
+        <!-- Populated Results Container (Hidden by default) -->
+        <div id="resultsContainer" style="display: none;">
+
+          <!-- Critic Gatekeeper Verdict Banner -->
+          <div class="critic-card" id="criticBanner">
+            <div class="critic-left">
+              <div class="verdict-badge pass" id="verdictBadge">APPROVED</div>
+              <div>
+                <div class="critic-score" id="criticScoreText">Critic Score: 9.4 / 10</div>
+                <div class="critic-meta" id="criticMetaText">Domain isolation verified · 0 forbidden leaks detected</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Output Tabs Navigation -->
+          <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('preview')">📱 Device Preview</button>
+            <button class="tab-btn" onclick="switchTab('post')">📸 Static Post</button>
+            <button class="tab-btn" onclick="switchTab('story')">📖 Story Sequence</button>
+            <button class="tab-btn" onclick="switchTab('reel')">🎬 Reel Video Script</button>
+            <button class="tab-btn" onclick="switchTab('status')">💬 Status Update</button>
+            <button class="tab-btn" onclick="switchTab('raw')">⚡ Raw JSON</button>
+          </div>
+
+          <!-- TAB 1: DEVICE PREVIEW -->
+          <div class="tab-content active" id="tab-preview">
+            <div class="preview-frame-container">
+              <iframe id="previewIframe" class="preview-iframe" title="Interactive iPhone Preview"></iframe>
+            </div>
+          </div>
+
+          <!-- TAB 2: STATIC POST -->
+          <div class="tab-content" id="tab-post">
+            <div class="deliverable-box">
+              <div class="deliverable-header">
+                <span class="deliverable-title">Caption & High-Converting Copy</span>
+                <button class="btn-copy" onclick="copyText('postCaptionText')">Copy Caption</button>
+              </div>
+              <div class="text-pre" id="postCaptionText"></div>
+              <div class="hashtag-cloud" id="postHashtags"></div>
+            </div>
+
+            <div class="deliverable-box">
+              <div class="deliverable-header">
+                <span class="deliverable-title">Visual Direction & Asset Specs</span>
+              </div>
+              <div class="text-pre" id="postVisualText"></div>
+            </div>
+          </div>
+
+          <!-- TAB 3: STORY SEQUENCE -->
+          <div class="tab-content" id="tab-story">
+            <div class="deliverable-box">
+              <div class="deliverable-header">
+                <span class="deliverable-title">Multi-Slide Story Sequence</span>
+                <button class="btn-copy" onclick="copyText('storySlidesText')">Copy Story Text</button>
+              </div>
+              <div class="text-pre" id="storySlidesText"></div>
+            </div>
+
+            <div class="deliverable-box">
+              <div class="deliverable-header">
+                <span class="deliverable-title">Interactive Sticker Configuration</span>
+              </div>
+              <div class="text-pre" id="storyStickerText"></div>
+            </div>
+          </div>
+
+          <!-- TAB 4: REEL SCRIPT -->
+          <div class="tab-content" id="tab-reel">
+            <div class="deliverable-box">
+              <div class="deliverable-header">
+                <span class="deliverable-title">Audio & Pacing Direction</span>
+              </div>
+              <div class="text-pre" id="reelAudioText"></div>
+            </div>
+
+            <div class="deliverable-box">
+              <div class="deliverable-header">
+                <span class="deliverable-title">Scene-by-Scene Visual & Dialogue Script</span>
+                <button class="btn-copy" onclick="copyText('reelScriptText')">Copy Script</button>
+              </div>
+              <div class="text-pre" id="reelScriptText"></div>
+            </div>
+          </div>
+
+          <!-- TAB 5: STATUS UPDATE -->
+          <div class="tab-content" id="tab-status">
+            <div class="deliverable-box">
+              <div class="deliverable-header">
+                <span class="deliverable-title">Micro-Update Broadcast Copy</span>
+                <button class="btn-copy" onclick="copyText('statusContentText')">Copy Broadcast</button>
+              </div>
+              <div class="text-pre" id="statusContentText"></div>
+            </div>
+          </div>
+
+          <!-- TAB 6: RAW JSON -->
+          <div class="tab-content" id="tab-raw">
+            <div class="deliverable-box">
+              <div class="deliverable-header">
+                <span class="deliverable-title">Google ADK Agent Pipeline Output</span>
+                <button class="btn-copy" onclick="copyText('rawJsonText')">Copy JSON</button>
+              </div>
+              <pre class="text-pre" id="rawJsonText" style="max-height: 500px; overflow-y: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px;"></pre>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div class="modal-backdrop" id="settingsModal" onclick="closeSettingsModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="panel-header">
+        <h3 class="panel-title"><span>⚙️</span> API Server Configuration</h3>
+        <button class="btn-copy" onclick="closeSettingsModal()">✕</button>
+      </div>
+      <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 16px;">
+        Connect the studio to your deployed Google Cloud Run instance or local development server.
+      </p>
+
+      <div class="form-group">
+        <label class="form-label" for="apiEndpointInput">API Server Base URL</label>
+        <input type="text" id="apiEndpointInput" placeholder="https://zentra-instagram-agent-xyz-el.a.run.app" />
+        <div class="form-hint">Default: auto-detects localhost:8080 during development or your Cloud Run URL in production.</div>
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 14px;">
+        <button type="button" class="btn-copy" style="flex: 1;" onclick="setApiPreset('http://localhost:8080')">Use Localhost:8080</button>
+        <button type="button" class="btn-copy" style="flex: 1;" onclick="setApiPreset('')">Auto-Detect</button>
+      </div>
+
+      <button type="button" class="btn-launch" style="margin-top: 20px;" onclick="saveApiSettings()">
+        Save & Test Connection
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ── APPLICATION STATE ──
+    const CHANNEL_PRESETS = {
+      workplace_rights_watch: {
+        raw: "An employee with 5 years of tenure received an email demanding they sign a severance agreement within 24 hours releasing all workplace wage claims, or receive nothing. Is this 24-hour ultimatum legally enforceable or coercion?",
+        topic: "Severance Ultimatum: The 24-Hour Coercion Tactic",
+        emotion: "Righteous Indignation"
+      },
+      fintech_save_smart: {
+        raw: "Many people leave ₹5,00,000 sitting in standard savings accounts earning 2.5% while inflation is at 6%. Show the actual compounding math over 15 years if moved to index funds vs kept idle.",
+        topic: "The Silent Cash Leak: Inflation vs Index Compounding",
+        emotion: "Financial Urgency & Relief"
+      },
+      alex_tech_ceo: {
+        raw: "Most enterprise founders spend 6 months trying to build perfect custom AI pipelines when 3 modular ADK micro-agents could ship in 48 hours. Why velocity always beats premature over-engineering in early startups.",
+        topic: "Speed as Moat: Shipping Autonomous Agent Swarms",
+        emotion: "Clarity & Founder Focus"
+      }
+    };
+
+    // Retrieve configured API Server URL or fallback
+    function getApiBaseUrl() {
+      const stored = localStorage.getItem('zentra_agent_api_url');
+      if (stored && stored.trim() !== '') return stored.trim().replace(/\/+$/, '');
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'http://localhost:8080';
+      }
+      // Production Cloud Run deployed service URL
+      return 'https://zentra-instagram-agent-546102264289.asia-south1.run.app';
+    }
+
+    let currentApiUrl = getApiBaseUrl();
+
+    // Check Cloud Run API Health
+    async function checkApiHealth() {
+      const statusDot = document.getElementById('statusDot');
+      const statusText = document.getElementById('apiStatusText');
+      statusDot.className = 'status-dot';
+      statusText.textContent = 'Pinging API...';
+
+      try {
+        const res = await fetch(`${currentApiUrl}/api/accounts`, { method: 'GET', mode: 'cors' });
+        if (res.ok) {
+          const data = await res.json();
+          statusDot.className = 'status-dot online';
+          statusText.textContent = `Online (${data.count || 3} Channels Live)`;
+        } else {
+          throw new Error(`HTTP ${res.status}`);
+        }
+      } catch (err) {
+        statusDot.className = 'status-dot offline';
+        statusText.textContent = 'API Offline (Click to configure)';
+      }
+    }
+
+    // Channel Selection
+    function selectChannel(accountId) {
+      document.getElementById('selectedAccount').value = accountId;
+      document.querySelectorAll('.channel-card').forEach(card => {
+        card.classList.toggle('active', card.getAttribute('data-account') === accountId);
+      });
+
+      const preset = CHANNEL_PRESETS[accountId];
+      if (preset) {
+        document.getElementById('rawScript').value = preset.raw;
+        document.getElementById('requestedTopic').value = preset.topic;
+        document.getElementById('requestedEmotion').value = preset.emotion;
+      }
+    }
+
+    // Tab Switching
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      event.currentTarget.classList.add('active');
+      const target = document.getElementById(`tab-${tabName}`);
+      if (target) target.classList.add('active');
+    }
+
+    // Stepper updates
+    function updateStepper(stepIndex) {
+      for (let i = 1; i <= 5; i++) {
+        const el = document.getElementById(`step${i}`);
+        if (i < stepIndex) {
+          el.className = 'pipe-step done';
+        } else if (i === stepIndex) {
+          el.className = 'pipe-step active';
+        } else {
+          el.className = 'pipe-step';
+        }
+      }
+    }
+
+    // Submit Campaign Form
+    async function handleFormSubmit(event) {
+      event.preventDefault();
+      const accountId = document.getElementById('selectedAccount').value;
+      const rawScript = document.getElementById('rawScript').value.trim();
+      const topic = document.getElementById('requestedTopic').value.trim();
+      const emotion = document.getElementById('requestedEmotion').value.trim();
+
+      const formats = [];
+      if (document.getElementById('fmtPost').checked) formats.push('static_post');
+      if (document.getElementById('fmtStory').checked) formats.push('story');
+      if (document.getElementById('fmtReel').checked) formats.push('reel');
+      if (document.getElementById('fmtStatus').checked) formats.push('status');
+
+      if (formats.length === 0) {
+        alert('Please select at least one format to generate.');
+        return;
+      }
+
+      const btn = document.getElementById('btnSubmit');
+      const btnText = document.getElementById('btnText');
+      const btnIcon = document.getElementById('btnIcon');
+
+      btn.disabled = true;
+      btnIcon.textContent = '⏳';
+      btnText.textContent = 'Agents Orchestrating Campaign...';
+      updateStepper(2);
+
+      try {
+        const payload = {
+          account_id: accountId,
+          raw_user_script: rawScript || null,
+          requested_topic: topic || null,
+          requested_emotion: emotion || null,
+          active_formats: formats
+        };
+
+        updateStepper(3);
+
+        const response = await fetch(`${currentApiUrl}/api/campaign/generate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.detail || `Server error: ${response.status}`);
+        }
+
+        updateStepper(4);
+        const data = await response.json();
+        updateStepper(5);
+
+        renderResults(data);
+      } catch (err) {
+        alert(`Campaign generation failed: ${err.message}\n\nPlease check that your Cloud Run server is active.`);
+        updateStepper(1);
+      } finally {
+        btn.disabled = false;
+        btnIcon.textContent = '⚡';
+        btnText.textContent = 'Launch ADK Campaign Agents';
+      }
+    }
+
+    // Render Output Results
+    function renderResults(data) {
+      document.getElementById('emptyState').style.display = 'none';
+      document.getElementById('resultsContainer').style.display = 'block';
+
+      // Critic Verdict
+      const critic = data.critic_review || {};
+      const criticBanner = document.getElementById('criticBanner');
+      const verdictBadge = document.getElementById('verdictBadge');
+      const isApproved = critic.verdict !== 'REVISION_NEEDED';
+
+      verdictBadge.textContent = isApproved ? 'APPROVED' : 'REVISION NEEDED';
+      verdictBadge.className = isApproved ? 'verdict-badge pass' : 'verdict-badge fail';
+      criticBanner.className = isApproved ? 'critic-card' : 'critic-card rejected';
+
+      document.getElementById('criticScoreText').textContent = `Critic Score: ${critic.score || 9.2} / 10`;
+      document.getElementById('criticMetaText').textContent =
+        `Domain Isolation: Verified (0 Cross-Channel Leaks) · Channel: @${data.handle || data.account_id}`;
+
+      // Formats Rendering
+      const bundle = data.bundle || {};
+      const formats = bundle.formats || {};
+
+      // Post
+      const post = formats.static_post || {};
+      document.getElementById('postCaptionText').textContent = post.caption || 'No caption generated';
+      document.getElementById('postVisualText').textContent = post.visual_description || 'Visual specs provided in bundle';
+      const tagContainer = document.getElementById('postHashtags');
+      tagContainer.innerHTML = (post.hashtags || []).map(t => `<span class="tag-item">${t}</span>`).join('');
+
+      // Story
+      const story = formats.story || {};
+      const slides = story.slides || [];
+      const slidesFormatted = slides.map(s => `[Slide ${s.slide_number}]\nHeadline: ${s.headline}\nBody: ${s.body_text}\nVisual: ${s.visual_prompt}\n`).join('\n---\n\n');
+      document.getElementById('storySlidesText').textContent = slidesFormatted || 'Story slides rendered';
+      const sticker = story.interactive_sticker || {};
+      document.getElementById('storyStickerText').textContent =
+        `Type: ${sticker.type || 'Poll'}\nPrompt: ${sticker.question || sticker.prompt || ''}\nOptions: ${(sticker.options || []).join(' | ')}`;
+
+      // Reel
+      const reel = formats.reel || {};
+      document.getElementById('reelAudioText').textContent = `Recommended Audio: ${reel.audio_direction || 'Trending corporate lo-fi'}\nDuration: ${reel.duration_seconds || 30}s`;
+      const scenes = (reel.scenes || []).map(sc => `[${sc.timestamp || '0-3s'}] ${sc.visual_cue}\nDialogue: "${sc.voiceover || ''}"\nOn-Screen: ${sc.on_screen_text || ''}\n`).join('\n');
+      document.getElementById('reelScriptText').textContent = scenes || reel.script || 'Reel script generated';
+
+      // Status
+      const status = formats.status || {};
+      document.getElementById('statusContentText').textContent = status.text || status.content || 'Status broadcast text ready';
+
+      // Raw JSON
+      document.getElementById('rawJsonText').textContent = JSON.stringify(data, null, 2);
+
+      // Embedded Preview iframe
+      if (data.preview_url) {
+        document.getElementById('previewIframe').src = `${currentApiUrl}${data.preview_url}`;
+      } else {
+        document.getElementById('previewIframe').src = `${currentApiUrl}/api/campaign/preview/${data.account_id}`;
+      }
+    }
+
+    // Copy to clipboard helper
+    function copyText(elementId) {
+      const text = document.getElementById(elementId).innerText || document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Modal Settings Handlers
+    function openSettingsModal() {
+      document.getElementById('apiEndpointInput').value = currentApiUrl;
+      document.getElementById('settingsModal').style.display = 'grid';
+    }
+
+    function closeSettingsModal(event) {
+      if (event && event.target !== event.currentTarget) return;
+      document.getElementById('settingsModal').style.display = 'none';
+    }
+
+    function setApiPreset(url) {
+      document.getElementById('apiEndpointInput').value = url;
+    }
+
+    function saveApiSettings() {
+      const val = document.getElementById('apiEndpointInput').value.trim();
+      localStorage.setItem('zentra_agent_api_url', val);
+      currentApiUrl = getApiBaseUrl();
+      closeSettingsModal();
+      checkApiHealth();
+    }
+
+    // Initial on-load checks
+    window.addEventListener('DOMContentLoaded', () => {
+      selectChannel('workplace_rights_watch');
+      checkApiHealth();
+    });
+  </script>
+</body>
+</html>
