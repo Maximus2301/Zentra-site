@@ -1,0 +1,71 @@
+name: Deploy Autonomous Instagram Agent to Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'instagram_adk/**'
+      - 'Dockerfile'
+      - 'requirements.txt'
+      - '.github/workflows/deploy-agent-cloudrun.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: deploy-instagram-agent
+  cancel-in-progress: true
+
+env:
+  SERVICE_NAME: zentra-instagram-agent
+  REGION: asia-south1
+  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+
+jobs:
+  deploy:
+    name: Build & Deploy to Google Cloud Run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Deploy to Cloud Run via Cloud Build
+        run: |
+          gcloud run deploy "${{ env.SERVICE_NAME }}" \
+            --project="${{ env.GCP_PROJECT_ID }}" \
+            --region="${{ env.REGION }}" \
+            --source="." \
+            --platform="managed" \
+            --allow-unauthenticated \
+            --port="8080" \
+            --memory="1Gi" \
+            --cpu="1" \
+            --min-instances="0" \
+            --max-instances="5" \
+            --set-env-vars="GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }},PYTHONUNBUFFERED=1"
+
+      - name: Output Service URL
+        run: |
+          URL=$(gcloud run services describe "${{ env.SERVICE_NAME }}" \
+            --project="${{ env.GCP_PROJECT_ID }}" \
+            --region="${{ env.REGION }}" \
+            --format="value(status.url)")
+          echo "================================================="
+          echo "Agent Service Successfully Deployed to Cloud Run!"
+          echo "Live Service URL: $URL"
+          echo "Health Endpoint:  $URL/healthz"
+          echo "Creator Studio:   https://zentraai.in/creator/"
+          echo "================================================="

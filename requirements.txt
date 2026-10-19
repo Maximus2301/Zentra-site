@@ -1,0 +1,11 @@
+# Autonomous Instagram Agent System (Google ADK 2.0)
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+pydantic>=2.7.0
+google-adk>=2.11.0
+google-genai>=2.29.0
+pillow>=10.0.0
+httpx>=0.27.0
+pyyaml>=6.0.0
+python-dotenv>=1.0.0
+jinja2>=3.1.0

@@ -1,0 +1,19 @@
+.git
+.github
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+.coverage
+htmlcov/
+.claude
+HYT MONEY Tracker
+PMS
+zentra-site
+test-suite
+*.pptx
+*.log
+.env
+.DS_Store
