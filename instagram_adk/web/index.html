@@ -466,6 +466,208 @@
       transition: color 0.2s; padding-left: 6px; border-left: 1px solid var(--border);
     }
     .btn-signout:hover { color: var(--danger); }
+
+    /* Video Duration & Routing Selector */
+    .duration-selector {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .duration-pill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 8px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      user-select: none;
+    }
+    .duration-pill input { display: none; }
+    .duration-pill:hover { border-color: rgba(201,162,42,0.4); color: var(--text); }
+    .duration-pill.active {
+      border-color: var(--primary);
+      background: rgba(201,162,42,0.12);
+      color: var(--primary-light);
+      box-shadow: 0 0 12px rgba(201,162,42,0.15);
+    }
+    .routing-badge {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: all 0.3s;
+    }
+    .routing-badge.mode-dashboard {
+      background: rgba(34,197,94,0.15);
+      color: var(--success);
+      border: 1px solid rgba(34,197,94,0.3);
+    }
+    .routing-badge.mode-vids {
+      background: rgba(110,207,219,0.15);
+      color: var(--teal);
+      border: 1px solid rgba(110,207,219,0.3);
+    }
+
+    /* Video Player & Google Vids UI */
+    .video-player-card {
+      background: #09090C;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 9/16;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.7);
+      background: #000;
+      margin-bottom: 18px;
+      border: 1px solid var(--border);
+    }
+    .video-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .video-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-video-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--primary) 100%);
+      color: #08080A;
+      font-weight: 700;
+      font-size: 13px;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-video-dl:hover {
+      box-shadow: 0 4px 18px rgba(201,162,42,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-vids-alt {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--teal);
+      font-weight: 600;
+      font-size: 13px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-vids-alt:hover {
+      border-color: var(--teal);
+      background: var(--surface-3);
+    }
+
+    /* Google Vids Workspace Card */
+    .vids-workspace-card {
+      background: linear-gradient(135deg, rgba(110,207,219,0.08) 0%, rgba(201,162,42,0.08) 100%);
+      border: 1.5px solid rgba(110,207,219,0.35);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+    .vids-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(110,207,219,0.15);
+      border: 1px solid var(--teal);
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--teal-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .vids-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .vids-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .btn-vids-launch {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #1A73E8 0%, #1557B0 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(26,115,232,0.35);
+      margin-bottom: 12px;
+    }
+    .btn-vids-launch:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px rgba(26,115,232,0.5);
+    }
+    .vids-subactions {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-vids-sub {
+      flex: 1;
+      padding: 9px 14px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-vids-sub:hover {
+      border-color: var(--primary);
+      background: var(--surface-3);
+    }
   </style>
 </head>
 <body>
@@ -603,6 +805,32 @@
                 <input type="checkbox" id="fmtStatus" checked />
                 <span>💬 Status Update</span>
               </label>
+          <!-- Reel Video Duration & Routing -->
+          <div class="form-group" id="videoDurationGroup">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <label class="form-label" style="margin-bottom:0;">Reel Video Duration & Routing</label>
+              <span id="routingBadge" class="routing-badge mode-dashboard">⚡ ≤30s: In-Dashboard MP4 Engine</span>
+            </div>
+            <div class="duration-selector">
+              <label class="duration-pill" id="durPill15" onclick="setVideoDuration(15)">
+                <input type="radio" name="videoDuration" value="15" />
+                <span>15s (Hook)</span>
+              </label>
+              <label class="duration-pill active" id="durPill30" onclick="setVideoDuration(30)">
+                <input type="radio" name="videoDuration" value="30" checked />
+                <span>30s (Standard)</span>
+              </label>
+              <label class="duration-pill" id="durPill45" onclick="setVideoDuration(45)">
+                <input type="radio" name="videoDuration" value="45" />
+                <span>45s (Deep)</span>
+              </label>
+              <label class="duration-pill" id="durPill60" onclick="setVideoDuration(60)">
+                <input type="radio" name="videoDuration" value="60" />
+                <span>60s (Masterclass)</span>
+              </label>
+            </div>
+            <div class="form-hint" id="routingHint">
+              <strong>≤30s:</strong> Generates playable 1080x1920 MP4 video directly in the studio. <strong>>30s:</strong> Automates Google Vids Workspace blueprint with 1-click launch.
             </div>
           </div>
 
@@ -696,8 +924,55 @@
             </div>
           </div>
 
-          <!-- TAB 4: REEL SCRIPT -->
+          <!-- TAB 4: REEL PRODUCTION & VIDEO -->
           <div class="tab-content" id="tab-reel">
+            <!-- 1. IN-DASHBOARD VIDEO PLAYER (Active when <= 30s) -->
+            <div id="inDashboardVideoPanel" class="video-player-card" style="display:none;">
+              <div style="font-size:12px; font-weight:700; color:var(--success); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;">
+                ⚡ In-Dashboard Video Generation Engine (1080x1920 MP4)
+              </div>
+              <div class="video-wrapper">
+                <video id="reelVideoPlayer" controls playsinline loop preload="auto"></video>
+              </div>
+              <div class="video-actions">
+                <a id="btnDownloadReelMp4" href="#" download="zentra_reel.mp4" class="btn-video-dl">
+                  <span>⬇️ Download Reel (MP4)</span>
+                </a>
+                <button type="button" class="btn-vids-alt" onclick="openGoogleVidsWorkspace()">
+                  <span>🎬 Open in Google Vids</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. GOOGLE VIDS WORKSPACE LAUNCHPAD (Active when > 30s, or on demand) -->
+            <div id="googleVidsWorkspacePanel" class="vids-workspace-card" style="display:none;">
+              <div class="vids-badge">🎬 Google Vids Workspace Bridge (>30s)</div>
+              <h3 class="vids-title">Extended Narrative Reel Prepared for Google Vids</h3>
+              <p class="vids-desc">
+                Videos exceeding 30 seconds are automatically compiled into a production-grade <strong>Google Vids Storyboard Blueprint</strong>. Click below to copy the prompt and launch Google Vids in 1-click.
+              </p>
+              <button type="button" class="btn-vids-launch" onclick="launchGoogleVidsFlow()">
+                <span>🚀 Launch Google Vids (1-Click Copy & Open)</span>
+              </button>
+              <div class="vids-subactions">
+                <button type="button" class="btn-vids-sub" onclick="copyText('vidsPromptText')">
+                  📋 Copy Vids Prompt
+                </button>
+                <button type="button" class="btn-vids-sub" onclick="copyText('vidsMarkdownText')">
+                  📄 Copy Storyboard Table (MD)
+                </button>
+              </div>
+              <!-- Hidden/Collapsible Prompt & MD stores -->
+              <div style="margin-top:14px; text-align:left;">
+                <details style="font-size:12px; color:var(--text-muted); cursor:pointer;">
+                  <summary style="font-weight:600; color:var(--teal);">Inspect Formatted Google Vids Prompt</summary>
+                  <pre class="text-pre" id="vidsPromptText" style="margin-top:8px; font-size:11px;"></pre>
+                </details>
+                <div id="vidsMarkdownText" style="display:none;"></div>
+              </div>
+            </div>
+
+            <!-- Deliverable Details -->
             <div class="deliverable-box">
               <div class="deliverable-header">
                 <span class="deliverable-title">Audio & Pacing Direction</span>
@@ -1188,6 +1463,7 @@
           raw_user_script: rawScript || null,
           requested_topic: topic || null,
           requested_emotion: emotion || null,
+          requested_duration_seconds: selectedVideoDuration,
           active_formats: formats
         };
 
@@ -1274,10 +1550,43 @@
       document.getElementById('storyStickerText').textContent =
         `Type: ${sticker.type || 'Poll'}\nPrompt: ${sticker.question || sticker.prompt || ''}\nOptions: ${(sticker.options || []).join(' | ')}`;
 
-      // Reel
+      // Reel (Dual-Route: In-Dashboard MP4 vs Google Vids Workspace)
       const reel = formats.reel || {};
-      document.getElementById('reelAudioText').textContent = `Recommended Audio: ${reel.audio_direction || 'Trending corporate lo-fi'}\nDuration: ${reel.duration_seconds || 30}s`;
-      const scenes = (reel.scenes || []).map(sc => `[${sc.timestamp || '0-3s'}] ${sc.visual_cue}\nDialogue: "${sc.voiceover || ''}"\nOn-Screen: ${sc.on_screen_text || ''}\n`).join('\n');
+      const duration = data.video_duration_seconds || reel.duration_seconds || selectedVideoDuration;
+      const isDashboardVideo = data.video_routing === 'in_dashboard_mp4' || duration <= 30;
+      const videoUrl = data.video_url || (data.media_assets && data.media_assets.reel_video) || reel.video_url;
+
+      const dashPanel = document.getElementById('inDashboardVideoPanel');
+      const vidsPanel = document.getElementById('googleVidsWorkspacePanel');
+      const videoPlayer = document.getElementById('reelVideoPlayer');
+      const btnDl = document.getElementById('btnDownloadReelMp4');
+
+      // Populate Google Vids prompts and markdown
+      const vidsBlueprint = data.google_vids_blueprint || reel.google_vids_blueprint || {};
+      const vidsPrompt = data.google_vids_prompt || reel.google_vids_prompt || vidsBlueprint.google_vids_prompt || '';
+      const vidsMd = reel.google_vids_markdown || vidsBlueprint.markdown_storyboard || '';
+
+      document.getElementById('vidsPromptText').textContent = vidsPrompt;
+      document.getElementById('vidsMarkdownText').textContent = vidsMd;
+
+      if (isDashboardVideo && videoUrl) {
+        const fullVideoUrl = videoUrl.startsWith('http') ? videoUrl : `${currentApiUrl}${videoUrl}`;
+        videoPlayer.src = fullVideoUrl;
+        btnDl.href = fullVideoUrl;
+        btnDl.setAttribute('download', `${data.account_id}_reel_${duration}s.mp4`);
+        dashPanel.style.display = 'flex';
+        vidsPanel.style.display = 'none';
+      } else {
+        dashPanel.style.display = 'none';
+        vidsPanel.style.display = 'block';
+      }
+
+      document.getElementById('reelAudioText').textContent =
+        `Recommended Audio: ${reel.music_mood || reel.audio_direction || 'Trending corporate lo-fi'}\nDuration: ${duration}s (${isDashboardVideo ? 'Rendered MP4' : 'Google Vids Blueprint'})`;
+
+      const scenes = (reel.scenes || []).map((sc, i) =>
+        `[Scene ${i+1}: ${sc.timestamp_start_sec !== undefined ? sc.timestamp_start_sec : (sc.timestamp || 0)}s - ${sc.timestamp_end_sec !== undefined ? sc.timestamp_end_sec : 3}s]\nVisual B-Roll: ${sc.visual_broll_prompt || sc.visual_cue || ''}\nVoiceover: "${sc.spoken_voiceover || sc.voiceover || ''}"\nOn-Screen Text: ${sc.on_screen_text || ''}\n`
+      ).join('\n---\n\n');
       document.getElementById('reelScriptText').textContent = scenes || reel.script || 'Reel script generated';
 
       // Status
@@ -1326,6 +1635,46 @@
       currentApiUrl = getApiBaseUrl();
       closeSettingsModal();
       checkApiHealth();
+    }
+
+    // Reel Video Duration & Routing Handlers
+    let selectedVideoDuration = 30;
+
+    function setVideoDuration(seconds) {
+      selectedVideoDuration = parseInt(seconds, 10);
+      document.querySelectorAll('.duration-pill').forEach(pill => pill.classList.remove('active'));
+      const activePill = document.getElementById(`durPill${seconds}`);
+      if (activePill) activePill.classList.add('active');
+
+      const badge = document.getElementById('routingBadge');
+      const hint = document.getElementById('routingHint');
+      if (selectedVideoDuration <= 30) {
+        badge.className = 'routing-badge mode-dashboard';
+        badge.textContent = `⚡ ≤30s: In-Dashboard MP4 Engine (${selectedVideoDuration}s)`;
+        hint.innerHTML = `<strong>Selected: ${selectedVideoDuration}s Reel</strong> — Automated 1080x1920 MP4 video compilation directly in dashboard.`;
+      } else {
+        badge.className = 'routing-badge mode-vids';
+        badge.textContent = `🎬 >30s: Google Vids Workspace Bridge (${selectedVideoDuration}s)`;
+        hint.innerHTML = `<strong>Selected: ${selectedVideoDuration}s Reel</strong> — Extended narrative automatically formatted for Google Vids Workspace with 1-click launch.`;
+      }
+    }
+
+    function launchGoogleVidsFlow() {
+      const prompt = document.getElementById('vidsPromptText').textContent.trim();
+      if (prompt) {
+        navigator.clipboard.writeText(prompt).then(() => {
+          alert('✓ Google Vids prompt copied to clipboard!\n\nOpening Google Vids (vids.new) in your Google Workspace. Simply paste into the "Help me create" bar to generate your video.');
+          window.open('https://vids.new', '_blank');
+        }).catch(() => {
+          window.open('https://vids.new', '_blank');
+        });
+      } else {
+        window.open('https://vids.new', '_blank');
+      }
+    }
+
+    function openGoogleVidsWorkspace() {
+      launchGoogleVidsFlow();
     }
 
     // Initial on-load checks

@@ -114,6 +114,10 @@ class CampaignRequest(BaseModel):
         default=["static_post", "story", "reel", "status"],
         description="Deliverable formats to generate"
     )
+    requested_duration_seconds: int = Field(
+        default=30,
+        description="Video duration in seconds (<=30s: in-dashboard MP4; >30s: Google Vids workspace)"
+    )
 
 
 async def get_current_user(credentials: HTTPAuthorizationCredentials | None = Depends(security)) -> dict[str, Any]:
@@ -271,6 +275,7 @@ async def generate_campaign(
             requested_topic=req.requested_topic,
             requested_emotion=req.requested_emotion,
             active_formats=req.active_formats,
+            requested_duration_seconds=req.requested_duration_seconds,
             user_id="cloud_api_user",
         )
     except Exception as e:
@@ -279,6 +284,12 @@ async def generate_campaign(
 
     preview_file = OUTPUT_DIR / f"preview_{req.account_id}.html"
     preview_url = f"/api/campaign/preview/{req.account_id}" if preview_file.exists() else None
+
+    bundle = result.get("campaign_bundle") or {}
+    reel_info = (bundle.get("formats") or {}).get("reel") or {}
+    video_routing = reel_info.get("video_routing", "in_dashboard_mp4" if req.requested_duration_seconds <= 30 else "google_vids_workspace")
+    reel_video_path = result.get("media_assets", {}).get("reel_video")
+    reel_video_url = f"/media/{Path(reel_video_path).name}" if reel_video_path and Path(reel_video_path).exists() else None
 
     return {
         "status": result.get("status", "completed"),
@@ -289,10 +300,15 @@ async def generate_campaign(
         "target_emotion": result.get("narrative", {}).get("target_emotion"),
         "core_hook": result.get("narrative", {}).get("hook"),
         "critic_review": result.get("critic"),
-        "formats_generated": list((result.get("campaign_bundle") or {}).get("formats", {}).keys()),
+        "formats_generated": list(bundle.get("formats", {}).keys()),
         "media_assets": {k: f"/media/{Path(v).name}" for k, v in result.get("media_assets", {}).items()},
+        "video_routing": video_routing,
+        "video_duration_seconds": req.requested_duration_seconds,
+        "video_url": reel_video_url,
+        "google_vids_blueprint": reel_info.get("google_vids_blueprint"),
+        "google_vids_prompt": reel_info.get("google_vids_prompt"),
         "preview_url": preview_url,
-        "bundle": result.get("campaign_bundle"),
+        "bundle": bundle,
     }
 
 

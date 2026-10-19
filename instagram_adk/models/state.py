@@ -76,6 +76,12 @@ class ReelDraft(BaseModel):
     music_mood: str = ""
     caption: str = ""
     hashtags: list[str] = Field(default_factory=list)
+    video_routing: Literal["in_dashboard_mp4", "google_vids_workspace"] = "in_dashboard_mp4"
+    video_file: str | None = None
+    video_url: str | None = None
+    google_vids_prompt: str = ""
+    google_vids_blueprint: dict[str, Any] = Field(default_factory=dict)
+    google_vids_markdown: str = ""
 
 
 class StatusDraft(BaseModel):
@@ -102,6 +108,7 @@ class InstagramCampaignState(BaseModel):
     raw_user_script: str | None = None
     requested_topic: str | None = None
     requested_emotion: str | None = None
+    requested_duration_seconds: int = 30
     active_formats: list[str] = Field(
         default_factory=lambda: ["static_post", "story", "reel", "status"]
     )

@@ -14,6 +14,7 @@ from ..models.state import (
     StatusDraft,
 )
 from .llm_client import call_structured_gemini
+from .vids_exporter import export_google_vids_blueprint
 
 logger = logging.getLogger("instagram_adk.formats")
 
@@ -248,16 +249,22 @@ def run_reel_agent(ctx: Any) -> str:
 
     account = AccountContext.model_validate(state.get("account"))
     narrative = CoreNarrative.model_validate(state.get("narrative"))
+    requested_duration = int(state.get("requested_duration_seconds") or 30)
+
+    # Core Routing Rule: <= 30s -> in_dashboard_mp4; > 30s -> google_vids_workspace
+    video_routing = "in_dashboard_mp4" if requested_duration <= 30 else "google_vids_workspace"
 
     system_instruction = f"""You are the Master Reel Screenwriter and Video Director for {account.name} ({account.handle}).
 MISSION: {account.mission}
 TARGET AUDIENCE: {narrative.cohort_name}
 TARGET EMOTION: {narrative.target_emotion}
 DISCLAIMERS: {'; '.join(account.mandatory_disclaimers)}
+VIDEO DURATION: {requested_duration} seconds
+ROUTING MODE: {video_routing}
 
-Write a 30-second vertical Reel screenplay (9:16):
+Write a {requested_duration}-second vertical Reel screenplay (9:16):
 - 0-3s visual pattern interrupt hook
-- 4 scene breakdowns with timestamps, B-roll visuals, voiceover, and on-screen text
+- Structured scene breakdowns with timestamps totaling {requested_duration}s, B-roll visuals, voiceover, and on-screen text
 - Music mood aligned with {narrative.target_emotion}
 - Reel caption with mandatory disclaimers and 3-5 hashtags
 """
@@ -267,6 +274,7 @@ Hook: {narrative.hook}
 Insight: {narrative.core_insight}
 Takeaways: {', '.join(narrative.actionable_takeaways)}
 CTA: {narrative.call_to_action}
+Target Duration: {requested_duration}s
 
 Generate a structured ReelDraft."""
 
@@ -290,44 +298,115 @@ Generate a structured ReelDraft."""
             cta_screen = "COMMENT 'RIGHTS' FOR TEMPLATE"
             tags = ["#reelsviral", "#workplacerights", "#fairpay"]
 
-        scenes = [
-            ReelScene(
-                timestamp_start_sec=0.0,
-                timestamp_end_sec=3.5,
-                visual_broll_prompt=broll_1,
-                spoken_voiceover=narrative.hook,
-                on_screen_text=narrative.hook[:35].upper() + "...",
-            ),
-            ReelScene(
-                timestamp_start_sec=3.5,
-                timestamp_end_sec=12.0,
-                visual_broll_prompt="Fast-paced visual demonstration illustrating the core solution and counter-intuitive truth",
-                spoken_voiceover=f"Here is what most people miss: {narrative.core_insight}",
-                on_screen_text=on_screen_2,
-            ),
-            ReelScene(
-                timestamp_start_sec=12.0,
-                timestamp_end_sec=24.0,
-                visual_broll_prompt="Clean 3-item checklist animating seamlessly across mobile screen",
-                spoken_voiceover=f"Here are the exact 3 steps to take: {'; '.join(narrative.actionable_takeaways[:3])}",
-                on_screen_text="3-STEP ACTION PLAN",
-            ),
-            ReelScene(
-                timestamp_start_sec=24.0,
-                timestamp_end_sec=30.0,
-                visual_broll_prompt="Direct-to-camera confident presentation with branded typography watermark",
-                spoken_voiceover=f"{narrative.call_to_action}",
-                on_screen_text=cta_screen,
-            ),
-        ]
+        if requested_duration <= 15:
+            scenes = [
+                ReelScene(
+                    timestamp_start_sec=0.0,
+                    timestamp_end_sec=3.0,
+                    visual_broll_prompt=broll_1,
+                    spoken_voiceover=narrative.hook,
+                    on_screen_text=narrative.hook[:35].upper() + "...",
+                ),
+                ReelScene(
+                    timestamp_start_sec=3.0,
+                    timestamp_end_sec=10.0,
+                    visual_broll_prompt="High impact metric demonstration highlighting instant transformation",
+                    spoken_voiceover=f"{narrative.core_insight}",
+                    on_screen_text=on_screen_2,
+                ),
+                ReelScene(
+                    timestamp_start_sec=10.0,
+                    timestamp_end_sec=float(requested_duration),
+                    visual_broll_prompt="Direct-to-camera confident presentation with branded typography watermark",
+                    spoken_voiceover=narrative.call_to_action,
+                    on_screen_text=cta_screen,
+                ),
+            ]
+        elif requested_duration <= 30:
+            scenes = [
+                ReelScene(
+                    timestamp_start_sec=0.0,
+                    timestamp_end_sec=3.5,
+                    visual_broll_prompt=broll_1,
+                    spoken_voiceover=narrative.hook,
+                    on_screen_text=narrative.hook[:35].upper() + "...",
+                ),
+                ReelScene(
+                    timestamp_start_sec=3.5,
+                    timestamp_end_sec=12.0,
+                    visual_broll_prompt="Fast-paced visual demonstration illustrating the core solution and counter-intuitive truth",
+                    spoken_voiceover=f"Here is what most people miss: {narrative.core_insight}",
+                    on_screen_text=on_screen_2,
+                ),
+                ReelScene(
+                    timestamp_start_sec=12.0,
+                    timestamp_end_sec=24.0,
+                    visual_broll_prompt="Clean 3-item checklist animating seamlessly across mobile screen",
+                    spoken_voiceover=f"Here are the exact 3 steps to take: {'; '.join(narrative.actionable_takeaways[:3])}",
+                    on_screen_text="3-STEP ACTION PLAN",
+                ),
+                ReelScene(
+                    timestamp_start_sec=24.0,
+                    timestamp_end_sec=float(requested_duration),
+                    visual_broll_prompt="Direct-to-camera confident presentation with branded typography watermark",
+                    spoken_voiceover=narrative.call_to_action,
+                    on_screen_text=cta_screen,
+                ),
+            ]
+        else:
+            # Extended format (> 30s) for Google Vids Workspace
+            step_dur = (requested_duration - 8.0) / 3.0
+            t1 = 4.0
+            t2 = t1 + step_dur
+            t3 = t2 + step_dur
+            t4 = t3 + step_dur
+            scenes = [
+                ReelScene(
+                    timestamp_start_sec=0.0,
+                    timestamp_end_sec=t1,
+                    visual_broll_prompt=broll_1,
+                    spoken_voiceover=narrative.hook,
+                    on_screen_text=narrative.hook[:40].upper(),
+                ),
+                ReelScene(
+                    timestamp_start_sec=t1,
+                    timestamp_end_sec=t2,
+                    visual_broll_prompt="Deep dive case study with animated timeline and industry metrics",
+                    spoken_voiceover=f"The structural problem in traditional approaches is this: {narrative.core_insight}",
+                    on_screen_text="THE REAL PROBLEM ⚠️",
+                ),
+                ReelScene(
+                    timestamp_start_sec=t2,
+                    timestamp_end_sec=t3,
+                    visual_broll_prompt="System architectural diagram animating node-by-node with glowing flow lines",
+                    spoken_voiceover=f"Here is the counter-intuitive framework: {narrative.actionable_takeaways[0] if narrative.actionable_takeaways else narrative.core_insight}",
+                    on_screen_text=on_screen_2,
+                ),
+                ReelScene(
+                    timestamp_start_sec=t3,
+                    timestamp_end_sec=t4,
+                    visual_broll_prompt="Action blueprint with clear tactical steps appearing sequentially",
+                    spoken_voiceover=f"Implement these exact principles immediately: {'; '.join(narrative.actionable_takeaways[1:3])}",
+                    on_screen_text="EXECUTION BLUEPRINT 🚀",
+                ),
+                ReelScene(
+                    timestamp_start_sec=t4,
+                    timestamp_end_sec=float(requested_duration),
+                    visual_broll_prompt="Direct executive outro with channel branding and community invitation",
+                    spoken_voiceover=f"{narrative.call_to_action}",
+                    on_screen_text=cta_screen,
+                ),
+            ]
+
         disclaimer_text = f"\n\n📌 {account.mandatory_disclaimers[0]}" if account.mandatory_disclaimers else ""
         return ReelDraft(
-            duration_seconds=30,
+            duration_seconds=requested_duration,
             hook_0_to_3s=narrative.hook,
             scenes=scenes,
             music_mood=music,
             caption=f"{narrative.hook}\n\nTag someone who needs this insight! Full guide in caption.{disclaimer_text}\n\n{' '.join(tags)}",
             hashtags=tags,
+            video_routing=video_routing,
         )
 
     reel_draft = call_structured_gemini(
@@ -337,8 +416,19 @@ Generate a structured ReelDraft."""
         fallback_factory=fallback_generator,
     )
 
+    reel_draft.duration_seconds = requested_duration
+    reel_draft.video_routing = video_routing
+
+    # Generate Google Vids Blueprint & Prompt regardless of route (for manual export flexibility)
+    vids_blueprint = export_google_vids_blueprint(reel_draft, account, narrative)
+    reel_draft.google_vids_blueprint = vids_blueprint
+    reel_draft.google_vids_prompt = vids_blueprint.get("google_vids_prompt", "")
+    reel_draft.google_vids_markdown = vids_blueprint.get("markdown_storyboard", "")
+
     state["reel"] = reel_draft.model_dump()
-    logger.info(f"✓ Reel Screenplay Generated: {reel_draft.duration_seconds}s across {len(reel_draft.scenes)} scenes")
+    logger.info(
+        f"✓ Reel Screenplay Generated: {reel_draft.duration_seconds}s across {len(reel_draft.scenes)} scenes | Routing: {video_routing}"
+    )
     return "reel_ready"
 
 

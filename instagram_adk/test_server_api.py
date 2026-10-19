@@ -114,12 +114,13 @@ def test_authentication_and_password_change_flow():
 
 
 def test_authenticated_campaign_generation(valid_token: str):
-    """Test campaign generation with active authenticated session."""
+    """Test campaign generation with active authenticated session (<=30s: In-Dashboard MP4)."""
     payload = {
         "account_id": "alex_tech_ceo",
         "raw_user_script": "Founders must focus on velocity and shipping modular agents instead of 6-month monolithic rewrites.",
         "requested_topic": "Velocity as Moat: Fast ADK Deployments",
         "requested_emotion": "Clarity & Founder Conviction",
+        "requested_duration_seconds": 15,
         "active_formats": ["static_post", "story", "reel", "status"]
     }
     response = client.post(
@@ -131,9 +132,37 @@ def test_authenticated_campaign_generation(valid_token: str):
     data = response.json()
     assert data["status"] in ("published", "completed")
     assert data["account_id"] == "alex_tech_ceo"
-    assert data["channel_name"] == "Alex Vance | Tech CEO"
+    assert data["video_routing"] == "in_dashboard_mp4"
+    assert data["video_url"] is not None
+    assert data["video_url"].endswith(".mp4")
     assert data["critic_review"]["score"] >= 8.0
-    print("✓ Authenticated campaign generation succeeded with HTTP 200!")
+    print(f"✓ <=30s In-Dashboard Video Generation verified: {data['video_url']}")
+
+
+def test_google_vids_workspace_generation(valid_token: str):
+    """Test campaign generation with >30s duration routing to Google Vids Workspace."""
+    payload = {
+        "account_id": "fintech_save_smart",
+        "raw_user_script": "Emergency fund setup in 3 automated steps.",
+        "requested_topic": "Wealth Automation Mastery",
+        "requested_emotion": "Financial Freedom",
+        "requested_duration_seconds": 45,
+        "active_formats": ["reel"]
+    }
+    response = client.post(
+        "/api/campaign/generate",
+        json=payload,
+        headers={"Authorization": f"Bearer {valid_token}"}
+    )
+    assert response.status_code == 200, f"Error: {response.text}"
+    data = response.json()
+    assert data["video_routing"] == "google_vids_workspace"
+    assert data["google_vids_blueprint"] is not None
+    blueprint = data["google_vids_blueprint"]
+    assert blueprint["vids_launcher_url"] == "https://vids.new"
+    assert "google_vids_prompt" in blueprint
+    assert len(blueprint["scenes"]) >= 4
+    print("✓ >30s Google Vids Workspace Route verified: Prompt & Blueprint ready for vids.new")
 
 
 if __name__ == "__main__":
@@ -143,4 +172,6 @@ if __name__ == "__main__":
     test_unauthenticated_generate_rejected()
     active_token = test_authentication_and_password_change_flow()
     test_authenticated_campaign_generation(active_token)
-    print("\n🎉 ALL AUTHENTICATION & CAMPAIGN TESTS PASSED PERFECTLY!")
+    test_google_vids_workspace_generation(active_token)
+    print("\n🎉 ALL TESTS (AUTH, IN-DASHBOARD VIDEO & GOOGLE VIDS) PASSED PERFECTLY!")
+

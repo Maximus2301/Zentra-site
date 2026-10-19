@@ -5,8 +5,9 @@ import logging
 from pathlib import Path
 from typing import Any
 from ..config.settings import OUTPUT_DIR
-from ..models.state import AccountContext, CoreNarrative
+from ..models.state import AccountContext, CoreNarrative, ReelDraft
 from ..tools.google_media_tools import generate_imagen_image, generate_veo_video_spec
+from ..tools.video_composer import compose_in_dashboard_reel_video
 
 logger = logging.getLogger("instagram_adk.media_generator")
 
@@ -57,26 +58,20 @@ def run_media_generator_node(ctx: Any) -> str:
         assets["story"] = str(story_file)
         logger.info(f"✓ Google Imagen 3 Story Visual generated: {story_file.name}")
 
-    # 3. Instagram Reel: Google Veo 2.0 Video Engine (9:16 Vertical)
+    # 3. Instagram Reel: Dual-Route Video Engine (<=30s In-Dashboard MP4 | >30s Google Vids)
     if "reel" in active_formats or "all" in active_formats:
         reel_cover_file = OUTPUT_DIR / f"{account.account_id}_reel_cover_9x16.png"
+        reel_raw = state.get("reel") or {}
+        reel_obj = ReelDraft.model_validate(reel_raw) if reel_raw else None
+
         if "fintech" in account.account_id or "save" in account.account_id:
             reel_prompt = f"Cinematic 9:16 vertical video representing modern automated personal finance and wealth freedom, elegant minimalist interface, clean bright cinematic lighting, 4K film look"
         elif "alex" in account.account_id or "ceo" in account.account_id:
             reel_prompt = f"Cinematic 9:16 vertical video representing startup engineering velocity and leadership decision making, sleek modern tech office, warm natural cinematic lighting, 4K film look"
         else:
             reel_prompt = f"Cinematic 9:16 vertical motion scene representing corporate accountability and legal empowerment, brooding volumetric lighting, slow motion push-in, 4K film look"
-        
-        # Call Google Veo 2.0 Video Generator
-        veo_spec = generate_veo_video_spec(
-            prompt=reel_prompt,
-            output_path=reel_cover_file,
-            duration_seconds=5,
-            camera_motion="Cinematic slow-motion push-in tracking subject with dramatic shadows",
-        )
-        video_specs["veo"] = veo_spec
 
-        # Generate accompanying 9:16 keyframe cover
+        # Generate accompanying 9:16 keyframe cover / poster
         generate_imagen_image(
             prompt=reel_prompt,
             output_path=reel_cover_file,
@@ -84,10 +79,44 @@ def run_media_generator_node(ctx: Any) -> str:
             color_palette=account.color_palette,
             account_name=account.name,
             handle=account.handle,
-            overlay_hook="30S REEL SCREENPLAY: " + narrative.hook,
+            overlay_hook=f"{reel_obj.duration_seconds if reel_obj else 30}S REEL: " + narrative.hook,
         )
         assets["reel"] = str(reel_cover_file)
-        logger.info(f"✓ Google Veo 2.0 Video Engine asset generated: {reel_cover_file.name}")
+
+        if reel_obj and reel_obj.video_routing == "in_dashboard_mp4":
+            # In-Dashboard Video Generation Route (<= 30 seconds)
+            reel_mp4_file = OUTPUT_DIR / f"{account.account_id}_reel.mp4"
+            try:
+                compose_in_dashboard_reel_video(
+                    reel=reel_obj,
+                    account=account,
+                    narrative=narrative,
+                    output_mp4_path=reel_mp4_file,
+                )
+                assets["reel_video"] = str(reel_mp4_file)
+                reel_obj.video_file = str(reel_mp4_file)
+                reel_obj.video_url = f"/media/{reel_mp4_file.name}"
+                state["reel"] = reel_obj.model_dump()
+                logger.info(f"✓ In-Dashboard MP4 Reel Video rendered: {reel_mp4_file.name} ({reel_obj.duration_seconds}s)")
+            except Exception as e:
+                logger.error(f"Failed to compose in-dashboard video: {e}")
+                # Fallback to Veo spec
+                veo_spec = generate_veo_video_spec(
+                    prompt=reel_prompt,
+                    output_path=reel_cover_file,
+                    duration_seconds=min(reel_obj.duration_seconds, 10),
+                )
+                video_specs["veo"] = veo_spec
+        else:
+            # Google Vids Workspace Route (> 30 seconds)
+            vids_md_file = OUTPUT_DIR / f"{account.account_id}_vids_storyboard.md"
+            if reel_obj and reel_obj.google_vids_markdown:
+                vids_md_file.write_text(reel_obj.google_vids_markdown, encoding="utf-8")
+                assets["google_vids_storyboard"] = str(vids_md_file)
+            
+            if reel_obj:
+                video_specs["google_vids"] = reel_obj.google_vids_blueprint
+                logger.info(f"✓ Google Vids Workspace Blueprint exported for >30s Reel ({reel_obj.duration_seconds}s)")
 
     # 4. Status Snippet: Google Imagen 3 (1:1 Square)
     if "status" in active_formats or "all" in active_formats:
