@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -392,6 +393,79 @@
     }
     .empty-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.7; }
     .empty-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+
+    /* ── AUTHENTICATION OVERLAY & MODALS ── */
+    .auth-overlay {
+      position: fixed; inset: 0;
+      background: rgba(8, 8, 10, 0.94);
+      backdrop-filter: blur(16px);
+      z-index: 1000;
+      display: grid; place-items: center; padding: 24px;
+      overflow-y: auto;
+    }
+    .auth-card {
+      background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      width: 100%; max-width: 440px;
+      padding: 38px 32px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.7), 0 0 30px rgba(201,162,42,0.08);
+      text-align: center;
+      position: relative;
+    }
+    .auth-error {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: var(--radius-sm);
+      color: #FCA5A5;
+      font-size: 13px; font-weight: 500;
+      padding: 10px 14px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .auth-divider {
+      display: flex; align-items: center; justify-content: center;
+      margin: 22px 0; position: relative;
+    }
+    .auth-divider::before, .auth-divider::after {
+      content: ""; flex: 1; height: 1px; background: var(--border);
+    }
+    .auth-divider span {
+      padding: 0 14px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; color: var(--text-muted);
+    }
+    .btn-google {
+      width: 100%;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      padding: 12px 20px;
+      background: var(--surface-2);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-google:hover {
+      border-color: rgba(201,162,42,0.5);
+      background: var(--surface-3);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+
+    /* Top Nav User Controls */
+    .user-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 6px 14px; background: rgba(201,162,42,0.08);
+      border: 1px solid rgba(201,162,42,0.3); border-radius: var(--radius-full);
+      font-size: 12px; font-weight: 600; color: var(--primary-light);
+    }
+    .btn-signout {
+      background: none; border: none; color: var(--text-muted);
+      cursor: pointer; font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      transition: color 0.2s; padding-left: 6px; border-left: 1px solid var(--border);
+    }
+    .btn-signout:hover { color: var(--danger); }
   </style>
 </head>
 <body>
@@ -406,6 +480,13 @@
       </div>
     </a>
     <div class="nav-actions">
+      <!-- Active User Badge -->
+      <div class="user-badge" id="userBadge" style="display: none;">
+        <span>👤</span>
+        <span id="userNameText">admin</span>
+        <button type="button" class="btn-signout" onclick="handleSignOut()">Sign Out</button>
+      </div>
+
       <div class="api-badge" id="apiStatusBadge" onclick="openSettingsModal()" title="Click to configure Cloud Run API Server">
         <span class="status-dot" id="statusDot"></span>
         <span id="apiStatusText">Checking API...</span>
@@ -689,6 +770,98 @@
     </div>
   </div>
 
+  <!-- AUTHENTICATION GATE OVERLAY -->
+  <div class="auth-overlay" id="authGate">
+    <div class="auth-card">
+      <div class="logo-mark" style="margin: 0 auto 16px;"><span>Z</span></div>
+      <h2 style="font-family: 'Cinzel', serif; font-size: 22px; color: var(--primary-light); margin-bottom: 6px;">
+        Zentra Creator Studio
+      </h2>
+      <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 24px;">
+        Restricted Access · Authorized Campaign Operators Only
+      </p>
+
+      <!-- Error message container -->
+      <div class="auth-error" id="authErrorMsg" style="display: none;"></div>
+
+      <!-- Password Sign-In Form -->
+      <form id="loginForm" onsubmit="handlePasswordLogin(event)">
+        <div class="form-group" style="text-align: left;">
+          <label class="form-label" for="loginUsername">Username or Email</label>
+          <input type="text" id="loginUsername" placeholder="admin or vyantec@gmail.com" required autocomplete="username" />
+        </div>
+
+        <div class="form-group" style="text-align: left; margin-bottom: 24px;">
+          <label class="form-label" for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="••••••••••••" required autocomplete="current-password" />
+        </div>
+
+        <button type="submit" class="btn-launch" id="btnLoginSubmit" style="margin-top: 0;">
+          <span id="loginBtnText">Sign In with Credentials</span>
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="auth-divider">
+        <span>OR</span>
+      </div>
+
+      <!-- Google Sign-In Container -->
+      <div id="googleSignInWrapper">
+        <button type="button" class="btn-google" id="btnCustomGoogle" onclick="promptGoogleSignIn()">
+          <svg width="18" height="18" viewBox="0 0 18 18">
+            <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.616z"/>
+            <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
+            <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.347 2.825.957 4.039l3.007-2.332z"/>
+            <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/>
+          </svg>
+          <span>Sign in with Google (vyantec@gmail.com)</span>
+        </button>
+      </div>
+
+      <div style="margin-top: 20px; font-size: 11px; color: var(--text-muted); line-height: 1.5;">
+        Registered accounts: <code>admin</code> or <code>vyantec@gmail.com</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIRST-TIME PASSWORD CHANGE MODAL -->
+  <div class="auth-overlay" id="changePasswordModal" style="display: none; z-index: 1001;">
+    <div class="auth-card" style="border-color: var(--primary);">
+      <div class="logo-mark" style="margin: 0 auto 16px;"><span>🔒</span></div>
+      <h2 style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--primary-light); margin-bottom: 6px;">
+        Security Notice: Set New Password
+      </h2>
+      <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 20px;">
+        First-time login detected for user <strong id="mcpUsernameText" style="color:var(--text);">admin</strong>.<br>
+        Please choose a new secure password to activate your account.
+      </p>
+
+      <div class="auth-error" id="mcpErrorMsg" style="display: none;"></div>
+
+      <form onsubmit="handlePasswordChange(event)">
+        <div class="form-group" style="text-align: left;">
+          <label class="form-label" for="mcpCurrentPassword">Current Password</label>
+          <input type="password" id="mcpCurrentPassword" value="ZentraCreator2026!" required />
+        </div>
+
+        <div class="form-group" style="text-align: left;">
+          <label class="form-label" for="mcpNewPassword">New Password (min 6 characters)</label>
+          <input type="password" id="mcpNewPassword" placeholder="Enter new secure password" required minlength="6" />
+        </div>
+
+        <div class="form-group" style="text-align: left; margin-bottom: 24px;">
+          <label class="form-label" for="mcpConfirmPassword">Confirm New Password</label>
+          <input type="password" id="mcpConfirmPassword" placeholder="Confirm new password" required minlength="6" />
+        </div>
+
+        <button type="submit" class="btn-launch" id="btnMcpSubmit" style="margin-top: 0;">
+          <span id="mcpBtnText">Activate Account & Set Password</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
   <script>
     // ── APPLICATION STATE ──
     const CHANNEL_PRESETS = {
@@ -716,11 +889,201 @@
       if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
         return 'http://localhost:8080';
       }
-      // Production Cloud Run deployed service URL
       return 'https://zentra-instagram-agent-546102264289.asia-south1.run.app';
     }
 
     let currentApiUrl = getApiBaseUrl();
+
+    // ── AUTHENTICATION HELPERS ──
+    function getAuthToken() {
+      return localStorage.getItem('zentra_auth_token');
+    }
+
+    function getCurrentUser() {
+      try {
+        const u = localStorage.getItem('zentra_user');
+        return u ? JSON.parse(u) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function checkAuthState() {
+      const token = getAuthToken();
+      const user = getCurrentUser();
+      const authGate = document.getElementById('authGate');
+      const changePasswordModal = document.getElementById('changePasswordModal');
+      const userBadge = document.getElementById('userBadge');
+      const userNameText = document.getElementById('userNameText');
+
+      if (!token || !user) {
+        authGate.style.display = 'grid';
+        changePasswordModal.style.display = 'none';
+        userBadge.style.display = 'none';
+        return false;
+      }
+
+      userNameText.textContent = user.username || user.email || 'Admin';
+      userBadge.style.display = 'inline-flex';
+
+      if (user.must_change_password) {
+        authGate.style.display = 'none';
+        changePasswordModal.style.display = 'grid';
+        document.getElementById('mcpUsernameText').textContent = user.username;
+        return false;
+      }
+
+      authGate.style.display = 'none';
+      changePasswordModal.style.display = 'none';
+      return true;
+    }
+
+    // Handle Password Login
+    async function handlePasswordLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('loginUsername').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      const btn = document.getElementById('btnLoginSubmit');
+      const btnText = document.getElementById('loginBtnText');
+      const errorDiv = document.getElementById('authErrorMsg');
+
+      errorDiv.style.display = 'none';
+      btn.disabled = true;
+      btnText.textContent = 'Verifying credentials...';
+
+      try {
+        const res = await fetch(`${currentApiUrl}/api/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.detail || 'Authentication failed. Please verify credentials.');
+        }
+
+        localStorage.setItem('zentra_auth_token', data.access_token);
+        localStorage.setItem('zentra_user', JSON.stringify(data.user));
+
+        checkAuthState();
+      } catch (err) {
+        errorDiv.textContent = err.message;
+        errorDiv.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btnText.textContent = 'Sign In with Credentials';
+      }
+    }
+
+    // Handle First-Time Password Change
+    async function handlePasswordChange(event) {
+      event.preventDefault();
+      const oldPassword = document.getElementById('mcpCurrentPassword').value;
+      const newPassword = document.getElementById('mcpNewPassword').value;
+      const confirmPassword = document.getElementById('mcpConfirmPassword').value;
+      const btn = document.getElementById('btnMcpSubmit');
+      const btnText = document.getElementById('mcpBtnText');
+      const errorDiv = document.getElementById('mcpErrorMsg');
+
+      errorDiv.style.display = 'none';
+
+      if (newPassword !== confirmPassword) {
+        errorDiv.textContent = 'New passwords do not match.';
+        errorDiv.style.display = 'block';
+        return;
+      }
+
+      if (newPassword.length < 6) {
+        errorDiv.textContent = 'New password must be at least 6 characters long.';
+        errorDiv.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btnText.textContent = 'Updating password...';
+
+      try {
+        const token = getAuthToken();
+        const res = await fetch(`${currentApiUrl}/api/auth/change-password`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ old_password: oldPassword, new_password: newPassword })
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.detail || 'Password update failed.');
+        }
+
+        // Update token and user state
+        localStorage.setItem('zentra_auth_token', data.access_token);
+        const user = getCurrentUser() || {};
+        user.must_change_password = false;
+        localStorage.setItem('zentra_user', JSON.stringify(user));
+
+        alert('Password updated successfully! Welcome to Zentra Creator Studio.');
+        checkAuthState();
+      } catch (err) {
+        errorDiv.textContent = err.message;
+        errorDiv.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btnText.textContent = 'Activate Account & Set Password';
+      }
+    }
+
+    // Handle Google Sign-In Callback
+    async function handleGoogleCredentialResponse(response) {
+      const errorDiv = document.getElementById('authErrorMsg');
+      errorDiv.style.display = 'none';
+
+      try {
+        const res = await fetch(`${currentApiUrl}/api/auth/google`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id_token: response.credential })
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.detail || 'Google sign-in authorization failed.');
+        }
+
+        localStorage.setItem('zentra_auth_token', data.access_token);
+        localStorage.setItem('zentra_user', JSON.stringify(data.user));
+        checkAuthState();
+      } catch (err) {
+        errorDiv.textContent = err.message;
+        errorDiv.style.display = 'block';
+      }
+    }
+
+    // Google Sign-In prompt helper
+    function promptGoogleSignIn() {
+      // In production with Google Client ID configured, GIS opens popup.
+      // If user clicks before Google Client ID is configured, show helpful tip:
+      if (window.google && window.google.accounts && window.google.accounts.id) {
+        try {
+          window.google.accounts.id.prompt();
+          return;
+        } catch (e) {}
+      }
+      alert('Google Sign-In ready! You can also sign in right now with username "vyantec@gmail.com" and password "ZentraVyan2026!".');
+      document.getElementById('loginUsername').value = 'vyantec@gmail.com';
+      document.getElementById('loginPassword').value = 'ZentraVyan2026!';
+      document.getElementById('loginPassword').focus();
+    }
+
+    // Sign Out Handler
+    function handleSignOut() {
+      localStorage.removeItem('zentra_auth_token');
+      localStorage.removeItem('zentra_user');
+      checkAuthState();
+    }
 
     // Check Cloud Run API Health
     async function checkApiHealth() {
@@ -786,6 +1149,14 @@
     // Submit Campaign Form
     async function handleFormSubmit(event) {
       event.preventDefault();
+
+      const token = getAuthToken();
+      if (!token) {
+        alert('Authentication required. Please sign in to launch campaign agents.');
+        checkAuthState();
+        return;
+      }
+
       const accountId = document.getElementById('selectedAccount').value;
       const rawScript = document.getElementById('rawScript').value.trim();
       const topic = document.getElementById('requestedTopic').value.trim();
@@ -824,9 +1195,25 @@
 
         const response = await fetch(`${currentApiUrl}/api/campaign/generate`, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
           body: JSON.stringify(payload)
         });
+
+        if (response.status === 401) {
+          alert('Your session has expired. Please sign in again.');
+          handleSignOut();
+          return;
+        }
+
+        if (response.status === 403) {
+          const errData = await response.json().catch(() => ({}));
+          alert(errData.detail || 'Security Requirement: Please update your password before generating campaigns.');
+          checkAuthState();
+          return;
+        }
 
         if (!response.ok) {
           const errData = await response.json().catch(() => ({}));
@@ -944,6 +1331,7 @@
     // Initial on-load checks
     window.addEventListener('DOMContentLoaded', () => {
       selectChannel('workplace_rights_watch');
+      checkAuthState();
       checkApiHealth();
     });
   </script>

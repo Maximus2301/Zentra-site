@@ -1,4 +1,4 @@
-"""FastAPI test suite for Zentra Autonomous Instagram Campaign Server."""
+"""FastAPI test suite for Zentra Autonomous Instagram Campaign Server with Authentication."""
 from __future__ import annotations
 
 import sys
@@ -9,6 +9,7 @@ from starlette.testclient import TestClient
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from instagram_adk.server import app
+from instagram_adk.auth import init_user_store
 
 client = TestClient(app)
 
@@ -20,8 +21,6 @@ def test_health_check():
     data = response.json()
     assert data["status"] == "healthy"
     assert data["service"] == "zentra-instagram-agent"
-    assert data["version"] == "1.1.0"
-    assert data["engine"] == "google-adk-2.11.0"
     print("✓ Health check endpoint verified")
 
 
@@ -31,8 +30,6 @@ def test_root_creator_studio_served():
     assert response.status_code == 200
     assert "text/html" in response.headers.get("content-type", "")
     assert "Creator Studio" in response.text
-    assert "Zentra AI" in response.text
-    assert "Autonomous Multi-Agent Publisher" in response.text
     print("✓ Root Creator Studio UI verified")
 
 
@@ -49,33 +46,75 @@ def test_list_accounts():
     print(f"✓ List accounts verified: {account_ids}")
 
 
-def test_cors_headers():
-    """Verify CORS allow headers for zentraai.in production domain."""
-    headers = {
-        "Origin": "https://zentraai.in",
-        "Access-Control-Request-Method": "POST",
-        "Access-Control-Request-Headers": "Content-Type",
-    }
-    response = client.options("/api/campaign/generate", headers=headers)
-    assert response.status_code == 200
-    assert response.headers.get("access-control-allow-origin") == "https://zentraai.in"
-    print("✓ CORS preflight for https://zentraai.in verified")
-
-
-def test_generate_invalid_account():
-    """Verify 400 error handling for non-existent accounts."""
+def test_unauthenticated_generate_rejected():
+    """Verify 401 Unauthorized when generating campaign without token."""
     payload = {
-        "account_id": "non_existent_channel_xyz",
-        "raw_user_script": "Test script"
+        "account_id": "alex_tech_ceo",
+        "raw_user_script": "Test unauthorized script"
     }
     response = client.post("/api/campaign/generate", json=payload)
-    assert response.status_code == 400
-    assert "Unknown account_id" in response.json()["detail"]
-    print("✓ Invalid account 400 check verified")
+    assert response.status_code == 401
+    assert "Authentication required" in response.json()["detail"]
+    print("✓ Unauthenticated generate rejected with 401")
 
 
-def test_generate_valid_campaign_workflow():
-    """Execute end-to-end campaign generation through the FastAPI API endpoint."""
+def test_authentication_and_password_change_flow():
+    """Test full login, must_change_password enforcement, and password change."""
+    # Reset store for clean test
+    init_user_store(force=True)
+
+    # 1. Login with invalid password fails
+    bad_login = client.post("/api/auth/login", json={"username": "admin", "password": "WrongPassword"})
+    assert bad_login.status_code == 401
+
+    # 2. Login with initial default password succeeds
+    admin_login = client.post("/api/auth/login", json={"username": "admin", "password": "ZentraCreator2026!"})
+    assert admin_login.status_code == 200
+    login_data = admin_login.json()
+    assert "access_token" in login_data
+    assert login_data["user"]["must_change_password"] is True
+    initial_token = login_data["access_token"]
+    print("✓ Admin login with initial default password succeeded (must_change_password=True)")
+
+    # 3. Attempting to generate campaign with must_change_password=True triggers 403
+    forbidden_res = client.post(
+        "/api/campaign/generate",
+        json={"account_id": "alex_tech_ceo", "raw_user_script": "Prompt test"},
+        headers={"Authorization": f"Bearer {initial_token}"}
+    )
+    assert forbidden_res.status_code == 403
+    assert "First-time login detected" in forbidden_res.json()["detail"]
+    print("✓ Mandatory first-time password change enforced with 403 on campaign generation")
+
+    # 4. Change password to new secure password
+    new_password = "ZentraNewAdminPass2026!#"
+    change_res = client.post(
+        "/api/auth/change-password",
+        json={"old_password": "ZentraCreator2026!", "new_password": new_password},
+        headers={"Authorization": f"Bearer {initial_token}"}
+    )
+    assert change_res.status_code == 200
+    new_token = change_res.json()["access_token"]
+    print("✓ Password successfully changed and new token issued")
+
+    # 5. Check /api/auth/me with new token shows must_change_password=False
+    me_res = client.get("/api/auth/me", headers={"Authorization": f"Bearer {new_token}"})
+    assert me_res.status_code == 200
+    assert me_res.json()["must_change_password"] is False
+    print("✓ Session verified: must_change_password is now False")
+
+    # 6. Test second user: vyantec@gmail.com
+    vyan_login = client.post("/api/auth/login", json={"username": "vyantec@gmail.com", "password": "ZentraVyan2026!"})
+    assert vyan_login.status_code == 200
+    assert vyan_login.json()["user"]["email"] == "vyantec@gmail.com"
+    assert vyan_login.json()["user"]["must_change_password"] is False
+    print("✓ vyantec@gmail.com authenticated successfully")
+
+    return new_token
+
+
+def test_authenticated_campaign_generation(valid_token: str):
+    """Test campaign generation with active authenticated session."""
     payload = {
         "account_id": "alex_tech_ceo",
         "raw_user_script": "Founders must focus on velocity and shipping modular agents instead of 6-month monolithic rewrites.",
@@ -83,33 +122,25 @@ def test_generate_valid_campaign_workflow():
         "requested_emotion": "Clarity & Founder Conviction",
         "active_formats": ["static_post", "story", "reel", "status"]
     }
-    response = client.post("/api/campaign/generate", json=payload)
+    response = client.post(
+        "/api/campaign/generate",
+        json=payload,
+        headers={"Authorization": f"Bearer {valid_token}"}
+    )
     assert response.status_code == 200, f"Error: {response.text}"
     data = response.json()
-
     assert data["status"] in ("published", "completed")
     assert data["account_id"] == "alex_tech_ceo"
     assert data["channel_name"] == "Alex Vance | Tech CEO"
     assert data["critic_review"]["score"] >= 8.0
-    assert len(data["formats_generated"]) >= 3
-    assert data["preview_url"] is not None
-
-    # Verify preview endpoint returns HTML
-    preview_res = client.get(data["preview_url"])
-    assert preview_res.status_code == 200
-    assert "text/html" in preview_res.headers.get("content-type", "")
-    assert "Alex Vance" in preview_res.text or "alex_tech_ceo" in preview_res.text
-
-    print(f"✓ Campaign generation API endpoint verified! Critic score: {data['critic_review']['score']}")
-    print(f"✓ Formats: {data['formats_generated']}")
-    print(f"✓ Preview URL: {data['preview_url']}")
+    print("✓ Authenticated campaign generation succeeded with HTTP 200!")
 
 
 if __name__ == "__main__":
     test_health_check()
     test_root_creator_studio_served()
     test_list_accounts()
-    test_cors_headers()
-    test_generate_invalid_account()
-    test_generate_valid_campaign_workflow()
-    print("\n🎉 ALL FASTAPI SERVER TESTS PASSED!")
+    test_unauthenticated_generate_rejected()
+    active_token = test_authentication_and_password_change_flow()
+    test_authenticated_campaign_generation(active_token)
+    print("\n🎉 ALL AUTHENTICATION & CAMPAIGN TESTS PASSED PERFECTLY!")

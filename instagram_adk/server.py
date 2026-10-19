@@ -5,14 +5,27 @@ import logging
 import os
 from pathlib import Path
 from typing import Any, Literal
-from fastapi import FastAPI, HTTPException, BackgroundTasks
+from fastapi import FastAPI, HTTPException, BackgroundTasks, Depends, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, FileResponse
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from .config.settings import load_all_accounts, get_account_by_id, OUTPUT_DIR
 from .workflow import execute_campaign
+from .auth import (
+    authenticate_user,
+    change_user_password,
+    create_session_token,
+    verify_session_token,
+    verify_google_id_token,
+    init_user_store,
+)
+
+# Initialize user accounts store on startup
+init_user_store()
+security = HTTPBearer(auto_error=False)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("instagram_adk.server")
@@ -78,6 +91,20 @@ async def serve_root_studio() -> HTMLResponse:
     )
 
 
+class LoginRequest(BaseModel):
+    username: str = Field(..., description="Username or email (e.g. admin or vyantec@gmail.com)")
+    password: str = Field(..., description="User password")
+
+
+class ChangePasswordRequest(BaseModel):
+    old_password: str = Field(..., description="Current password")
+    new_password: str = Field(..., description="New desired password (minimum 6 characters)")
+
+
+class GoogleAuthRequest(BaseModel):
+    id_token: str = Field(..., description="Google OAuth ID Token from Google Identity Services")
+
+
 class CampaignRequest(BaseModel):
     account_id: str = Field(..., description="Target account ID (workplace_rights_watch, fintech_save_smart, alex_tech_ceo)")
     raw_user_script: str | None = Field(None, description="Optional raw grievance email, rough draft notes, or bullet points")
@@ -87,6 +114,101 @@ class CampaignRequest(BaseModel):
         default=["static_post", "story", "reel", "status"],
         description="Deliverable formats to generate"
     )
+
+
+async def get_current_user(credentials: HTTPAuthorizationCredentials | None = Depends(security)) -> dict[str, Any]:
+    """Dependency validating Bearer JWT/HMAC token."""
+    if not credentials or not credentials.credentials:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authentication required. Please sign in to access the Zentra Campaign Studio.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    payload = verify_session_token(credentials.credentials)
+    if not payload:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Session has expired or token is invalid. Please sign in again.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    return payload
+
+
+@app.post("/api/auth/login")
+async def login(req: LoginRequest) -> dict[str, Any]:
+    """Authenticates username/email & password and issues a signed session token."""
+    valid, user, msg = authenticate_user(req.username, req.password)
+    if not valid or not user:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=msg)
+
+    token = create_session_token(
+        username=user["username"],
+        email=user.get("email", ""),
+        must_change_password=user.get("must_change_password", False),
+    )
+    return {
+        "access_token": token,
+        "token_type": "bearer",
+        "user": {
+            "username": user["username"],
+            "email": user.get("email", ""),
+            "role": user.get("role", "admin"),
+            "must_change_password": user.get("must_change_password", False),
+        },
+    }
+
+
+@app.post("/api/auth/change-password")
+async def change_password(
+    req: ChangePasswordRequest,
+    current_user: dict[str, Any] = Depends(get_current_user),
+) -> dict[str, Any]:
+    """Changes password for the currently logged in user and clears must_change_password."""
+    username = current_user.get("sub", "")
+    success, msg = change_user_password(username, req.old_password, req.new_password)
+    if not success:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=msg)
+
+    # Issue refreshed token with must_change_password = False
+    new_token = create_session_token(
+        username=username,
+        email=current_user.get("email", ""),
+        must_change_password=False,
+    )
+    return {
+        "success": True,
+        "message": "Password changed successfully.",
+        "access_token": new_token,
+    }
+
+
+@app.post("/api/auth/google")
+async def google_login(req: GoogleAuthRequest) -> dict[str, Any]:
+    """Authenticates Google OAuth2 ID Token and issues a Zentra session token."""
+    valid, user_info, msg = await verify_google_id_token(req.id_token)
+    if not valid or not user_info:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=msg)
+
+    token = create_session_token(
+        username=user_info["username"],
+        email=user_info["email"],
+        must_change_password=False,
+    )
+    return {
+        "access_token": token,
+        "token_type": "bearer",
+        "user": user_info,
+    }
+
+
+@app.get("/api/auth/me")
+async def get_me(current_user: dict[str, Any] = Depends(get_current_user)) -> dict[str, Any]:
+    """Returns profile and password status of current session."""
+    return {
+        "username": current_user.get("sub"),
+        "email": current_user.get("email"),
+        "must_change_password": current_user.get("mcp", False),
+    }
 
 
 @app.get("/healthz")
@@ -124,8 +246,16 @@ async def list_accounts() -> dict[str, Any]:
 
 
 @app.post("/api/campaign/generate")
-async def generate_campaign(req: CampaignRequest) -> dict[str, Any]:
+async def generate_campaign(
+    req: CampaignRequest,
+    current_user: dict[str, Any] = Depends(get_current_user),
+) -> dict[str, Any]:
     """Executes the full 7-stage ADK 2.0 workflow pipeline and returns structured deliverables."""
+    if current_user.get("mcp"):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Security Requirement: First-time login detected for this account. Please update your password before generating campaigns.",
+        )
     account = get_account_by_id(req.account_id)
     if not account:
         raise HTTPException(
