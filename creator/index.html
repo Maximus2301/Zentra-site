@@ -889,6 +889,17 @@
 
           <!-- TAB 2: STATIC POST -->
           <div class="tab-content" id="tab-post">
+            <!-- AI Feed Visual Image Display -->
+            <div class="deliverable-box" id="postMediaCard" style="display:none; text-align:center; padding:20px;">
+              <div class="deliverable-header" style="margin-bottom:14px;">
+                <span class="deliverable-title">📸 AI Generated 4:5 Feed Visual (Google GenAI)</span>
+                <a id="btnDownloadPostImg" href="#" download="insta_feed_4x5.png" class="btn-video-dl" style="padding:6px 14px; font-size:12px; text-decoration:none;">⬇️ Download Image (4:5)</a>
+              </div>
+              <div style="width:100%; max-width:440px; margin:0 auto; border-radius:14px; overflow:hidden; box-shadow:0 12px 36px rgba(0,0,0,0.6); border:1px solid var(--border);">
+                <img id="postImagePreview" src="" alt="Instagram Feed Post Visual" style="width:100%; display:block;" />
+              </div>
+            </div>
+
             <div class="deliverable-box">
               <div class="deliverable-header">
                 <span class="deliverable-title">Caption & High-Converting Copy</span>
@@ -908,6 +919,17 @@
 
           <!-- TAB 3: STORY SEQUENCE -->
           <div class="tab-content" id="tab-story">
+            <!-- AI Story Visual Image Display -->
+            <div class="deliverable-box" id="storyMediaCard" style="display:none; text-align:center; padding:20px;">
+              <div class="deliverable-header" style="margin-bottom:14px;">
+                <span class="deliverable-title">📖 AI Generated 9:16 Story Visual (Google GenAI)</span>
+                <a id="btnDownloadStoryImg" href="#" download="insta_story_9x16.png" class="btn-vids-alt" style="padding:6px 14px; font-size:12px; text-decoration:none;">⬇️ Download Story (9:16)</a>
+              </div>
+              <div style="width:100%; max-width:320px; margin:0 auto; border-radius:14px; overflow:hidden; box-shadow:0 12px 36px rgba(0,0,0,0.6); border:1px solid var(--border);">
+                <img id="storyImagePreview" src="" alt="Instagram Story Visual" style="width:100%; display:block;" />
+              </div>
+            </div>
+
             <div class="deliverable-box">
               <div class="deliverable-header">
                 <span class="deliverable-title">Multi-Slide Story Sequence</span>
@@ -941,6 +963,17 @@
                 <button type="button" class="btn-vids-alt" onclick="openGoogleVidsWorkspace()">
                   <span>🎬 Open in Google Vids</span>
                 </button>
+              </div>
+            </div>
+
+            <!-- AI Reel Cover Display (Thumbnail) -->
+            <div class="deliverable-box" id="reelCoverCard" style="display:none; text-align:center; padding:16px; margin-bottom:18px;">
+              <div class="deliverable-header" style="margin-bottom:12px;">
+                <span class="deliverable-title">🖼️ Reel Cover & Keyframe Visual (9:16)</span>
+                <a id="btnDownloadReelCover" href="#" download="reel_cover_9x16.png" class="btn-vids-alt" style="padding:6px 14px; font-size:12px; text-decoration:none;">⬇️ Download Cover (9:16)</a>
+              </div>
+              <div style="width:100%; max-width:240px; margin:0 auto; border-radius:12px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,0.5); border:1px solid var(--border);">
+                <img id="reelCoverPreview" src="" alt="Reel Cover Keyframe" style="width:100%; display:block;" />
               </div>
             </div>
 
@@ -991,6 +1024,17 @@
 
           <!-- TAB 5: STATUS UPDATE -->
           <div class="tab-content" id="tab-status">
+            <!-- AI Status Visual Image Display -->
+            <div class="deliverable-box" id="statusMediaCard" style="display:none; text-align:center; padding:20px;">
+              <div class="deliverable-header" style="margin-bottom:14px;">
+                <span class="deliverable-title">💬 AI Generated 1:1 Status Graphic (Google GenAI)</span>
+                <a id="btnDownloadStatusImg" href="#" download="insta_status_1x1.png" class="btn-video-dl" style="padding:6px 14px; font-size:12px; text-decoration:none;">⬇️ Download Status Graphic (1:1)</a>
+              </div>
+              <div style="width:100%; max-width:380px; margin:0 auto; border-radius:14px; overflow:hidden; box-shadow:0 12px 36px rgba(0,0,0,0.6); border:1px solid var(--border);">
+                <img id="statusImagePreview" src="" alt="Instagram Status Visual" style="width:100%; display:block;" />
+              </div>
+            </div>
+
             <div class="deliverable-box">
               <div class="deliverable-header">
                 <span class="deliverable-title">Micro-Update Broadcast Copy</span>
@@ -1534,12 +1578,28 @@
       const bundle = data.bundle || {};
       const formats = bundle.formats || {};
 
+      // Media Assets (AI Visuals)
+      const mediaAssets = data.media_assets || {};
+
       // Post
       const post = formats.static_post || {};
       document.getElementById('postCaptionText').textContent = post.caption || 'No caption generated';
       document.getElementById('postVisualText').textContent = post.visual_description || 'Visual specs provided in bundle';
       const tagContainer = document.getElementById('postHashtags');
       tagContainer.innerHTML = (post.hashtags || []).map(t => `<span class="tag-item">${t}</span>`).join('');
+
+      const postImgCard = document.getElementById('postMediaCard');
+      const postImgEl = document.getElementById('postImagePreview');
+      const postImgDl = document.getElementById('btnDownloadPostImg');
+      if (mediaAssets.static_post) {
+        const fullPostImgUrl = mediaAssets.static_post.startsWith('http') ? mediaAssets.static_post : `${currentApiUrl}${mediaAssets.static_post}`;
+        postImgEl.src = fullPostImgUrl;
+        postImgDl.href = fullPostImgUrl;
+        postImgDl.setAttribute('download', `${data.account_id}_feed_4x5.png`);
+        postImgCard.style.display = 'block';
+      } else {
+        postImgCard.style.display = 'none';
+      }
 
       // Story
       const story = formats.story || {};
@@ -1549,6 +1609,19 @@
       const sticker = story.interactive_sticker || {};
       document.getElementById('storyStickerText').textContent =
         `Type: ${sticker.type || 'Poll'}\nPrompt: ${sticker.question || sticker.prompt || ''}\nOptions: ${(sticker.options || []).join(' | ')}`;
+
+      const storyImgCard = document.getElementById('storyMediaCard');
+      const storyImgEl = document.getElementById('storyImagePreview');
+      const storyImgDl = document.getElementById('btnDownloadStoryImg');
+      if (mediaAssets.story) {
+        const fullStoryImgUrl = mediaAssets.story.startsWith('http') ? mediaAssets.story : `${currentApiUrl}${mediaAssets.story}`;
+        storyImgEl.src = fullStoryImgUrl;
+        storyImgDl.href = fullStoryImgUrl;
+        storyImgDl.setAttribute('download', `${data.account_id}_story_9x16.png`);
+        storyImgCard.style.display = 'block';
+      } else {
+        storyImgCard.style.display = 'none';
+      }
 
       // Reel (Dual-Route: In-Dashboard MP4 vs Google Vids Workspace)
       const reel = formats.reel || {};
@@ -1589,9 +1662,36 @@
       ).join('\n---\n\n');
       document.getElementById('reelScriptText').textContent = scenes || reel.script || 'Reel script generated';
 
+      // Reel Cover Keyframe Visual
+      const reelCoverCard = document.getElementById('reelCoverCard');
+      const reelCoverEl = document.getElementById('reelCoverPreview');
+      const reelCoverDl = document.getElementById('btnDownloadReelCover');
+      if (mediaAssets.reel) {
+        const fullCoverUrl = mediaAssets.reel.startsWith('http') ? mediaAssets.reel : `${currentApiUrl}${mediaAssets.reel}`;
+        reelCoverEl.src = fullCoverUrl;
+        reelCoverDl.href = fullCoverUrl;
+        reelCoverDl.setAttribute('download', `${data.account_id}_reel_cover_9x16.png`);
+        reelCoverCard.style.display = 'block';
+      } else {
+        reelCoverCard.style.display = 'none';
+      }
+
       // Status
       const status = formats.status || {};
       document.getElementById('statusContentText').textContent = status.text || status.content || 'Status broadcast text ready';
+
+      const statusImgCard = document.getElementById('statusMediaCard');
+      const statusImgEl = document.getElementById('statusImagePreview');
+      const statusImgDl = document.getElementById('btnDownloadStatusImg');
+      if (mediaAssets.status) {
+        const fullStatusImgUrl = mediaAssets.status.startsWith('http') ? mediaAssets.status : `${currentApiUrl}${mediaAssets.status}`;
+        statusImgEl.src = fullStatusImgUrl;
+        statusImgDl.href = fullStatusImgUrl;
+        statusImgDl.setAttribute('download', `${data.account_id}_status_1x1.png`);
+        statusImgCard.style.display = 'block';
+      } else {
+        statusImgCard.style.display = 'none';
+      }
 
       // Raw JSON
       document.getElementById('rawJsonText').textContent = JSON.stringify(data, null, 2);

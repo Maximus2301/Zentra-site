@@ -11,6 +11,88 @@ from ..agents.llm_client import get_genai_client
 logger = logging.getLogger("instagram_adk.google_media")
 
 
+def _generate_with_gemini_image_model(client: Any, prompt: str, aspect_ratio: str, output_path: Path) -> bool:
+    """Generates high-definition photorealistic AI images via Google Gemini Flash Image models."""
+    import base64
+    from google.genai import types
+
+    target_ratio = "3:4" if aspect_ratio == "4:5" else ("9:16" if aspect_ratio == "9:16" else "1:1")
+    ratio_desc = (
+        "4:5 vertical portrait for Instagram feed"
+        if aspect_ratio == "4:5"
+        else ("9:16 vertical full-screen mobile story" if aspect_ratio == "9:16" else "1:1 square")
+    )
+    full_prompt = (
+        f"Generate a photorealistic, award-winning commercial editorial photograph: {prompt}. "
+        f"Aspect ratio: {ratio_desc}. High production value, 8k resolution, cinematic lighting, sharp focus, clean composition."
+    )
+    models_to_try = [
+        "gemini-2.5-flash-image",
+        "gemini-3.1-flash-image",
+        "gemini-2.0-flash-exp-image-generation",
+        "gemini-3-pro-image",
+    ]
+
+    for model_name in models_to_try:
+        # Attempt 1: With response_modalities and image_config
+        configs_to_try = []
+        try:
+            configs_to_try.append(
+                types.GenerateContentConfig(
+                    response_modalities=["TEXT", "IMAGE"],
+                    image_config=types.ImageConfig(
+                        aspect_ratio=target_ratio,
+                        output_mime_type="image/png",
+                    ),
+                )
+            )
+        except Exception:
+            pass
+
+        try:
+            configs_to_try.append(
+                types.GenerateContentConfig(
+                    response_modalities=["TEXT", "IMAGE"],
+                )
+            )
+        except Exception:
+            pass
+
+        configs_to_try.append(None)
+
+        for cfg in configs_to_try:
+            try:
+                logger.info(f"🎨 Invoking Google GenAI Image Model ({model_name}, aspect: {target_ratio})...")
+                kwargs = {"model": model_name, "contents": [full_prompt]}
+                if cfg is not None:
+                    kwargs["config"] = cfg
+
+                response = client.models.generate_content(**kwargs)
+
+                # Inspect parts for inline image bytes
+                parts = getattr(response, "parts", None)
+                if not parts and getattr(response, "candidates", None) and response.candidates and response.candidates[0].content:
+                    parts = response.candidates[0].content.parts
+
+                if parts:
+                    for part in parts:
+                        inline_data = getattr(part, "inline_data", None)
+                        if inline_data and getattr(inline_data, "data", None):
+                            raw_bytes = inline_data.data
+                            if isinstance(raw_bytes, str):
+                                raw_bytes = base64.b64decode(raw_bytes)
+                            output_path.write_bytes(raw_bytes)
+                            logger.info(
+                                f"✓ AI image successfully generated via {model_name} and saved to {output_path.name} ({len(raw_bytes)} bytes)"
+                            )
+                            return True
+            except Exception as e:
+                logger.warning(f"Image model {model_name} (cfg={type(cfg)}) returned: {e}")
+                continue
+
+    return False
+
+
 def generate_imagen_image(
     prompt: str,
     output_path: Path,
@@ -20,20 +102,23 @@ def generate_imagen_image(
     handle: str = "@handle",
     overlay_hook: str = "",
 ) -> Path:
-    """Generates high-definition visual assets using Google Imagen 3 (with aesthetic composite fallback)."""
+    """Generates high-definition visual assets using Google GenAI Image models (with aesthetic composite fallback)."""
     client = get_genai_client()
 
-    # Normalize aspect ratio for Imagen (Imagen supports '1:1', '3:4', '4:3', '9:16', '16:9')
-    imagen_ratio = "3:4" if aspect_ratio == "4:5" else ("9:16" if aspect_ratio == "9:16" else "1:1")
-
     if client:
+        # 1. Primary: Native Google GenAI Image Model (gemini-2.5-flash-image / gemini-3.1-flash-image)
+        if _generate_with_gemini_image_model(client, prompt, aspect_ratio, output_path):
+            return output_path
+
+        # 2. Secondary: Google Imagen 3 generate_images API
         try:
+            imagen_ratio = "3:4" if aspect_ratio == "4:5" else ("9:16" if aspect_ratio == "9:16" else "1:1")
             logger.info(f"🎨 Invoking Google Imagen 3 (model: imagen-3.0-generate-002, aspect: {imagen_ratio})...")
             from google.genai import types
 
             response = client.models.generate_images(
                 model="imagen-3.0-generate-002",
-                prompt=f"{prompt}, high production value, commercial editorial photography, award winning lighting, 8k resolution, cinematic color grading",
+                prompt=f"{prompt}, commercial editorial photography, award winning lighting, 8k resolution",
                 config=types.GenerateImagesConfig(
                     number_of_images=1,
                     aspect_ratio=imagen_ratio,
@@ -49,7 +134,7 @@ def generate_imagen_image(
         except Exception as e:
             logger.warning(f"Google Imagen 3 API call returned ({e}). Switching to high-aesthetic compositor.")
 
-    # High-Aesthetic Offline Composite Renderer (1000% richer styling)
+    # 3. High-Aesthetic Offline Composite Renderer fallback
     return render_high_aesthetic_card(
         output_path=output_path,
         aspect_ratio=aspect_ratio,

@@ -2,19 +2,19 @@
   "admin": {
     "username": "admin",
     "email": "admin@zentraai.in",
-    "password_hash": "3e4d5e5f36da43ad32d89d9f0368fce78c10c150b86347fcb1861ddf6c0b4ccd",
-    "salt": "01d50a9c3cd1be08de85de4ae50d7914",
+    "password_hash": "5c6d5cc1c92c334180f3072394c2c7271da064bf25a325c3cb4c4a24e7a33fe2",
+    "salt": "91401f848573ee432b1f82ae1e76627d",
     "role": "admin",
     "must_change_password": true,
-    "created_at": 1792415693.9643602
+    "created_at": 1792416915.1356905
   },
   "vyantec@gmail.com": {
     "username": "vyantec@gmail.com",
     "email": "vyantec@gmail.com",
-    "password_hash": "8277c6722e619cbfc2ff7444e9da21069b6639be4a698076f5f6be909e827cf6",
-    "salt": "4066a9feb0785f9c3cbd90cd4fc8321d",
+    "password_hash": "a9c206f283854f4905f6f569bb966537ace0d63a942c8b987d146fe146e69458",
+    "salt": "15e25f3966a8dfc389389c6d3c733d9b",
     "role": "admin",
     "must_change_password": false,
-    "created_at": 1792415693.9643645
+    "created_at": 1792416915.135694
   }
 }
