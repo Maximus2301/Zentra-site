@@ -89,6 +89,8 @@ class CampaignRequest(BaseModel):
 
 
 @app.get("/healthz")
+@app.get("/health")
+@app.get("/api/health")
 async def health_check() -> dict[str, Any]:
     """Cloud Run health check probe endpoint."""
     return {

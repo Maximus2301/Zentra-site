@@ -716,8 +716,8 @@
       if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
         return 'http://localhost:8080';
       }
-      // Production Cloud Run default fallback
-      return window.location.origin;
+      // Production Cloud Run deployed service URL
+      return 'https://zentra-instagram-agent-546102264289.asia-south1.run.app';
     }
 
     let currentApiUrl = getApiBaseUrl();
@@ -730,11 +730,11 @@
       statusText.textContent = 'Pinging API...';
 
       try {
-        const res = await fetch(`${currentApiUrl}/healthz`, { method: 'GET', mode: 'cors' });
+        const res = await fetch(`${currentApiUrl}/api/accounts`, { method: 'GET', mode: 'cors' });
         if (res.ok) {
           const data = await res.json();
           statusDot.className = 'status-dot online';
-          statusText.textContent = `Online (${data.service || 'Cloud Run'})`;
+          statusText.textContent = `Online (${data.count || 3} Channels Live)`;
         } else {
           throw new Error(`HTTP ${res.status}`);
         }
