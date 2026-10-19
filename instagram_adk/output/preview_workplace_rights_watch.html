@@ -4,19 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google AI Studio | Workplace Rights Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@600;800&family=Outfit:wght@500;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@600;700;800&family=Roboto:wght@400;500;700&family=Space+Grotesk:wght@600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090D16;
+      --bg: #070B14;
       --surface: #131B2E;
       --surface-border: #23304E;
-      --accent: #E63946;
-      --highlight: #38BDF8;
+      --accent: #FF2A2A;
+      --highlight: #00D4FF;
       --text-main: #F8FAFC;
       --text-muted: #94A3B8;
       --success: #10B981;
+      --font-headline: 'Syne', sans-serif;
+      --font-body: 'Inter', sans-serif;
       --ig-gradient: linear-gradient(45deg, #F58529, #D92E7F, #9B36B7);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-body); }
+    h1, h2, h3, h4, .channel-title, .ai-card-title, .section-header { font-family: var(--font-headline); }
     body { background: var(--bg); color: var(--text-main); min-height: 100vh; padding: 24px; }
     .app-container { max-width: 1400px; margin: 0 auto; }
 
@@ -24,16 +30,17 @@
     .top-bar { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 20px; padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     .brand-group { display: flex; align-items: center; gap: 16px; }
     .avatar-ring { width: 56px; height: 56px; border-radius: 50%; padding: 3px; background: var(--ig-gradient); display: flex; align-items: center; justify-content: center; }
-    .avatar-img { width: 100%; height: 100%; border-radius: 50%; background: #000; border: 2px solid var(--surface); object-fit: cover; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #FFF; }
+    .avatar-img { width: 100%; height: 100%; border-radius: 50%; background: #000; border: 2px solid var(--surface); object-fit: cover; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #FFF; }
     .channel-title { font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
     .verified-icon { color: #38BDF8; font-size: 16px; }
     
     .badge-pill { background: rgba(56, 189, 248, 0.15); border: 1px solid var(--highlight); color: var(--highlight); font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; }
     .badge-score { background: rgba(16, 185, 129, 0.15); border: 1px solid var(--success); color: var(--success); font-size: 13px; font-weight: 800; padding: 6px 14px; border-radius: 20px; }
+    .badge-social { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); color: #FFF; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 5px; }
 
     /* Studio Tabs Switcher */
     .studio-tabs { display: flex; gap: 12px; margin-bottom: 24px; overflow-x: auto; padding-bottom: 6px; }
-    .tab-btn { background: var(--surface); border: 1px solid var(--surface-border); color: var(--text-muted); padding: 12px 24px; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+    .tab-btn { background: var(--surface); border: 1px solid var(--surface-border); color: var(--text-muted); padding: 12px 24px; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; font-family: var(--font-headline); }
     .tab-btn:hover { border-color: var(--highlight); color: var(--text-main); }
     .tab-btn.active { background: var(--highlight); border-color: var(--highlight); color: #000; box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4); }
 
@@ -121,18 +128,21 @@
   <header class="top-bar">
     <div class="brand-group">
       <div class="avatar-ring">
-        <div class="avatar-img">WO</div>
+        <div class="avatar-img">⚖️</div>
       </div>
       <div>
         <div class="channel-title">
           <span>Workplace Rights Watch</span>
           <span class="verified-icon">☑</span>
           <span class="badge-pill">@workplace_rights_watch</span>
+          <span class="badge-pill" style="border-color: var(--accent); color: var(--accent);">Investigative Legal High-Contrast</span>
         </div>
         <p style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">Empowering corporate employees and contractors against unlawful wage withholding, delayed Full &amp; Final settlements, fake PIPs, and toxic employer harassment with factual legal knowledge.</p>
       </div>
     </div>
-    <div style="display: flex; align-items: center; gap: 12px;">
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+      <span class="badge-social">📷 @wrw_official · Connected</span>
+      <span class="badge-social">▶️ Workplace Rights Watch (Vidya Studio) · Linked</span>
       <span class="badge-pill">Target Cohort: Mid-to-Senior Professionals (4-12 yrs)</span>
       <span class="badge-score">✓ Critic Score: 9.4/10</span>
     </div>
@@ -185,18 +195,18 @@
 
           <div class="ig-caption-zone">
             <div class="ig-likes-count" id="likes-tally">2,842 likes</div>
-            <p class="caption-text"><strong>@workplace_rights_watch</strong> Withholding an ex-employee&#x27;s earned salary because they voiced grievances on LinkedIn isn&#x27;t HR policy—it&#x27;s illegal retaliation.
+            <p class="caption-text"><strong>@workplace_rights_watch</strong> 75 days of silence on your Full &amp; Final settlement isn&#x27;t &#x27;HR processing time&#x27;—it&#x27;s an interest-free loan on your hard-earned salary.
 
 Here is what you need to know:
 
-Under the Payment of Wages Act and statutory labour norms, earned wages and Full &amp; Final settlements cannot be held hostage over personal vendettas or public grievances. Earned salary is a statutory obligation, not a discretionary bonus.
+Under statutory labor law, an employer is obligated to clear all dues within the statutory window after your last working day. Withholding FnF to coerce release signatures is legally untenable.
 
 Key steps to take right now:
-• Document every broken settlement commitment with date-stamped email chains.
-• Withholding FnF past statutory limits is non-negotiable wage theft, regardless of social media posts.
-• File an immediate grievance with the Labour Commissioner and issue a formal 15-day statutory notice.
+• Document every follow-up via registered email, not unrecorded phone calls.
+• Send a formal 15-day statutory legal notice citing Section 15 of the Payment of Wages Act.
+• File an online grievance via the Samadhan Labor Portal before signing any conditional waivers.
 
-Facing FnF withholding or retaliation? Know your statutory exit rights. Save this checklist and comment &#x27;RIGHTS&#x27; for the legal notice draft.
+Know your exit rights. Save this checklist and comment &#x27;RIGHTS&#x27; for the statutory notice template.
 
 📌 Disclaimer: This post is for educational and rights awareness purposes only. Consult a licensed labor advocate for personal disputes.</p>
           </div>
@@ -212,18 +222,18 @@ Facing FnF withholding or retaliation? Know your statutory exit rights. Save thi
               <div class="story-bar"><div class="story-bar-fill"></div></div>
             </div>
 
-            <img src="" alt="Story Background" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+            <img src="workplace_rights_watch_story_9x16.png" alt="Story Background" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
 
             <div class="story-overlay">
               <div class="poll-card">
-                <span style="font-size: 11px; text-transform: uppercase; color: var(--highlight); font-weight: 800;">Community Poll 🚨</span>
-                <h4 style="font-size: 15px; margin-top: 6px; color: #FFF;">Tap your response below</h4>
+                <span style="font-size: 11px; text-transform: uppercase; color: var(--highlight); font-weight: 800;">Poll 🚨</span>
+                <h4 style="font-size: 15px; margin-top: 6px; color: #FFF;">Did your employer delay your settlement?</h4>
                 <div class="poll-opt" onclick="votePoll(this, '84%')">
-                  <span>Agree 100%</span>
+                  <span>Yes, &gt;30 days</span>
                   <span class="pct" style="display: none;">84%</span>
                 </div>
                 <div class="poll-opt" onclick="votePoll(this, '16%')">
-                  <span>Tell me more</span>
+                  <span>On time</span>
                   <span class="pct" style="display: none;">16%</span>
                 </div>
               </div>
@@ -239,7 +249,7 @@ Facing FnF withholding or retaliation? Know your statutory exit rights. Save thi
         <!-- 3. REELS VIDEO PLAYER VIEW (GOOGLE VEO ENGINE) -->
         <div id="view-reel" class="format-view" style="display: none;">
           <div class="reels-player">
-            <img class="reels-video-bg" src="workplace_rights_watch_reel_cover_9x16.png" alt="Google Veo Reel Simulation">
+            <img class="reels-video-bg" src="" alt="Google Veo Reel Simulation">
 
             <div class="reels-floating-actions">
               <div class="reels-act-btn"><span>❤️</span><span class="reels-act-label">48.2K</span></div>
@@ -251,7 +261,7 @@ Facing FnF withholding or retaliation? Know your statutory exit rights. Save thi
             <div class="reels-bottom-info">
               <span class="reels-hook-badge">Google Veo 2.0 Engine 🎬</span>
               <h4 style="font-size: 14px; font-weight: 800;">@workplace_rights_watch</h4>
-              <p class="reels-caption">Withholding an ex-employee&#x27;s earned salary because they voiced grievances on LinkedIn isn&#x27;t HR policy—it&#x27;s illegal retaliation.</p>
+              <p class="reels-caption">75 days of silence on your Full &amp; Final settlement isn&#x27;t &#x27;HR processing time&#x27;—it&#x27;s an interest-free loan on your hard-earned salary.</p>
               <p style="font-size: 11px; color: #CBD5E1; margin-top: 6px;">🎵 Original Audio - Workplace Rights Watch (Righteous Indignation &amp; Legal Empowerment)</p>
             </div>
           </div>
@@ -282,11 +292,11 @@ Facing FnF withholding or retaliation? Know your statutory exit rights. Save thi
         <div class="spec-grid">
           <div class="spec-box"><div class="spec-lbl">Aspect Ratio</div><div class="spec-val">4:5 & 9:16 Vertical</div></div>
           <div class="spec-box"><div class="spec-lbl">Output Quality</div><div class="spec-val">8K Commercial Render</div></div>
-          <div class="spec-box"><div class="spec-lbl">Color Grading</div><div class="spec-val">#1A1A24, #E63946, #F1FAEE</div></div>
+          <div class="spec-box"><div class="spec-lbl">Color Grading</div><div class="spec-val">#070B14, #FF2A2A, #00D4FF</div></div>
           <div class="spec-box"><div class="spec-lbl">Person Generation</div><div class="spec-val">Adult Approved (Employee Advocacy &amp; Legal Awareness)</div></div>
         </div>
         <div class="prompt-box">PROMPT SPECIFICATION:
-"Bold editorial graphic, typography-driven poster, color palette [&#x27;#1A1A24&#x27;, &#x27;#E63946&#x27;], clean minimalist aesthetic, 4:5 portrait ratio"</div>
+"Bold editorial graphic, typography-driven poster, color palette [&#x27;#070B14&#x27;, &#x27;#FF2A2A&#x27;], clean minimalist aesthetic, 4:5 portrait ratio"</div>
       </div>
 
       <!-- Google Veo 2.0 Card -->
@@ -299,13 +309,10 @@ Facing FnF withholding or retaliation? Know your statutory exit rights. Save thi
           <div class="spec-box"><div class="spec-lbl">Target Duration</div><div class="spec-val">30s Screenplay</div></div>
           <div class="spec-box"><div class="spec-lbl">Camera Movement</div><div class="spec-val">Dynamic Push-In Tracking</div></div>
           <div class="spec-box"><div class="spec-lbl">Frame Rate</div><div class="spec-val">24 FPS Vertical</div></div>
-          <div class="spec-box"><div class="spec-lbl">Audio Track Mood</div><div class="spec-val">Tense investigative synth building into confident, empowering cinematic resolution</div></div>
+          <div class="spec-box"><div class="spec-lbl">Audio Track Mood</div><div class="spec-val">Tense cinematic</div></div>
         </div>
         <div class="prompt-box">VEO SCENE TIMESTAMPS:
-⏱ [0.0s - 3.5s] Person sitting in corporate office looking at laptop with calendar notifications piling up, dark cinematic lighting
-⏱ [3.5s - 12.0s] Fast-paced visual demonstration illustrating the core solution and counter-intuitive truth
-⏱ [12.0s - 24.0s] Clean 3-item checklist animating seamlessly across mobile screen
-⏱ [24.0s - 30.0s] Direct-to-camera confident presentation with branded typography watermark</div>
+</div>
       </div>
 
       <!-- Autonomous Quality & EQ Scorecard -->

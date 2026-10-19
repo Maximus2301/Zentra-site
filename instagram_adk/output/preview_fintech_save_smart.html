@@ -4,19 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google AI Studio | SaveSmart FinTech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@600;800&family=Outfit:wght@500;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@600;700;800&family=Roboto:wght@400;500;700&family=Space+Grotesk:wght@600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090D16;
+      --bg: #0B132B;
       --surface: #131B2E;
       --surface-border: #23304E;
-      --accent: #1C2541;
-      --highlight: #38BDF8;
+      --accent: #00B4D8;
+      --highlight: #C9A22A;
       --text-main: #F8FAFC;
       --text-muted: #94A3B8;
       --success: #10B981;
+      --font-headline: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
       --ig-gradient: linear-gradient(45deg, #F58529, #D92E7F, #9B36B7);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-body); }
+    h1, h2, h3, h4, .channel-title, .ai-card-title, .section-header { font-family: var(--font-headline); }
     body { background: var(--bg); color: var(--text-main); min-height: 100vh; padding: 24px; }
     .app-container { max-width: 1400px; margin: 0 auto; }
 
@@ -24,16 +30,17 @@
     .top-bar { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 20px; padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     .brand-group { display: flex; align-items: center; gap: 16px; }
     .avatar-ring { width: 56px; height: 56px; border-radius: 50%; padding: 3px; background: var(--ig-gradient); display: flex; align-items: center; justify-content: center; }
-    .avatar-img { width: 100%; height: 100%; border-radius: 50%; background: #000; border: 2px solid var(--surface); object-fit: cover; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #FFF; }
+    .avatar-img { width: 100%; height: 100%; border-radius: 50%; background: #000; border: 2px solid var(--surface); object-fit: cover; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #FFF; }
     .channel-title { font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
     .verified-icon { color: #38BDF8; font-size: 16px; }
     
     .badge-pill { background: rgba(56, 189, 248, 0.15); border: 1px solid var(--highlight); color: var(--highlight); font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; }
     .badge-score { background: rgba(16, 185, 129, 0.15); border: 1px solid var(--success); color: var(--success); font-size: 13px; font-weight: 800; padding: 6px 14px; border-radius: 20px; }
+    .badge-social { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); color: #FFF; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 5px; }
 
     /* Studio Tabs Switcher */
     .studio-tabs { display: flex; gap: 12px; margin-bottom: 24px; overflow-x: auto; padding-bottom: 6px; }
-    .tab-btn { background: var(--surface); border: 1px solid var(--surface-border); color: var(--text-muted); padding: 12px 24px; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+    .tab-btn { background: var(--surface); border: 1px solid var(--surface-border); color: var(--text-muted); padding: 12px 24px; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; font-family: var(--font-headline); }
     .tab-btn:hover { border-color: var(--highlight); color: var(--text-main); }
     .tab-btn.active { background: var(--highlight); border-color: var(--highlight); color: #000; box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4); }
 
@@ -121,18 +128,21 @@
   <header class="top-bar">
     <div class="brand-group">
       <div class="avatar-ring">
-        <div class="avatar-img">SA</div>
+        <div class="avatar-img">💰</div>
       </div>
       <div>
         <div class="channel-title">
           <span>SaveSmart FinTech</span>
           <span class="verified-icon">☑</span>
           <span class="badge-pill">@fintech_save_smart</span>
+          <span class="badge-pill" style="border-color: var(--accent); color: var(--accent);">FinTech Mint &amp; Wealth Gold</span>
         </div>
         <p style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">Making automated investing, emergency fund discipline, and debt relief accessible to young professionals and families through modern smart tooling.</p>
       </div>
     </div>
-    <div style="display: flex; align-items: center; gap: 12px;">
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+      <span class="badge-social">📷 @fintech_save_smart · Connected</span>
+      <span class="badge-social">▶️ SaveSmart FinTech · Linked</span>
       <span class="badge-pill">Target Cohort: First-Time Earners &amp; Gen-Z (21-25 yrs)</span>
       <span class="badge-score">✓ Critic Score: 9.4/10</span>
     </div>
@@ -160,7 +170,7 @@
         <div id="view-feed" class="format-view">
           <div class="ig-header">
             <div class="ig-user-info">
-              <div class="ig-avatar-mini"><img src="fintech_save_smart_feed_4x5.png" alt="avatar"></div>
+              <div class="ig-avatar-mini"><img src="" alt="avatar"></div>
               <div>
                 <strong style="font-size: 13px;">@fintech_save_smart</strong>
                 <p style="font-size: 11px; color: var(--text-muted);">Statutory Labor Compliance • Legal Alert</p>
@@ -170,7 +180,7 @@
           </div>
 
           <div class="ig-media-box" onclick="triggerHeart()">
-            <img src="fintech_save_smart_feed_4x5.png" alt="Google Imagen 3 Feed Visual">
+            <img src="" alt="Google Imagen 3 Feed Visual">
             <div class="heart-burst" id="feed-heart">❤️</div>
           </div>
 
@@ -185,20 +195,7 @@
 
           <div class="ig-caption-zone">
             <div class="ig-likes-count" id="likes-tally">2,842 likes</div>
-            <p class="caption-text"><strong>@fintech_save_smart</strong> The $1,000 emergency fund rule works, but 90% of young earners make this one fatal mistake with it.
-
-Here is what you need to know:
-
-Keeping your emergency cushion in your primary checking account guarantees lifestyle creep. It needs to be automated and frictionless, yet out of immediate swipe reach.
-
-Key steps to take right now:
-• Automate $5/day savings transfers immediately on payday morning.
-• Park emergency reserves in a dedicated high-yield liquid instrument, not checking.
-• Build the first 30 days of safety before touching volatile equity investments.
-
-Take control of your money today. Comment &#x27;SAVE&#x27; to get our automated 30-day budget template.
-
-📌 Investments are subject to market risks. Read all scheme-related documents carefully before investing.</p>
+            <p class="caption-text"><strong>@fintech_save_smart</strong> </p>
           </div>
         </div>
 
@@ -212,18 +209,18 @@ Take control of your money today. Comment &#x27;SAVE&#x27; to get our automated 
               <div class="story-bar"><div class="story-bar-fill"></div></div>
             </div>
 
-            <img src="fintech_save_smart_story_9x16.png" alt="Story Background" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+            <img src="" alt="Story Background" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
 
             <div class="story-overlay">
               <div class="poll-card">
-                <span style="font-size: 11px; text-transform: uppercase; color: var(--highlight); font-weight: 800;">Poll 🚨</span>
-                <h4 style="font-size: 15px; margin-top: 6px; color: #FFF;">Do you automate savings on payday?</h4>
+                <span style="font-size: 11px; text-transform: uppercase; color: var(--highlight); font-weight: 800;">Community Poll 🚨</span>
+                <h4 style="font-size: 15px; margin-top: 6px; color: #FFF;">Tap your response below</h4>
                 <div class="poll-opt" onclick="votePoll(this, '84%')">
-                  <span>Automate first</span>
+                  <span>Agree 100%</span>
                   <span class="pct" style="display: none;">84%</span>
                 </div>
                 <div class="poll-opt" onclick="votePoll(this, '16%')">
-                  <span>Save what&#x27;s left</span>
+                  <span>Tell me more</span>
                   <span class="pct" style="display: none;">16%</span>
                 </div>
               </div>
@@ -252,14 +249,14 @@ Take control of your money today. Comment &#x27;SAVE&#x27; to get our automated 
               <span class="reels-hook-badge">Google Veo 2.0 Engine 🎬</span>
               <h4 style="font-size: 14px; font-weight: 800;">@fintech_save_smart</h4>
               <p class="reels-caption">The $1,000 emergency fund rule works, but 90% of young earners make this one fatal mistake with it.</p>
-              <p style="font-size: 11px; color: #CBD5E1; margin-top: 6px;">🎵 Original Audio - SaveSmart FinTech (Financial Reassurance &amp; Stress Relief)</p>
+              <p style="font-size: 11px; color: #CBD5E1; margin-top: 6px;">🎵 Original Audio - SaveSmart FinTech (Financial Freedom)</p>
             </div>
           </div>
         </div>
 
         <!-- 4. STATUS SNIPPET VIEW -->
         <div id="view-status" class="format-view" style="display: none; padding: 30px 20px; text-align: center;">
-          <img src="fintech_save_smart_status_card.png" alt="Status Graphic" style="width: 100%; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); margin-top: 100px;">
+          <img src="" alt="Status Graphic" style="width: 100%; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); margin-top: 100px;">
           <p style="color: var(--text-muted); font-size: 13px; margin-top: 20px;">Optimized for WhatsApp Status & Instagram Quick Story</p>
         </div>
 
@@ -282,11 +279,11 @@ Take control of your money today. Comment &#x27;SAVE&#x27; to get our automated 
         <div class="spec-grid">
           <div class="spec-box"><div class="spec-lbl">Aspect Ratio</div><div class="spec-val">4:5 & 9:16 Vertical</div></div>
           <div class="spec-box"><div class="spec-lbl">Output Quality</div><div class="spec-val">8K Commercial Render</div></div>
-          <div class="spec-box"><div class="spec-lbl">Color Grading</div><div class="spec-val">#0B132B, #1C2541, #48CAE4</div></div>
+          <div class="spec-box"><div class="spec-lbl">Color Grading</div><div class="spec-val">#0B132B, #00B4D8, #C9A22A</div></div>
           <div class="spec-box"><div class="spec-lbl">Person Generation</div><div class="spec-val">Adult Approved (Personal Finance &amp; Wealth Automation)</div></div>
         </div>
         <div class="prompt-box">PROMPT SPECIFICATION:
-"Bold editorial graphic, typography-driven poster, color palette [&#x27;#0B132B&#x27;, &#x27;#1C2541&#x27;], clean minimalist aesthetic, 4:5 portrait ratio"</div>
+""</div>
       </div>
 
       <!-- Google Veo 2.0 Card -->
@@ -296,16 +293,17 @@ Take control of your money today. Comment &#x27;SAVE&#x27; to get our automated 
           <span class="badge-pill">veo-2.0-generate-001</span>
         </div>
         <div class="spec-grid">
-          <div class="spec-box"><div class="spec-lbl">Target Duration</div><div class="spec-val">30s Screenplay</div></div>
+          <div class="spec-box"><div class="spec-lbl">Target Duration</div><div class="spec-val">45s Screenplay</div></div>
           <div class="spec-box"><div class="spec-lbl">Camera Movement</div><div class="spec-val">Dynamic Push-In Tracking</div></div>
           <div class="spec-box"><div class="spec-lbl">Frame Rate</div><div class="spec-val">24 FPS Vertical</div></div>
           <div class="spec-box"><div class="spec-lbl">Audio Track Mood</div><div class="spec-val">Uplifting modern lo-fi ambient beat with calm reassurance</div></div>
         </div>
         <div class="prompt-box">VEO SCENE TIMESTAMPS:
-⏱ [0.0s - 3.5s] Close-up of smartphone notification popping up: salary credited, followed by instant auto-transfer
-⏱ [3.5s - 12.0s] Fast-paced visual demonstration illustrating the core solution and counter-intuitive truth
-⏱ [12.0s - 24.0s] Clean 3-item checklist animating seamlessly across mobile screen
-⏱ [24.0s - 30.0s] Direct-to-camera confident presentation with branded typography watermark</div>
+⏱ [0.0s - 4.0s] Close-up of smartphone notification popping up: salary credited, followed by instant auto-transfer
+⏱ [4.0s - 16.333333333333336s] Deep dive case study with animated timeline and industry metrics
+⏱ [16.333333333333336s - 28.66666666666667s] System architectural diagram animating node-by-node with glowing flow lines
+⏱ [28.66666666666667s - 41.00000000000001s] Action blueprint with clear tactical steps appearing sequentially
+⏱ [41.00000000000001s - 45.0s] Direct executive outro with channel branding and community invitation</div>
       </div>
 
       <!-- Autonomous Quality & EQ Scorecard -->
@@ -314,12 +312,12 @@ Take control of your money today. Comment &#x27;SAVE&#x27; to get our automated 
           <span>🛡 Brand Safety, EQ & Policy Audit</span>
           <span class="badge-score">PASSED (Score: 9.4/10)</span>
         </div>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">Approved for SaveSmart FinTech. Strong scroll-stopping hook, cohesive emotional arc (Financial Reassurance &amp; Stress Relief), and strictly compliant with channel guardrails.</p>
+        <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">Approved for SaveSmart FinTech. Strong scroll-stopping hook, cohesive emotional arc (Financial Freedom), and strictly compliant with channel guardrails.</p>
         <div class="spec-grid" style="margin-top: 14px;">
           <div class="spec-box"><div class="spec-lbl">Channel Isolation</div><div class="spec-val" style="color: var(--success);">✓ Locked to @fintech_save_smart</div></div>
           <div class="spec-box"><div class="spec-lbl">Statutory Disclaimers</div><div class="spec-val" style="color: var(--success);">✓ Appended & Verified</div></div>
           <div class="spec-box"><div class="spec-lbl">Character Limits</div><div class="spec-val" style="color: var(--success);">✓ Compliant (&lt; 2,200)</div></div>
-          <div class="spec-box"><div class="spec-lbl">Emotional Resonance</div><div class="spec-val" style="color: var(--highlight);">9.2/10 (Financial Reassurance &amp; Stress Relief)</div></div>
+          <div class="spec-box"><div class="spec-lbl">Emotional Resonance</div><div class="spec-val" style="color: var(--highlight);">9.2/10 (Financial Freedom)</div></div>
         </div>
       </div>
 

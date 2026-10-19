@@ -54,17 +54,35 @@ Do NOT collapse the brand to a single product. Always maintain the multi-product
 ## Autonomous Instagram Campaign Agent (ADK 2.0)
 - **Directory / Package**: `instagram_adk` (canonical package, symlinked to `adk - content creator` for path compatibility).
 - **Architecture**: 7-stage Google ADK 2.0 directed line graph (`Workflow`, `InMemorySessionService`, `Runner`) with Stage 5 Critic loop.
-- **System Baseline**: `v1.1.0` (remodeled October 18, 2026; zero cross-account domain contamination verified).
+- **System Baseline**: `v1.2.0` (Updated October 20, 2026; Multi-tenant studio, dual-route video generation, social linking, brand DNA).
 - **Accounts**: `@workplace_rights_watch`, `@fintech_save_smart`, `@alex_tech_ceo`.
-- **Formats**: Static Post (4:5), Interactive Story (9:16), Reel Screenplay (9:16), Status Card (1:1).
-- **Interactive Visualizer**: Outputs high-fidelity iPhone 16 Pro mockup HTML in `instagram_adk/output/preview_<account>.html`.
+- **Formats & Media**:
+  - Static Post (4:5 Portrait + Google Imagen 3 Feed Visual)
+  - Interactive Story (9:16 4-Slide Arc + Google Imagen 3 Story Visual)
+  - Reel Video (Dual-route: $\le 30$s In-Dashboard 1080x1920 MP4 via FFmpeg vs $> 30$s Google Vids Workspace Blueprint at `vids.new`)
+  - Status Card (1:1 Micro Takeaway + Google Imagen 3 Status Graphic)
+- **Multi-User History & Security**:
+  - Multi-user authentication supporting `admin` (superuser) and creators (`vyantec@gmail.com`).
+  - Forced first-time password change (`must_change_password`).
+  - Zero-cost JSON session store (`instagram_adk/output/sessions/<user_id>.json`).
+  - Admin superuser global audit toggle (`all_users=true`) to view all creator sessions.
+- **Social Account Linking**:
+  - Instagram Graph API v20.0 (masked token retrieval, handle, business ID, live publishing).
+  - YouTube Data API v3 (Vidya Creator Studio, channel ID, API key, category, privacy).
+  - Live connection testing ping endpoint (`POST /api/accounts/{id}/connections/test`).
+  - Dynamic preview badges (`📷 IG Connected`, `▶️ YT Linked`).
+- **Visual Brand DNA Engine**:
+  - 6 curated presets (*Investigative Legal*, *FinTech Mint & Gold*, *Cyberpunk Glow*, *Editorial Luxury*, *Vibrant Pop*, *Nordic Minimal*) + *Custom*.
+  - 4-color palette, custom icon emoji pills, iconography styles, Google Fonts typography pairings.
+  - Live Brand DNA mini-card preview positioned below Reel Video Duration in Creator Studio.
+- **Live Endpoints & Deployment**:
+  - Google Cloud Run: `https://zentra-instagram-agent-546102264289.asia-south1.run.app`
+  - Creator Studio UI: `https://zentraai.in/creator/` (mirrored in `creator/index.html`, `instagram_adk/web/index.html`, `zentra-site/creator/index.html`)
+  - Notion Baseline Page ID: `3fd00b72-932a-81c6-bbea-e450a9a21e9c` (Parent: `35400b72-932a-8037-9e19-c675c6fdf8c2`)
 - **CLI Commands**:
   - `python run_instagram_agent.py`
-  - `.venv/bin/python instagram_adk/test_pipeline.py`
+  - `python3 instagram_adk/test_server_api.py`
   - `.venv/bin/adk web --port 8000 instagram_adk`
-- **Cloud Deployment & zentraai.in**:
-  - Expose via `adk api_server` (FastAPI) on Google Cloud Run with CORS for `zentraai.in`.
-  - Notion Baseline Page ID: `3fd00b72-932a-81c6-bbea-e450a9a21e9c`.
 
 ## TODO
 - [ ] Replace Play Store URL with live listing link
