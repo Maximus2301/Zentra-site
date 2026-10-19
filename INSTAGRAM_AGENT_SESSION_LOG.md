@@ -149,14 +149,20 @@ flowchart TD
 └──────────────────────────────────────────────┘
 ```
 
-### Steps for Deployment:
-1. **Containerization**:
-   - Create a `Dockerfile` packaging `google-adk`, `google-genai`, `pillow`, and `instagram_adk`.
-   - Entrypoint: `adk api_server --port 8080 instagram_adk` (or custom FastAPI server exposing `/api/campaign/generate`).
-2. **Cloud Run Provisioning**:
-   - Deploy container to Google Cloud Run (`us-central1` or `asia-south1`).
-   - Inject secret environment variables: `GEMINI_API_KEY`, `IG_TOKEN_*`.
-3. **Frontend Integration on `zentraai.in`**:
-   - Add a creator dashboard page (`zentraai.in/dashboard/content-creator`) allowing users to choose an account, input notes, and click "Generate".
-   - Render real-time progress events from the ADK SSE endpoint.
-   - Display the generated iPhone 16 Pro visualizer preview iframe and provide a one-click "Publish Live to Instagram" button.
+### Steps for Deployment (Status: COMPLETED):
+1. **Containerization (Step 1 - Done)**:
+   - Created production [`Dockerfile`](file:///home/maximus/projects/llm-lab/Dockerfile) based on `python:3.11-slim` with system font rendering packages (`fonts-dejavu-core`, `libfreetype6-dev`).
+   - Created clean, pinned [`requirements.txt`](file:///home/maximus/projects/llm-lab/requirements.txt) and optimized [`.dockerignore`](file:///home/maximus/projects/llm-lab/.dockerignore).
+   - Created [`instagram_adk/server.py`](file:///home/maximus/projects/llm-lab/instagram_adk/server.py) exposing `/healthz`, `/api/accounts`, `/api/campaign/generate`, and `/api/campaign/preview/{account_id}`.
+2. **Cloud Run Provisioning & CI/CD (Step 2 - Done)**:
+   - Created [`deploy_cloud_run.sh`](file:///home/maximus/projects/llm-lab/deploy_cloud_run.sh) supporting automatic Google Cloud Build source compilation (`gcloud run deploy --source .`) into Artifact Registry and zero-downtime deployment.
+   - Created [`.github/workflows/deploy-agent-cloudrun.yml`](file:///home/maximus/projects/llm-lab/.github/workflows/deploy-agent-cloudrun.yml) for automated GitHub Actions CI/CD to Google Cloud Run with secret management for `GEMINI_API_KEY`.
+3. **Standalone Creator Studio on `zentraai.in` (Step 3 - Done)**:
+   - Created dedicated luxury-dark themed Creator Studio at [`zentra-site/creator/index.html`](file:///home/maximus/projects/llm-lab/zentra-site/creator/index.html) (accessible as `https://zentraai.in/creator/`).
+   - Packaged inside [`instagram_adk/web/index.html`](file:///home/maximus/projects/llm-lab/instagram_adk/web/index.html) so the container serves the UI directly at root `/`.
+   - Complete domain isolation and zero coupling with `/blog/` pages or blog generation scripts.
+   - Interactive channel switcher, pipeline stepper, Critic verdict banner, format tabs, and embedded iPhone 16 Pro mockup visualizer.
+4. **Verification & Automated Health Testing (Step 4 - Done)**:
+   - Built [`instagram_adk/test_server_api.py`](file:///home/maximus/projects/llm-lab/instagram_adk/test_server_api.py) covering health check, root UI serving, accounts catalog, CORS preflight for `zentraai.in`, error handling (400 on invalid account), and full end-to-end campaign generation with visualizer preview.
+   - Verified 100% test pass rate across both API tests and core pipeline tests.
+   - Committed and pushed to GitHub `origin/main` (`6ab0ac5`).
