@@ -26,6 +26,11 @@ echo -e "${BOLD}${CYAN}=========================================================
 echo -e "${BOLD}${CYAN}  Zentra AI - Autonomous Instagram Agent Cloud Run Deployment       ${NC}"
 echo -e "${BOLD}${CYAN}====================================================================${NC}"
 
+# Ensure Google Cloud SDK in PATH
+if [ -d "$HOME/google-cloud-sdk/bin" ]; then
+    export PATH="$HOME/google-cloud-sdk/bin:$PATH"
+fi
+
 # 1. Check gcloud CLI
 if ! command -v gcloud &> /dev/null; then
     echo -e "${RED}[ERROR] 'gcloud' CLI is not installed or not in PATH.${NC}"
@@ -33,6 +38,18 @@ if ! command -v gcloud &> /dev/null; then
     echo -e "Or deploy via GitHub Actions using the provided workflow: .github/workflows/deploy-agent-cloudrun.yml"
     exit 1
 fi
+
+# 1b. Check GCP Authentication
+ACTIVE_ACCOUNT=$(gcloud auth list --filter=status:ACTIVE --format="value(account)" 2>/dev/null || echo "")
+if [ -z "${ACTIVE_ACCOUNT}" ]; then
+    echo -e "${YELLOW}[ACTION NEEDED] No active Google Cloud account found in gcloud.${NC}"
+    echo -e "Please authenticate using one of the following:"
+    echo -e "  • Standard login:  ${BOLD}gcloud auth login${NC}"
+    echo -e "  • Remote login:    ${BOLD}gcloud auth login --no-browser${NC}"
+    echo -e "  • Service Account: ${BOLD}gcloud auth activate-service-account --key-file=/path/to/key.json${NC}"
+    exit 1
+fi
+echo -e "${GREEN}✓ Authenticated as: ${BOLD}${ACTIVE_ACCOUNT}${NC}"
 
 # 2. GCP Project ID detection
 GCP_PROJECT="${GCP_PROJECT:-$(gcloud config get-value project 2>/dev/null || echo "")}"
