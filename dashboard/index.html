@@ -357,16 +357,8 @@
         </button>
       </form>
 
-      <div class="auth-divider">
-        <span>QUICK ACCESS</span>
-      </div>
-
-      <button type="button" class="btn-quick-fill" onclick="quickFillAdmin()">
-        <span>Fill Admin Credentials</span>
-      </button>
-
-      <div style="margin-top: 20px; font-size: 11px; color: var(--text-muted); line-height: 1.5;">
-        SSO with Creator Studio &bull; Backend: <code>run.app/api/auth/login</code>
+      <div style="margin-top: 24px; font-size: 11px; color: var(--text-muted); line-height: 1.5;">
+        Protected by Zentra Operator Authentication &bull; Backend: <code>run.app</code>
       </div>
     </div>
   </div>
@@ -834,12 +826,6 @@
         btn.disabled = false;
         btnText.textContent = 'Sign In to Command Center';
       }
-    }
-
-    function quickFillAdmin() {
-      document.getElementById('loginUsername').value = 'vyantec@gmail.com';
-      document.getElementById('loginPassword').value = 'ZentraVyan2026!';
-      document.getElementById('loginPassword').focus();
     }
 
     function handleSignOut() {

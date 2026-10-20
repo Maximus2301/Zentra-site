@@ -94,11 +94,19 @@
       "mcp__notion__API-get-block-children",
       "mcp__notion__API-patch-block-children",
       "Bash(grep -r \"SettingsScreen\\\\|settings_screen\\\\|Drawer\\\\|AppDrawer\" /mnt/c/Users/panka/Documents/sms_finance_tracker/lib --include=*.dart -l)",
-      "Bash(git stash *)",
-      "Bash(git pull *)",
-      "Bash(git -C /home/maximus/projects/llm-lab pull --rebase origin main)",
+      "Bash(git -C /home/maximus/projects/llm-lab checkout --ours CLAUDE.md)",
+      "Bash(git -C /home/maximus/projects/llm-lab add CLAUDE.md)",
+      "Bash(git -C /home/maximus/projects/llm-lab rebase --continue)",
       "Bash(git -C /home/maximus/projects/llm-lab status --short)",
-      "Bash(git *)"
+      "Bash(git -C /home/maximus/projects/llm-lab checkout --ours .claude/settings.local.json)",
+      "Bash(git -C /home/maximus/projects/llm-lab add .claude/settings.local.json)",
+      "Bash(git *)",
+      "Bash(cmd.exe *)",
+      "Read(//mnt/c/Users/panka/Documents/sms_finance_tracker/**)",
+      "Bash(dart analyze *)",
+      "Read(//mnt/c/Users/panka/Documents/**)",
+      "mcp__notion__API-post-page",
+      "Bash(gh run *)"
     ]
   }
 }
