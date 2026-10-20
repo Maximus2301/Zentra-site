@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-10-05T10:42:33.723915",
-    "title": "SEBI's Jay Energy Order: Investor Compliance Guide",
-    "description": "Learn about SEBI's recent order against Jay Energy and S. Energies Limited. Understand what it means for Indian investors and how to safeguard your investments.",
-    "url": "https://zentraai.in/blog/2026-10-05-sebi-jay-energy-order-investor-protection.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-jay-energy-order-investor-protection",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-05T10:42:54.521370",
-    "title": "SEBI Remittance Order: Understanding Market Regulation",
-    "description": "Learn about SEBI's recent remittance order and why market regulations are crucial for protecting your investments. Understand how SEBI ensures a safe trading environment for salaried professionals.",
-    "url": "https://zentraai.in/blog/2026-10-05-sebi-remittance-order-market-regulation-investors.html",
-    "tags": [
-      "SEBI",
-      "Market Regulation",
-      "Investor Protection"
-    ],
-    "slug": "sebi-remittance-order-market-regulation-investors",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-05T10:43:14.557598",
-    "title": "SEBI Remittance Order: Investor Protection Lessons",
-    "description": "Understand SEBI's remittance orders and their role in investor protection. Learn why regulatory actions like the one against Sadhna Broadcast matter for your investments.",
-    "url": "https://zentraai.in/blog/2026-10-05-sebi-remittance-order-investor-protection-lessons.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Education"
-    ],
-    "slug": "sebi-remittance-order-investor-protection-lessons",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-10-06T10:35:40.471436",
     "title": "SEBI Order: Jay Energy Recovery & Investor Protection",
     "description": "Understand SEBI's latest order on Jay Energy and S. Energies Limited. Learn how regulatory actions protect your investments and financial interests in India.",
@@ -611,5 +572,44 @@
     ],
     "slug": "gift-stocks-mutual-funds-festive-season",
     "source": "Mint Money"
+  },
+  {
+    "date": "2026-10-20T08:44:58.170498",
+    "title": "Home Loan EMI vs Tenure: Making the Right Choice After Rate Hike",
+    "description": "RBI's repo rate hike impacts home loan EMIs. Learn whether to increase your EMI or extend your loan tenure to manage higher costs effectively. Understand your options.",
+    "url": "https://zentraai.in/blog/2026-10-20-home-loan-emi-tenure-hike-decision.html",
+    "tags": [
+      "Home Loan",
+      "EMI",
+      "Personal Finance"
+    ],
+    "slug": "home-loan-emi-tenure-hike-decision",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-10-20T08:45:23.234092",
+    "title": "RBI Injects Rs 1 Lakh Cr: What It Means for You",
+    "description": "The RBI recently injected Rs 1 lakh crore into the financial system. Understand what this means for interest rates, loans, and your personal finances this festive season.",
+    "url": "https://zentraai.in/blog/2026-10-20-rbi-liquidity-injection-impact-on-personal-finance.html",
+    "tags": [
+      "RBI",
+      "Personal Finance",
+      "Indian Economy"
+    ],
+    "slug": "rbi-liquidity-injection-impact-on-personal-finance",
+    "source": "ET Economy"
+  },
+  {
+    "date": "2026-10-20T08:45:41.933814",
+    "title": "CBDT Exempts NDB Bond Interest from TDS",
+    "description": "Learn how the recent CBDT exemption on New Development Bank's rupee bond interest from TDS affects Indian investors. Understand implications for tax planning and investment.",
+    "url": "https://zentraai.in/blog/2026-10-20-cbdt-exempts-ndb-bonds-tds-indian-investors.html",
+    "tags": [
+      "TDS",
+      "Bond Investment",
+      "Tax Planning"
+    ],
+    "slug": "cbdt-exempts-ndb-bonds-tds-indian-investors",
+    "source": "ET Economy"
   }
 ]
