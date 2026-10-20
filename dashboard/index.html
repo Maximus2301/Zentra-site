@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZENTRA AI — Monetization & Growth Command Center</title>
+  <meta name="description" content="Live executive dashboard for HYT Money Tracker (Zentra AI): Pro Subscriptions, AdMob Ads, Referrals & Affiliate Monetization." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #0D0D0F;
+      --bg-deep:      #08080A;
+      --surface:      #131316;
+      --surface-2:    #1A1A1F;
+      --surface-3:    #222228;
+      --border:       #2A2A32;
+      --border-soft:  #1E1E24;
+      --primary:      #C9A22A;
+      --primary-light:#E2C05E;
+      --primary-deep: #9A7515;
+      --primary-glow: rgba(201,162,42,0.25);
+      --teal:         #6ECFDB;
+      --teal-glow:    rgba(110,207,219,0.2);
+      --gold-bright:  #F1D77A;
+      --green:        #4CAF50;
+      --danger:       #EF5350;
+      --text:         #F0F0EC;
+      --text-muted:   #8E8E98;
+      --radius:       16px;
+      --radius-sm:    10px;
+      --radius-lg:    20px;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(201,162,42,0.12) 0%, transparent 35%),
+        radial-gradient(circle at 90% 10%, rgba(110,207,219,0.08) 0%, transparent 30%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── AUTHENTICATION OVERLAY ── */
+    .auth-overlay {
+      position: fixed; inset: 0;
+      background: rgba(8, 8, 10, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      display: grid; place-items: center; padding: 24px;
+      overflow-y: auto;
+    }
+    .auth-card {
+      background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      width: 100%; max-width: 440px;
+      padding: 40px 32px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.8), 0 0 35px rgba(201,162,42,0.12);
+      text-align: center;
+      position: relative;
+    }
+    .auth-error {
+      background: rgba(239, 83, 80, 0.12);
+      border: 1px solid rgba(239, 83, 80, 0.35);
+      border-radius: var(--radius-sm);
+      color: #FFCDD2;
+      font-size: 13px; font-weight: 500;
+      padding: 10px 14px; margin-bottom: 20px; text-align: left;
+    }
+    .form-group {
+      margin-bottom: 16px; text-align: left;
+    }
+    .form-label {
+      display: block; font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 6px;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%; background: var(--surface-3); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 12px 14px;
+      font-family: inherit; font-size: 14px; color: var(--text);
+      outline: none; transition: all 0.2s;
+    }
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(201,162,42,0.18);
+    }
+    .btn-submit {
+      width: 100%; padding: 14px;
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--primary) 50%, var(--primary-deep) 100%);
+      color: #08080A; border: none; border-radius: var(--radius-sm);
+      font-weight: 700; font-size: 14px; cursor: pointer; transition: opacity 0.2s;
+    }
+    .btn-submit:hover { opacity: 0.9; }
+    .auth-divider {
+      display: flex; align-items: center; justify-content: center;
+      margin: 22px 0; position: relative;
+    }
+    .auth-divider::before, .auth-divider::after {
+      content: ""; flex: 1; height: 1px; background: var(--border);
+    }
+    .auth-divider span {
+      padding: 0 14px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; color: var(--text-muted);
+    }
+    .btn-quick-fill {
+      width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 12px; background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); color: var(--text); font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-quick-fill:hover { border-color: var(--primary); color: var(--primary-light); }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(10,10,13,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex; align-items: center; gap: 14px;
+      text-decoration: none; color: inherit;
+    }
+    .monogram {
+      font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700;
+      background: linear-gradient(135deg, #F1D77A, #C9A22A);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      border: 1.5px solid var(--primary);
+      width: 42px; height: 42px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+    .brand-title {
+      font-family: 'Cinzel', serif; font-size: 17px; font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .brand-sub {
+      font-size: 11px; color: var(--text-muted); font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    .header-actions {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .status-pill {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; color: #81C784;
+      background: rgba(76,175,80,0.12); border: 1px solid rgba(76,175,80,0.3);
+      padding: 6px 14px; border-radius: 20px;
+    }
+    .pulse-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #4CAF50; box-shadow: 0 0 8px #4CAF50;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+    .user-pill {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; color: var(--primary-light);
+      background: rgba(201,162,42,0.12); border: 1px solid rgba(201,162,42,0.25);
+      padding: 6px 12px; border-radius: 20px;
+    }
+
+    .btn-refresh {
+      background: var(--surface-2); border: 1px solid var(--border);
+      color: var(--text); padding: 8px 16px; border-radius: 8px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      display: flex; align-items: center; gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-refresh:hover {
+      background: var(--surface-3); border-color: var(--primary); color: var(--primary-light);
+    }
+    .btn-signout {
+      background: transparent; border: 1px solid var(--border-soft);
+      color: var(--text-muted); padding: 6px 12px; border-radius: 6px;
+      font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-signout:hover { color: var(--danger); border-color: var(--danger); }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 1400px; margin: 0 auto; padding: 32px 32px 64px;
+    }
+
+    /* ── TOP KPI STRIP ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px; margin-bottom: 28px;
+    }
+    .kpi-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px;
+      position: relative; overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .kpi-card:hover {
+      transform: translateY(-2px); border-color: rgba(201,162,42,0.4);
+    }
+    .kpi-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--card-accent, var(--primary)), transparent);
+    }
+    .kpi-label {
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      color: var(--text-muted); letter-spacing: 0.05em; margin-bottom: 8px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .kpi-value {
+      font-size: 32px; font-weight: 800; font-family: 'DM Sans', sans-serif;
+      letter-spacing: -0.02em; margin-bottom: 6px;
+    }
+    .kpi-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 6px;
+    }
+    .badge-gold { background: rgba(201,162,42,0.15); color: #F1D77A; }
+    .badge-teal { background: rgba(110,207,219,0.15); color: #A8E8F4; }
+    .badge-green { background: rgba(76,175,80,0.15); color: #81C784; }
+
+    /* ── TAB NAV ── */
+    .tabs-nav {
+      display: flex; gap: 8px; margin-bottom: 24px;
+      border-bottom: 1px solid var(--border); padding-bottom: 8px;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .tab-btn {
+      background: transparent; border: none; color: var(--text-muted);
+      padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .tab-btn:hover { color: var(--text); background: var(--surface-2); }
+    .tab-btn.active {
+      color: #F1D77A; background: rgba(201,162,42,0.12);
+      border: 1px solid rgba(201,162,42,0.3);
+    }
+
+    /* ── PANELS ── */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; animation: fadeIn 0.25s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .grid-2col {
+      display: grid; grid-template-columns: 2fr 1fr; gap: 20px;
+    }
+    @media (max-width: 1024px) {
+      .grid-2col { grid-template-columns: 1fr; }
+      header { padding: 16px 20px; }
+      .container { padding: 20px 16px; }
+    }
+
+    .panel-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px; margin-bottom: 20px;
+    }
+    .panel-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border-soft);
+    }
+    .panel-title {
+      font-size: 16px; font-weight: 700; color: var(--text);
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* ── STATS ROW ── */
+    .stat-list {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .stat-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; background: var(--surface-2); border-radius: 8px;
+      font-size: 13px;
+    }
+    .stat-key { color: var(--text-muted); font-weight: 500; }
+    .stat-val { font-weight: 700; color: var(--text); }
+
+    /* ── TABLES ── */
+    .table-wrap {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;
+    }
+    th {
+      padding: 12px 14px; background: var(--surface-2); color: var(--text-muted);
+      font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.05em;
+    }
+    td {
+      padding: 14px; border-bottom: 1px solid var(--border-soft);
+    }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .code-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      background: rgba(201,162,42,0.12); color: #F1D77A;
+      padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(201,162,42,0.25);
+    }
+
+    .btn-action {
+      padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;
+      cursor: pointer; border: none; transition: opacity 0.2s;
+    }
+    .btn-accept { background: #2E7D32; color: #E8F5E9; }
+    .btn-reject { background: #C62828; color: #FFEBEE; }
+    .btn-action:hover { opacity: 0.85; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 40px 20px; font-size: 12px;
+      color: var(--text-muted); border-top: 1px solid var(--border-soft);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- AUTHENTICATION GATE (Matches Creator Studio SSO) -->
+  <div class="auth-overlay" id="authGate">
+    <div class="auth-card">
+      <div class="monogram" style="margin: 0 auto 16px;">H</div>
+      <h2 style="font-family: 'Cinzel', serif; font-size: 22px; color: var(--primary-light); margin-bottom: 6px;">
+        Zentra Executive Hub
+      </h2>
+      <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 24px;">
+        Restricted Access &bull; Authorized Financial Operators Only
+      </p>
+
+      <div class="auth-error" id="authErrorMsg" style="display: none;"></div>
+
+      <form id="loginForm" onsubmit="handlePasswordLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="loginUsername">Username or Email</label>
+          <input type="text" id="loginUsername" placeholder="admin or vyantec@gmail.com" required autocomplete="username" />
+        </div>
+
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label class="form-label" for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="••••••••••••" required autocomplete="current-password" />
+        </div>
+
+        <button type="submit" class="btn-submit" id="btnLoginSubmit">
+          <span id="loginBtnText">Sign In to Command Center</span>
+        </button>
+      </form>
+
+      <div class="auth-divider">
+        <span>QUICK ACCESS</span>
+      </div>
+
+      <button type="button" class="btn-quick-fill" onclick="quickFillAdmin()">
+        <span>Fill Admin Credentials</span>
+      </button>
+
+      <div style="margin-top: 20px; font-size: 11px; color: var(--text-muted); line-height: 1.5;">
+        SSO with Creator Studio &bull; Backend: <code>run.app/api/auth/login</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <a href="https://zentraai.in" class="brand">
+      <div class="monogram">H</div>
+      <div>
+        <div class="brand-title">HYT MONEY TRACKER</div>
+        <div class="brand-sub">Monetization & Growth Hub</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="status-pill">
+        <span class="pulse-dot"></span>
+        <span id="backendStatus">Live Pipeline Connected</span>
+      </div>
+      <div class="user-pill" id="userBadge" style="display:none;">
+        <span id="userBadgeName">admin</span>
+      </div>
+      <button class="btn-refresh" id="refreshBtn" onclick="fetchSummary(true)">
+        <span id="refreshIcon">↻</span> Refresh Data
+      </button>
+      <button class="btn-signout" onclick="handleSignOut()">Sign Out</button>
+    </div>
+  </header>
+
+  <div class="container" id="mainDashboard" style="display:none;">
+
+    <!-- TOP KPI STRIP -->
+    <div class="kpi-grid">
+      <div class="kpi-card" style="--card-accent: #C9A22A;">
+        <div class="kpi-label">
+          <span>Gross Revenue (MTD)</span>
+          <span class="kpi-badge badge-gold">Blended</span>
+        </div>
+        <div class="kpi-value" id="kpiGrossRev">₹0</div>
+        <div style="font-size: 11px; color: var(--text-muted);">
+          Subs: <span id="kpiSubRev" style="color:#F1D77A; font-weight:600;">₹0</span> &bull; Ads: <span id="kpiAdRev" style="color:#6ECFDB; font-weight:600;">₹0</span>
+        </div>
+      </div>
+
+      <div class="kpi-card" style="--card-accent: #6ECFDB;">
+        <div class="kpi-label">
+          <span>Active Pro Subscribers</span>
+          <span class="kpi-badge badge-teal" id="kpiSubSplit">0 Paid</span>
+        </div>
+        <div class="kpi-value" id="kpiProTotal">0</div>
+        <div style="font-size: 11px; color: var(--text-muted);">
+          MRR: <span id="kpiMRR" style="color:#A8E8F4; font-weight:600;">₹0</span> (ARR: <span id="kpiARR">₹0</span>)
+        </div>
+      </div>
+
+      <div class="kpi-card" style="--card-accent: #4CAF50;">
+        <div class="kpi-label">
+          <span>Viral Growth ($K$-Factor)</span>
+          <span class="kpi-badge badge-green" id="kpiViralBadge">Compounding</span>
+        </div>
+        <div class="kpi-value" id="kpiKFactor">0.00</div>
+        <div style="font-size: 11px; color: var(--text-muted);">
+          Referred Installs: <span id="kpiTotalInstalls" style="color:#81C784; font-weight:600;">0</span>
+        </div>
+      </div>
+
+      <div class="kpi-card" style="--card-accent: #E2C05E;">
+        <div class="kpi-label">
+          <span>AdMob Ad Impressions</span>
+          <span class="kpi-badge badge-gold">AdMob SDK</span>
+        </div>
+        <div class="kpi-value" id="kpiAdImpressions">0</div>
+        <div style="font-size: 11px; color: var(--text-muted);">
+          Interstitials: <span id="kpiInterstitials">0</span> &bull; Rewarded: <span id="kpiRewarded">0</span>
+        </div>
+      </div>
+
+      <div class="kpi-card" style="--card-accent: #FFB74D;">
+        <div class="kpi-label">
+          <span>Financial Affiliates</span>
+          <span class="kpi-badge" style="background:rgba(255,183,77,0.15); color:#FFB74D;">Outbound</span>
+        </div>
+        <div class="kpi-value" id="kpiAffClicks">0</div>
+        <div style="font-size: 11px; color: var(--text-muted);">
+          Est. Pipeline: <span id="kpiAffPipeline" style="color:#FFB74D; font-weight:600;">₹0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABS NAVIGATION -->
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="switchTab('overview')">Overview & P&L</button>
+      <button class="tab-btn" onclick="switchTab('subscriptions')">Pro Subscriptions</button>
+      <button class="tab-btn" onclick="switchTab('ads')">AdMob Ads</button>
+      <button class="tab-btn" onclick="switchTab('referrals')">Referrals & Virality</button>
+      <button class="tab-btn" onclick="switchTab('affiliates')">Affiliates & Cards</button>
+      <button class="tab-btn" onclick="switchTab('issues')">Contributor Issues <span id="pendingBadge" style="background:var(--primary); color:#000; padding:1px 6px; border-radius:10px; font-size:10px; margin-left:4px;">0</span></button>
+    </div>
+
+    <!-- TAB 1: OVERVIEW & P&L -->
+    <div id="tab-overview" class="tab-panel active">
+      <div class="grid-2col">
+        <div class="panel-box">
+          <div class="panel-header">
+            <div class="panel-title">Revenue & Monetization Trajectory (Last 14 Days)</div>
+            <span style="font-size:11px; color:var(--text-muted);">AdMob + Subscriptions (₹)</span>
+          </div>
+          <div style="height: 280px;">
+            <canvas id="revChart"></canvas>
+          </div>
+        </div>
+
+        <div class="panel-box">
+          <div class="panel-header">
+            <div class="panel-title">Gross Revenue Mix (MTD)</div>
+          </div>
+          <div style="height: 220px; display:flex; align-items:center; justify-content:center;">
+            <canvas id="mixChart"></canvas>
+          </div>
+          <div class="stat-list" style="margin-top:16px;">
+            <div class="stat-row">
+              <span class="stat-key">Pro Recurring Revenue</span>
+              <span class="stat-val" id="mixSubVal">₹0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Google AdMob Ads</span>
+              <span class="stat-val" id="mixAdVal">₹0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Affiliate Pipeline (Est)</span>
+              <span class="stat-val" id="mixAffVal">₹0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: PRO SUBSCRIPTIONS -->
+    <div id="tab-subscriptions" class="tab-panel">
+      <div class="grid-2col">
+        <div class="panel-box">
+          <div class="panel-header">
+            <div class="panel-title">Subscription Economics & Breakdown</div>
+            <span class="kpi-badge badge-gold">₹69/mo &bull; ₹599/yr</span>
+          </div>
+          <div class="stat-list">
+            <div class="stat-row">
+              <span class="stat-key">Active Paying Subscribers</span>
+              <span class="stat-val" id="subPaidCount" style="color:#F1D77A;">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Monthly Plan (₹69/month)</span>
+              <span class="stat-val" id="subMonthlyCount">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Yearly Plan (₹599/year)</span>
+              <span class="stat-val" id="subYearlyCount">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Monthly Recurring Revenue (MRR)</span>
+              <span class="stat-val" id="subMRR" style="color:#81C784;">₹0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Annualized Run Rate (ARR)</span>
+              <span class="stat-val" id="subARR">₹0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Active Viral/Contributor Reward Grants</span>
+              <span class="stat-val" id="subRewardCount" style="color:#A8E8F4;">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Churned (Cancelled / Expired)</span>
+              <span class="stat-val" id="subChurnCount" style="color:var(--danger);">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-box">
+          <div class="panel-header">
+            <div class="panel-title">Play Billing & Razorpay Integration</div>
+          </div>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">
+            Subscribers are synced automatically in real-time via Google Play Real-Time Developer Notifications (RTDN) Pub/Sub and Razorpay webhook handlers.
+          </p>
+          <div style="background:var(--surface-2); padding:14px; border-radius:8px; font-size:12px; font-family:'JetBrains Mono',monospace;">
+            <div>Topic: play-billing-events</div>
+            <div style="margin-top:6px; color:#F1D77A;">Products: zentra_pro_monthly, zentra_pro_yearly</div>
+            <div style="margin-top:6px; color:#81C784;">RTDN Webhook: Active (v2 Gen2)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: ADMOB ADS -->
+    <div id="tab-ads" class="tab-panel">
+      <div class="grid-2col">
+        <div class="panel-box">
+          <div class="panel-header">
+            <div class="panel-title">Ad Format Volume & Revenue</div>
+            <span class="kpi-badge badge-teal">AdMob Network</span>
+          </div>
+          <div class="stat-list">
+            <div class="stat-row">
+              <span class="stat-key">Total Ad Impressions</span>
+              <span class="stat-val" id="adTotalImpressions">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Interstitial Impressions (5-min Session Gate / Reader)</span>
+              <span class="stat-val" id="adInterstitials">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Rewarded Video Impressions (Paywalls / Trends Unlock)</span>
+              <span class="stat-val" id="adRewarded">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Banner Impressions (Feed & Video Player)</span>
+              <span class="stat-val" id="adBanners">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">30-Min Ad-Free Sessions Unlocked</span>
+              <span class="stat-val" id="adFreeOptIns" style="color:#81C784;">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Estimated Net Ad Revenue</span>
+              <span class="stat-val" id="adEstRevenue" style="color:#F1D77A;">₹0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-box">
+          <div class="panel-header">
+            <div class="panel-title">Active Ad Units in Production</div>
+          </div>
+          <div class="stat-list" style="font-size:12px; font-family:'JetBrains Mono',monospace;">
+            <div style="padding:10px; background:var(--surface-2); border-radius:6px;">
+              <div style="color:var(--text-muted);">Interstitial (Gate)</div>
+              <div style="color:#F1D77A;">.../2306505880</div>
+            </div>
+            <div style="padding:10px; background:var(--surface-2); border-radius:6px;">
+              <div style="color:var(--text-muted);">Rewarded (Pass & Unlocks)</div>
+              <div style="color:#6ECFDB;">.../4354037961</div>
+            </div>
+            <div style="padding:10px; background:var(--surface-2); border-radius:6px;">
+              <div style="color:var(--text-muted);">Banner (Reader/Player)</div>
+              <div style="color:#81C784;">.../6816596539</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: REFERRALS & VIRALITY -->
+    <div id="tab-referrals" class="tab-panel">
+      <div class="grid-2col">
+        <div class="panel-box">
+          <div class="panel-header">
+            <div class="panel-title">Referral Milestone Ladder Completions</div>
+            <span class="kpi-badge badge-green" id="refViralBadge">K = 0.00</span>
+          </div>
+          <div class="stat-list">
+            <div class="stat-row">
+              <span class="stat-key">Tier 1: 3 Friends (14 Days Pro)</span>
+              <span class="stat-val" id="m14Count">0 users</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Tier 2: 5 Friends (30 Days Pro)</span>
+              <span class="stat-val" id="m30Count">0 users</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Tier 3: 8 Friends (60 Days Pro)</span>
+              <span class="stat-val" id="m60Count">0 users</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Tier 4: 10 Friends (90 Days Pro)</span>
+              <span class="stat-val" id="m90Count">0 users</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-box">
+          <div class="panel-header">
+            <div class="panel-title">Top Referrers Leaderboard</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Referral Code</th>
+                  <th>Successful Installs</th>
+                </tr>
+              </thead>
+              <tbody id="topReferrersTbody">
+                <tr><td colspan="2" style="text-align:center; color:var(--text-muted);">No referral codes recorded yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: AFFILIATES & CARDS -->
+    <div id="tab-affiliates" class="tab-panel">
+      <div class="grid-2col">
+        <div class="panel-box">
+          <div class="panel-header">
+            <div class="panel-title">Affiliate Clicks by Vertical</div>
+            <span class="kpi-badge badge-gold">On-Device Privacy</span>
+          </div>
+          <div class="stat-list">
+            <div class="stat-row">
+              <span class="stat-key">Credit Card Recommendations</span>
+              <span class="stat-val" id="affCards">0 clicks</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Personal & Home Loans</span>
+              <span class="stat-val" id="affLoans">0 clicks</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Mutual Funds & Demat</span>
+              <span class="stat-val" id="affFunds">0 clicks</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Total Outbound Referrals</span>
+              <span class="stat-val" id="affTotal" style="color:#F1D77A;">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-key">Estimated Pipeline Commissions</span>
+              <span class="stat-val" id="affCommissions" style="color:#81C784;">₹0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-box">
+          <div class="panel-header">
+            <div class="panel-title">Top Clicked Products</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Clicks</th>
+                </tr>
+              </thead>
+              <tbody id="topProductsTbody">
+                <tr><td colspan="3" style="text-align:center; color:var(--text-muted);">No affiliate clicks recorded yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: CONTRIBUTOR ISSUES & REWARDS -->
+    <div id="tab-issues" class="tab-panel">
+      <div class="panel-box">
+        <div class="panel-header">
+          <div class="panel-title">Reported Issues & Feature Requests (Reward Center)</div>
+          <span style="font-size:12px; color:var(--text-muted);">Accepting an issue instantly awards Pro subscription days to the User Unique ID.</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Issue / Merchant</th>
+                <th>Category</th>
+                <th>User Unique ID</th>
+                <th>Decision</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="issuesTbody">
+              <tr><td colspan="6" style="text-align:center; color:var(--text-muted);">Loading reported issues...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    HYT MONEY TRACKER &bull; ZENTRA AI &bull; 100% On-Device Financial Intelligence &bull; Zero Cloud Financial Leakage
+  </footer>
+
+  <script>
+    const SUMMARY_ENDPOINT = 'https://us-central1-finance-guru-4804b.cloudfunctions.net/getDashboardSummary';
+    const DECISION_ENDPOINT = 'https://us-central1-finance-guru-4804b.cloudfunctions.net/issueDecisionWebhook';
+    const AUTH_LOGIN_ENDPOINT = 'https://zentra-instagram-agent-546102264289.asia-south1.run.app/api/auth/login';
+
+    let revChartInstance = null;
+    let mixChartInstance = null;
+
+    // ── AUTHENTICATION & SSO ──
+    function getAuthToken() {
+      return localStorage.getItem('zentra_auth_token');
+    }
+
+    function getCurrentUser() {
+      try {
+        const u = localStorage.getItem('zentra_user');
+        return u ? JSON.parse(u) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function checkAuthState() {
+      const token = getAuthToken();
+      const user = getCurrentUser();
+      const authGate = document.getElementById('authGate');
+      const mainDashboard = document.getElementById('mainDashboard');
+      const userBadge = document.getElementById('userBadge');
+      const userBadgeName = document.getElementById('userBadgeName');
+
+      if (!token || !user) {
+        authGate.style.display = 'grid';
+        mainDashboard.style.display = 'none';
+        userBadge.style.display = 'none';
+        return false;
+      }
+
+      userBadgeName.textContent = user.username || user.email || 'Admin';
+      userBadge.style.display = 'inline-flex';
+      authGate.style.display = 'none';
+      mainDashboard.style.display = 'block';
+
+      fetchSummary();
+      return true;
+    }
+
+    async function handlePasswordLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('loginUsername').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      const btn = document.getElementById('btnLoginSubmit');
+      const btnText = document.getElementById('loginBtnText');
+      const errorDiv = document.getElementById('authErrorMsg');
+
+      errorDiv.style.display = 'none';
+      btn.disabled = true;
+      btnText.textContent = 'Verifying credentials...';
+
+      try {
+        const res = await fetch(AUTH_LOGIN_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.detail || 'Authentication failed. Please verify credentials.');
+        }
+
+        localStorage.setItem('zentra_auth_token', data.access_token);
+        localStorage.setItem('zentra_user', JSON.stringify(data.user));
+
+        checkAuthState();
+      } catch (err) {
+        errorDiv.textContent = err.message;
+        errorDiv.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btnText.textContent = 'Sign In to Command Center';
+      }
+    }
+
+    function quickFillAdmin() {
+      document.getElementById('loginUsername').value = 'vyantec@gmail.com';
+      document.getElementById('loginPassword').value = 'ZentraVyan2026!';
+      document.getElementById('loginPassword').focus();
+    }
+
+    function handleSignOut() {
+      localStorage.removeItem('zentra_auth_token');
+      localStorage.removeItem('zentra_user');
+      checkAuthState();
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+
+      event.target.classList.add('active');
+      const panel = document.getElementById('tab-' + tabId);
+      if (panel) panel.classList.add('active');
+    }
+
+    async function fetchSummary(force = false) {
+      const refreshBtn = document.getElementById('refreshBtn');
+      const refreshIcon = document.getElementById('refreshIcon');
+      refreshIcon.style.animation = 'spin 1s linear infinite';
+
+      try {
+        const url = force ? `${SUMMARY_ENDPOINT}?force=true` : SUMMARY_ENDPOINT;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        renderDashboard(data);
+      } catch (err) {
+        console.warn('Dashboard fetch error:', err);
+        document.getElementById('backendStatus').innerText = 'Using Local Cache';
+      } finally {
+        refreshIcon.style.animation = 'none';
+      }
+    }
+
+    function renderDashboard(data) {
+      const o = data.overview || {};
+      const s = data.subscriptions || {};
+      const a = data.ads || {};
+      const r = data.referrals || {};
+      const aff = data.affiliates || {};
+      const iss = data.issues || {};
+
+      // Top KPI Cards
+      document.getElementById('kpiGrossRev').innerText = '₹' + (o.total_revenue_mtd || 0).toLocaleString('en-IN');
+      document.getElementById('kpiSubRev').innerText = '₹' + (s.mrr || 0).toLocaleString('en-IN');
+      document.getElementById('kpiAdRev').innerText = '₹' + (a.estimated_revenue_inr || 0).toLocaleString('en-IN');
+
+      document.getElementById('kpiProTotal').innerText = (s.active_paid || 0) + (s.active_reward || 0);
+      document.getElementById('kpiSubSplit').innerText = `${s.active_paid || 0} Paid • ${s.active_reward || 0} Grants`;
+      document.getElementById('kpiMRR').innerText = '₹' + (s.mrr || 0).toLocaleString('en-IN');
+      document.getElementById('kpiARR').innerText = '₹' + (s.arr || 0).toLocaleString('en-IN');
+
+      document.getElementById('kpiKFactor').innerText = (r.viral_coefficient || 0).toFixed(2);
+      document.getElementById('kpiTotalInstalls').innerText = r.total_installs || 0;
+      document.getElementById('kpiViralBadge').innerText = (r.viral_coefficient >= 1.0) ? 'Viral Growth' : 'Steady Growth';
+
+      document.getElementById('kpiAdImpressions').innerText = (a.total_impressions || 0).toLocaleString('en-IN');
+      document.getElementById('kpiInterstitials').innerText = (a.interstitial || 0).toLocaleString('en-IN');
+      document.getElementById('kpiRewarded').innerText = (a.rewarded || 0).toLocaleString('en-IN');
+
+      document.getElementById('kpiAffClicks').innerText = (aff.total_clicks || 0).toLocaleString('en-IN');
+      document.getElementById('kpiAffPipeline').innerText = '₹' + (aff.estimated_pipeline_inr || 0).toLocaleString('en-IN');
+
+      // Subscriptions Tab
+      document.getElementById('subPaidCount').innerText = s.active_paid || 0;
+      document.getElementById('subMonthlyCount').innerText = s.monthly || 0;
+      document.getElementById('subYearlyCount').innerText = s.yearly || 0;
+      document.getElementById('subMRR').innerText = '₹' + (s.mrr || 0).toLocaleString('en-IN');
+      document.getElementById('subARR').innerText = '₹' + (s.arr || 0).toLocaleString('en-IN');
+      document.getElementById('subRewardCount').innerText = s.active_reward || 0;
+      document.getElementById('subChurnCount').innerText = (s.cancelled || 0) + (s.expired || 0);
+
+      // Ads Tab
+      document.getElementById('adTotalImpressions').innerText = (a.total_impressions || 0).toLocaleString('en-IN');
+      document.getElementById('adInterstitials').innerText = (a.interstitial || 0).toLocaleString('en-IN');
+      document.getElementById('adRewarded').innerText = (a.rewarded || 0).toLocaleString('en-IN');
+      document.getElementById('adBanners').innerText = (a.banner || 0).toLocaleString('en-IN');
+      document.getElementById('adFreeOptIns').innerText = (a.ad_free_opt_ins || 0).toLocaleString('en-IN');
+      document.getElementById('adEstRevenue').innerText = '₹' + (a.estimated_revenue_inr || 0).toLocaleString('en-IN');
+
+      // Referrals Tab
+      const m = r.milestones || {};
+      document.getElementById('m14Count').innerText = (m['14d'] || 0) + ' users';
+      document.getElementById('m30Count').innerText = (m['30d'] || 0) + ' users';
+      document.getElementById('m60Count').innerText = (m['60d'] || 0) + ' users';
+      document.getElementById('m90Count').innerText = (m['90d'] || 0) + ' users';
+      document.getElementById('refViralBadge').innerText = `K = ${(r.viral_coefficient || 0).toFixed(2)}`;
+
+      const topRefTbody = document.getElementById('topReferrersTbody');
+      if (r.top_referrers && r.top_referrers.length > 0) {
+        topRefTbody.innerHTML = r.top_referrers.map(it => `
+          <tr>
+            <td><span class="code-tag">${it.code}</span></td>
+            <td style="font-weight:700; color:#81C784;">${it.count} installs</td>
+          </tr>
+        `).join('');
+      }
+
+      // Affiliates Tab
+      document.getElementById('affCards').innerText = (aff.credit_cards || 0) + ' clicks';
+      document.getElementById('affLoans').innerText = (aff.loans || 0) + ' clicks';
+      document.getElementById('affFunds').innerText = (aff.mutual_funds || 0) + ' clicks';
+      document.getElementById('affTotal').innerText = (aff.total_clicks || 0).toLocaleString('en-IN');
+      document.getElementById('affCommissions').innerText = '₹' + (aff.estimated_pipeline_inr || 0).toLocaleString('en-IN');
+
+      const topProdTbody = document.getElementById('topProductsTbody');
+      if (aff.top_products && aff.top_products.length > 0) {
+        topProdTbody.innerHTML = aff.top_products.map(p => `
+          <tr>
+            <td style="font-weight:600;">${p.name}</td>
+            <td><span class="code-tag">${p.category}</span></td>
+            <td style="font-weight:700; color:#F1D77A;">${p.clicks}</td>
+          </tr>
+        `).join('');
+      }
+
+      // Issues Tab
+      document.getElementById('pendingBadge').innerText = iss.pending || 0;
+      const issuesTbody = document.getElementById('issuesTbody');
+      if (iss.recent && iss.recent.length > 0) {
+        issuesTbody.innerHTML = iss.recent.map(item => `
+          <tr>
+            <td><span class="code-tag">${item.id}</span></td>
+            <td style="font-weight:600;">${item.title}</td>
+            <td>${item.category}</td>
+            <td><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted);">${item.user_id.substring(0, 16)}...</span></td>
+            <td>
+              <span class="kpi-badge ${item.decision.toLowerCase() === 'accepted' ? 'badge-green' : item.decision.toLowerCase() === 'rejected' ? 'badge-danger' : 'badge-gold'}">
+                ${item.decision}
+              </span>
+            </td>
+            <td>
+              ${item.decision.toLowerCase() === 'pending' ? `
+                <button class="btn-action btn-accept" onclick="updateDecision('${item.id}', 'Accepted')">Accept (+3d Pro)</button>
+                <button class="btn-action btn-reject" onclick="updateDecision('${item.id}', 'Rejected')">Reject</button>
+              ` : `<span style="font-size:11px; color:var(--text-muted);">&check; Logged</span>`}
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      // Mix Chart
+      document.getElementById('mixSubVal').innerText = '₹' + (s.mrr || 0).toLocaleString('en-IN');
+      document.getElementById('mixAdVal').innerText = '₹' + (a.estimated_revenue_inr || 0).toLocaleString('en-IN');
+      document.getElementById('mixAffVal').innerText = '₹' + (aff.estimated_pipeline_inr || 0).toLocaleString('en-IN');
+
+      renderCharts(s.mrr || 0, a.estimated_revenue_inr || 0, aff.estimated_pipeline_inr || 0, a.history || []);
+    }
+
+    async function updateDecision(id, decision) {
+      if (!confirm(`Are you sure you want to mark ${id} as ${decision}?`)) return;
+      try {
+        const res = await fetch(DECISION_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, decision, notes: 'Decision via zentraai.in dashboard' })
+        });
+        if (res.ok) {
+          alert(`Successfully marked ${id} as ${decision}!`);
+          fetchSummary(true);
+        } else {
+          alert('Failed to update decision. Please check backend logs.');
+        }
+      } catch (e) {
+        alert('Error: ' + e.message);
+      }
+    }
+
+    function renderCharts(subMrr, adRev, affRev, history) {
+      const mixCtx = document.getElementById('mixChart').getContext('2d');
+      if (mixChartInstance) mixChartInstance.destroy();
+
+      const total = subMrr + adRev + affRev;
+      mixChartInstance = new Chart(mixCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Pro Subs', 'AdMob', 'Affiliates'],
+          datasets: [{
+            data: total > 0 ? [subMrr, adRev, affRev] : [1, 1, 1],
+            backgroundColor: ['#C9A22A', '#6ECFDB', '#FFB74D'],
+            borderWidth: 0,
+            hoverOffset: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#8E8E98', boxWidth: 12 } }
+          },
+          cutout: '72%'
+        }
+      });
+
+      const revCtx = document.getElementById('revChart').getContext('2d');
+      if (revChartInstance) revChartInstance.destroy();
+
+      const revLabels = history.length > 0 ? history.map(h => h.date.substring(5)).reverse() : ['D-6', 'D-5', 'D-4', 'D-3', 'D-2', 'D-1', 'Today'];
+      const revData = history.length > 0 ? history.map(h => h.estimatedRevenue).reverse() : [120, 180, 240, 310, 290, 420, 490];
+
+      revChartInstance = new Chart(revCtx, {
+        type: 'line',
+        data: {
+          labels: revLabels,
+          datasets: [{
+            label: 'AdMob Revenue (₹)',
+            data: revData,
+            borderColor: '#6ECFDB',
+            backgroundColor: 'rgba(110,207,219,0.12)',
+            fill: true,
+            tension: 0.35,
+            pointRadius: 4,
+            pointBackgroundColor: '#6ECFDB'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#8E8E98' } },
+            y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#8E8E98' } }
+          },
+          plugins: {
+            legend: { display: false }
+          }
+        }
+      });
+    }
+
+    // Initialize check on DOM ready
+    window.addEventListener('DOMContentLoaded', () => {
+      checkAuthState();
+    });
+  </script>
+</body>
+</html>
