@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-10-06T10:35:40.471436",
-    "title": "SEBI Order: Jay Energy Recovery & Investor Protection",
-    "description": "Understand SEBI's latest order on Jay Energy and S. Energies Limited. Learn how regulatory actions protect your investments and financial interests in India.",
-    "url": "https://zentraai.in/blog/2026-10-06-sebi-jay-energy-order-investor-protection.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-jay-energy-order-investor-protection",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-06T10:36:01.791328",
-    "title": "SEBI Chandigarh Office: Impact on Indian Investors",
-    "description": "SEBI's new Chandigarh office boosts investor protection and financial literacy. Learn how this local presence strengthens market regulation and grievance redressal for salaried Indians.",
-    "url": "https://zentraai.in/blog/2026-10-06-sebi-chandigarh-office-investor-impact.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-chandigarh-office-investor-impact",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-06T10:36:12.049353",
-    "title": "SEBI Launches New Investor Education Initiatives",
-    "description": "Learn how SEBI's \"Samajh Se Investing Simple\" campaign, MUST initiative, and WhatsApp presence enhance investor education for Indian professionals.",
-    "url": "https://zentraai.in/blog/2026-10-06-sebi-investor-education-initiatives.html",
-    "tags": [
-      "SEBI",
-      "Investor Education",
-      "Financial Planning"
-    ],
-    "slug": "sebi-investor-education-initiatives",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-10-07T10:27:10.668334",
     "title": "RBI Update: West Asia Conflict & Crude Prices Impact",
     "description": "Learn how the West Asia conflict and rising crude prices, noted by the RBI, may impact your personal finances, savings, and daily expenses in India. Discover practical financial planning steps.",
@@ -611,5 +572,46 @@
     ],
     "slug": "cbdt-exempts-ndb-bonds-tds-indian-investors",
     "source": "ET Economy"
+  },
+  {
+    "date": "2026-10-21T08:45:39.435206",
+    "title": "Jio Platforms IPO: Mutual Funds & Your Portfolio Impact",
+    "description": "Indian mutual funds secured a big allocation in Jio Platforms IPO. Learn what this means for your existing investments and how to wisely review your portfolio.",
+    "url": "https://zentraai.in/blog/2026-10-21-jio-platforms-ipo-mutual-funds-your-portfolio.html",
+    "tags": [
+      "mutual funds",
+      "jio platforms ipo",
+      "investment strategy"
+    ],
+    "slug": "jio-platforms-ipo-mutual-funds-your-portfolio",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-10-21T08:45:57.554826",
+    "title": "Income Tax Challan Errors? How to Correct Them",
+    "description": "Made an income tax payment error? Learn how to correct challan mistakes online, understand key deadlines, and navigate upcoming tax year changes. Essential guide for salaried professionals.",
+    "url": "https://zentraai.in/blog/2026-10-21-income-tax-challan-correction-guide.html",
+    "tags": [
+      "income tax",
+      "challan correction",
+      "tax filing"
+    ],
+    "slug": "income-tax-challan-correction-guide",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-10-21T08:46:18.287433",
+    "title": "SIFs vs Mutual Funds: A Performance Comparison",
+    "description": "Explore Structured Investment Funds (SIFs) and traditional mutual funds. Understand their unique strategies, compare recent performance, and identify key considerations for your investment portfolio.",
+    "url": "https://zentraai.in/blog/2026-10-21-sifs-vs-mutual-funds-performance-comparison.html",
+    "tags": [
+      "investment strategies",
+      "mutual funds",
+      "SIFs",
+      "financial planning",
+      "indian investors"
+    ],
+    "slug": "sifs-vs-mutual-funds-performance-comparison",
+    "source": "Mint Money"
   }
 ]
