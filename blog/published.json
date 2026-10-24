@@ -1,49 +1,5 @@
 [
   {
-    "date": "2026-10-09T10:46:33.908517",
-    "title": "SEBI Acts on Unregistered Stock Recommendations",
-    "description": "Learn how SEBI protects investors from unregulated stock tips on social media. Understand risks and steps to safeguard your investments.",
-    "url": "https://zentraai.in/blog/2026-10-09-sebi-unregistered-stock-tips-youtube-risks.html",
-    "tags": [
-      "SEBI",
-      "Investment Safety",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-unregistered-stock-tips-youtube-risks",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-09T10:46:50.093929",
-    "title": "SEBI Action: The Dangers of Social Media Stock Tips",
-    "description": "SEBI acted against a social media stock tip defaulter. Learn the risks of unverified online investment advice and explore safer strategies for your financial planning.",
-    "url": "https://zentraai.in/blog/2026-10-09-sebi-social-media-stock-tips-risk-warning.html",
-    "tags": [
-      "SEBI",
-      "Stock Market India",
-      "Investment Safety",
-      "Social Media Scams",
-      "Financial Literacy"
-    ],
-    "slug": "sebi-social-media-stock-tips-risk-warning",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-09T10:47:12.251205",
-    "title": "Emergency Fund: Safe & Fast Access for Salaried Indians",
-    "description": "Learn how to balance safety, returns, and quick withdrawals for your \u20b95 lakh emergency fund. Compare FDs, savings accounts, and liquid MFs for Indian salaried pros aged 25-40.",
-    "url": "https://zentraai.in/blog/2026-10-09-emergency-fund-safety-fast-access-salaried-india.html",
-    "tags": [
-      "emergency fund",
-      "financial planning",
-      "indian finance",
-      "liquid funds",
-      "fixed deposits",
-      "personal finance"
-    ],
-    "slug": "emergency-fund-safety-fast-access-salaried-india",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-10-10T10:01:39.115832",
     "title": "RBI's Manufacturing Survey: Impact for Salaried Indians",
     "description": "Learn about the RBI's quarterly OBICUS survey of the manufacturing sector. Understand how these economic insights from the Reserve Bank of India can indirectly influence your job security and investments.",
@@ -611,6 +567,47 @@
       "Financial Regulation"
     ],
     "slug": "sebi-bank-account-attachment-order-india",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-24T08:18:12.645541",
+    "title": "RBI Bulletin Oct 2026: Economic Health & Your Finances",
+    "description": "The RBI's October 2026 Bulletin reviews India's economy, NBFC performance, and lending rates. Understand how these insights impact your personal finance decisions.",
+    "url": "https://zentraai.in/blog/2026-10-24-rbi-bulletin-oct-2026-economic-insights-finances.html",
+    "tags": [
+      "RBI",
+      "Indian Economy",
+      "Personal Finance"
+    ],
+    "slug": "rbi-bulletin-oct-2026-economic-insights-finances",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-10-24T08:18:24.378540",
+    "title": "SEBI Enforces Compliance: Investor Protection for You",
+    "description": "Understand SEBI's role in safeguarding your investments. Learn how regulatory actions against brokerage firms like Arrow Asia Stock Broking Limited protect Indian salaried professionals from market risks.",
+    "url": "https://zentraai.in/blog/2026-10-24-sebi-compliance-investor-protection-brokerage-acti.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Stock Market Safety"
+    ],
+    "slug": "sebi-compliance-investor-protection-brokerage-acti",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-24T08:18:43.953213",
+    "title": "SEBI Action: Attachment of Demat & Mutual Fund Accounts",
+    "description": "Understand SEBI's powers to attach Demat and mutual fund accounts for recovery. Learn how this affects Indian investors and how to safeguard your holdings.",
+    "url": "https://zentraai.in/blog/2026-10-24-sebi-demat-mf-attachment-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Demat Account",
+      "Mutual Fund",
+      "Financial Regulation"
+    ],
+    "slug": "sebi-demat-mf-attachment-investor-safety",
     "source": "SEBI"
   }
 ]
