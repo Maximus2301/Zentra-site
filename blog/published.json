@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-10-10T10:01:39.115832",
-    "title": "RBI's Manufacturing Survey: Impact for Salaried Indians",
-    "description": "Learn about the RBI's quarterly OBICUS survey of the manufacturing sector. Understand how these economic insights from the Reserve Bank of India can indirectly influence your job security and investments.",
-    "url": "https://zentraai.in/blog/2026-10-10-rbi-obicus-survey-impact-salaried-professionals.html",
-    "tags": [
-      "RBI",
-      "Indian Economy",
-      "Personal Finance"
-    ],
-    "slug": "rbi-obicus-survey-impact-salaried-professionals",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-10-10T10:02:03.405264",
-    "title": "SEBI Action on DHFL Defaulter: Lessons for Investors",
-    "description": "Understand SEBI's recovery actions in the DHFL case and how large financial defaults impact your investments. Learn practical steps to protect your personal finances.",
-    "url": "https://zentraai.in/blog/2026-10-10-dhfl-default-recovery-lessons-for-salaried-indians.html",
-    "tags": [
-      "Financial Education",
-      "Investment Safety",
-      "SEBI"
-    ],
-    "slug": "dhfl-default-recovery-lessons-for-salaried-indians",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-10T10:02:14.525721",
-    "title": "Health Insurance EMIs: Smart Payment Options for Indians",
-    "description": "Explore how monthly or quarterly health insurance EMIs work for Indian salaried professionals. Learn if this flexible payment option is right for your budget.",
-    "url": "https://zentraai.in/blog/2026-10-10-health-insurance-emi-flexible-payments-india.html",
-    "tags": [
-      "health insurance",
-      "EMI",
-      "personal finance",
-      "Indian finance",
-      "budgeting"
-    ],
-    "slug": "health-insurance-emi-flexible-payments-india",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-10-11T10:12:10.683012",
     "title": "RBI's OBICUS Survey: What It Means for You",
     "description": "Understand the RBI's manufacturing survey and its impact on your finances, job market, and investment decisions as a salaried professional.",
@@ -608,6 +567,45 @@
       "Financial Regulation"
     ],
     "slug": "sebi-demat-mf-attachment-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-25T08:36:14.403614",
+    "title": "RBI October 2026 Bulletin: What it Means for You",
+    "description": "Understand the key insights from the RBI's October 2026 Bulletin. Learn how economic performance, lending rates, and NBFC health impact your personal finances and financial planning.",
+    "url": "https://zentraai.in/blog/2026-10-25-rbi-oct-2026-bulletin-economy-personal-finance.html",
+    "tags": [
+      "RBI",
+      "Indian Economy",
+      "Personal Finance"
+    ],
+    "slug": "rbi-oct-2026-bulletin-economy-personal-finance",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-10-25T08:36:25.827703",
+    "title": "SEBI Action Against Broker: Investor Protection Matters",
+    "description": "Learn how SEBI's recent compliance order against a stockbroker highlights investor safety. Understand the regulator's role and how to safeguard your investments.",
+    "url": "https://zentraai.in/blog/2026-10-25-sebi-broker-compliance-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Stock Market Safety"
+    ],
+    "slug": "sebi-broker-compliance-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-25T08:36:40.957648",
+    "title": "SEBI Recovery Action: Protecting Your Investments",
+    "description": "Learn how SEBI acts to recover funds from individuals in market violations, ensuring investor protection and market integrity for your investments.",
+    "url": "https://zentraai.in/blog/2026-10-25-sebi-recovery-action-protecting-investments.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-recovery-action-protecting-investments",
     "source": "SEBI"
   }
 ]
