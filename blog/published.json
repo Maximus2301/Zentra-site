@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-10-11T10:12:10.683012",
-    "title": "RBI's OBICUS Survey: What It Means for You",
-    "description": "Understand the RBI's manufacturing survey and its impact on your finances, job market, and investment decisions as a salaried professional.",
-    "url": "https://zentraai.in/blog/2026-10-11-rbi-obicus-survey-impact-salaried-professionals.html",
-    "tags": [
-      "RBI",
-      "Economy",
-      "Manufacturing",
-      "Financial Planning",
-      "Investment"
-    ],
-    "slug": "rbi-obicus-survey-impact-salaried-professionals",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-10-11T10:12:28.014947",
-    "title": "DHFL Case: Understanding Recovery & Investor Safety",
-    "description": "Learn about the DHFL recovery process involving Kapil Wadhawan. Discover how regulatory actions protect investors and what steps salaried professionals can take for financial security.",
-    "url": "https://zentraai.in/blog/2026-10-11-dhfl-recovery-kapil-wadhawan-investor-safety.html",
-    "tags": [
-      "Financial Literacy",
-      "Investor Protection",
-      "SEBI"
-    ],
-    "slug": "dhfl-recovery-kapil-wadhawan-investor-safety",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-11T10:12:45.068297",
-    "title": "Affording a \u20b91 Cr Home: Salary Needed for EMI",
-    "description": "Planning a \u20b91 Cr home? Learn the monthly salary needed for EMIs, how tenure impacts costs, and smart strategies to comfortably afford your dream home in India.",
-    "url": "https://zentraai.in/blog/2026-10-11-afford-1-crore-house-home-loan-salary-india.html",
-    "tags": [
-      "home loan",
-      "personal finance",
-      "real estate india"
-    ],
-    "slug": "afford-1-crore-house-home-loan-salary-india",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-10-12T11:09:25.629321",
     "title": "RBI's Manufacturing Survey: What It Means for You",
     "description": "Discover how the RBI's manufacturing survey impacts India's economic health and your finances. Learn practical steps to secure your financial future amidst economic shifts.",
@@ -607,5 +566,44 @@
     ],
     "slug": "sebi-recovery-action-protecting-investments",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-10-26T09:12:32.512702",
+    "title": "RBI Bulletin October 2026: Key Economic Insights",
+    "description": "Understand the RBI's October 2026 Bulletin. Learn how reports on economy, lending rates, and NBFC performance affect your financial decisions as a salaried professional.",
+    "url": "https://zentraai.in/blog/2026-10-26-rbi-oct-2026-bulletin-economic-impact.html",
+    "tags": [
+      "RBI",
+      "Personal Finance",
+      "Indian Economy"
+    ],
+    "slug": "rbi-oct-2026-bulletin-economic-impact",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-10-26T09:12:53.900601",
+    "title": "SEBI Action on Brokerage Compliance: Investor Safeguards",
+    "description": "Understand SEBI's regulatory action against a brokerage firm. Learn essential steps to protect your investments and ensure financial security in the Indian market.",
+    "url": "https://zentraai.in/blog/2026-10-26-sebi-action-brokerage-compliance-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulations"
+    ],
+    "slug": "sebi-action-brokerage-compliance-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-26T09:13:04.842292",
+    "title": "RBI Strengthens Financial Security with New Institute",
+    "description": "Discover how RBI's new Data Centre and Cybersecurity Training Institute enhances India's financial system security, protecting your digital transactions and data.",
+    "url": "https://zentraai.in/blog/2026-10-26-rbi-strengthens-financial-security-cyber.html",
+    "tags": [
+      "financial security",
+      "cybersecurity",
+      "digital payments"
+    ],
+    "slug": "rbi-strengthens-financial-security-cyber",
+    "source": "RBI"
   }
 ]
