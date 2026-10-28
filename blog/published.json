@@ -1,86 +1,5 @@
 [
   {
-    "date": "2026-10-13T10:50:51.817231",
-    "title": "SEBI Recovery Order: Lessons for Indian Investors",
-    "description": "SEBI's latest recovery order highlights investor protection. Learn about GDRs, their risks, and how to safeguard your investments in India.",
-    "url": "https://zentraai.in/blog/2026-10-13-sebi-gdr-recovery-investor-protection-lessons.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "GDRs"
-    ],
-    "slug": "sebi-gdr-recovery-investor-protection-lessons",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-13T10:51:11.516421",
-    "title": "SEBI Action on Muse, Pure, Taj Traders: What it Means",
-    "description": "SEBI's remittance order against Muse, Pure, Taj Traders. Learn how regulatory actions protect investors and practical steps to safeguard your financial future.",
-    "url": "https://zentraai.in/blog/2026-10-13-sebi-remittance-order-muse-pure-taj-traders.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Regulation"
-    ],
-    "slug": "sebi-remittance-order-muse-pure-taj-traders",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-13T10:51:34.889409",
-    "title": "SEBI Mutual Fund Regulations 2026: What's New?",
-    "description": "Learn how SEBI's 2026 mutual fund amendments could impact your investments. Understand the changes and strategize for a more secure financial future.",
-    "url": "https://zentraai.in/blog/2026-10-13-sebi-mutual-fund-amendments-2026-impact.html",
-    "tags": [
-      "mutual funds",
-      "SEBI regulations",
-      "investment strategy"
-    ],
-    "slug": "sebi-mutual-fund-amendments-2026-impact",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-14T08:54:17.680147",
-    "title": "SIP Step-Up Amidst Negative Returns: What's Your Move?",
-    "description": "Learn how rupee-cost averaging works and when to continue or pause your SIP step-up during negative mutual fund returns. Understand sustained underperformance.",
-    "url": "https://zentraai.in/blog/2026-10-14-sip-step-up-negative-returns-guide-hytmoney.html",
-    "tags": [
-      "SIP",
-      "Mutual Funds",
-      "Investing",
-      "Financial Planning",
-      "Rupee Cost Averaging",
-      "HYT MONEY"
-    ],
-    "slug": "sip-step-up-negative-returns-guide-hytmoney",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-10-14T08:54:31.659384",
-    "title": "India's WPI Inflation Rises: Impact on Your Finances",
-    "description": "Wholesale inflation in India accelerated in September, impacting your everyday expenses. Understand why prices are rising and practical steps to safeguard your savings and budget.",
-    "url": "https://zentraai.in/blog/2026-10-14-india-wpi-inflation-rises-impact-finances.html",
-    "tags": [
-      "inflation",
-      "personal finance",
-      "budgeting"
-    ],
-    "slug": "india-wpi-inflation-rises-impact-finances",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-10-14T08:54:43.131898",
-    "title": "India's 5.54% Inflation: What It Means for Your Finances",
-    "description": "Understand India's 5.54% inflation and its impact on your wallet. Learn practical steps to manage rising costs and safeguard your savings effectively.",
-    "url": "https://zentraai.in/blog/2026-10-14-india-inflation-impact-salaried-professionals.html",
-    "tags": [
-      "Inflation India",
-      "Personal Finance",
-      "Budgeting Tips"
-    ],
-    "slug": "india-inflation-impact-salaried-professionals",
-    "source": "ET Economy"
-  },
-  {
     "date": "2026-10-15T08:28:58.120162",
     "title": "SEBI's AI Win: Boosting Investor Education in India",
     "description": "SEBI won an international award for AI in investor education. Discover how AI impacts your investments and learn practical steps to navigate the modern financial world safely.",
@@ -603,5 +522,44 @@
     ],
     "slug": "home-loan-rates-rbi-repo-hike-hidden-costs",
     "source": "Mint Money"
+  },
+  {
+    "date": "2026-10-28T09:53:47.696213",
+    "title": "SEBI's Role in Protecting Your Investments",
+    "description": "Learn how SEBI's compliance orders, like the Add Life Pharma case, safeguard Indian investors. Understand your rights and how to invest wisely.",
+    "url": "https://zentraai.in/blog/2026-10-28-sebi-investor-protection-compliance-order.html",
+    "tags": [
+      "SEBI",
+      "Investor Education",
+      "Financial Planning"
+    ],
+    "slug": "sebi-investor-protection-compliance-order",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-28T09:53:58.395099",
+    "title": "SEBI Order Against Broker: Investor Safety & Compliance",
+    "description": "Learn how SEBI's recent remittance order against a stockbroker protects your investments and highlights the importance of regulatory compliance in the Indian market.",
+    "url": "https://zentraai.in/blog/2026-10-28-sebi-order-broker-investor-safety-compliance.html",
+    "tags": [
+      "SEBI",
+      "investor protection",
+      "broker compliance"
+    ],
+    "slug": "sebi-order-broker-investor-safety-compliance",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-28T09:54:18.596189",
+    "title": "SEBI Extends Debenture Trustee Compliance Timeline",
+    "description": "Understand SEBI's recent extension for Debenture Trustee compliance. Learn why this matters for your investments and how it safeguards your interests in debentures.",
+    "url": "https://zentraai.in/blog/2026-10-28-sebi-debenture-trustee-compliance-extension.html",
+    "tags": [
+      "SEBI",
+      "Debentures",
+      "Investor Protection"
+    ],
+    "slug": "sebi-debenture-trustee-compliance-extension",
+    "source": "SEBI"
   }
 ]
