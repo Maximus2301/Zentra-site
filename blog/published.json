@@ -1,48 +1,5 @@
 [
   {
-    "date": "2026-10-15T08:28:58.120162",
-    "title": "SEBI's AI Win: Boosting Investor Education in India",
-    "description": "SEBI won an international award for AI in investor education. Discover how AI impacts your investments and learn practical steps to navigate the modern financial world safely.",
-    "url": "https://zentraai.in/blog/2026-10-15-sebi-ai-investor-education-india-hytmoney.html",
-    "tags": [
-      "SEBI",
-      "Investor Education",
-      "Artificial Intelligence",
-      "Financial Literacy",
-      "Indian Investors"
-    ],
-    "slug": "sebi-ai-investor-education-india-hytmoney",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-15T08:29:09.194636",
-    "title": "SEBI's PolicyTwin Win: Enhancing Investor Protection in India",
-    "description": "Learn how SEBI's PolicyTwin prototype win at a global hackathon could enhance investor protection and market efficiency in India's financial landscape.",
-    "url": "https://zentraai.in/blog/2026-10-15-sebi-policytwin-win-investor-protection-india.html",
-    "tags": [
-      "SEBI",
-      "financial regulation",
-      "investor protection",
-      "Indian markets",
-      "fintech"
-    ],
-    "slug": "sebi-policytwin-win-investor-protection-india",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-15T08:29:26.675345",
-    "title": "India's Growth: IMF's Positive Outlook & Your Finances",
-    "description": "Understand why the IMF is optimistic about India's 7% growth and resilient economy. Learn how India's strong fundamentals impact your personal finances amidst global shifts.",
-    "url": "https://zentraai.in/blog/2026-10-15-imf-applauds-india-growth-what-it-means-for-you.html",
-    "tags": [
-      "India Economy",
-      "IMF Forecast",
-      "Personal Finance"
-    ],
-    "slug": "imf-applauds-india-growth-what-it-means-for-you",
-    "source": "ET Economy"
-  },
-  {
     "date": "2026-10-16T08:21:39.574519",
     "title": "SEBI's AI Win: Boosting Investor Education for Indians",
     "description": "Learn how SEBI's recent global award for AI in investor education helps protect and empower Indian professionals. Discover practical steps for safer investing.",
@@ -560,6 +517,45 @@
       "Investor Protection"
     ],
     "slug": "sebi-debenture-trustee-compliance-extension",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-29T10:15:51.124700",
+    "title": "SEBI's Compliance Order: Protecting Your Investments",
+    "description": "Learn about SEBI's General Remittance Order against Add Life Pharma Ltd. Understand how SEBI protects investors and what this means for your financial portfolio.",
+    "url": "https://zentraai.in/blog/2026-10-29-sebi-compliance-order-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-compliance-order-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-29T10:16:08.683182",
+    "title": "SEBI BoE MoU: Boosting Market Safety in India",
+    "description": "Discover how SEBI's agreement with the Bank of England strengthens financial market stability, safeguarding your investments in India.",
+    "url": "https://zentraai.in/blog/2026-10-29-sebi-boe-mou-market-safety-india-explained.html",
+    "tags": [
+      "Financial Regulation",
+      "Investment Safety",
+      "Indian Stock Market"
+    ],
+    "slug": "sebi-boe-mou-market-safety-india-explained",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-29T10:16:24.208934",
+    "title": "SEBI Order: A Warning Against Unregistered Financial Advice",
+    "description": "Learn why choosing SEBI-registered financial advisors is crucial for your investments. Understand the risks of unregistered advice and how to protect your hard-earned money.",
+    "url": "https://zentraai.in/blog/2026-10-29-sebi-action-unregistered-advisors-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Financial Advisor",
+      "Investor Protection"
+    ],
+    "slug": "sebi-action-unregistered-advisors-investor-safety",
     "source": "SEBI"
   }
 ]
