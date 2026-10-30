@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-10-16T08:21:39.574519",
-    "title": "SEBI's AI Win: Boosting Investor Education for Indians",
-    "description": "Learn how SEBI's recent global award for AI in investor education helps protect and empower Indian professionals. Discover practical steps for safer investing.",
-    "url": "https://zentraai.in/blog/2026-10-16-sebi-ai-investor-education-award-impact.html",
-    "tags": [
-      "AI in Finance",
-      "Investor Education",
-      "SEBI Updates"
-    ],
-    "slug": "sebi-ai-investor-education-award-impact",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-16T08:22:11.362310",
-    "title": "SEBI's PolicyTwin Win: Impact on Indian Investors",
-    "description": "SEBI's PolicyTwin prototype won a global hackathon. Learn how this regulatory innovation can enhance market safety and transparency, better protecting your investments.",
-    "url": "https://zentraai.in/blog/2026-10-16-sebi-policytwin-win-impact-indian-investors.html",
-    "tags": [
-      "SEBI",
-      "Financial Regulation",
-      "Investor Protection"
-    ],
-    "slug": "sebi-policytwin-win-impact-indian-investors",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-16T08:22:28.854464",
-    "title": "Home Loan EMI: Salary Needed for \u20b950L, \u20b975L, \u20b91 Cr Homes",
-    "description": "Understand the monthly salary required for a \u20b950 lakh, \u20b975 lakh, or \u20b91 crore home loan EMI in India. Learn about down payments, upfront costs, and smart financial planning.",
-    "url": "https://zentraai.in/blog/2026-10-16-home-loan-emi-salary-india.html",
-    "tags": [
-      "home loan",
-      "EMI",
-      "financial planning",
-      "salary",
-      "first home buyer"
-    ],
-    "slug": "home-loan-emi-salary-india",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-10-17T07:57:09.975306",
     "title": "RBI Approves Emirates NBD, RBL Bank Amalgamation",
     "description": "Understand the RBI-approved amalgamation of Emirates NBD Bank (Indian branches) with RBL Bank. Learn what this means for your finances as a salaried professional.",
@@ -556,6 +515,45 @@
       "Investor Protection"
     ],
     "slug": "sebi-action-unregistered-advisors-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-30T10:17:37.793110",
+    "title": "SEBI Recovers Funds: IPO Irregularities 2003-2005 Case",
+    "description": "Learn how SEBI's recovery action in a 2003-2005 IPO irregularities case protects investors. Understand regulatory oversight and due diligence for your investments.",
+    "url": "https://zentraai.in/blog/2026-10-30-sebi-recovery-ipo-irregularities-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "IPO Investing"
+    ],
+    "slug": "sebi-recovery-ipo-irregularities-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-30T10:17:55.832159",
+    "title": "SEBI Enforces Compliance: Protecting Indian Investors",
+    "description": "Understand SEBI's crucial role in market compliance, exemplified by recent actions. Learn how regulators protect your investments and practical steps for a safer portfolio.",
+    "url": "https://zentraai.in/blog/2026-10-30-sebi-compliance-market-safety-indian-investors.html",
+    "tags": [
+      "SEBI",
+      "investor education",
+      "market regulation"
+    ],
+    "slug": "sebi-compliance-market-safety-indian-investors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-30T10:18:24.020160",
+    "title": "SEBI-BoE MoU Boosts Market Safety for Indian Investors",
+    "description": "Understand how SEBI's MoU with the Bank of England bolsters market safety for Indian investors. Learn about clearing corporations and its impact on your financial stability.",
+    "url": "https://zentraai.in/blog/2026-10-30-sebi-boe-mou-market-safety-india.html",
+    "tags": [
+      "SEBI",
+      "Market Safety",
+      "Financial Education"
+    ],
+    "slug": "sebi-boe-mou-market-safety-india",
     "source": "SEBI"
   }
 ]
