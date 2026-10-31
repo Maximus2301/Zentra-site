@@ -1,47 +1,5 @@
 [
   {
-    "date": "2026-10-17T07:57:09.975306",
-    "title": "RBI Approves Emirates NBD, RBL Bank Amalgamation",
-    "description": "Understand the RBI-approved amalgamation of Emirates NBD Bank (Indian branches) with RBL Bank. Learn what this means for your finances as a salaried professional.",
-    "url": "https://zentraai.in/blog/2026-10-17-rbi-approves-emirates-nbd-rbl-bank-amalgamation.html",
-    "tags": [
-      "RBI",
-      "Banking",
-      "RBL Bank",
-      "Emirates NBD",
-      "Amalgamation",
-      "Personal Finance"
-    ],
-    "slug": "rbi-approves-emirates-nbd-rbl-bank-amalgamation",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-10-17T07:57:28.934446",
-    "title": "Step-Up SIPs: Understanding Corpus & Return Growth",
-    "description": "Explore the impact of regular vs. step-up SIPs on your wealth. Understand if annual top-ups mean higher XIRR or just a larger corpus for salaried professionals.",
-    "url": "https://zentraai.in/blog/2026-10-17-step-up-sips-corpus-returns-impact.html",
-    "tags": [
-      "SIPs",
-      "Wealth Creation",
-      "Financial Planning"
-    ],
-    "slug": "step-up-sips-corpus-returns-impact",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-10-17T07:57:51.884042",
-    "title": "Home Loan Rates Revised: Impact for Indian Borrowers",
-    "description": "Learn how recent revisions by major Indian banks to repo-linked lending rates could affect your home loan EMIs and borrowing costs. Understand your next steps.",
-    "url": "https://zentraai.in/blog/2026-10-17-home-loan-rates-revised-indian-banks-impact.html",
-    "tags": [
-      "home loan",
-      "interest rates",
-      "financial planning"
-    ],
-    "slug": "home-loan-rates-revised-indian-banks-impact",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-10-18T08:12:05.434964",
     "title": "Tax Audit Deadline: Key Checks for Compliance",
     "description": "Understand the approaching income tax audit deadline. Learn essential last-minute checks and why this matters for Indian salaried professionals' financial compliance.",
@@ -554,6 +512,45 @@
       "Financial Education"
     ],
     "slug": "sebi-boe-mou-market-safety-india",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-31T09:51:08.506202",
+    "title": "RBI Data: India's Bank Credit Growth in September 2026",
+    "description": "Understand what the 19.1% rise in non-food bank credit means for Indian salaried professionals. Learn how credit growth impacts your financial planning and borrowing decisions.",
+    "url": "https://zentraai.in/blog/2026-10-31-rbi-bank-credit-growth-sept-2026-salaried-impact.html",
+    "tags": [
+      "RBI",
+      "Bank Credit",
+      "Personal Finance"
+    ],
+    "slug": "rbi-bank-credit-growth-sept-2026-salaried-impact",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-10-31T09:51:23.847123",
+    "title": "SEBI Action: Protecting Your Investments in India",
+    "description": "Learn how SEBI's compliance orders, like the one against Trdez Investment, protect your investments. Understand its role and what steps you can take.",
+    "url": "https://zentraai.in/blog/2026-10-31-sebi-action-protecting-indian-investments.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Compliance"
+    ],
+    "slug": "sebi-action-protecting-indian-investments",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-10-31T09:51:42.519514",
+    "title": "SEBI Compliance & Investor Safety in India",
+    "description": "Understand how SEBI's regulatory actions, like the recent Trdez Investment order, protect your finances. Learn to verify entities and invest safely.",
+    "url": "https://zentraai.in/blog/2026-10-31-sebi-compliance-investor-safety-india.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Regulation"
+    ],
+    "slug": "sebi-compliance-investor-safety-india",
     "source": "SEBI"
   }
 ]
