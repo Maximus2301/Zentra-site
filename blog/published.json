@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-10-19T09:09:06.651218",
-    "title": "Managing Pet Expenses: A Guide for Indian Professionals",
-    "description": "Urban Indian pet costs are rising. Learn how premium food, grooming, and medical care impact your budget and discover practical tips to manage these expenses without sacrificing financial goals.",
-    "url": "https://zentraai.in/blog/2026-10-19-managing-pet-expenses-india-salaried-professionals.html",
-    "tags": [
-      "pet finance",
-      "personal finance",
-      "budgeting india"
-    ],
-    "slug": "managing-pet-expenses-india-salaried-professionals",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-10-19T09:09:32.904314",
-    "title": "Loan NOC: Your Guide to Loan Closure Certificates",
-    "description": "Learn why a Loan No Objection Certificate (NOC) is crucial after loan repayment. Understand when it's issued, its importance for secured loans, and steps to take if it's delayed to protect your assets.",
-    "url": "https://zentraai.in/blog/2026-10-19-loan-noc-guide-india-salaried-professionals.html",
-    "tags": [
-      "Loan NOC",
-      "Debt Management",
-      "Indian Finance"
-    ],
-    "slug": "loan-noc-guide-india-salaried-professionals",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-10-19T09:09:47.134798",
-    "title": "Gifting Financial Assets: Stocks & MFs for Festivals",
-    "description": "Learn how gifting stocks and mutual funds can build long-term wealth this festive season. Understand transfer steps and tax implications for smart financial moves.",
-    "url": "https://zentraai.in/blog/2026-10-19-gift-stocks-mutual-funds-festive-season.html",
-    "tags": [
-      "financial-gifting",
-      "investments",
-      "wealth-building"
-    ],
-    "slug": "gift-stocks-mutual-funds-festive-season",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-10-20T08:44:58.170498",
     "title": "Home Loan EMI vs Tenure: Making the Right Choice After Rate Hike",
     "description": "RBI's repo rate hike impacts home loan EMIs. Learn whether to increase your EMI or extend your loan tenure to manage higher costs effectively. Understand your options.",
@@ -555,6 +516,47 @@
       "salaried professionals"
     ],
     "slug": "sebi-compliance-investment-firms",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-11-02T11:29:59.566958",
+    "title": "India Bank Credit Growth September 2026 RBI Data Explained",
+    "description": "Understand the RBI's latest bank credit data for September 2026 and its implications for India's economy and your personal financial health as a salaried professional.",
+    "url": "https://zentraai.in/blog/2026-11-02-rbi-bank-credit-growth-september-2026-implications.html",
+    "tags": [
+      "Indian Economy",
+      "Personal Finance",
+      "RBI"
+    ],
+    "slug": "rbi-bank-credit-growth-september-2026-implications",
+    "source": "RBI"
+  },
+  {
+    "date": "2026-11-02T11:30:14.194781",
+    "title": "SEBI Compliance Order: Protecting Indian Investors",
+    "description": "Learn about SEBI's compliance actions against firms like Trdez Investment. Discover why regulatory oversight is vital and how to protect your investments in India.",
+    "url": "https://zentraai.in/blog/2026-11-02-sebi-compliance-order-investor-protection.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Financial Literacy"
+    ],
+    "slug": "sebi-compliance-order-investor-protection",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-11-02T11:30:31.372831",
+    "title": "SEBI Action: Protecting Your Investments in India",
+    "description": "Discover how SEBI's compliance orders, like the one against Trdez Investment, protect Indian investors. Learn practical steps to ensure your investments are safe.",
+    "url": "https://zentraai.in/blog/2026-11-02-sebi-investor-protection-regulatory-action.html",
+    "tags": [
+      "Investor Protection",
+      "SEBI",
+      "Financial Literacy",
+      "Investment Safety",
+      "Market Regulation"
+    ],
+    "slug": "sebi-investor-protection-regulatory-action",
     "source": "SEBI"
   }
 ]
