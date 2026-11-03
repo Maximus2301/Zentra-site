@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-10-20T08:44:58.170498",
-    "title": "Home Loan EMI vs Tenure: Making the Right Choice After Rate Hike",
-    "description": "RBI's repo rate hike impacts home loan EMIs. Learn whether to increase your EMI or extend your loan tenure to manage higher costs effectively. Understand your options.",
-    "url": "https://zentraai.in/blog/2026-10-20-home-loan-emi-tenure-hike-decision.html",
-    "tags": [
-      "Home Loan",
-      "EMI",
-      "Personal Finance"
-    ],
-    "slug": "home-loan-emi-tenure-hike-decision",
-    "source": "Mint Money"
-  },
-  {
-    "date": "2026-10-20T08:45:23.234092",
-    "title": "RBI Injects Rs 1 Lakh Cr: What It Means for You",
-    "description": "The RBI recently injected Rs 1 lakh crore into the financial system. Understand what this means for interest rates, loans, and your personal finances this festive season.",
-    "url": "https://zentraai.in/blog/2026-10-20-rbi-liquidity-injection-impact-on-personal-finance.html",
-    "tags": [
-      "RBI",
-      "Personal Finance",
-      "Indian Economy"
-    ],
-    "slug": "rbi-liquidity-injection-impact-on-personal-finance",
-    "source": "ET Economy"
-  },
-  {
-    "date": "2026-10-20T08:45:41.933814",
-    "title": "CBDT Exempts NDB Bond Interest from TDS",
-    "description": "Learn how the recent CBDT exemption on New Development Bank's rupee bond interest from TDS affects Indian investors. Understand implications for tax planning and investment.",
-    "url": "https://zentraai.in/blog/2026-10-20-cbdt-exempts-ndb-bonds-tds-indian-investors.html",
-    "tags": [
-      "TDS",
-      "Bond Investment",
-      "Tax Planning"
-    ],
-    "slug": "cbdt-exempts-ndb-bonds-tds-indian-investors",
-    "source": "ET Economy"
-  },
-  {
     "date": "2026-10-21T08:45:39.435206",
     "title": "Jio Platforms IPO: Mutual Funds & Your Portfolio Impact",
     "description": "Indian mutual funds secured a big allocation in Jio Platforms IPO. Learn what this means for your existing investments and how to wisely review your portfolio.",
@@ -558,5 +519,44 @@
     ],
     "slug": "sebi-investor-protection-regulatory-action",
     "source": "SEBI"
+  },
+  {
+    "date": "2026-11-03T11:08:47.422457",
+    "title": "SEBI Action: Ensuring Fair Trading for Indian Investors",
+    "description": "Learn how SEBI's recent compliance order reinforces fair trading practices. Understand market regulations, investor protection, and how to safeguard your investments in India.",
+    "url": "https://zentraai.in/blog/2026-11-03-sebi-compliance-investor-protection-market-integri.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulation"
+    ],
+    "slug": "sebi-compliance-investor-protection-market-integri",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-11-03T11:09:04.471847",
+    "title": "SEBI Proposes Tax Relief for Mutual Fund Switches",
+    "description": "Understand SEBI's proposal to make mutual fund switches tax-free after one year. Learn how this could simplify your investments and impact capital gains tax.",
+    "url": "https://zentraai.in/blog/2026-11-03-sebi-proposal-mutual-fund-switch-tax-free.html",
+    "tags": [
+      "mutual funds",
+      "capital gains tax",
+      "investment strategy"
+    ],
+    "slug": "sebi-proposal-mutual-fund-switch-tax-free",
+    "source": "Mint Money"
+  },
+  {
+    "date": "2026-11-03T11:09:20.650854",
+    "title": "India's Food Inflation: How Monsoon Deficit Affects You",
+    "description": "Understand how India's weak monsoon and water scarcity are driving up food prices. Learn practical steps to manage your household budget and navigate rising living costs.",
+    "url": "https://zentraai.in/blog/2026-11-03-india-food-inflation-monsoon-impact-your-money.html",
+    "tags": [
+      "Food Inflation",
+      "Personal Finance",
+      "Indian Economy"
+    ],
+    "slug": "india-food-inflation-monsoon-impact-your-money",
+    "source": "ET Economy"
   }
 ]
