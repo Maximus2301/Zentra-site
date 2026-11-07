@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-10-24T08:18:12.645541",
-    "title": "RBI Bulletin Oct 2026: Economic Health & Your Finances",
-    "description": "The RBI's October 2026 Bulletin reviews India's economy, NBFC performance, and lending rates. Understand how these insights impact your personal finance decisions.",
-    "url": "https://zentraai.in/blog/2026-10-24-rbi-bulletin-oct-2026-economic-insights-finances.html",
-    "tags": [
-      "RBI",
-      "Indian Economy",
-      "Personal Finance"
-    ],
-    "slug": "rbi-bulletin-oct-2026-economic-insights-finances",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-10-24T08:18:24.378540",
-    "title": "SEBI Enforces Compliance: Investor Protection for You",
-    "description": "Understand SEBI's role in safeguarding your investments. Learn how regulatory actions against brokerage firms like Arrow Asia Stock Broking Limited protect Indian salaried professionals from market risks.",
-    "url": "https://zentraai.in/blog/2026-10-24-sebi-compliance-investor-protection-brokerage-acti.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Stock Market Safety"
-    ],
-    "slug": "sebi-compliance-investor-protection-brokerage-acti",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-24T08:18:43.953213",
-    "title": "SEBI Action: Attachment of Demat & Mutual Fund Accounts",
-    "description": "Understand SEBI's powers to attach Demat and mutual fund accounts for recovery. Learn how this affects Indian investors and how to safeguard your holdings.",
-    "url": "https://zentraai.in/blog/2026-10-24-sebi-demat-mf-attachment-investor-safety.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Demat Account",
-      "Mutual Fund",
-      "Financial Regulation"
-    ],
-    "slug": "sebi-demat-mf-attachment-investor-safety",
-    "source": "SEBI"
-  },
-  {
     "date": "2026-10-25T08:36:14.403614",
     "title": "RBI October 2026 Bulletin: What it Means for You",
     "description": "Understand the key insights from the RBI's October 2026 Bulletin. Learn how economic performance, lending rates, and NBFC health impact your personal finances and financial planning.",
@@ -516,6 +475,45 @@
       "Financial Literacy"
     ],
     "slug": "sebi-apex-global-compliance-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-11-07T10:30:44.998476",
+    "title": "SEBI Settlement Regulations 2026 Explained",
+    "description": "Understand SEBI's new Settlement Regulations 2026 and how they impact investor protection and market integrity for Indian professionals.",
+    "url": "https://zentraai.in/blog/2026-11-07-sebi-settlement-regulations-2026-explained.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulations"
+    ],
+    "slug": "sebi-settlement-regulations-2026-explained",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-11-07T10:31:00.872303",
+    "title": "SEBI Order: Why Market Compliance Matters for You",
+    "description": "Learn how SEBI's recent order reinforces market compliance and protects investors. Understand regulatory actions and why ethical trading is crucial for your investments.",
+    "url": "https://zentraai.in/blog/2026-11-07-sebi-order-market-compliance-indian-investors.html",
+    "tags": [
+      "SEBI",
+      "Market Regulation",
+      "Investor Protection"
+    ],
+    "slug": "sebi-order-market-compliance-indian-investors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-11-07T10:31:12.463521",
+    "title": "SEBI Action: Protecting Your Investments in India",
+    "description": "Understand SEBI's role in market integrity and how its regulatory actions safeguard your investments. Learn practical steps to invest smartly and safely in Indian markets.",
+    "url": "https://zentraai.in/blog/2026-11-07-sebi-market-integrity-indian-investing.html",
+    "tags": [
+      "SEBI",
+      "stock market investing",
+      "financial planning"
+    ],
+    "slug": "sebi-market-integrity-indian-investing",
     "source": "SEBI"
   }
 ]
