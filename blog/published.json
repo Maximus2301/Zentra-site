@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-10-26T09:12:32.512702",
-    "title": "RBI Bulletin October 2026: Key Economic Insights",
-    "description": "Understand the RBI's October 2026 Bulletin. Learn how reports on economy, lending rates, and NBFC performance affect your financial decisions as a salaried professional.",
-    "url": "https://zentraai.in/blog/2026-10-26-rbi-oct-2026-bulletin-economic-impact.html",
-    "tags": [
-      "RBI",
-      "Personal Finance",
-      "Indian Economy"
-    ],
-    "slug": "rbi-oct-2026-bulletin-economic-impact",
-    "source": "RBI"
-  },
-  {
-    "date": "2026-10-26T09:12:53.900601",
-    "title": "SEBI Action on Brokerage Compliance: Investor Safeguards",
-    "description": "Understand SEBI's regulatory action against a brokerage firm. Learn essential steps to protect your investments and ensure financial security in the Indian market.",
-    "url": "https://zentraai.in/blog/2026-10-26-sebi-action-brokerage-compliance-investor-safety.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Market Regulations"
-    ],
-    "slug": "sebi-action-brokerage-compliance-investor-safety",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-26T09:13:04.842292",
-    "title": "RBI Strengthens Financial Security with New Institute",
-    "description": "Discover how RBI's new Data Centre and Cybersecurity Training Institute enhances India's financial system security, protecting your digital transactions and data.",
-    "url": "https://zentraai.in/blog/2026-10-26-rbi-strengthens-financial-security-cyber.html",
-    "tags": [
-      "financial security",
-      "cybersecurity",
-      "digital payments"
-    ],
-    "slug": "rbi-strengthens-financial-security-cyber",
-    "source": "RBI"
-  },
-  {
     "date": "2026-10-27T09:13:24.518026",
     "title": "SEBI Order on Add Life Pharma: Investor Protection Explained",
     "description": "Understand SEBI's role in safeguarding investors through compliance orders. Learn how to protect your investments by recognizing red flags and conducting thorough research on companies.",
@@ -514,6 +475,47 @@
       "Market Regulations"
     ],
     "slug": "sebi-market-compliance-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-11-09T11:54:36.333141",
+    "title": "SEBI's New Settlement Rules 2026: Impact on Investors",
+    "description": "Understand SEBI's upcoming 2026 regulations for administrative and civil proceedings. Learn how these changes enhance market integrity and protect your investments.",
+    "url": "https://zentraai.in/blog/2026-11-09-sebi-settlement-regulations-2026-investor-impact.html",
+    "tags": [
+      "SEBI",
+      "Financial Regulations India",
+      "Investor Protection",
+      "Indian Stock Market",
+      "Market Integrity"
+    ],
+    "slug": "sebi-settlement-regulations-2026-investor-impact",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-11-09T11:54:52.142551",
+    "title": "SEBI's Compliance Order: What It Means for Your Investments",
+    "description": "Understand SEBI's recent compliance action and why market regulations protect your hard-earned investments. Learn how to navigate the Indian stock market safely.",
+    "url": "https://zentraai.in/blog/2026-11-09-sebi-compliance-order-investor-safety.html",
+    "tags": [
+      "SEBI",
+      "Market Regulation",
+      "Investor Protection"
+    ],
+    "slug": "sebi-compliance-order-investor-safety",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-11-09T11:55:13.646776",
+    "title": "SEBI Action on Trading: What It Means for Investors",
+    "description": "Learn how SEBI's regulatory actions protect Indian stock market integrity and what salaried professionals can do to safeguard their investments.",
+    "url": "https://zentraai.in/blog/2026-11-09-sebi-action-market-integrity-indian-investors.html",
+    "tags": [
+      "SEBI",
+      "Market Regulation",
+      "Indian Investors"
+    ],
+    "slug": "sebi-action-market-integrity-indian-investors",
     "source": "SEBI"
   }
 ]
