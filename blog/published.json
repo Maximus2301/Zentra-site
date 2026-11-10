@@ -1,46 +1,5 @@
 [
   {
-    "date": "2026-10-27T09:13:24.518026",
-    "title": "SEBI Order on Add Life Pharma: Investor Protection Explained",
-    "description": "Understand SEBI's role in safeguarding investors through compliance orders. Learn how to protect your investments by recognizing red flags and conducting thorough research on companies.",
-    "url": "https://zentraai.in/blog/2026-10-27-sebi-add-life-pharma-investor-protection.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Literacy",
-      "Compliance",
-      "Market Regulation"
-    ],
-    "slug": "sebi-add-life-pharma-investor-protection",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-27T09:13:39.718993",
-    "title": "SEBI Action Against Broker: Investor Protection in Focus",
-    "description": "Learn how SEBI's regulatory actions protect your investments. Understand the importance of compliant brokers and how market oversight safeguards your financial future.",
-    "url": "https://zentraai.in/blog/2026-10-27-sebi-action-broker-investor-protection-india.html",
-    "tags": [
-      "SEBI",
-      "Investor Protection",
-      "Financial Education"
-    ],
-    "slug": "sebi-action-broker-investor-protection-india",
-    "source": "SEBI"
-  },
-  {
-    "date": "2026-10-27T09:14:02.669046",
-    "title": "Home Loan Rates Rise: Hidden Costs of Switching Banks",
-    "description": "RBI repo rate hikes impact home loan EMIs. Learn why rates change and what hidden costs to consider before switching your home loan to a new lender for better rates.",
-    "url": "https://zentraai.in/blog/2026-10-27-home-loan-rates-rbi-repo-hike-hidden-costs.html",
-    "tags": [
-      "Home Loan",
-      "RBI Repo Rate",
-      "Personal Finance"
-    ],
-    "slug": "home-loan-rates-rbi-repo-hike-hidden-costs",
-    "source": "Mint Money"
-  },
-  {
     "date": "2026-10-28T09:53:47.696213",
     "title": "SEBI's Role in Protecting Your Investments",
     "description": "Learn how SEBI's compliance orders, like the Add Life Pharma case, safeguard Indian investors. Understand your rights and how to invest wisely.",
@@ -516,6 +475,46 @@
       "Indian Investors"
     ],
     "slug": "sebi-action-market-integrity-indian-investors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-11-10T11:28:19.671588",
+    "title": "SEBI's New Settlement Rules 2026 Explained",
+    "description": "Understand SEBI's 2026 Settlement Regulations and their impact on market integrity and investor protection. Learn why these changes matter for your investments.",
+    "url": "https://zentraai.in/blog/2026-11-10-sebi-settlement-regulations-2026-explained.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulations",
+      "Financial Planning India"
+    ],
+    "slug": "sebi-settlement-regulations-2026-explained",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-11-10T11:28:41.236828",
+    "title": "SEBI Enforcement & Your Investments: A Case Study",
+    "description": "Understand SEBI's recent action against S S TRADERS. Learn how market regulations safeguard your investments and principles for responsible trading.",
+    "url": "https://zentraai.in/blog/2026-11-10-sebi-enforcement-market-integrity-indian-investors.html",
+    "tags": [
+      "SEBI",
+      "Investor Protection",
+      "Market Regulation"
+    ],
+    "slug": "sebi-enforcement-market-integrity-indian-investors",
+    "source": "SEBI"
+  },
+  {
+    "date": "2026-11-10T11:28:54.878927",
+    "title": "SEBI Action & Investor Protection in Indian Markets",
+    "description": "Understand SEBI's crucial role in maintaining market integrity through compliance orders. Learn how these actions safeguard your investments as an Indian salaried professional.",
+    "url": "https://zentraai.in/blog/2026-11-10-sebi-investor-protection-market-integrity.html",
+    "tags": [
+      "SEBI",
+      "InvestorProtection",
+      "FinancialLiteracy"
+    ],
+    "slug": "sebi-investor-protection-market-integrity",
     "source": "SEBI"
   }
 ]
