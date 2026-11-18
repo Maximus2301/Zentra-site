@@ -84,7 +84,36 @@ Do NOT collapse the brand to a single product. Always maintain the multi-product
   - `python3 instagram_adk/test_server_api.py`
   - `.venv/bin/adk web --port 8000 instagram_adk`
 
+## Personal Brand Engine (HITL Edition)
+- **Directory**: `Personal_Brand/`
+- **Session Memory**: `Personal_Brand/SESSION_LOG.md`
+- **Core Strategy**: Autonomous brand recognition with Human-on-the-Loop review for Personal Brands on Instagram.
+- **Key Formats**: 5–7 Slide Authority Carousels (4:5 portrait, saves/shares), Status Cards, Kinetic Reels ($\le 30$s).
+- **Architecture**: Modular reuse of `instagram_adk` media engines (`tools/video_composer.py`, `tools/google_media_tools.py`, `nodes/publisher.py`) combined with new Carousel Generator/Renderer and Telegram Mobile Approval Gate (`hitl/telegram_gate.py`).
+
+## Dr. Himani J Bharti — Clinical Authority Website & Personal Brand OS
+- **Source Directory**: `Personal_Brand/drhimanibharti/`
+- **Live Hosted URL**: `https://zentraai.in/drhimanibharti/` (statically deployed at `drhimanibharti/` in repo root, unlinked from Zantra content)
+- **Custom Domain Config**: `https://drhimanibharti.com`
+- **Entity**: Dr. Himani J Bharti (Ophthalmologist, Indore, MP)
+- **Architecture**:
+  - React 18 + Vite 6 + TypeScript + Tailwind CSS Single-Page Application.
+  - Centralized single-source-of-truth configuration: `src/config/doctorConfig.ts`.
+  - Senior accessibility: Top-bar `Text Size: A / A+` instant font-size scaler.
+  - Bilingual patient education: 6 high-intent FAQs with detailed English clinical reasoning and everyday Hinglish summaries.
+  - Portable OPD Schedule: Visiting host clinic + upcoming Scheme 140 independent clinic.
+  - 100% compliance with National Medical Commission (NMC India — Oct 2026) ethical regulations.
+  - Static production build deployed at `drhimanibharti/` with relative asset links (`base: './'`).
+  - Multi-brand Instagram carousel generation via `run_drhimani.py` and `Personal_Brand/main.py --brand drhimanibharti`.
+
 ## TODO
+- [x] Personal Brand: Configure `brand_profile.json` with persona voice, color palette, and pillars
+- [x] Personal Brand: Implement `carousel_generator.py` and `carousel_renderer.py` (1080x1350 multi-slide PIL)
+- [x] Personal Brand: Wire `hitl/telegram_gate.py` with 1-tap Approve/Regenerate buttons and queue manager
+- [x] Personal Brand: End-to-end verified CLI orchestrator (`Personal_Brand/main.py`) with live Telegram push
+- [x] Personal Brand: Telegram Persona Onboarding wizard (`/setup`), photo avatar auto-cropper, and `/overview` roadmap (`Personal_Brand/run_bot.py`)
+- [x] Personal Brand: Cloud Run Serverless Webhook (`Personal_Brand/Dockerfile`, `webhook_server.py`, `deploy_cloud_run.sh`) with `min-instances=0` scale-to-zero ($0 idle cost)
+- [x] Dr. Himani J Bharti: Clinical authority website & brand engine in `Personal_Brand/drhimanibharti/` with NMC compliance, `doctorConfig.ts`, and verified production build
 - [ ] Replace Play Store URL with live listing link
 - [ ] Add real app screenshots inside phone mockup (or swap mockup for actual screenshot)
 - [ ] Update `hello@zentraai.in` once email is configured
