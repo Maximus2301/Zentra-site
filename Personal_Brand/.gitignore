@@ -1,0 +1,12 @@
+# Runtime databases, tenant workspaces & uploaded user assets
+data/
+tenants/
+output/
+assets/temp_*
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Local frontend dependencies
+drhimanibharti/node_modules/

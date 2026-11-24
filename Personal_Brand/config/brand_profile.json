@@ -1,0 +1,148 @@
+{
+  "creator": {
+    "is_configured": false,
+    "name": "",
+    "handle": "",
+    "avatar_path": "",
+    "genre": "",
+    "tagline": "",
+    "bio": "",
+    "language_style": "Natural, conversational English",
+    "signature": "",
+    "socials": {}
+  },
+  "target_audience": {
+    "primary_audience": "",
+    "pain_points": [],
+    "desired_outcomes": [],
+    "awareness_level": "Practitioner / Enthusiast"
+  },
+  "voice_and_tone": {
+    "archetype": "",
+    "tone_attributes": [],
+    "writing_style": "",
+    "cadence": "",
+    "perspective": "",
+    "sample_transcript": "",
+    "contrarian_rules": [],
+    "hook_archetypes": [],
+    "vocabulary": {
+      "encouraged": [],
+      "forbidden": []
+    }
+  },
+  "virality_strategy": {
+    "primary_goal": "saves_and_shares",
+    "cta_style": "Ask an open, thought-provoking question to trigger comments",
+    "dm_keyword": "",
+    "hashtag_strategy": "Tiered mix: 2 broad discovery, 3 niche authority, 2 community tags"
+  },
+  "content_pillars": [],
+  "visual_theme": {
+    "canvas_ratio": "4:5",
+    "dimensions": {
+      "width": 1080,
+      "height": 1350
+    },
+    "active_preset": "clean_minimal",
+    "custom_accent": "",
+    "presets": {
+      "clean_minimal": {
+        "name": "Clean Minimal (Crisp White & Slate)",
+        "bg_color": "#F8FAFC",
+        "card_bg": "#FFFFFF",
+        "card_border": "#E2E8F0",
+        "text_primary": "#0F172A",
+        "text_secondary": "#334155",
+        "text_muted": "#64748B",
+        "accent": "#2563EB",
+        "accent_secondary": "#1E40AF",
+        "highlight_box": "#EFF6FF",
+        "header_pill_bg": "#DBEAFE",
+        "header_pill_text": "#1D4ED8"
+      },
+      "warm_creator": {
+        "name": "Warm Creator (Cream, Terracotta & Charcoal)",
+        "bg_color": "#FAF6F0",
+        "card_bg": "#FFFFFF",
+        "card_border": "#E7DDD0",
+        "text_primary": "#1F1D1A",
+        "text_secondary": "#4A443D",
+        "text_muted": "#7A7067",
+        "accent": "#D95D39",
+        "accent_secondary": "#8C3B2B",
+        "highlight_box": "#FDF1EC",
+        "header_pill_bg": "#F7E1D7",
+        "header_pill_text": "#B34322"
+      },
+      "bold_viral": {
+        "name": "Bold Viral (High-Contrast Electric)",
+        "bg_color": "#111111",
+        "card_bg": "#1C1C1E",
+        "card_border": "#2C2C2E",
+        "text_primary": "#FFFFFF",
+        "text_secondary": "#D1D5DB",
+        "text_muted": "#9CA3AF",
+        "accent": "#FACC15",
+        "accent_secondary": "#FB7185",
+        "highlight_box": "#1F1A0D",
+        "header_pill_bg": "#27272A",
+        "header_pill_text": "#FACC15"
+      },
+      "dark_terminal": {
+        "name": "Dark Terminal (Modern Tech & Builder)",
+        "bg_color": "#0B0F17",
+        "card_bg": "#121824",
+        "card_border": "#1E293B",
+        "text_primary": "#F8FAFC",
+        "text_secondary": "#94A3B8",
+        "text_muted": "#64748B",
+        "accent": "#10B981",
+        "accent_secondary": "#38BDF8",
+        "highlight_box": "#0F172A",
+        "header_pill_bg": "#1E293B",
+        "header_pill_text": "#38BDF8"
+      },
+      "editorial_luxury": {
+        "name": "Editorial Luxury (Executive & Thought Leader)",
+        "bg_color": "#0A0A0B",
+        "card_bg": "#141416",
+        "card_border": "#27272A",
+        "text_primary": "#FAFAFA",
+        "text_secondary": "#A1A1AA",
+        "text_muted": "#71717A",
+        "accent": "#F59E0B",
+        "accent_secondary": "#E2E8F0",
+        "highlight_box": "#1C1C20",
+        "header_pill_bg": "#27272A",
+        "header_pill_text": "#F59E0B"
+      },
+      "clinical_serene": {
+        "name": "Clinical Serene (High-Trust Medical & Wellness)",
+        "bg_color": "#F8FAFC",
+        "card_bg": "#FFFFFF",
+        "card_border": "#CBD5E1",
+        "text_primary": "#0F1E36",
+        "text_secondary": "#334155",
+        "text_muted": "#64748B",
+        "accent": "#0D9488",
+        "accent_secondary": "#1B365D",
+        "highlight_box": "#F0FDFA",
+        "header_pill_bg": "#E8EFF9",
+        "header_pill_text": "#1B365D"
+      }
+    },
+    "fonts": {
+      "headline_bold": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+      "body_regular": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      "mono": "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
+    }
+  },
+  "carousel_specs": {
+    "default_slide_count": 6
+  },
+  "hitl_preferences": {
+    "channel": "telegram",
+    "delivery_mode": "instant_push"
+  }
+}

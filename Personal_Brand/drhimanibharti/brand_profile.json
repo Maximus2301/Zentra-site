@@ -1,0 +1,209 @@
+{
+  "creator": {
+    "name": "Dr. Himani J Bharti",
+    "handle": "@drhimanibharti",
+    "avatar_path": "drhimanibharti/assets/avatar_drhimani.png",
+    "tagline": "Ophthalmologist • Eye Health Educator",
+    "bio": "MBBS, MS (Ophthalmology). Clear, evidence-based eye health insights on Cataracts, IOL selection, and Retinal health in Indore. Public education only.",
+    "signature": "— Dr. Himani J Bharti",
+    "registration": "[MP Medical Council / NMC Reg. No.: XXXXX]",
+    "degrees": "MBBS, MS (Ophthalmology)",
+    "city": "Indore, Madhya Pradesh",
+    "socials": {
+      "instagram": "https://instagram.com/drhimanibharti",
+      "youtube": "https://youtube.com/@drhimanijbharti",
+      "linkedin": "https://linkedin.com/in/drhimanijbharti",
+      "website": "https://drhimanibharti.com"
+    }
+  },
+  "voice_and_tone": {
+    "archetype": "Compassionate Clinical Authority & Patient Educator",
+    "tone_attributes": [
+      "Academic, reassuring, and completely evidence-based",
+      "High clinical clarity: translating complex medical concepts into simple Hindi/English",
+      "Strict NMC ethical compliance: zero superlatives, zero promotional hype, zero guarantees",
+      "Patient-centric: empowering unhurried, informed decision making for families"
+    ],
+    "perspective": "Objective clinical educator ('In our clinical evaluations', 'When counseling cataract patients', 'What we look for in a dilated exam')",
+    "contrarian_rules": [
+      "NEVER use superlatives or claims of superiority ('Best eye doctor', 'Top surgeon', '100% painless', 'Guaranteed vision').",
+      "NEVER claim that eye drops, ayurvedic tonics, or exercises can dissolve a formed cataract.",
+      "NEVER post commercial discounts, package deals, or countdown urgency timers.",
+      "ALWAYS emphasize that Instagram carousels are strictly educational and do not replace an in-person dilated eye examination.",
+      "Always provide balanced, transparent pros and cons when explaining Monofocal, Toric, and Multifocal/EDOF lenses."
+    ],
+    "hook_archetypes": [
+      "The Clinical Dilemma: 'When is the safest time to operate on a cataract (motiabind)?'",
+      "The Medical Mythbuster: 'Can eye drops really dissolve a cataract without surgery?'",
+      "The Decision Framework: 'Monofocal vs Toric vs Multifocal IOLs: How to choose for your lifestyle.'"
+    ],
+    "vocabulary": {
+      "encouraged": [
+        "Evidence-based",
+        "Dilated fundus examination",
+        "Intraocular lens (IOL)",
+        "Biometry evaluation",
+        "Screen ergonomics",
+        "20-20-20 rule",
+        "Tear film stability",
+        "Unhurried consultation",
+        "Informed consent"
+      ],
+      "forbidden": [
+        "Best doctor",
+        "100% success guaranteed",
+        "Miracle drop",
+        "Painless magic",
+        "Permanent cure for all",
+        "Free checkup offer"
+      ]
+    }
+  },
+  "content_pillars": [
+    {
+      "id": "cataract_iol_guidance",
+      "name": "Cataract (Motiabind) & IOL Decision Guide",
+      "weight": 0.35,
+      "core_themes": [
+        "When to operate: Waiting for mature cataract vs timely intervention",
+        "Choosing between Monofocal, Toric, and Multifocal/EDOF lenses",
+        "Myths: Can eye drops reverse cataract?",
+        "Post-op recovery milestones and eye protection"
+      ]
+    },
+    {
+      "id": "diabetic_retina_health",
+      "name": "Diabetic Retinopathy & Retina Care",
+      "weight": 0.25,
+      "core_themes": [
+        "Why diabetics need annual dilated retina exams even with 6/6 vision",
+        "How high blood sugar damages retinal micro-vessels silently",
+        "Early warning signs: Floaters, flashes, and blurred central vision",
+        "Co-management with treating diabetologists"
+      ]
+    },
+    {
+      "id": "pediatric_myopia_screens",
+      "name": "Pediatric Eye Health & Screen Ergonomics",
+      "weight": 0.20,
+      "core_themes": [
+        "Controlling myopia progression: The science of 90-120 mins outdoor daylight",
+        "The 20-20-20 rule for school children and laptop professionals",
+        "Signs of refractive error in children (squinting, headaches, close reading)",
+        "Amblyopia (lazy eye) early intervention"
+      ]
+    },
+    {
+      "id": "glaucoma_preventive_care",
+      "name": "Glaucoma & Preventive Eye Health",
+      "weight": 0.20,
+      "core_themes": [
+        "Glaucoma: The silent thief of sight and intraocular pressure checks",
+        "Computer Vision Syndrome: Dry eyes vs eye fatigue",
+        "Proper technique for instilling daily eye drops safely",
+        "Preventive eye exams for family members with glaucoma history"
+      ]
+    }
+  ],
+  "visual_theme": {
+    "canvas_ratio": "4:5",
+    "dimensions": {
+      "width": 1080,
+      "height": 1350
+    },
+    "active_preset": "clinical_serene",
+    "presets": {
+      "clinical_serene": {
+        "name": "Clinical Serene (High-Trust Medical Authority)",
+        "bg_color": "#F8FAFC",
+        "card_bg": "#FFFFFF",
+        "card_border": "#CBD5E1",
+        "text_primary": "#0F1E36",
+        "text_secondary": "#334155",
+        "text_muted": "#64748B",
+        "accent": "#0D9488",
+        "accent_secondary": "#1B365D",
+        "highlight_box": "#F0FDFA",
+        "header_pill_bg": "#E8EFF9",
+        "header_pill_text": "#1B365D"
+      },
+      "clinical_dark": {
+        "name": "Clinical Dark (Executive Doctor Aesthetic)",
+        "bg_color": "#0F172A",
+        "card_bg": "#1E293B",
+        "card_border": "#334155",
+        "text_primary": "#F8FAFC",
+        "text_secondary": "#94A3B8",
+        "text_muted": "#64748B",
+        "accent": "#14B8A6",
+        "accent_secondary": "#38BDF8",
+        "highlight_box": "#0B132B",
+        "header_pill_bg": "#1E293B",
+        "header_pill_text": "#14B8A6"
+      }
+    },
+    "fonts": {
+      "headline_bold": "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+      "body_regular": "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+      "mono": "/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf"
+    }
+  },
+  "carousel_specs": {
+    "default_slide_count": 6,
+    "slide_blueprint": [
+      {
+        "slide": 1,
+        "type": "hook",
+        "name": "The High-Trust Clinical Question",
+        "guidance": "High-contrast question headline addressing common patient anxiety (<12 words), doctor credential badge, 'SWIPE TO LEARN' cue.",
+        "badge": "01 / EYE HEALTH EDUCATION"
+      },
+      {
+        "slide": 2,
+        "type": "medical_fact",
+        "name": "The Common Misconception",
+        "guidance": "Expose the myth (e.g. 'Waiting for motiabind to fully ripen') and explain what medically happens inside the ocular tissue.",
+        "badge": "02 / CLINICAL INSIGHT"
+      },
+      {
+        "slide": 3,
+        "type": "framework",
+        "name": "The Evaluation Framework",
+        "guidance": "Present 3 clear clinical criteria or comparison points (e.g. Monofocal vs Toric vs EDOF) in crisp bullet points.",
+        "badge": "03 / COMPARISON & SCIENCE"
+      },
+      {
+        "slide": 4,
+        "type": "tactics",
+        "name": "What Happens in Clinical Practice",
+        "guidance": "Step-by-step diagnostic breakdown (biometry, pupil dilation, slit-lamp exam) to alleviate patient procedural fear.",
+        "badge": "04 / OPD PROTOCOL"
+      },
+      {
+        "slide": 5,
+        "type": "cheatsheet",
+        "name": "Doctor's Advice & Home Checklist",
+        "guidance": "Actionable daily eye-care rulebook (20-20-20 rule, UV protection, lighting ergonomics) to bookmark and share with parents.",
+        "badge": "05 / DOCTOR'S CHECKLIST"
+      },
+      {
+        "slide": 6,
+        "type": "cta",
+        "name": "NMC-Compliant Educational Wrap-Up",
+        "guidance": "Closing medical perspective in Hindi/English, mandatory educational disclaimer, and guidance to consult an ophthalmologist in person.",
+        "badge": "06 / CLINICAL SUMMARY"
+      }
+    ]
+  },
+  "hitl_preferences": {
+    "channel": "telegram",
+    "delivery_mode": "instant_push",
+    "buttons": [
+      {"id": "approve", "label": "🚀 Approve & Queue", "style": "primary"},
+      {"id": "regen_hook", "label": "🔄 Alternate Medical Hook", "style": "secondary"},
+      {"id": "edit_caption", "label": "✏️ Edit Caption", "style": "secondary"}
+    ],
+    "auto_publish_on_approval": false,
+    "staging_directory": "output/approved"
+  }
+}

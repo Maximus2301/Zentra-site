@@ -87,9 +87,11 @@ Do NOT collapse the brand to a single product. Always maintain the multi-product
 ## Personal Brand Engine (HITL Edition)
 - **Directory**: `Personal_Brand/`
 - **Session Memory**: `Personal_Brand/SESSION_LOG.md`
-- **Core Strategy**: Autonomous brand recognition with Human-on-the-Loop review for Personal Brands on Instagram.
-- **Key Formats**: 5–7 Slide Authority Carousels (4:5 portrait, saves/shares), Status Cards, Kinetic Reels ($\le 30$s).
-- **Architecture**: Modular reuse of `instagram_adk` media engines (`tools/video_composer.py`, `tools/google_media_tools.py`, `nodes/publisher.py`) combined with new Carousel Generator/Renderer and Telegram Mobile Approval Gate (`hitl/telegram_gate.py`).
+- **Live Serverless Endpoint**: `https://personal-brand-agent-xl4fkzyaha-el.a.run.app` (Google Cloud Run in `asia-south1`, `min-instances=0`, $0.00 idle cost)
+- **Telegram Bot**: `@Vyantecbot` (Webhook connected to Cloud Run; SEO rename planned e.g. `@BrandCraftIGBot`)
+- **Core Strategy**: Multi-tenant, multi-brand Instagram Personal Brand Studio ($0 media generation) with SEO + AEO + Meta Reach optimization and Human-on-the-Loop Telegram review.
+- **Key Formats**: Status / Quote Cards (4:5), Static Single-Image Posts (graphic layouts + photo overlay), 5–7 Slide Authority Carousels (4:5), Kinetic 9:16 Reels (`edge-tts` + FFmpeg `zoompan` MP4 + `teleprompter.txt`).
+- **Architecture**: Zero-cost Gemini + Groq (`openai/gpt-oss-120b` / `qwen/qwen3.8-27b`) failover (`core/llm_client.py`), search & Bio SEO (`core/search_intel.py`), 5-axis Critic (`core/critic.py`), Q&A advisor (`/ask`), SQLite + per-tenant brand isolation (`core/tenant_store.py`, `/brands`, `/register`, `/activate`, `/gen_key`), and hardened FastAPI webhook (`webhook_server.py`).
 
 ## Dr. Himani J Bharti — Clinical Authority Website & Personal Brand OS
 - **Source Directory**: `Personal_Brand/drhimanibharti/`
