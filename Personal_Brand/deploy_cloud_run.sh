@@ -6,12 +6,16 @@
 
 set -euo pipefail
 
+if [ -d "$HOME/google-cloud-sdk/bin" ]; then
+    export PATH="$HOME/google-cloud-sdk/bin:$PATH"
+fi
+
 SERVICE_NAME="personal-brand-agent"
 DEFAULT_REGION="asia-south1"
 DEFAULT_MEMORY="1Gi"
 DEFAULT_CPU="1"
 MIN_INSTANCES="0"    # Crucial: 0 instances when idle = $0.00 compute cost!
-MAX_INSTANCES="2"
+MAX_INSTANCES="1"    # Single active writer keeps SQLite + GCS memory consistent
 
 BOLD='\033[1m'
 CYAN='\033[0;36m'
@@ -65,17 +69,31 @@ echo -e "${GREEN}✓ Telegram Bot Token detected.${NC}"
 WEBHOOK_SECRET="${TELEGRAM_WEBHOOK_SECRET:-$(openssl rand -hex 16)}"
 ADMIN_KEY="${ADMIN_API_KEY:-$(openssl rand -hex 20)}"
 
-# 4. Enable Google Cloud APIs
-echo -e "\n${BOLD}${CYAN}[Step 1/3] Enabling Google Cloud Services...${NC}"
+# 4. Enable Google Cloud APIs & Ensure Persistent Memory Bucket
+echo -e "\n${BOLD}${CYAN}[Step 1/4] Enabling Google Cloud Services...${NC}"
 gcloud services enable \
     run.googleapis.com \
     cloudbuild.googleapis.com \
     artifactregistry.googleapis.com \
     containerregistry.googleapis.com \
+    storage.googleapis.com \
     --project="${GCP_PROJECT}"
 
+PROJECT_NUM=$(gcloud projects describe "${GCP_PROJECT}" --format="value(projectNumber)")
+MEMORY_BUCKET="${GCS_MEMORY_BUCKET:-personal-brand-memory-${PROJECT_NUM}}"
+echo -e "\n${BOLD}${CYAN}[Step 2/4] Ensuring GCS Persistent Memory Bucket (gs://${MEMORY_BUCKET})...${NC}"
+if ! gcloud storage buckets describe "gs://${MEMORY_BUCKET}" --project="${GCP_PROJECT}" &>/dev/null; then
+    gcloud storage buckets create "gs://${MEMORY_BUCKET}" \
+        --project="${GCP_PROJECT}" \
+        --location="${REGION}" \
+        --uniform-bucket-level-access
+    echo -e "${GREEN}✓ Created persistent memory bucket: gs://${MEMORY_BUCKET}${NC}"
+else
+    echo -e "${GREEN}✓ Using existing memory bucket: gs://${MEMORY_BUCKET}${NC}"
+fi
+
 # 5. Build Container with Cloud Build
-echo -e "\n${BOLD}${CYAN}[Step 2/3] Building Container with Google Cloud Build...${NC}"
+echo -e "\n${BOLD}${CYAN}[Step 3/4] Building Container with Google Cloud Build...${NC}"
 cd "${WORKSPACE_ROOT}"
 
 IMAGE_TAG="gcr.io/${GCP_PROJECT}/${SERVICE_NAME}"
@@ -83,11 +101,12 @@ IMAGE_TAG="gcr.io/${GCP_PROJECT}/${SERVICE_NAME}"
 gcloud builds submit \
     --project="${GCP_PROJECT}" \
     --config="Personal_Brand/cloudbuild.yaml" \
+    --ignore-file="Personal_Brand/.gcloudignore" \
     .
 
 # 6. Deploy to Cloud Run
-echo -e "\n${BOLD}${CYAN}[Step 3/3] Deploying to Cloud Run (min-instances=0)...${NC}"
-ENV_VARS="TELEGRAM_BOT_TOKEN=${BOT_TOKEN},TELEGRAM_CHAT_ID=${CHAT_ID},TELEGRAM_WEBHOOK_SECRET=${WEBHOOK_SECRET},ADMIN_API_KEY=${ADMIN_KEY},WEBHOOK_REQUIRE_SECRET=true,PYTHONUNBUFFERED=1"
+echo -e "\n${BOLD}${CYAN}[Step 4/4] Deploying to Cloud Run (min-instances=0, persistent GCS memory)...${NC}"
+ENV_VARS="TELEGRAM_BOT_TOKEN=${BOT_TOKEN},TELEGRAM_CHAT_ID=${CHAT_ID},TELEGRAM_WEBHOOK_SECRET=${WEBHOOK_SECRET},ADMIN_API_KEY=${ADMIN_KEY},WEBHOOK_REQUIRE_SECRET=true,GCS_MEMORY_BUCKET=${MEMORY_BUCKET},PYTHONUNBUFFERED=1"
 [ -n "${GEMINI_KEY}" ] && ENV_VARS="${ENV_VARS},GEMINI_API_KEY=${GEMINI_KEY}"
 [ -n "${GROQ_KEY}" ] && ENV_VARS="${ENV_VARS},GROQ_API_KEY=${GROQ_KEY}"
 [ -n "${OPENROUTER_KEY}" ] && ENV_VARS="${ENV_VARS},OPENROUTER_API_KEY=${OPENROUTER_KEY}"

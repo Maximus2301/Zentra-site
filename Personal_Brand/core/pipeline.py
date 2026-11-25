@@ -249,4 +249,9 @@ def build_and_render_post(
 
     qm = queue_manager or QueueManager(base_output_dir=base_out)
     qm.enqueue(item)
+    try:
+        from . import cloud_memory
+        cloud_memory.sync_directory(output_dir)
+    except Exception:
+        pass
     return item

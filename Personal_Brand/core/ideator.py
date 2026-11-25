@@ -70,12 +70,14 @@ class _LLMContentAngles(BaseModel):
 
 def save_angles_cache(roadmap: ContentRoadmap) -> None:
     """Persists full ContentAngle payloads by short UID so callbacks never truncate context."""
+    from . import cloud_memory
     for angle in roadmap.angles:
         if not angle.uid:
             angle.uid = uuid.uuid4().hex[:8]
         cache_path = ANGLES_CACHE_DIR / f"{angle.uid}.json"
         with open(cache_path, "w", encoding="utf-8") as f:
             f.write(angle.model_dump_json(indent=2))
+        cloud_memory.sync_file(cache_path)
 
 
 def load_angle_from_cache(uid: str, expected_tenant_id: Optional[str] = None) -> Optional[ContentAngle]:

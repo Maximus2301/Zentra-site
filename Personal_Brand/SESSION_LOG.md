@@ -168,3 +168,17 @@ Personal_Brand/
 - [ ] Replace ephemeral local SQLite + `tenants/` disk with persistent cloud backing (Supabase Postgres + GCS/S3) or host on a persistent VM.
 - [ ] Implement direct Instagram Graph API / LinkedIn publishers inside `Personal_Brand/publishers/`.
 - [ ] Rename `@Vyantecbot` via `@BotFather` and redeploy Cloud Run (`./Personal_Brand/deploy_cloud_run.sh`).
+
+### ☁️ Persistent Cloud Memory & Live Cloud Run Deployment (`v2.0.0`, Nov 25, 2026)
+- **GCS Persistent Memory (`core/cloud_memory.py`)**:
+  - Provisioned `gs://personal-brand-memory-546102264289` (`asia-south1`).
+  - Restores `data/brand_os.db`, `tenants/`, queues, and caches on container cold start (`lifespan` + `TenantStore.__init__`).
+  - Syncs WAL-safe SQLite backups (`sqlite3.Connection.backup`), `brand_profile.json`, avatars, uploads, queues, and rendered post assets on every mutation.
+- **Scoped Cloud Build (`Personal_Brand/.gcloudignore`)**: Reduced Cloud Build upload archive from 5.3 GiB to `666.7 KiB`.
+- **Live Deployment Verified**:
+  - Cloud Run Revision: `personal-brand-agent-00002-9tp` (`min-instances=0`, `max-instances=1`, `$0.00` idle cost).
+  - Service URL: `https://personal-brand-agent-xl4fkzyaha-el.a.run.app` (`https://personal-brand-agent-546102264289.asia-south1.run.app`).
+  - `/health`: `{"status":"healthy","service":"personal-brand-agent","version":"2.0.0"}` (no PII).
+  - `/api/delete-webhook` & forged `/webhook/telegram`: `HTTP 403` verified live.
+  - GCS state verified: `gs://personal-brand-memory-546102264289/state/data/brand_os.db` present.
+  - Telegram Webhook (`@Vyantecbot`): `{"ok":true,"result":true,"description":"Webhook was set"}`.

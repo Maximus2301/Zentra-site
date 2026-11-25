@@ -58,11 +58,19 @@ class QueueManager:
         safe_id = Path(item_id).name
         return self.queue_dir / f"{safe_id}.json"
 
+    def _sync(self, path: Path) -> None:
+        try:
+            from ..core import cloud_memory
+            cloud_memory.sync_file(path)
+        except Exception:
+            pass
+
     def enqueue(self, item: QueuedItem) -> QueuedItem:
         """Saves a newly generated item to the review queue."""
         path = self._get_item_path(item.id)
         with open(path, "w", encoding="utf-8") as f:
             f.write(item.model_dump_json(indent=2))
+        self._sync(path)
         return item
 
     def get(self, item_id: str) -> Optional[QueuedItem]:
@@ -88,12 +96,14 @@ class QueueManager:
         path = self._get_item_path(item_id)
         with open(path, "w", encoding="utf-8") as f:
             f.write(item.model_dump_json(indent=2))
+        self._sync(path)
 
         # If approved, also copy/link into output/approved
         if new_status == PostStatus.APPROVED:
-            approved_path = self.approved_dir / f"{item_id}.json"
+            approved_path = self.approved_dir / f"{Path(item_id).name}.json"
             with open(approved_path, "w", encoding="utf-8") as f:
                 f.write(item.model_dump_json(indent=2))
+            self._sync(approved_path)
 
         return item
 
@@ -104,8 +114,10 @@ class QueueManager:
             return None
         item.caption = new_caption.strip()
         item.updated_at = datetime.now(timezone.utc).isoformat()
-        with open(self._get_item_path(item_id), "w", encoding="utf-8") as f:
+        path = self._get_item_path(item_id)
+        with open(path, "w", encoding="utf-8") as f:
             f.write(item.model_dump_json(indent=2))
+        self._sync(path)
         return item
 
     def list_items(self, status: Optional[PostStatus] = None) -> List[QueuedItem]:

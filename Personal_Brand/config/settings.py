@@ -48,10 +48,15 @@ def load_brand_profile(path: Optional[Path] = None) -> Dict[str, Any]:
 
 
 def save_brand_profile(data: Dict[str, Any], path: Optional[Path] = None) -> None:
-    """Saves updated brand profile dictionary to JSON."""
+    """Saves updated brand profile dictionary to JSON and syncs to cloud memory if enabled."""
     target_path = path or BRAND_PROFILE_PATH
     with open(target_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
+    try:
+        from ..core import cloud_memory
+        cloud_memory.sync_file(target_path)
+    except Exception:
+        pass
 
 
 class BrandSettings:

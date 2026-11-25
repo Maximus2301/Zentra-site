@@ -1,0 +1,11 @@
+*
+!Personal_Brand/
+!Personal_Brand/**
+Personal_Brand/output/
+Personal_Brand/data/
+Personal_Brand/tenants/
+Personal_Brand/drhimanibharti/node_modules/
+Personal_Brand/drhimanibharti/dist/
+Personal_Brand/**/__pycache__/
+Personal_Brand/**/*.pyc
+Personal_Brand/.env*

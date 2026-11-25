@@ -23,6 +23,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from Personal_Brand.config.settings import TELEGRAM_BOT_TOKEN
+from Personal_Brand.core import cloud_memory
 from Personal_Brand.hitl.onboarding_bot import create_bot_app
 
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
@@ -53,6 +54,7 @@ def _verify_admin_key(x_admin_key: Optional[str]) -> None:
 async def lifespan(app: FastAPI):
     """Initializes and manages python-telegram-bot application lifecycle."""
     logger.info("⚡ Waking up Personal Brand Webhook container...")
+    cloud_memory.restore_all()
     await ptb_app.initialize()
     await ptb_app.start()
     yield

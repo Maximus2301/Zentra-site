@@ -87,7 +87,8 @@ Do NOT collapse the brand to a single product. Always maintain the multi-product
 ## Personal Brand Engine (HITL Edition)
 - **Directory**: `Personal_Brand/`
 - **Session Memory**: `Personal_Brand/SESSION_LOG.md`
-- **Live Serverless Endpoint**: `https://personal-brand-agent-xl4fkzyaha-el.a.run.app` (Google Cloud Run in `asia-south1`, `min-instances=0`, $0.00 idle cost)
+- **Live Serverless Endpoint**: `https://personal-brand-agent-xl4fkzyaha-el.a.run.app` (Revision `personal-brand-agent-00002-9tp`, `v2.0.0`, Google Cloud Run in `asia-south1`, `min-instances=0`, `max-instances=1`, $0.00 idle cost)
+- **Persistent Cloud Memory**: `gs://personal-brand-memory-546102264289` (`core/cloud_memory.py` syncing SQLite `data/brand_os.db`, `tenants/`, avatars, queues & outputs across restarts)
 - **Telegram Bot**: `@Vyantecbot` (Webhook connected to Cloud Run; SEO rename planned e.g. `@BrandCraftIGBot`)
 - **Core Strategy**: Multi-tenant, multi-brand Instagram Personal Brand Studio ($0 media generation) with SEO + AEO + Meta Reach optimization and Human-on-the-Loop Telegram review.
 - **Key Formats**: Status / Quote Cards (4:5), Static Single-Image Posts (graphic layouts + photo overlay), 5–7 Slide Authority Carousels (4:5), Kinetic 9:16 Reels (`edge-tts` + FFmpeg `zoompan` MP4 + `teleprompter.txt`).

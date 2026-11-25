@@ -43,6 +43,7 @@ from ..config.settings import (
     TELEGRAM_BOT_TOKEN,
     TELEGRAM_CHAT_ID,
 )
+from ..core import cloud_memory
 from ..core.assistant import answer_user_query
 from ..core.ideator import generate_content_overview, load_angle_from_cache
 from ..core.llm_client import LLMNotConfiguredError
@@ -177,7 +178,9 @@ def _save_thought_cache(
         "photo_path": photo_path,
         "audio_path": audio_path,
     }
-    (THOUGHTS_CACHE_DIR / f"{uid}.json").write_text(json.dumps(payload), encoding="utf-8")
+    cache_path = THOUGHTS_CACHE_DIR / f"{uid}.json"
+    cache_path.write_text(json.dumps(payload), encoding="utf-8")
+    cloud_memory.sync_file(cache_path)
     return uid
 
 
@@ -211,6 +214,7 @@ def _process_avatar_image(source_path: Path, dest_path: Path) -> bool:
         circle_img.paste(img, (0, 0), mask=mask)
         dest_path.parent.mkdir(parents=True, exist_ok=True)
         circle_img.save(dest_path, "PNG")
+        cloud_memory.sync_file(dest_path)
         return True
     except Exception as e:
         logger.error(f"Error processing avatar image: {e}")
@@ -1202,6 +1206,7 @@ async def handle_freeform_thought(update: Update, context: ContextTypes.DEFAULT_
         file = await photo.get_file()
         dest = uploads_dir / f"photo_{int(time.time())}.jpg"
         await file.download_to_drive(dest)
+        cloud_memory.sync_file(dest)
         photo_path_str = str(dest)
         thought = (update.message.caption or "").strip() or "Visual story & key insight from this moment"
         t_uid = _save_thought_cache(uid, thought, photo_path=photo_path_str)

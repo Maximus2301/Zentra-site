@@ -41,11 +41,23 @@ class TenantStore:
     """SQLite + isolated filesystem store for multi-tenant SaaS pilot operations."""
 
     def __init__(self, db_path: Optional[Path] = None, tenants_root: Optional[Path] = None):
+        self._use_cloud = db_path is None
         self.db_path = db_path or DB_PATH
         self.tenants_root = tenants_root or TENANTS_DIR
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self.tenants_root.mkdir(parents=True, exist_ok=True)
+        if self._use_cloud:
+            from . import cloud_memory
+            cloud_memory.restore_all()
+        is_new_db = not self.db_path.exists()
         self._init_db()
+        if is_new_db:
+            self._sync_db()
+
+    def _sync_db(self) -> None:
+        if self._use_cloud:
+            from . import cloud_memory
+            cloud_memory.sync_sqlite_db(self.db_path)
 
     def _connect(self) -> sqlite3.Connection:
         conn = sqlite3.connect(str(self.db_path), timeout=15)
@@ -186,6 +198,7 @@ class TenantStore:
                     "UPDATE users SET custom_user_id = ?, telegram_username = ? WHERE telegram_user_id = ?",
                     (clean_id, telegram_username, str(telegram_user_id)),
                 )
+                self._sync_db()
                 return True, f"Updated your User ID to '{clean_id}' (account already active)."
 
             conn.execute(
@@ -201,6 +214,7 @@ class TenantStore:
                 """,
                 (str(telegram_user_id), clean_id, telegram_username, now),
             )
+        self._sync_db()
         return True, clean_id
 
     def approve_user(
@@ -236,6 +250,7 @@ class TenantStore:
                 """,
                 (str(telegram_user_id), now.isoformat()),
             )
+        self._sync_db()
 
     def suspend_user(self, telegram_user_id: str) -> None:
         with self._connect() as conn:
@@ -243,6 +258,7 @@ class TenantStore:
                 "UPDATE users SET status = 'suspended' WHERE telegram_user_id = ?",
                 (str(telegram_user_id),),
             )
+        self._sync_db()
 
     def generate_license_key(
         self,
@@ -264,6 +280,7 @@ class TenantStore:
                 """,
                 (code, plan, max_brands, daily_limit, duration_days, str(created_by), now),
             )
+        self._sync_db()
         return code
 
     def redeem_license_key(
@@ -318,6 +335,7 @@ class TenantStore:
                 """,
                 (str(telegram_user_id), now.isoformat()),
             )
+        self._sync_db()
         return True, f"Activated '{lic['plan']}' plan ({lic['max_brands']} IG brands, {lic['daily_limit']} posts/day for {lic['duration_days']} days)."
 
     # ── Quota / Rate Limiting ─────────────────────────────────────────────────
@@ -343,7 +361,8 @@ class TenantStore:
                 "UPDATE users SET daily_used = ?, usage_date = ? WHERE telegram_user_id = ?",
                 (used + 1, today, str(telegram_user_id)),
             )
-            return True, used + 1, limit
+        self._sync_db()
+        return True, used + 1, limit
 
     # ── Multi-Account / Brand Isolation ───────────────────────────────────────
 
@@ -404,6 +423,7 @@ class TenantStore:
             )
 
         # Initialize clean isolated brand_profile.json
+        self._sync_db()
         self.get_brand_settings(telegram_user_id, slug)
         return True, slug, f"Created & switched to brand '{brand_name}' ({slug})."
 
@@ -417,6 +437,7 @@ class TenantStore:
                 "UPDATE users SET active_brand_slug = ? WHERE telegram_user_id = ?",
                 (clean_slug, str(telegram_user_id)),
             )
+        self._sync_db()
         return True, f"Switched active workspace to {brands[clean_slug]['display_name']}."
 
     def sync_brand_metadata(self, telegram_user_id: str, brand_slug: str, name: str, handle: str) -> None:
@@ -437,6 +458,7 @@ class TenantStore:
                     datetime.now(timezone.utc).isoformat(),
                 ),
             )
+        self._sync_db()
 
     def get_brand_settings(self, telegram_user_id: str, brand_slug: Optional[str] = None) -> BrandSettings:
         """Loads or initializes an isolated BrandSettings instance for (tenant, brand)."""
